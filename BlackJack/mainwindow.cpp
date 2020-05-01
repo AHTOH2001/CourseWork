@@ -94,7 +94,9 @@ void MainWindow::closeFunc(int i)
     isSeat = false;
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat==true) isSeat = true;
-
+    seat[i].perfectPair->setValue(0);
+    seat[i].mainBet->setValue(0);
+    seat[i].triple->setValue(0);
     scene->update();
 }
 void MainWindow::on_closeButton_1_clicked()
@@ -190,6 +192,8 @@ void MainWindow::valueChangedFunc(int i,int j,int newValue)
         SpinBox->setStyleSheet("");
     } );
     timers[i*3+j]->start(500);
+    ui->TotalBetAmount->display(ui->TotalBetAmount->value()+(newValue-prevValueForColor[i][j]));
+    ui->BalanceAmount->display(ui->BalanceAmount->value()-(newValue-prevValueForColor[i][j]));
     prevValueForColor[i][j] = newValue;
 }
 void MainWindow::on_spinBox_1_valueChanged(int arg1)

@@ -67,6 +67,9 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
     ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
     ui->comboBoxCurrency->setMaximumSize(80*koefW,65*koefH);
+
+    ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,750*koefH,161*koefW,111*koefH));
+    ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
     //ui->comboBoxCurrency->setFont(QFont("Times", 36));
 //    Qfont *font;
 //    ui->labelBalance->setFont()
@@ -89,8 +92,7 @@ void cards::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
     }*/
     qDebug() << event->pos();
-    //QLineEdit *x = (QLineEdit*)parent->underSeat[0]->itemAt(0)->widget();
-    parent->seat[0].mainBet->setValue(89);
+    //QLineEdit *x = (QLineEdit*)parent->underSeat[0]->itemAt(0)->widget();    
      //   parent->timerForColor->start(1000);
 }
 

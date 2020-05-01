@@ -126,9 +126,8 @@ public:
     QFontComboBox *fontComboBox;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout_balance;
-    QLCDNumber *BalanceAmount;
     QLabel *labelBalance;
-    QGridLayout *gridLayout_9;
+    QLCDNumber *BalanceAmount;
     QComboBox *comboBoxCurrency;
     QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout_1;
@@ -146,6 +145,10 @@ public:
     QSpacerItem *horizontalSpacer_5;
     QSpinBox *spinBox_2;
     QLabel *label_7;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout_balance_2;
+    QLCDNumber *TotalBetAmount;
+    QLabel *labelTotalBet;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -834,35 +837,17 @@ public:
         fontComboBox->setGeometry(QRect(490, 1210, 226, 22));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 750, 251, 111));
+        gridLayoutWidget->setGeometry(QRect(190, 900, 251, 111));
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
-        BalanceAmount = new QLCDNumber(gridLayoutWidget);
-        BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(2);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
-        BalanceAmount->setSizePolicy(sizePolicy1);
-        BalanceAmount->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
-"     border-radius: 10px;\n"
-"     padding: 2px;\n"
-"	 color: yellow;\n"
-""));
-        BalanceAmount->setDigitCount(6);
-        BalanceAmount->setProperty("value", QVariant(12345));
-        BalanceAmount->setProperty("intValue", QVariant(12345));
-
-        gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
-
         labelBalance = new QLabel(gridLayoutWidget);
         labelBalance->setObjectName(QStringLiteral("labelBalance"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
-        labelBalance->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
+        labelBalance->setSizePolicy(sizePolicy1);
         labelBalance->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -870,9 +855,24 @@ public:
 
         gridLayout_balance->addWidget(labelBalance, 0, 0, 1, 1);
 
-        gridLayout_9 = new QGridLayout();
-        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
-        gridLayout_9->setSizeConstraint(QLayout::SetFixedSize);
+        BalanceAmount = new QLCDNumber(gridLayoutWidget);
+        BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(2);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
+        BalanceAmount->setSizePolicy(sizePolicy2);
+        BalanceAmount->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 2px;\n"
+"	 color: yellow;\n"
+""));
+        BalanceAmount->setDigitCount(6);
+        BalanceAmount->setProperty("value", QVariant(10000));
+        BalanceAmount->setProperty("intValue", QVariant(10000));
+
+        gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
+
         comboBoxCurrency = new QComboBox(gridLayoutWidget);
         comboBoxCurrency->setObjectName(QStringLiteral("comboBoxCurrency"));
         comboBoxCurrency->setEnabled(true);
@@ -912,10 +912,7 @@ public:
 "\n"
 ""));
 
-        gridLayout_9->addWidget(comboBoxCurrency, 0, 0, 1, 1);
-
-
-        gridLayout_balance->addLayout(gridLayout_9, 1, 1, 1, 1);
+        gridLayout_balance->addWidget(comboBoxCurrency, 1, 1, 1, 1);
 
         gridLayoutWidget_3 = new QWidget(centralwidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
@@ -1024,6 +1021,38 @@ public:
 
         gridLayout_1->addLayout(gridLayout_49, 2, 0, 1, 5);
 
+        gridLayoutWidget_2 = new QWidget(centralwidget);
+        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(1320, 750, 161, 111));
+        gridLayout_balance_2 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_balance_2->setObjectName(QStringLiteral("gridLayout_balance_2"));
+        gridLayout_balance_2->setContentsMargins(0, 0, 0, 0);
+        TotalBetAmount = new QLCDNumber(gridLayoutWidget_2);
+        TotalBetAmount->setObjectName(QStringLiteral("TotalBetAmount"));
+        sizePolicy2.setHeightForWidth(TotalBetAmount->sizePolicy().hasHeightForWidth());
+        TotalBetAmount->setSizePolicy(sizePolicy2);
+        TotalBetAmount->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 2px;\n"
+"	 color: yellow;\n"
+""));
+        TotalBetAmount->setDigitCount(6);
+        TotalBetAmount->setProperty("value", QVariant(0));
+        TotalBetAmount->setProperty("intValue", QVariant(0));
+
+        gridLayout_balance_2->addWidget(TotalBetAmount, 1, 0, 1, 1);
+
+        labelTotalBet = new QLabel(gridLayoutWidget_2);
+        labelTotalBet->setObjectName(QStringLiteral("labelTotalBet"));
+        sizePolicy1.setHeightForWidth(labelTotalBet->sizePolicy().hasHeightForWidth());
+        labelTotalBet->setSizePolicy(sizePolicy1);
+        labelTotalBet->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
+"}\n"
+""));
+        labelTotalBet->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+
+        gridLayout_balance_2->addWidget(labelTotalBet, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -1074,6 +1103,7 @@ public:
         label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        labelTotalBet->setText(QApplication::translate("MainWindow", "Total bet", Q_NULLPTR));
     } // retranslateUi
 
 };
