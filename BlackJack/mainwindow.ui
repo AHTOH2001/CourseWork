@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>2132</width>
-    <height>1337</height>
+    <height>1549</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -121,208 +121,13 @@ QPushButton{
      <string>X</string>
     </property>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget_10">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>1030</y>
-      <width>241</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_1">
-     <item row="0" column="0">
-      <layout class="QGridLayout" name="gridLayout_10">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>Perfect pair:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QSpinBox" name="spinBox_1">
-         <property name="maximum">
-          <number>99999</number>
-         </property>
-         <property name="singleStep">
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="closeButton_1">
-       <property name="minimumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
-{
-                background-color: rgb(235, 28, 28);
-}
-QPushButton:pressed  
-{
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
-       </property>
-       <property name="text">
-        <string>X</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <spacer name="horizontalSpacer_8">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="4">
-      <layout class="QGridLayout" name="gridLayout_11">
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="spinBox_3">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="maximum">
-          <number>99999</number>
-         </property>
-         <property name="singleStep">
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="label_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>21+3:</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="0" column="1">
-      <spacer name="horizontalSpacer_23">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="0" colspan="5">
-      <layout class="QGridLayout" name="gridLayout_12">
-       <item row="1" column="2">
-        <spacer name="horizontalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="label_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-	font: 87 8pt &quot;Arial Black&quot;;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>Main bet:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="spinBox_2">
-         <property name="maximum">
-          <number>99999</number>
-         </property>
-         <property name="singleStep">
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
    <widget class="QWidget" name="gridLayoutWidget_14">
     <property name="geometry">
      <rect>
       <x>320</x>
       <y>1030</y>
-      <width>359</width>
-      <height>219</height>
+      <width>301</width>
+      <height>161</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
@@ -1087,8 +892,8 @@ QPushButton:pressed
    <widget class="QWidget" name="gridLayoutWidget_18">
     <property name="geometry">
      <rect>
-      <x>1580</x>
-      <y>830</y>
+      <x>1240</x>
+      <y>1170</y>
       <width>249</width>
       <height>154</height>
      </rect>
@@ -1432,58 +1237,317 @@ QPushButton:pressed{
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>1170</y>
-      <width>401</width>
+      <x>10</x>
+      <y>750</y>
+      <width>251</width>
       <height>111</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="gridLayout_30">
      <item row="1" column="0">
       <widget class="QLCDNumber" name="BalanceAmount">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>2</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">     border: 2px inset green;
+     border-radius: 10px;
+     padding: 2px;
+	 color: yellow;
+</string>
+       </property>
        <property name="digitCount">
         <number>6</number>
        </property>
        <property name="value" stdset="0">
-        <double>123.000000000000000</double>
+        <double>12345.000000000000000</double>
        </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="comboBoxCurrency">
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox{
-	font: 40pt &quot;MS Shell Dlg 2&quot;;
-	background: none;
-}</string>
+       <property name="intValue" stdset="0">
+        <number>12345</number>
        </property>
       </widget>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{color: rgb(205, 200, 0);
+	font: 87 20pt &quot;BankGothic Lt BT&quot;;
+}
+</string>
+       </property>
        <property name="text">
-        <string>BALANCE:</string>
+        <string>Balance</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <layout class="QGridLayout" name="gridLayout_9">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetFixedSize</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QComboBox" name="comboBoxCurrency">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>65</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>65</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QComboBox {
+     border: 2px inset green;
+     border-radius: 10px;
+     padding: 0px;
+	 color: rgb(205, 200, 0);
+ }
+
+ QComboBox:!editable, QComboBox::drop-down:editable {
+	background: rgb(0,115,57);
+ }
+
+ /* QComboBox получает состояние &quot;on&quot; когда выпадающий список раскрыт */
+ QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+     background: green;
+ }
+
+ QComboBox::drop-down {
+     width: 15px;
+
+     border-left-width: 1px;
+     border-left-color: green;
+     border-left-style: solid; /* только одна линия */
+ }
+
+ QComboBox::down-arrow {
+	width: 16;
+     top: 1px;
+     left: 1px;
+     image: url(images/spin/spinup.png);
+ }
+
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="gridLayoutWidget_2">
+   <widget class="QWidget" name="gridLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>930</y>
-      <width>160</width>
-      <height>80</height>
+      <x>20</x>
+      <y>1010</y>
+      <width>241</width>
+      <height>131</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_7"/>
+    <layout class="QGridLayout" name="gridLayout_1">
+     <item row="0" column="1">
+      <spacer name="horizontalSpacer_23">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="3">
+      <spacer name="horizontalSpacer_8">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="4">
+      <layout class="QGridLayout" name="gridLayout_11">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{color:white;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>21+3:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBox_3">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+         <property name="singleStep">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_10">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{color:white;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Perfect pair:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QSpinBox" name="spinBox_1">
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+         <property name="singleStep">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="closeButton_1">
+       <property name="minimumSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+                background-color: rgb(235, 28, 28);
+}
+QPushButton:pressed  
+{
+                background-color: rgb(190, 0, 0);
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>X</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="5">
+      <layout class="QGridLayout" name="gridLayout_49">
+       <item row="1" column="4">
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="3">
+        <widget class="QSpinBox" name="spinBox_2">
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+         <property name="singleStep">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{color:white;
+	font: 87 8pt &quot;Arial Black&quot;;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Main bet:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

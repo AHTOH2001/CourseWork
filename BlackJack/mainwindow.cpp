@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
-    underSeat[0] = ui->gridLayoutWidget_10;
+    underSeat[0] = ui->gridLayoutWidget_3;
     underSeat[1] = ui->gridLayoutWidget_14;
     underSeat[2] = ui->gridLayoutWidget_15;
     underSeat[3] = ui->gridLayoutWidget_16;
@@ -55,7 +55,13 @@ MainWindow::MainWindow(QWidget *parent)
         timers[i]->setSingleShot(true);
     }
     QStringList temp = {"$","€","£","₽","Br","₪","￥"};
+    QFont font;
+    font.setFamily(QStringLiteral("Times New Roman"));
+    font.setPointSize(36);
+    font.setItalic(true);
+    ui->comboBoxCurrency->setFont(font);
     ui->comboBoxCurrency->addItems(temp);
+    ui->comboBoxCurrency->setFont(QFont("Times", 36));
     scene->setSceneRect(0,0,3000,2000);
 
     auto* item = new cards(0,this,ui);

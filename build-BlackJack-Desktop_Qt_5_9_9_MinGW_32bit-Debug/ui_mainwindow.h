@@ -37,22 +37,6 @@ public:
     QGraphicsView *graphicsView;
     QPushButton *pushButton;
     QPushButton *Exit;
-    QWidget *gridLayoutWidget_10;
-    QGridLayout *gridLayout_1;
-    QGridLayout *gridLayout_10;
-    QLabel *label_5;
-    QSpinBox *spinBox_1;
-    QPushButton *closeButton_1;
-    QSpacerItem *horizontalSpacer_8;
-    QGridLayout *gridLayout_11;
-    QSpinBox *spinBox_3;
-    QLabel *label_6;
-    QSpacerItem *horizontalSpacer_23;
-    QGridLayout *gridLayout_12;
-    QSpacerItem *horizontalSpacer_6;
-    QLabel *label_7;
-    QSpacerItem *horizontalSpacer_5;
-    QSpinBox *spinBox_2;
     QWidget *gridLayoutWidget_14;
     QGridLayout *gridLayout_2;
     QSpacerItem *horizontalSpacer_28;
@@ -141,12 +125,27 @@ public:
     QPushButton *multiSeatButton_6;
     QFontComboBox *fontComboBox;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
+    QGridLayout *gridLayout_30;
     QLCDNumber *BalanceAmount;
-    QComboBox *comboBoxCurrency;
     QLabel *label;
-    QWidget *gridLayoutWidget_2;
-    QGridLayout *gridLayout_7;
+    QGridLayout *gridLayout_9;
+    QComboBox *comboBoxCurrency;
+    QWidget *gridLayoutWidget_3;
+    QGridLayout *gridLayout_1;
+    QSpacerItem *horizontalSpacer_23;
+    QSpacerItem *horizontalSpacer_8;
+    QGridLayout *gridLayout_11;
+    QLabel *label_6;
+    QSpinBox *spinBox_3;
+    QGridLayout *gridLayout_10;
+    QLabel *label_5;
+    QSpinBox *spinBox_1;
+    QPushButton *closeButton_1;
+    QGridLayout *gridLayout_49;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *horizontalSpacer_5;
+    QSpinBox *spinBox_2;
+    QLabel *label_7;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -154,7 +153,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(2132, 1337);
+        MainWindow->resize(2132, 1549);
         MainWindow->setStyleSheet(QLatin1String(" QSpinBox {\n"
 "	 background: green;\n"
 "	 border-style: solid;\n"
@@ -226,119 +225,9 @@ public:
 "                border-left: 2px transparent;}\n"
 "                QPushButton:pressed  {\n"
 "                background-color: rgb(255,0,0); }"));
-        gridLayoutWidget_10 = new QWidget(centralwidget);
-        gridLayoutWidget_10->setObjectName(QStringLiteral("gridLayoutWidget_10"));
-        gridLayoutWidget_10->setGeometry(QRect(30, 1030, 241, 121));
-        gridLayout_1 = new QGridLayout(gridLayoutWidget_10);
-        gridLayout_1->setObjectName(QStringLiteral("gridLayout_1"));
-        gridLayout_1->setContentsMargins(0, 0, 0, 0);
-        gridLayout_10 = new QGridLayout();
-        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        label_5 = new QLabel(gridLayoutWidget_10);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy);
-        label_5->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"}\n"
-""));
-
-        gridLayout_10->addWidget(label_5, 0, 0, 1, 1);
-
-        spinBox_1 = new QSpinBox(gridLayoutWidget_10);
-        spinBox_1->setObjectName(QStringLiteral("spinBox_1"));
-        spinBox_1->setMaximum(99999);
-        spinBox_1->setSingleStep(10);
-
-        gridLayout_10->addWidget(spinBox_1, 1, 0, 1, 1);
-
-
-        gridLayout_1->addLayout(gridLayout_10, 0, 0, 1, 1);
-
-        closeButton_1 = new QPushButton(gridLayoutWidget_10);
-        closeButton_1->setObjectName(QStringLiteral("closeButton_1"));
-        closeButton_1->setMinimumSize(QSize(20, 20));
-        closeButton_1->setMaximumSize(QSize(20, 20));
-        closeButton_1->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"                background-color: rgb(235, 28, 28);\n"
-"}\n"
-"QPushButton:pressed  \n"
-"{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
-
-        gridLayout_1->addWidget(closeButton_1, 0, 2, 1, 1);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_1->addItem(horizontalSpacer_8, 0, 3, 1, 1);
-
-        gridLayout_11 = new QGridLayout();
-        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
-        spinBox_3 = new QSpinBox(gridLayoutWidget_10);
-        spinBox_3->setObjectName(QStringLiteral("spinBox_3"));
-        spinBox_3->setStyleSheet(QStringLiteral(""));
-        spinBox_3->setMaximum(99999);
-        spinBox_3->setSingleStep(10);
-
-        gridLayout_11->addWidget(spinBox_3, 1, 1, 1, 1);
-
-        label_6 = new QLabel(gridLayoutWidget_10);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy);
-        label_6->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"}\n"
-""));
-
-        gridLayout_11->addWidget(label_6, 0, 1, 1, 1);
-
-
-        gridLayout_1->addLayout(gridLayout_11, 0, 4, 1, 1);
-
-        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_1->addItem(horizontalSpacer_23, 0, 1, 1, 1);
-
-        gridLayout_12 = new QGridLayout();
-        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_12->addItem(horizontalSpacer_6, 1, 2, 1, 1);
-
-        label_7 = new QLabel(gridLayoutWidget_10);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy);
-        label_7->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"	font: 87 8pt \"Arial Black\";\n"
-"}\n"
-""));
-
-        gridLayout_12->addWidget(label_7, 0, 1, 1, 1);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_12->addItem(horizontalSpacer_5, 1, 0, 1, 1);
-
-        spinBox_2 = new QSpinBox(gridLayoutWidget_10);
-        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
-        spinBox_2->setMaximum(99999);
-        spinBox_2->setSingleStep(10);
-
-        gridLayout_12->addWidget(spinBox_2, 1, 1, 1, 1);
-
-
-        gridLayout_1->addLayout(gridLayout_12, 1, 0, 1, 5);
-
         gridLayoutWidget_14 = new QWidget(centralwidget);
         gridLayoutWidget_14->setObjectName(QStringLiteral("gridLayoutWidget_14"));
-        gridLayoutWidget_14->setGeometry(QRect(320, 1030, 359, 219));
+        gridLayoutWidget_14->setGeometry(QRect(320, 1030, 301, 161));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_14);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -357,6 +246,9 @@ public:
 
         label_10 = new QLabel(gridLayoutWidget_14);
         label_10->setObjectName(QStringLiteral("label_10"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
         label_10->setSizePolicy(sizePolicy);
         label_10->setStyleSheet(QLatin1String("QLabel{color:white;\n"
@@ -762,7 +654,7 @@ public:
 
         gridLayoutWidget_18 = new QWidget(centralwidget);
         gridLayoutWidget_18->setObjectName(QStringLiteral("gridLayoutWidget_18"));
-        gridLayoutWidget_18->setGeometry(QRect(1580, 830, 249, 154));
+        gridLayoutWidget_18->setGeometry(QRect(1240, 1170, 249, 154));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_18);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -942,39 +834,197 @@ public:
         fontComboBox->setGeometry(QRect(490, 1210, 226, 22));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(150, 1170, 401, 111));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayoutWidget->setGeometry(QRect(10, 750, 251, 111));
+        gridLayout_30 = new QGridLayout(gridLayoutWidget);
+        gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
+        gridLayout_30->setContentsMargins(0, 0, 0, 0);
         BalanceAmount = new QLCDNumber(gridLayoutWidget);
         BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(2);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
+        BalanceAmount->setSizePolicy(sizePolicy1);
+        BalanceAmount->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 2px;\n"
+"	 color: yellow;\n"
+""));
         BalanceAmount->setDigitCount(6);
-        BalanceAmount->setProperty("value", QVariant(123));
+        BalanceAmount->setProperty("value", QVariant(12345));
+        BalanceAmount->setProperty("intValue", QVariant(12345));
 
-        gridLayout->addWidget(BalanceAmount, 1, 0, 1, 1);
-
-        comboBoxCurrency = new QComboBox(gridLayoutWidget);
-        comboBoxCurrency->setObjectName(QStringLiteral("comboBoxCurrency"));
-        comboBoxCurrency->setAutoFillBackground(false);
-        comboBoxCurrency->setStyleSheet(QLatin1String("QComboBox{\n"
-"	font: 40pt \"MS Shell Dlg 2\";\n"
-"	background: none;\n"
-"}"));
-
-        gridLayout->addWidget(comboBoxCurrency, 1, 1, 1, 1);
+        gridLayout_30->addWidget(BalanceAmount, 1, 0, 1, 1);
 
         label = new QLabel(gridLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy2);
+        label->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
+"	font: 87 20pt \"BankGothic Lt BT\";\n"
+"}\n"
+""));
+        label->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        gridLayout_30->addWidget(label, 0, 0, 1, 1);
 
-        gridLayoutWidget_2 = new QWidget(centralwidget);
-        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(60, 930, 160, 80));
-        gridLayout_7 = new QGridLayout(gridLayoutWidget_2);
-        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
-        gridLayout_7->setContentsMargins(0, 0, 0, 0);
+        gridLayout_9 = new QGridLayout();
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
+        gridLayout_9->setSizeConstraint(QLayout::SetFixedSize);
+        comboBoxCurrency = new QComboBox(gridLayoutWidget);
+        comboBoxCurrency->setObjectName(QStringLiteral("comboBoxCurrency"));
+        comboBoxCurrency->setEnabled(true);
+        comboBoxCurrency->setMinimumSize(QSize(80, 65));
+        comboBoxCurrency->setMaximumSize(QSize(80, 65));
+        comboBoxCurrency->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 0px;\n"
+"	 color: rgb(205, 200, 0);\n"
+" }\n"
+"\n"
+" QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"	background: rgb(0,115,57);\n"
+" }\n"
+"\n"
+" /* QComboBox \320\277\320\276\320\273\321\203\321\207\320\260\320\265\321\202 \321\201\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265 \"on\" \320\272\320\276\320\263\320\264\320\260 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\270\320\271 \321\201\320\277\320\270\321\201\320\276\320\272 \321\200\320\260\321\201\320\272\321\200\321\213\321\202 */\n"
+" QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"     background: green;\n"
+" }\n"
+"\n"
+" QComboBox::drop-down {\n"
+"     width: 15px;\n"
+"\n"
+"     border-left-width: 1px;\n"
+"     border-left-color: green;\n"
+"     border-left-style: solid; /* \321\202\320\276\320\273\321\214\320\272\320\276 \320\276\320\264\320\275\320\260 \320\273\320\270\320\275\320\270\321\217"
+                        " */\n"
+" }\n"
+"\n"
+" QComboBox::down-arrow {\n"
+"	width: 16;\n"
+"     top: 1px;\n"
+"     left: 1px;\n"
+"     image: url(images/spin/spinup.png);\n"
+" }\n"
+"\n"
+""));
+
+        gridLayout_9->addWidget(comboBoxCurrency, 0, 0, 1, 1);
+
+
+        gridLayout_30->addLayout(gridLayout_9, 1, 1, 1, 1);
+
+        gridLayoutWidget_3 = new QWidget(centralwidget);
+        gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
+        gridLayoutWidget_3->setGeometry(QRect(20, 1010, 241, 131));
+        gridLayout_1 = new QGridLayout(gridLayoutWidget_3);
+        gridLayout_1->setObjectName(QStringLiteral("gridLayout_1"));
+        gridLayout_1->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_1->addItem(horizontalSpacer_23, 0, 1, 1, 1);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_1->addItem(horizontalSpacer_8, 0, 3, 1, 1);
+
+        gridLayout_11 = new QGridLayout();
+        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
+        label_6 = new QLabel(gridLayoutWidget_3);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy);
+        label_6->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"}\n"
+""));
+
+        gridLayout_11->addWidget(label_6, 0, 1, 1, 1);
+
+        spinBox_3 = new QSpinBox(gridLayoutWidget_3);
+        spinBox_3->setObjectName(QStringLiteral("spinBox_3"));
+        spinBox_3->setStyleSheet(QStringLiteral(""));
+        spinBox_3->setMaximum(99999);
+        spinBox_3->setSingleStep(10);
+
+        gridLayout_11->addWidget(spinBox_3, 1, 1, 1, 1);
+
+
+        gridLayout_1->addLayout(gridLayout_11, 0, 4, 1, 1);
+
+        gridLayout_10 = new QGridLayout();
+        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
+        label_5 = new QLabel(gridLayoutWidget_3);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy);
+        label_5->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"}\n"
+""));
+
+        gridLayout_10->addWidget(label_5, 0, 0, 1, 1);
+
+        spinBox_1 = new QSpinBox(gridLayoutWidget_3);
+        spinBox_1->setObjectName(QStringLiteral("spinBox_1"));
+        spinBox_1->setMaximum(99999);
+        spinBox_1->setSingleStep(10);
+
+        gridLayout_10->addWidget(spinBox_1, 1, 0, 1, 1);
+
+
+        gridLayout_1->addLayout(gridLayout_10, 0, 0, 1, 1);
+
+        closeButton_1 = new QPushButton(gridLayoutWidget_3);
+        closeButton_1->setObjectName(QStringLiteral("closeButton_1"));
+        closeButton_1->setMinimumSize(QSize(20, 20));
+        closeButton_1->setMaximumSize(QSize(20, 20));
+        closeButton_1->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"                background-color: rgb(235, 28, 28);\n"
+"}\n"
+"QPushButton:pressed  \n"
+"{\n"
+"                background-color: rgb(190, 0, 0);\n"
+"}\n"
+"\n"
+""));
+
+        gridLayout_1->addWidget(closeButton_1, 0, 2, 1, 1);
+
+        gridLayout_49 = new QGridLayout();
+        gridLayout_49->setObjectName(QStringLiteral("gridLayout_49"));
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_49->addItem(horizontalSpacer_6, 1, 4, 1, 1);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_49->addItem(horizontalSpacer_5, 1, 2, 1, 1);
+
+        spinBox_2 = new QSpinBox(gridLayoutWidget_3);
+        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
+        spinBox_2->setMaximum(99999);
+        spinBox_2->setSingleStep(10);
+
+        gridLayout_49->addWidget(spinBox_2, 1, 3, 1, 1);
+
+        label_7 = new QLabel(gridLayoutWidget_3);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy);
+        label_7->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"	font: 87 8pt \"Arial Black\";\n"
+"}\n"
+""));
+
+        gridLayout_49->addWidget(label_7, 0, 3, 1, 1);
+
+
+        gridLayout_1->addLayout(gridLayout_49, 2, 0, 1, 5);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -994,10 +1044,6 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
         Exit->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
-        label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
-        closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
-        label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
-        label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_2->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
@@ -1024,7 +1070,11 @@ public:
         multiSeatButton_4->setText(QString());
         multiSeatButton_5->setText(QString());
         multiSeatButton_6->setText(QString());
-        label->setText(QApplication::translate("MainWindow", "BALANCE:", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Balance", Q_NULLPTR));
+        label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
+        label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
+        closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
     } // retranslateUi
 
 };
