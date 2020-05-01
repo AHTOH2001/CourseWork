@@ -54,16 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
         timers[i] = new QTimer();
         timers[i]->setSingleShot(true);
     }
-    QStringList temp = {"$","€","£","₽","Br","₪","￥"};
-    QFont font;
-    font.setFamily(QStringLiteral("Times New Roman"));
-    font.setPointSize(36);
-    font.setItalic(true);
-    ui->comboBoxCurrency->setFont(font);
-    ui->comboBoxCurrency->addItems(temp);
-    ui->comboBoxCurrency->setFont(QFont("Times", 36));
+    QStringList temp = {"€","$","£","₽","Br","₪","￥"};
     scene->setSceneRect(0,0,3000,2000);
-
+    ui->comboBoxCurrency->addItems(temp);
     auto* item = new cards(0,this,ui);
     item->setFlag(QGraphicsItem::ItemIsFocusable, true);
     item->setPos(0,0);

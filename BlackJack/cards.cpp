@@ -61,8 +61,15 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
                 parent->underSeat[i]->show();
                 parent->underSeat[i]->setGeometry((parent->seatX[i]-62+3)*koefW,(parent->seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
             }
-
-    }    
+    }        
+    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,750*koefH,251*koefW,111*koefH));
+    ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
+    ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
+    ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
+    ui->comboBoxCurrency->setMaximumSize(80*koefW,65*koefH);
+    //ui->comboBoxCurrency->setFont(QFont("Times", 36));
+//    Qfont *font;
+//    ui->labelBalance->setFont()
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }

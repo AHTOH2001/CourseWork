@@ -1243,7 +1243,7 @@ QPushButton:pressed{
       <height>111</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_30">
+    <layout class="QGridLayout" name="gridLayout_balance">
      <item row="1" column="0">
       <widget class="QLCDNumber" name="BalanceAmount">
        <property name="sizePolicy">
@@ -1271,7 +1271,7 @@ QPushButton:pressed{
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelBalance">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -1280,7 +1280,6 @@ QPushButton:pressed{
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{color: rgb(205, 200, 0);
-	font: 87 20pt &quot;BankGothic Lt BT&quot;;
 }
 </string>
        </property>

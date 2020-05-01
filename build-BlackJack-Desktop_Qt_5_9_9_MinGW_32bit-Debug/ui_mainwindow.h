@@ -125,9 +125,9 @@ public:
     QPushButton *multiSeatButton_6;
     QFontComboBox *fontComboBox;
     QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout_30;
+    QGridLayout *gridLayout_balance;
     QLCDNumber *BalanceAmount;
-    QLabel *label;
+    QLabel *labelBalance;
     QGridLayout *gridLayout_9;
     QComboBox *comboBoxCurrency;
     QWidget *gridLayoutWidget_3;
@@ -835,9 +835,9 @@ public:
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(10, 750, 251, 111));
-        gridLayout_30 = new QGridLayout(gridLayoutWidget);
-        gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
-        gridLayout_30->setContentsMargins(0, 0, 0, 0);
+        gridLayout_balance = new QGridLayout(gridLayoutWidget);
+        gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
+        gridLayout_balance->setContentsMargins(0, 0, 0, 0);
         BalanceAmount = new QLCDNumber(gridLayoutWidget);
         BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -854,22 +854,21 @@ public:
         BalanceAmount->setProperty("value", QVariant(12345));
         BalanceAmount->setProperty("intValue", QVariant(12345));
 
-        gridLayout_30->addWidget(BalanceAmount, 1, 0, 1, 1);
+        gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
 
-        label = new QLabel(gridLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        labelBalance = new QLabel(gridLayoutWidget);
+        labelBalance->setObjectName(QStringLiteral("labelBalance"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
-        label->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
-"	font: 87 20pt \"BankGothic Lt BT\";\n"
+        sizePolicy2.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
+        labelBalance->setSizePolicy(sizePolicy2);
+        labelBalance->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
-        label->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
+        labelBalance->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
-        gridLayout_30->addWidget(label, 0, 0, 1, 1);
+        gridLayout_balance->addWidget(labelBalance, 0, 0, 1, 1);
 
         gridLayout_9 = new QGridLayout();
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
@@ -916,7 +915,7 @@ public:
         gridLayout_9->addWidget(comboBoxCurrency, 0, 0, 1, 1);
 
 
-        gridLayout_30->addLayout(gridLayout_9, 1, 1, 1, 1);
+        gridLayout_balance->addLayout(gridLayout_9, 1, 1, 1, 1);
 
         gridLayoutWidget_3 = new QWidget(centralwidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
@@ -1070,7 +1069,7 @@ public:
         multiSeatButton_4->setText(QString());
         multiSeatButton_5->setText(QString());
         multiSeatButton_6->setText(QString());
-        label->setText(QApplication::translate("MainWindow", "Balance", Q_NULLPTR));
+        labelBalance->setText(QApplication::translate("MainWindow", "Balance", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
