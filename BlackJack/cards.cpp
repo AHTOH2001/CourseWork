@@ -1,20 +1,17 @@
 #include "cards.h"
 
-cards::cards(QImage* cardsList,MainWindow* parent,Ui::MainWindow* ui) :
-    QObject(), QGraphicsItem()
+cards::cards(QImage* cardsList,MainWindow* parent,Ui::MainWindow* ui)
 {
     this->ui = ui;
     this->cardsList = cardsList;
     this->parent = parent;
 }
 cards::~cards()
-{
-
-}
+= default;
 
 QRectF cards::boundingRect() const
 {
-    return QRectF (-200,-200,4000,4000);
+    return {-200,-200,4000,4000};
 }
 
 void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -64,9 +61,6 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
     ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,750*koefH,161*koefW,111*koefH));
     ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
-    //ui->comboBoxCurrency->setFont(QFont("Times", 36));
-//    Qfont *font;
-//    ui->labelBalance->setFont()
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }
@@ -74,25 +68,6 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 void cards::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-   /* if (!parent->isNowPlay)
-    {
-        for (int i = 0;i<6;i++)
-            if (event->pos().rx()>parent->seatX[i]*koefW && event->pos().rx()<(parent->seatX[i]+97)*koefW &&
-                    event->pos().ry()>parent->seatY[i]*koefH && event->pos().ry()<(parent->seatY[i]+135)*koefH)
-            {
-                parent->seat[i].isSeat = true;
-                parent->isSeat = true;
-                update();
-            }
-    }*/
     qDebug() << event->pos();
-   // parent->seat[0].mainBet->setValue(33);
-    //QLineEdit *x = (QLineEdit*)parent->underSeat[0]->itemAt(0)->widget();    
-     //   parent->timerForColor->start(1000);
 }
 
-void cards::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-    //qDebug() << event->pos();
-    Q_UNUSED(event);
-}

@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
     //this->showFullScreen();
     this->resize(1500,900);
     this->showMaximized();
-    //this->setFixedSize(1500,900);
     scene = new QGraphicsScene(this);
     ui->graphicsView->setFixedSize(3002,2005);
     scene = new QGraphicsScene(this);
@@ -50,20 +49,20 @@ MainWindow::MainWindow(QWidget *parent)
 
     //connect(seat[0].mainBet,SIGNAL(editingFinished()),this,SLOT(testSlot()));
 
-    for (int i = 0;i<6;i++)
+    for (auto & i : seat)
     {
-        seat[i].underSeat->hide();
-        timersForColor[seat[i].perfectPair] = new QTimer();
-        connect(seat[i].perfectPair,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
-        timersForColor[seat[i].mainBet] = new QTimer();
-        connect(seat[i].mainBet,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
-        timersForColor[seat[i].triple] = new QTimer();
-        connect(seat[i].triple,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
+        i.underSeat->hide();
+        timersForColor[i.perfectPair] = new QTimer();
+        connect(i.perfectPair,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
+        timersForColor[i.mainBet] = new QTimer();
+        connect(i.mainBet,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
+        timersForColor[i.triple] = new QTimer();
+        connect(i.triple,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
     }
     QStringList temp = {"€","$","£","₽","Br","₪","￥"};
     scene->setSceneRect(0,0,3000,2000);
     ui->comboBoxCurrency->addItems(temp);
-    auto* item = new cards(0,this,ui);
+    auto* item = new cards(nullptr,this,ui);
     item->setFlag(QGraphicsItem::ItemIsFocusable, true);
     item->setPos(0,0);
     scene->addItem(item);
@@ -99,7 +98,7 @@ void MainWindow::closeFunc(int i)
     seat[i].multiSeat->show();
     isSeat = false;
     for (int i = 0;i<6;i++)
-        if (seat[i].isSeat==true) isSeat = true;
+        if (seat[i].isSeat) isSeat = true;
     seat[i].perfectPair->setValue(0);
     seat[i].mainBet->setValue(0);
     seat[i].triple->setValue(0);
@@ -175,7 +174,7 @@ void MainWindow::on_multiSeatButton_6_clicked()
 QMap<QSpinBox*,double> prevValueForColor;
 void MainWindow::valueChangedSlot(int newValue)
 {
-    QSpinBox* sender=(QSpinBox*)QObject::sender();
+    auto* sender=dynamic_cast<QSpinBox*>(QObject::sender());
     QString Color;
     if (prevValueForColor[sender]>newValue)
     {

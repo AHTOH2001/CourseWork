@@ -28,8 +28,7 @@ private:
     Ui::MainWindow* ui;
     MainWindow* parent;
     double koefW=1,koefH=1;
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);    
 
 
 public slots:
