@@ -242,7 +242,7 @@ public:
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
         spinBox_6 = new QSpinBox(gridLayoutWidget_14);
         spinBox_6->setObjectName(QStringLiteral("spinBox_6"));
-        spinBox_6->setMaximum(100000);
+        spinBox_6->setMaximum(999999999);
         spinBox_6->setSingleStep(10);
 
         gridLayout_15->addWidget(spinBox_6, 1, 1, 1, 1);
@@ -277,7 +277,7 @@ public:
 
         spinBox_4 = new QSpinBox(gridLayoutWidget_14);
         spinBox_4->setObjectName(QStringLiteral("spinBox_4"));
-        spinBox_4->setMaximum(100000);
+        spinBox_4->setMaximum(999999999);
         spinBox_4->setSingleStep(10);
 
         gridLayout_13->addWidget(spinBox_4, 1, 0, 1, 1);
@@ -325,7 +325,7 @@ public:
 
         spinBox_5 = new QSpinBox(gridLayoutWidget_14);
         spinBox_5->setObjectName(QStringLiteral("spinBox_5"));
-        spinBox_5->setMaximum(100000);
+        spinBox_5->setMaximum(999999999);
         spinBox_5->setSingleStep(10);
 
         gridLayout_14->addWidget(spinBox_5, 1, 1, 1, 1);
@@ -364,7 +364,7 @@ public:
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         spinBox_9 = new QSpinBox(gridLayoutWidget_15);
         spinBox_9->setObjectName(QStringLiteral("spinBox_9"));
-        spinBox_9->setMaximum(100000);
+        spinBox_9->setMaximum(999999999);
         spinBox_9->setSingleStep(10);
 
         gridLayout_18->addWidget(spinBox_9, 1, 1, 1, 1);
@@ -396,7 +396,7 @@ public:
 
         spinBox_7 = new QSpinBox(gridLayoutWidget_15);
         spinBox_7->setObjectName(QStringLiteral("spinBox_7"));
-        spinBox_7->setMaximum(100000);
+        spinBox_7->setMaximum(999999999);
         spinBox_7->setSingleStep(10);
 
         gridLayout_16->addWidget(spinBox_7, 1, 0, 1, 1);
@@ -412,7 +412,7 @@ public:
 
         spinBox_8 = new QSpinBox(gridLayoutWidget_15);
         spinBox_8->setObjectName(QStringLiteral("spinBox_8"));
-        spinBox_8->setMaximum(100000);
+        spinBox_8->setMaximum(999999999);
         spinBox_8->setSingleStep(10);
 
         gridLayout_17->addWidget(spinBox_8, 1, 1, 1, 1);
@@ -470,7 +470,7 @@ public:
         gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
         spinBox_12 = new QSpinBox(gridLayoutWidget_16);
         spinBox_12->setObjectName(QStringLiteral("spinBox_12"));
-        spinBox_12->setMaximum(100000);
+        spinBox_12->setMaximum(999999999);
         spinBox_12->setSingleStep(10);
 
         gridLayout_21->addWidget(spinBox_12, 1, 1, 1, 1);
@@ -502,7 +502,7 @@ public:
 
         spinBox_10 = new QSpinBox(gridLayoutWidget_16);
         spinBox_10->setObjectName(QStringLiteral("spinBox_10"));
-        spinBox_10->setMaximum(100000);
+        spinBox_10->setMaximum(999999999);
         spinBox_10->setSingleStep(10);
 
         gridLayout_19->addWidget(spinBox_10, 1, 0, 1, 1);
@@ -537,7 +537,7 @@ public:
 
         spinBox_11 = new QSpinBox(gridLayoutWidget_16);
         spinBox_11->setObjectName(QStringLiteral("spinBox_11"));
-        spinBox_11->setMaximum(100000);
+        spinBox_11->setMaximum(999999999);
         spinBox_11->setSingleStep(10);
 
         gridLayout_20->addWidget(spinBox_11, 1, 1, 1, 1);
@@ -569,7 +569,7 @@ public:
 
         spinBox_13 = new QSpinBox(gridLayoutWidget_17);
         spinBox_13->setObjectName(QStringLiteral("spinBox_13"));
-        spinBox_13->setMaximum(100000);
+        spinBox_13->setMaximum(999999999);
         spinBox_13->setSingleStep(10);
 
         gridLayout_23->addWidget(spinBox_13, 1, 0, 1, 1);
@@ -581,7 +581,7 @@ public:
         gridLayout_25->setObjectName(QStringLiteral("gridLayout_25"));
         spinBox_15 = new QSpinBox(gridLayoutWidget_17);
         spinBox_15->setObjectName(QStringLiteral("spinBox_15"));
-        spinBox_15->setMaximum(100000);
+        spinBox_15->setMaximum(999999999);
         spinBox_15->setSingleStep(10);
 
         gridLayout_25->addWidget(spinBox_15, 1, 1, 1, 1);
@@ -622,7 +622,7 @@ public:
 
         spinBox_14 = new QSpinBox(gridLayoutWidget_17);
         spinBox_14->setObjectName(QStringLiteral("spinBox_14"));
-        spinBox_14->setMaximum(100000);
+        spinBox_14->setMaximum(999999999);
         spinBox_14->setSingleStep(10);
 
         gridLayout_24->addWidget(spinBox_14, 1, 1, 1, 1);
@@ -657,7 +657,7 @@ public:
 
         gridLayoutWidget_18 = new QWidget(centralwidget);
         gridLayoutWidget_18->setObjectName(QStringLiteral("gridLayoutWidget_18"));
-        gridLayoutWidget_18->setGeometry(QRect(1240, 1170, 249, 154));
+        gridLayoutWidget_18->setGeometry(QRect(1220, 1190, 249, 154));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_18);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -675,7 +675,7 @@ public:
 
         spinBox_16 = new QSpinBox(gridLayoutWidget_18);
         spinBox_16->setObjectName(QStringLiteral("spinBox_16"));
-        spinBox_16->setMaximum(100000);
+        spinBox_16->setMaximum(999999999);
         spinBox_16->setSingleStep(10);
 
         gridLayout_27->addWidget(spinBox_16, 1, 0, 1, 1);
@@ -710,7 +710,7 @@ public:
 
         spinBox_17 = new QSpinBox(gridLayoutWidget_18);
         spinBox_17->setObjectName(QStringLiteral("spinBox_17"));
-        spinBox_17->setMaximum(100000);
+        spinBox_17->setMaximum(999999999);
         spinBox_17->setSingleStep(10);
 
         gridLayout_28->addWidget(spinBox_17, 1, 1, 1, 1);
@@ -722,7 +722,7 @@ public:
         gridLayout_29->setObjectName(QStringLiteral("gridLayout_29"));
         spinBox_18 = new QSpinBox(gridLayoutWidget_18);
         spinBox_18->setObjectName(QStringLiteral("spinBox_18"));
-        spinBox_18->setMaximum(100000);
+        spinBox_18->setMaximum(999999999);
         spinBox_18->setSingleStep(10);
 
         gridLayout_29->addWidget(spinBox_18, 1, 1, 1, 1);
@@ -867,6 +867,7 @@ public:
 "     padding: 2px;\n"
 "	 color: yellow;\n"
 ""));
+        BalanceAmount->setSmallDecimalPoint(true);
         BalanceAmount->setDigitCount(6);
         BalanceAmount->setProperty("value", QVariant(10000));
         BalanceAmount->setProperty("intValue", QVariant(10000));
@@ -943,7 +944,7 @@ public:
         spinBox_3 = new QSpinBox(gridLayoutWidget_3);
         spinBox_3->setObjectName(QStringLiteral("spinBox_3"));
         spinBox_3->setStyleSheet(QStringLiteral(""));
-        spinBox_3->setMaximum(99999);
+        spinBox_3->setMaximum(999999999);
         spinBox_3->setSingleStep(10);
 
         gridLayout_11->addWidget(spinBox_3, 1, 1, 1, 1);
@@ -965,7 +966,7 @@ public:
 
         spinBox_1 = new QSpinBox(gridLayoutWidget_3);
         spinBox_1->setObjectName(QStringLiteral("spinBox_1"));
-        spinBox_1->setMaximum(99999);
+        spinBox_1->setMaximum(999999999);
         spinBox_1->setSingleStep(10);
 
         gridLayout_10->addWidget(spinBox_1, 1, 0, 1, 1);
@@ -1002,7 +1003,7 @@ public:
 
         spinBox_2 = new QSpinBox(gridLayoutWidget_3);
         spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
-        spinBox_2->setMaximum(99999);
+        spinBox_2->setMaximum(999999999);
         spinBox_2->setSingleStep(10);
 
         gridLayout_49->addWidget(spinBox_2, 1, 3, 1, 1);

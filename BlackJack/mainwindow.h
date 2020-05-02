@@ -8,6 +8,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QTimer>
+#include <QMessageBox>
 //#include <QSpinBox>
 
 QT_BEGIN_NAMESPACE
@@ -25,14 +26,14 @@ public:
     bool isSeat = false,isNowPlay = false;
     const int seatX[6] = {133,357,576,815,1035,1260};
     const int seatY[6] = {513,575,624,624,575,513};
-    const double course[7] = {0.920387,1,0.774524,64.96,2.2055,3.6550,7.3377};
-    double totalDollars = 10000;    
+    const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
     struct TypeForSeat
     {
         QSpinBox *perfectPair, *mainBet, *triple;
         QPushButton *multiSeat;
         bool isSeat = false;        
         QWidget *underSeat;
+        QPushButton *closeButton;
     };
     TypeForSeat seat[6];
 
@@ -68,6 +69,8 @@ private slots:
 
     void valueChangedSlot(int newValue);
 
+    void ValueChangedByUserSlot();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -76,6 +79,8 @@ private:
     void closeFunc(int i);
     void multiSeatFunc(int i);
     void changeColor(QSpinBox *SpinBox,QString color);
+    QMap<QSpinBox*,double> RealValueSpinBox;
+    void DeleteTrash();
 
 
 

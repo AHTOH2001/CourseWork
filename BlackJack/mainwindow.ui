@@ -149,7 +149,7 @@ QPushButton{
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_6">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -199,7 +199,7 @@ QPushButton{
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_4">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -289,7 +289,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_5">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -359,7 +359,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_9">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -409,7 +409,7 @@ QPushButton:pressed
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_7">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -436,7 +436,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_8">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -551,7 +551,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_12">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -601,7 +601,7 @@ QPushButton:pressed
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_10">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -673,7 +673,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_11">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -730,7 +730,7 @@ QPushButton:pressed
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_13">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -744,7 +744,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_15">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -821,7 +821,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_14">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -892,8 +892,8 @@ QPushButton:pressed
    <widget class="QWidget" name="gridLayoutWidget_18">
     <property name="geometry">
      <rect>
-      <x>1240</x>
-      <y>1170</y>
+      <x>1220</x>
+      <y>1190</y>
       <width>249</width>
       <height>154</height>
      </rect>
@@ -922,7 +922,7 @@ QPushButton:pressed
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_16">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -994,7 +994,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_17">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -1008,7 +1008,7 @@ QPushButton:pressed
        <item row="1" column="1">
         <widget class="QSpinBox" name="spinBox_18">
          <property name="maximum">
-          <number>100000</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -1280,6 +1280,9 @@ QPushButton:pressed{
 	 color: yellow;
 </string>
        </property>
+       <property name="smallDecimalPoint">
+        <bool>true</bool>
+       </property>
        <property name="digitCount">
         <number>6</number>
        </property>
@@ -1408,7 +1411,7 @@ QPushButton:pressed{
           <string notr="true"/>
          </property>
          <property name="maximum">
-          <number>99999</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -1440,7 +1443,7 @@ QPushButton:pressed{
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_1">
          <property name="maximum">
-          <number>99999</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
@@ -1511,7 +1514,7 @@ QPushButton:pressed
        <item row="1" column="3">
         <widget class="QSpinBox" name="spinBox_2">
          <property name="maximum">
-          <number>99999</number>
+          <number>999999999</number>
          </property>
          <property name="singleStep">
           <number>10</number>
