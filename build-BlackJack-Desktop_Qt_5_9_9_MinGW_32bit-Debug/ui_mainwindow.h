@@ -1023,7 +1023,7 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(1320, 750, 161, 111));
+        gridLayoutWidget_2->setGeometry(QRect(1550, 890, 161, 111));
         gridLayout_balance_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_balance_2->setObjectName(QStringLiteral("gridLayout_balance_2"));
         gridLayout_balance_2->setContentsMargins(0, 0, 0, 0);

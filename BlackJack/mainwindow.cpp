@@ -47,6 +47,11 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].mainBet = ui->spinBox_17;
     seat[5].triple = ui->spinBox_18;
     seat[5].multiSeat = ui->multiSeatButton_6;
+
+    //connect(seat[0].mainBet,SIGNAL(editingFinished()),this,SLOT(testSlot()));
+    //connect(seat[0].mainBet,SIGNAL(valueChanged(int)),this,SLOT(testSlot()));
+
+
     for (int i = 0;i<6;i++)
         underSeat[i]->hide();
     for (int i = 0;i<18;i++)
@@ -86,6 +91,14 @@ void MainWindow::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
 }
 
+void MainWindow::testSlot()
+{
+  //  qDebug () << value;
+    QObject* obj=QObject::sender();
+    qDebug() << obj;
+    /*if (QToolButton *tb=qobject_cast<QToolButton *>(obj)){
+    qDebug()<<tb;}*/
+}
 void MainWindow::closeFunc(int i)
 {
     seat[i].isSeat = false;
@@ -166,7 +179,7 @@ void MainWindow::on_multiSeatButton_6_clicked()
     multiSeatFunc(5);
 }
 
-int prevValueForColor[6][3] = {{0}};
+double prevValueForColor[6][3] = {{0}};
 void MainWindow::valueChangedFunc(int i,int j,int newValue)
 {
     QString Color;
@@ -282,4 +295,12 @@ void MainWindow::on_spinBox_17_valueChanged(int arg1)
 void MainWindow::on_spinBox_18_valueChanged(int arg1)
 {
     valueChangedFunc(5,2,arg1);
+}
+
+int prevCurrency = 0;
+void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
+{
+
+
+    prevCurrency = index;
 }

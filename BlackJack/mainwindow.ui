@@ -1544,8 +1544,8 @@ QPushButton:pressed
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>1320</x>
-      <y>750</y>
+      <x>1550</x>
+      <y>890</y>
       <width>161</width>
       <height>111</height>
      </rect>

@@ -92,6 +92,7 @@ void cards::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
     }*/
     qDebug() << event->pos();
+   // parent->seat[0].mainBet->setValue(33);
     //QLineEdit *x = (QLineEdit*)parent->underSeat[0]->itemAt(0)->widget();    
      //   parent->timerForColor->start(1000);
 }
@@ -99,4 +100,5 @@ void cards::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void cards::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     //qDebug() << event->pos();
+    Q_UNUSED(event);
 }
