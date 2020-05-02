@@ -41,16 +41,10 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     else
     {
         image.load("images/background");
-        //qDebug() << "paint!";
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
         for (int i = 0;i<6;i++)
             if (!parent->seat[i].isSeat)
-            {
-
-                // if ()
-                // image.load("images/multi_seat");
-                // parent->underSeat[i]->hide();
-                // painter->drawImage(parent->seatX[i]*koefW,parent->seatY[i]*koefH,image.scaled(97*koefW, 135*koefH,Qt::IgnoreAspectRatio));
+            {            
                 parent->seat[i].multiSeat->setGeometry(parent->seatX[i]*koefW,parent->seatY[i]*koefH,97*koefW, 135*koefH);
                 parent->seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
                                                          "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
@@ -58,8 +52,8 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             }
             else
             {
-                parent->underSeat[i]->show();
-                parent->underSeat[i]->setGeometry((parent->seatX[i]-62+3)*koefW,(parent->seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
+                parent->seat[i].underSeat->show();
+                parent->seat[i].underSeat->setGeometry((parent->seatX[i]-62+3)*koefW,(parent->seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
             }
     }        
     ui->gridLayoutWidget->setGeometry(QRect(10*koefW,750*koefH,251*koefW,111*koefH));

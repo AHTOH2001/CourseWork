@@ -26,15 +26,15 @@ public:
     const int seatX[6] = {133,357,576,815,1035,1260};
     const int seatY[6] = {513,575,624,624,575,513};
     const double course[7] = {0.920387,1,0.774524,64.96,2.2055,3.6550,7.3377};
-    double totalDollars = 10000;
-    QWidget *underSeat[6];
-    struct grid
+    double totalDollars = 10000;    
+    struct TypeForSeat
     {
         QSpinBox *perfectPair, *mainBet, *triple;
         QPushButton *multiSeat;
-        bool isSeat = false;
+        bool isSeat = false;        
+        QWidget *underSeat;
     };
-    grid seat[6];    
+    TypeForSeat seat[6];
 
 private slots:
     void on_Exit_clicked();
@@ -64,54 +64,17 @@ private slots:
 
     void on_closeButton_6_clicked();
 
-    void on_spinBox_1_valueChanged(int arg1);
-
-    void on_spinBox_2_valueChanged(int arg1);
-
-    void on_spinBox_3_valueChanged(int arg1);
-
-    void on_spinBox_4_valueChanged(int arg1);
-
-    void on_spinBox_5_valueChanged(int arg1);
-
-    void on_spinBox_6_valueChanged(int arg1);
-
-    void on_spinBox_7_valueChanged(int arg1);
-
-    void on_spinBox_8_valueChanged(int arg1);
-
-    void on_spinBox_9_valueChanged(int arg1);
-
-    void on_spinBox_10_valueChanged(int arg1);
-
-    void on_spinBox_11_valueChanged(int arg1);
-
-    void on_spinBox_12_valueChanged(int arg1);
-
-    void on_spinBox_13_valueChanged(int arg1);
-
-    void on_spinBox_14_valueChanged(int arg1);
-
-    void on_spinBox_15_valueChanged(int arg1);
-
-    void on_spinBox_16_valueChanged(int arg1);
-
-    void on_spinBox_17_valueChanged(int arg1);
-
-    void on_spinBox_18_valueChanged(int arg1);
-
     void on_comboBoxCurrency_currentIndexChanged(int index);
 
-    void testSlot();
+    void valueChangedSlot(int newValue);
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    QTimer *timers[18];
+    QMap<QSpinBox*,QTimer*> timersForColor;
     void paintEvent(QPaintEvent *event);
     void closeFunc(int i);
     void multiSeatFunc(int i);
-    void valueChangedFunc(int i,int j,int newValue);
     void changeColor(QSpinBox *SpinBox,QString color);
 
 

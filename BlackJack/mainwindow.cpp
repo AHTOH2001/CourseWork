@@ -17,12 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
-    underSeat[0] = ui->gridLayoutWidget_3;
-    underSeat[1] = ui->gridLayoutWidget_14;
-    underSeat[2] = ui->gridLayoutWidget_15;
-    underSeat[3] = ui->gridLayoutWidget_16;
-    underSeat[4] = ui->gridLayoutWidget_17;
-    underSeat[5] = ui->gridLayoutWidget_18;
+    seat[0].underSeat = ui->gridLayoutWidget_3;
+    seat[1].underSeat = ui->gridLayoutWidget_14;
+    seat[2].underSeat = ui->gridLayoutWidget_15;
+    seat[3].underSeat = ui->gridLayoutWidget_16;
+    seat[4].underSeat = ui->gridLayoutWidget_17;
+    seat[5].underSeat = ui->gridLayoutWidget_18;
     seat[0].perfectPair = ui->spinBox_1;
     seat[0].mainBet = ui->spinBox_2;
     seat[0].triple = ui->spinBox_3;
@@ -49,15 +49,16 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].multiSeat = ui->multiSeatButton_6;
 
     //connect(seat[0].mainBet,SIGNAL(editingFinished()),this,SLOT(testSlot()));
-    //connect(seat[0].mainBet,SIGNAL(valueChanged(int)),this,SLOT(testSlot()));
-
 
     for (int i = 0;i<6;i++)
-        underSeat[i]->hide();
-    for (int i = 0;i<18;i++)
     {
-        timers[i] = new QTimer();
-        timers[i]->setSingleShot(true);
+        seat[i].underSeat->hide();
+        timersForColor[seat[i].perfectPair] = new QTimer();
+        connect(seat[i].perfectPair,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
+        timersForColor[seat[i].mainBet] = new QTimer();
+        connect(seat[i].mainBet,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
+        timersForColor[seat[i].triple] = new QTimer();
+        connect(seat[i].triple,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
     }
     QStringList temp = {"€","$","£","₽","Br","₪","￥"};
     scene->setSceneRect(0,0,3000,2000);
@@ -91,18 +92,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
 }
 
-void MainWindow::testSlot()
-{
-  //  qDebug () << value;
-    QObject* obj=QObject::sender();
-    qDebug() << obj;
-    /*if (QToolButton *tb=qobject_cast<QToolButton *>(obj)){
-    qDebug()<<tb;}*/
-}
 void MainWindow::closeFunc(int i)
 {
     seat[i].isSeat = false;
-    underSeat[i]->hide();
+    seat[i].underSeat->hide();
     seat[i].multiSeat->show();
     isSeat = false;
     for (int i = 0;i<6;i++)
@@ -179,122 +172,32 @@ void MainWindow::on_multiSeatButton_6_clicked()
     multiSeatFunc(5);
 }
 
-double prevValueForColor[6][3] = {{0}};
-void MainWindow::valueChangedFunc(int i,int j,int newValue)
+QMap<QSpinBox*,double> prevValueForColor;
+void MainWindow::valueChangedSlot(int newValue)
 {
+    QSpinBox* sender=(QSpinBox*)QObject::sender();
     QString Color;
-    if (prevValueForColor[i][j]>newValue)
+    if (prevValueForColor[sender]>newValue)
     {
         Color = "QSpinBox{"
                 "border-style: outset;"
                 "border-color: red;}";
     }
     else
-        if (prevValueForColor[i][j]<newValue)
+        if (prevValueForColor[sender]<newValue)
         {
             Color = "QSpinBox{"
                     "border-style: outset;"
                     "border-color: rgb(0,200,0);}";
         }
-    QSpinBox *SpinBox;
-    if (j==0) SpinBox = seat[i].perfectPair;
-    if (j==1) SpinBox = seat[i].mainBet;
-    if (j==2) SpinBox = seat[i].triple;
-    SpinBox->setStyleSheet(Color);
-    connect(timers[i*3+j], &QTimer::timeout, [=]() {
-        SpinBox->setStyleSheet("");
+    sender->setStyleSheet(Color);
+    connect(timersForColor[sender], &QTimer::timeout, [=]() {
+        sender->setStyleSheet("");
     } );
-    timers[i*3+j]->start(500);
-    ui->TotalBetAmount->display(ui->TotalBetAmount->value()+(newValue-prevValueForColor[i][j]));
-    ui->BalanceAmount->display(ui->BalanceAmount->value()-(newValue-prevValueForColor[i][j]));
-    prevValueForColor[i][j] = newValue;
-}
-void MainWindow::on_spinBox_1_valueChanged(int arg1)
-{
-    valueChangedFunc(0,0,arg1);
-}
-void MainWindow::on_spinBox_2_valueChanged(int arg1)
-{
-    valueChangedFunc(0,1,arg1);
-}
-void MainWindow::on_spinBox_3_valueChanged(int arg1)
-{
-    valueChangedFunc(0,2,arg1);
-}
-
-void MainWindow::on_spinBox_4_valueChanged(int arg1)
-{
-    valueChangedFunc(1,0,arg1);
-}
-
-void MainWindow::on_spinBox_5_valueChanged(int arg1)
-{
-    valueChangedFunc(1,1,arg1);
-}
-
-void MainWindow::on_spinBox_6_valueChanged(int arg1)
-{
-    valueChangedFunc(1,2,arg1);
-}
-
-void MainWindow::on_spinBox_7_valueChanged(int arg1)
-{
-    valueChangedFunc(2,0,arg1);
-}
-
-void MainWindow::on_spinBox_8_valueChanged(int arg1)
-{
-    valueChangedFunc(2,1,arg1);
-}
-
-void MainWindow::on_spinBox_9_valueChanged(int arg1)
-{
-    valueChangedFunc(2,2,arg1);
-}
-
-void MainWindow::on_spinBox_10_valueChanged(int arg1)
-{
-    valueChangedFunc(3,0,arg1);
-}
-
-void MainWindow::on_spinBox_11_valueChanged(int arg1)
-{
-    valueChangedFunc(3,1,arg1);
-}
-
-void MainWindow::on_spinBox_12_valueChanged(int arg1)
-{
-    valueChangedFunc(3,2,arg1);
-}
-
-void MainWindow::on_spinBox_13_valueChanged(int arg1)
-{
-    valueChangedFunc(4,0,arg1);
-}
-
-void MainWindow::on_spinBox_14_valueChanged(int arg1)
-{
-    valueChangedFunc(4,1,arg1);
-}
-
-void MainWindow::on_spinBox_15_valueChanged(int arg1)
-{
-    valueChangedFunc(4,2,arg1);
-}
-
-void MainWindow::on_spinBox_16_valueChanged(int arg1)
-{
-    valueChangedFunc(5,0,arg1);
-}
-
-void MainWindow::on_spinBox_17_valueChanged(int arg1)
-{
-    valueChangedFunc(5,1,arg1);
-}
-
-void MainWindow::on_spinBox_18_valueChanged(int arg1)
-{
-    valueChangedFunc(5,2,arg1);
+    timersForColor[sender]->start(500);
+    //  ui->TotalBetAmount->display(ui->TotalBetAmount->value()+(newValue-prevValueForColor[i][j]));
+    //  ui->BalanceAmount->display(ui->BalanceAmount->value()-(newValue-prevValueForColor[i][j]));
+    prevValueForColor[sender] = newValue;
 }
 
 int prevCurrency = 0;
