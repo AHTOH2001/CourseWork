@@ -28,17 +28,20 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
             parent->seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/sit_here.png);}"
                                                      "QPushButton:hover{border-image: url(images/sit_here_hover.png);}"
                                                      "QPushButton:pressed{ border-image: url(images/sit_here_pressed.png);}");
-        }
+        }                
+
         image.load("images/takeseat");
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
-        image.load("images/label_take_seat");
-        painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
+        ui->CentralLabel->setText("TAKE A SEAT");
+        //image.load("images/label_take_seat");
+        //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
 
     }
     else
     {
-        image.load("images/background");
+        image.load("images/background");        
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
+        ui->CentralLabel->setText("PLACE YOUR BETS");
         for (int i = 0;i<6;i++)
             if (!parent->seat[i].isSeat)
             {            
@@ -61,6 +64,15 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
     ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,750*koefH,161*koefW,111*koefH));
     ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
+
+
+
+    ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW));
+    int tempW = ui->CentralLabel->text().count()*36;
+    int tempH = 65;
+    ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
+    //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
+
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }

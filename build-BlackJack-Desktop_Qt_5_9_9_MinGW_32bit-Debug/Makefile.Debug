@@ -234,6 +234,11 @@ debug/moc_cards.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QObject \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTimer \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtimer.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsDropShadowEffect \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicseffect.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -370,6 +375,11 @@ debug/moc_mainwindow.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMa
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTimer \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtimer.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsDropShadowEffect \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicseffect.h \
 		../BlackJack/mainwindow.h \
 		debug/moc_predefs.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/bin/moc.exe
@@ -522,6 +532,11 @@ debug/cards.o: ../BlackJack/cards.cpp ../BlackJack/cards.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTimer \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtimer.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsDropShadowEffect \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicseffect.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -656,6 +671,11 @@ debug/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTimer \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtimer.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsDropShadowEffect \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicseffect.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -784,6 +804,11 @@ debug/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTimer \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtimer.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasictimer.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsDropShadowEffect \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicseffect.h \
 		../BlackJack/cards.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QObject \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPainter \

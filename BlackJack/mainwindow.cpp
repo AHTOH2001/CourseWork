@@ -53,7 +53,11 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].multiSeat = ui->multiSeatButton_6;
     seat[5].closeButton = ui->closeButton_6;
 
-    //connect(seat[0].mainBet,SIGNAL(editingFinished()),this,SLOT(testSlot()));
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( );
+    effect->setBlurRadius( 5 );
+    effect->setOffset(4,-3);
+    //seat[0].mainBet->setGraphicsEffect( effect );
+    ui->CentralLabel->setGraphicsEffect( effect );
 
     for (auto & i : seat)
     {
@@ -79,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    //for (int i =0;i<18;i++)
     delete ui;
 }
 
@@ -195,10 +200,12 @@ void MainWindow::on_multiSeatButton_6_clicked()
 }
 
 void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
-{
+{    
     SpinBox->setStyleSheet(Color);
-    connect(timersForColor[SpinBox], &QTimer::timeout, [=]() {
+    QObject *context = new QObject(this);
+    connect(timersForColor[SpinBox], &QTimer::timeout,context, [=]() {
         SpinBox->setStyleSheet("");
+        delete context;
     } );
     timersForColor[SpinBox]->start(500);
 }
@@ -211,7 +218,9 @@ void MainWindow::valueChangedSlot(int newValue)
     {
         changeColor(sender,"QSpinBox{"
                            "border-style: outset;"
-                           "border-color: red;}");
+                           "border-color: red;}"
+                           "QSpinBox::down-button {"
+                           "border-image: url(images/spin/spindown_pressed.png) 1;}");
     }
     else
         if (prevValueForColor[sender]<newValue)
@@ -219,7 +228,10 @@ void MainWindow::valueChangedSlot(int newValue)
 
             changeColor(sender,"QSpinBox{"
                                "border-style: outset;"
-                               "border-color: rgb(0,200,0);}");
+                               "border-color: rgb(0,200,0);}"
+                               "QSpinBox::up-button {"
+                               "border-image: url(images/spin/spinup_pressed.png) 1; }");
+
         }
 
     prevValueForColor[sender] = newValue;
@@ -236,6 +248,7 @@ void MainWindow::ValueChangedByUserSlot()
     if (sender->value()-RealValueSpinBox[sender]>ui->BalanceAmount->value())
     {
         QMessageBox::critical(this,"Error","Not enough money");
+        sender->setValue(RealValueSpinBox[sender]);
         return;
     }
     changeColor(sender,"QSpinBox{"

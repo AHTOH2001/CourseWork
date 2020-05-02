@@ -149,6 +149,7 @@ public:
     QGridLayout *gridLayout_balance_2;
     QLCDNumber *TotalBetAmount;
     QLabel *labelTotalBet;
+    QLabel *CentralLabel;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -277,6 +278,7 @@ public:
 
         spinBox_4 = new QSpinBox(gridLayoutWidget_14);
         spinBox_4->setObjectName(QStringLiteral("spinBox_4"));
+        spinBox_4->setStyleSheet(QStringLiteral(""));
         spinBox_4->setMaximum(999999999);
         spinBox_4->setSingleStep(10);
 
@@ -966,6 +968,7 @@ public:
 
         spinBox_1 = new QSpinBox(gridLayoutWidget_3);
         spinBox_1->setObjectName(QStringLiteral("spinBox_1"));
+        spinBox_1->setStyleSheet(QStringLiteral(""));
         spinBox_1->setMaximum(999999999);
         spinBox_1->setSingleStep(10);
 
@@ -1054,7 +1057,41 @@ public:
 
         gridLayout_balance_2->addWidget(labelTotalBet, 0, 0, 1, 1);
 
+        CentralLabel = new QLabel(centralwidget);
+        CentralLabel->setObjectName(QStringLiteral("CentralLabel"));
+        CentralLabel->setGeometry(QRect(560, 910, 391, 55));
+        QFont font;
+        font.setFamily(QStringLiteral("Segoe Print"));
+        font.setPointSize(30);
+        CentralLabel->setFont(font);
+        CentralLabel->setStyleSheet(QLatin1String("QLabel{\n"
+"/*	background: rgb(0,115,57);*/\n"
+"	color:  rgb(108,168,52);\n"
+"	padding: 2px;\n"
+"	border: 3px solid rgb(231,181,77);\n"
+"	border-radius: 32px;\n"
+"}"));
+        CentralLabel->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
+        graphicsView->raise();
+        CentralLabel->raise();
+        pushButton->raise();
+        Exit->raise();
+        gridLayoutWidget_14->raise();
+        gridLayoutWidget_15->raise();
+        gridLayoutWidget_16->raise();
+        gridLayoutWidget_17->raise();
+        gridLayoutWidget_18->raise();
+        multiSeatButton_1->raise();
+        multiSeatButton_2->raise();
+        multiSeatButton_3->raise();
+        multiSeatButton_4->raise();
+        multiSeatButton_5->raise();
+        multiSeatButton_6->raise();
+        fontComboBox->raise();
+        gridLayoutWidget->raise();
+        gridLayoutWidget_3->raise();
+        gridLayoutWidget_2->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2132, 26));
@@ -1105,6 +1142,7 @@ public:
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         labelTotalBet->setText(QApplication::translate("MainWindow", "Total bet", Q_NULLPTR));
+        CentralLabel->setText(QApplication::translate("MainWindow", "TAKE A SEAT", Q_NULLPTR));
     } // retranslateUi
 
 };

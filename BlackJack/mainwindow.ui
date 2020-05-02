@@ -198,6 +198,9 @@ QPushButton{
        </item>
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_4">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="maximum">
           <number>999999999</number>
          </property>
@@ -1442,6 +1445,9 @@ QPushButton:pressed{
        </item>
        <item row="1" column="0">
         <widget class="QSpinBox" name="spinBox_1">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="maximum">
           <number>999999999</number>
          </property>
@@ -1603,6 +1609,56 @@ QPushButton:pressed
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="CentralLabel">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>910</y>
+      <width>391</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+/*	background: rgb(0,115,57);*/
+	color:  rgb(108,168,52);
+	padding: 2px;
+	border: 3px solid rgb(231,181,77);
+	border-radius: 32px;
+}</string>
+    </property>
+    <property name="text">
+     <string>TAKE A SEAT</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>graphicsView</zorder>
+   <zorder>CentralLabel</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>Exit</zorder>
+   <zorder>gridLayoutWidget_14</zorder>
+   <zorder>gridLayoutWidget_15</zorder>
+   <zorder>gridLayoutWidget_16</zorder>
+   <zorder>gridLayoutWidget_17</zorder>
+   <zorder>gridLayoutWidget_18</zorder>
+   <zorder>multiSeatButton_1</zorder>
+   <zorder>multiSeatButton_2</zorder>
+   <zorder>multiSeatButton_3</zorder>
+   <zorder>multiSeatButton_4</zorder>
+   <zorder>multiSeatButton_5</zorder>
+   <zorder>multiSeatButton_6</zorder>
+   <zorder>fontComboBox</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>gridLayoutWidget_3</zorder>
+   <zorder>gridLayoutWidget_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
