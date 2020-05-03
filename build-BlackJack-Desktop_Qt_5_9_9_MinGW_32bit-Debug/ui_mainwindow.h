@@ -150,6 +150,7 @@ public:
     QLCDNumber *TotalBetAmount;
     QLabel *labelTotalBet;
     QLabel *CentralLabel;
+    QPushButton *DealNow;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -196,6 +197,16 @@ public:
 " QSpinBox::down-button:pressed {\n"
 "     border-image: url(images/spin/spindown_pressed.png) 1;\n"
 " }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 ""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
@@ -293,14 +304,13 @@ public:
         closeButton_2->setMaximumSize(QSize(20, 20));
         closeButton_2->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_2->addWidget(closeButton_2, 0, 2, 1, 1);
 
@@ -349,16 +359,16 @@ public:
         closeButton_3->setObjectName(QStringLiteral("closeButton_3"));
         closeButton_3->setMinimumSize(QSize(20, 20));
         closeButton_3->setMaximumSize(QSize(20, 20));
-        closeButton_3->setStyleSheet(QLatin1String("QPushButton\n"
+        closeButton_3->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_3->addWidget(closeButton_3, 0, 2, 1, 1);
 
@@ -455,16 +465,16 @@ public:
         closeButton_4->setObjectName(QStringLiteral("closeButton_4"));
         closeButton_4->setMinimumSize(QSize(20, 20));
         closeButton_4->setMaximumSize(QSize(20, 20));
-        closeButton_4->setStyleSheet(QLatin1String("QPushButton\n"
+        closeButton_4->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_4->addWidget(closeButton_4, 0, 2, 1, 1);
 
@@ -636,16 +646,16 @@ public:
         closeButton_5->setObjectName(QStringLiteral("closeButton_5"));
         closeButton_5->setMinimumSize(QSize(20, 20));
         closeButton_5->setMaximumSize(QSize(20, 20));
-        closeButton_5->setStyleSheet(QLatin1String("QPushButton\n"
+        closeButton_5->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_5->addWidget(closeButton_5, 0, 2, 1, 1);
 
@@ -745,16 +755,16 @@ public:
         closeButton_6->setObjectName(QStringLiteral("closeButton_6"));
         closeButton_6->setMinimumSize(QSize(20, 20));
         closeButton_6->setMaximumSize(QSize(20, 20));
-        closeButton_6->setStyleSheet(QLatin1String("QPushButton\n"
+        closeButton_6->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_6->addWidget(closeButton_6, 0, 2, 1, 1);
 
@@ -981,16 +991,16 @@ public:
         closeButton_1->setObjectName(QStringLiteral("closeButton_1"));
         closeButton_1->setMinimumSize(QSize(20, 20));
         closeButton_1->setMaximumSize(QSize(20, 20));
-        closeButton_1->setStyleSheet(QLatin1String("QPushButton\n"
+        closeButton_1->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
 "{\n"
-"                background-color: rgb(235, 28, 28);\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
 "}\n"
-"QPushButton:pressed  \n"
+"QPushButton:hover  \n"
 "{\n"
-"                background-color: rgb(190, 0, 0);\n"
-"}\n"
-"\n"
-""));
+"    background: rgb(98, 8, 8);\n"
+"}"));
 
         gridLayout_1->addWidget(closeButton_1, 0, 2, 1, 1);
 
@@ -1069,9 +1079,12 @@ public:
 "	color:  rgb(108,168,52);\n"
 "	padding: 2px;\n"
 "	border: 3px solid rgb(231,181,77);\n"
-"	border-radius: 32px;\n"
+"	border-radius: 31px;\n"
 "}"));
         CentralLabel->setAlignment(Qt::AlignCenter);
+        DealNow = new QPushButton(centralwidget);
+        DealNow->setObjectName(QStringLiteral("DealNow"));
+        DealNow->setGeometry(QRect(630, 520, 251, 81));
         MainWindow->setCentralWidget(centralwidget);
         graphicsView->raise();
         CentralLabel->raise();
@@ -1092,6 +1105,7 @@ public:
         gridLayoutWidget->raise();
         gridLayoutWidget_3->raise();
         gridLayoutWidget_2->raise();
+        DealNow->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2132, 26));
@@ -1143,6 +1157,7 @@ public:
         label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         labelTotalBet->setText(QApplication::translate("MainWindow", "Total bet", Q_NULLPTR));
         CentralLabel->setText(QApplication::translate("MainWindow", "TAKE A SEAT", Q_NULLPTR));
+        DealNow->setText(QApplication::translate("MainWindow", "DEAL NOW", Q_NULLPTR));
     } // retranslateUi
 
 };

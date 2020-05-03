@@ -52,6 +52,16 @@
  QSpinBox::down-button:pressed {
      border-image: url(images/spin/spindown_pressed.png) 1;
  }
+
+
+
+
+
+
+
+
+
+
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -228,14 +238,13 @@ QPushButton{
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -341,16 +350,16 @@ QPushButton:pressed
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">
+QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -533,16 +542,16 @@ QPushButton:pressed
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">
+QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -848,16 +857,16 @@ QPushButton:pressed
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">
+QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -1052,16 +1061,16 @@ QPushButton:pressed
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">
+QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -1473,16 +1482,16 @@ QPushButton:pressed{
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton
+        <string notr="true">
+QPushButton
 {
-                background-color: rgb(235, 28, 28);
+	color: white;
+    background: rgb(66, 20, 20);
 }
-QPushButton:pressed  
+QPushButton:hover  
 {
-                background-color: rgb(190, 0, 0);
-}
-
-</string>
+    background: rgb(98, 8, 8);
+}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -1630,7 +1639,7 @@ QPushButton:pressed
 	color:  rgb(108,168,52);
 	padding: 2px;
 	border: 3px solid rgb(231,181,77);
-	border-radius: 32px;
+	border-radius: 31px;
 }</string>
     </property>
     <property name="text">
@@ -1638,6 +1647,19 @@ QPushButton:pressed
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="DealNow">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>520</y>
+      <width>251</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DEAL NOW</string>
     </property>
    </widget>
    <zorder>graphicsView</zorder>
@@ -1659,6 +1681,7 @@ QPushButton:pressed
    <zorder>gridLayoutWidget</zorder>
    <zorder>gridLayoutWidget_3</zorder>
    <zorder>gridLayoutWidget_2</zorder>
+   <zorder>DealNow</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

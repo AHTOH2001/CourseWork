@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( );
     effect->setBlurRadius( 5 );
-    effect->setOffset(4,-3);
+    effect->setOffset(-4,-3);
     //seat[0].mainBet->setGraphicsEffect( effect );
     ui->CentralLabel->setGraphicsEffect( effect );
 

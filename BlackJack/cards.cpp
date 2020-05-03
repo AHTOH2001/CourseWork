@@ -39,7 +39,7 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     }
     else
     {
-        image.load("images/background");        
+        image.load("images/background.png");
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
         ui->CentralLabel->setText("PLACE YOUR BETS");
         for (int i = 0;i<6;i++)
@@ -71,6 +71,7 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     int tempW = ui->CentralLabel->text().count()*36;
     int tempH = 65;
     ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
+    ui->DealNow->setGeometry(630*koefW,520*koefH,251*koefW,81*koefH);
     //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
 
     Q_UNUSED(option);
