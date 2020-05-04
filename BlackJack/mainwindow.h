@@ -12,6 +12,7 @@
 #include <QGraphicsDropShadowEffect>
 #include <QPropertyAnimation>
 #include <QSequentialAnimationGroup>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,10 +25,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QImage cardsList[52];
+    QImage cardsList[13][4];
     bool isSeat = false,isNowPlay = false;
-    const int seatX[6] = {133,357,576,815,1035,1260};
-    const int seatY[6] = {513,575,624,624,575,513};
+    const int seatX[6] = {87,311,530,877,1097,1323};
+    const int seatY[6] = {513,575,626,626,575,513};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
     struct TypeForSeat
     {
@@ -40,6 +41,7 @@ public:
     TypeForSeat seat[6];
     int tick;
     QTimer *TimerForDealNow;
+    void HighlightCentralLabel();
    // QPropertyAnimation *DealButtonAnimation;
 public slots:
 
@@ -90,6 +92,7 @@ private:
     void changeColor(QSpinBox *SpinBox,QString color);
     QMap<QSpinBox*,double> RealValueSpinBox;
     void DeleteTrash();    
+    void Dealing();
 
 
 

@@ -53,15 +53,30 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].multiSeat = ui->multiSeatButton_6;
     seat[5].closeButton = ui->closeButton_6;
 
-    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( );
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
     effect->setOffset(-3,-3);
-    //seat[0].mainBet->setGraphicsEffect( effect );
     ui->CentralLabel->setGraphicsEffect(effect);
+    effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(5);
+    effect->setOffset(-3,-3);
+    ui->DealNow->setGraphicsEffect(effect);
+    effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(5);
+    effect->setOffset(-3,-3);
+    ui->lcdTimer->setGraphicsEffect(effect);
 
     TimerForDealNow = new QTimer();
     TimerForDealNow->setInterval(100);
 
+    QString s = "images/cards/";
+    for (int i = 0;i<13;i++)
+        for (int j = 0;j<4;j++)
+        {
+            s.resize(13);
+            s.append(QString(QString::number(i+2) + "_" + QString::number(j+1)));
+            cardsList[i][j].load(s);
+        }
     /*DealButtonAnimation = new QPropertyAnimation(ui->DealNow, "geometry");
     DealButtonAnimation->setDuration(800);
     connect(DealButtonAnimation,SIGNAL(finished()),DealButtonAnimation,SLOT(start()));
@@ -97,6 +112,26 @@ MainWindow::~MainWindow()
 {
     //for (int i =0;i<18;i++)
     delete ui;
+}
+
+void MainWindow::HighlightCentralLabel()
+{
+    ui->CentralLabel->setStyleSheet("QLabel{"
+                                        "color:  rgb(102,180,50);"
+                                        "padding: 2px;"
+                                        "border: 3px inset red;"
+                                        "border-radius: 31px;}");
+    QTimer *timer = new QTimer();
+    QObject *context = new QObject(this);
+    connect(timer, &QTimer::timeout,context, [=]() {
+        ui->CentralLabel->setStyleSheet("QLabel{"
+                                        "color:  rgb(102,180,50);"
+                                        "padding: 2px;"
+                                        "border: 3px solid rgb(231,181,77);"
+                                        "border-radius: 31px;}");
+        delete context;
+    } );
+    timer->start(800);
 }
 
 void MainWindow::on_Exit_clicked()
@@ -329,11 +364,27 @@ void MainWindow::on_DealNow_clicked()
         seat[i].mainBet->setDisabled(true);
         seat[i].triple->setValue(RealValueSpinBox[seat[i].triple]);
         seat[i].triple->setDisabled(true);
-        seat[i].closeButton->setDisabled(true);
+        seat[i].closeButton->hide();
     }
     tick = 0;
     TimerForDealNow->stop();
     ui->lcdTimer->hide();
     ui->DealNow->hide();
+    ui->CentralLabel->setText("BETS CLOSED AND ACCEPTED");
+    HighlightCentralLabel();
+    //TODO cool background effects
+    QTimer *timer = new QTimer();
+    QObject *context = new QObject(this);
+    connect(timer, &QTimer::timeout,context, [=]() {
+        ui->CentralLabel->setText("DEALING");
+        HighlightCentralLabel();
+        Dealing();
+        delete context;
+    } );
+    timer->start(2000);
+}
+
+void MainWindow::Dealing()
+{
 
 }

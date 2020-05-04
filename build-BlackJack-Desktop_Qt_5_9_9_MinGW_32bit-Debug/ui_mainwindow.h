@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QFontComboBox>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
@@ -123,7 +122,6 @@ public:
     QPushButton *multiSeatButton_4;
     QPushButton *multiSeatButton_5;
     QPushButton *multiSeatButton_6;
-    QFontComboBox *fontComboBox;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout_balance;
     QLabel *labelBalance;
@@ -846,9 +844,6 @@ public:
 "QPushButton:pressed{\n"
 "		border-image: url(images/multi_seat_pressed.png);\n"
 "}"));
-        fontComboBox = new QFontComboBox(centralwidget);
-        fontComboBox->setObjectName(QStringLiteral("fontComboBox"));
-        fontComboBox->setGeometry(QRect(490, 1210, 226, 22));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(190, 900, 251, 111));
@@ -922,7 +917,7 @@ public:
 " QComboBox::down-arrow {\n"
 "	width: 16;\n"
 "     top: 1px;\n"
-"     left: 1px;\n"
+"     left: 0px;\n"
 "     image: url(images/spin/spinup.png);\n"
 " }\n"
 "\n"
@@ -1072,14 +1067,13 @@ public:
 
         CentralLabel = new QLabel(centralwidget);
         CentralLabel->setObjectName(QStringLiteral("CentralLabel"));
-        CentralLabel->setGeometry(QRect(560, 910, 391, 55));
+        CentralLabel->setGeometry(QRect(560, 910, 441, 81));
         QFont font;
         font.setFamily(QStringLiteral("Segoe Print"));
         font.setPointSize(30);
         CentralLabel->setFont(font);
         CentralLabel->setStyleSheet(QLatin1String("QLabel{\n"
-"/*	background: rgb(0,115,57);*/\n"
-"	color:  rgb(108,168,52);\n"
+"	color:  rgb(102,180,50);\n"
 "	padding: 2px;\n"
 "	border: 3px solid rgb(231,181,77);\n"
 "	border-radius: 31px;\n"
@@ -1134,7 +1128,6 @@ public:
         multiSeatButton_4->raise();
         multiSeatButton_5->raise();
         multiSeatButton_6->raise();
-        fontComboBox->raise();
         gridLayoutWidget->raise();
         gridLayoutWidget_3->raise();
         gridLayoutWidget_2->raise();

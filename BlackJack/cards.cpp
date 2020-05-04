@@ -31,7 +31,11 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         }                        
         image.load("images/takeseat");
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
+        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
+        {
         ui->CentralLabel->setText("TAKE A SEAT");
+        parent->HighlightCentralLabel();
+        }
         ui->lcdTimer->hide();
         ui->DealNow->hide();
         //image.load("images/label_take_seat");
@@ -40,9 +44,13 @@ void cards::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     }
     else
     {        
-        image.load("images/background.png");
+        image.load("images/background");
         painter->drawImage(0,0,image.scaled(parent->width(), parent->height(),Qt::IgnoreAspectRatio));
+        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")==0)
+        {
         ui->CentralLabel->setText("PLACE YOUR BETS");
+        parent->HighlightCentralLabel();
+        }
         for (int i = 0;i<6;i++)
             if (!parent->seat[i].isSeat)
             {            
