@@ -151,6 +151,7 @@ public:
     QLabel *labelTotalBet;
     QLabel *CentralLabel;
     QPushButton *DealNow;
+    QLCDNumber *lcdTimer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -164,6 +165,7 @@ public:
 "	 border-style: solid;\n"
 "     border-width: 2px;\n"
 "	 border-color: green;\n"
+"	 color: white;\n"
 " }\n"
 "\n"
 " QSpinBox::up-button {\n"
@@ -205,7 +207,8 @@ public:
 "\n"
 "\n"
 "\n"
-"\n"
+""
+                        "\n"
 "\n"
 ""));
         centralwidget = new QWidget(MainWindow);
@@ -215,7 +218,7 @@ public:
         graphicsView->setGeometry(QRect(0, 0, 1500, 900));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(150, 1150, 93, 28));
+        pushButton->setGeometry(QRect(170, 1180, 93, 28));
         pushButton->setMaximumSize(QSize(93, 16777215));
         pushButton->setStyleSheet(QLatin1String("\n"
 "QPushButton{\n"
@@ -465,8 +468,7 @@ public:
         closeButton_4->setObjectName(QStringLiteral("closeButton_4"));
         closeButton_4->setMinimumSize(QSize(20, 20));
         closeButton_4->setMaximumSize(QSize(20, 20));
-        closeButton_4->setStyleSheet(QLatin1String("\n"
-"QPushButton\n"
+        closeButton_4->setStyleSheet(QLatin1String("QPushButton\n"
 "{\n"
 "	color: white;\n"
 "    background: rgb(66, 20, 20);\n"
@@ -891,6 +893,7 @@ public:
         comboBoxCurrency->setEnabled(true);
         comboBoxCurrency->setMinimumSize(QSize(80, 65));
         comboBoxCurrency->setMaximumSize(QSize(80, 65));
+        comboBoxCurrency->setFocusPolicy(Qt::StrongFocus);
         comboBoxCurrency->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "     border: 2px inset green;\n"
 "     border-radius: 10px;\n"
@@ -1084,7 +1087,37 @@ public:
         CentralLabel->setAlignment(Qt::AlignCenter);
         DealNow = new QPushButton(centralwidget);
         DealNow->setObjectName(QStringLiteral("DealNow"));
-        DealNow->setGeometry(QRect(630, 520, 251, 81));
+        DealNow->setGeometry(QRect(730, 1220, 251, 81));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(DealNow->sizePolicy().hasHeightForWidth());
+        DealNow->setSizePolicy(sizePolicy3);
+        QFont font1;
+        font1.setPointSize(20);
+        font1.setBold(true);
+        font1.setWeight(75);
+        DealNow->setFont(font1);
+        DealNow->setStyleSheet(QLatin1String("QPushButton {\n"
+"  border: 2px solid rgb(66, 20, 20);\n"
+"  border-radius: 40px;\n"
+"  color: rgb(66, 20, 20);\n"
+"  background: rgb(0,115,57);}\n"
+"QPushButton:hover {\n"
+"  background: rgb(135,193,163);\n"
+"  color: rgb(66, 20, 20);}"));
+        DealNow->setFlat(false);
+        lcdTimer = new QLCDNumber(centralwidget);
+        lcdTimer->setObjectName(QStringLiteral("lcdTimer"));
+        lcdTimer->setGeometry(QRect(1060, 1210, 61, 61));
+        lcdTimer->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 2px;\n"
+"	 color: red;\n"
+"	background: green;\n"
+""));
+        lcdTimer->setDigitCount(2);
+        lcdTimer->setProperty("intValue", QVariant(15));
         MainWindow->setCentralWidget(centralwidget);
         graphicsView->raise();
         CentralLabel->raise();
@@ -1106,6 +1139,7 @@ public:
         gridLayoutWidget_3->raise();
         gridLayoutWidget_2->raise();
         DealNow->raise();
+        lcdTimer->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2132, 26));
@@ -1115,6 +1149,9 @@ public:
         MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
+
+        DealNow->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi

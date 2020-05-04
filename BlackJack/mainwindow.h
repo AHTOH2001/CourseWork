@@ -10,6 +10,8 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QGraphicsDropShadowEffect>
+#include <QPropertyAnimation>
+#include <QSequentialAnimationGroup>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +38,12 @@ public:
         QPushButton *closeButton;
     };
     TypeForSeat seat[6];
+    int tick;
+    QTimer *TimerForDealNow;
+   // QPropertyAnimation *DealButtonAnimation;
+public slots:
+
+    void on_DealNow_clicked();
 
 private slots:
     void on_Exit_clicked();
@@ -69,7 +77,8 @@ private slots:
 
     void valueChangedSlot(int newValue);
 
-    void ValueChangedByUserSlot();
+    void ValueChangedByUserSlot(QSpinBox *SpinBox = nullptr);
+
 
 private:
     Ui::MainWindow *ui;
@@ -80,7 +89,8 @@ private:
     void multiSeatFunc(int i);
     void changeColor(QSpinBox *SpinBox,QString color);
     QMap<QSpinBox*,double> RealValueSpinBox;
-    void DeleteTrash();
+    void DeleteTrash();    
+
 
 
 

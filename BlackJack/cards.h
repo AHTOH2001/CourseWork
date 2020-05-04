@@ -16,8 +16,11 @@ class cards : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 public:
-    explicit cards(QImage* cardsList,MainWindow* parent,Ui::MainWindow* ui);
+    explicit cards(QImage* cardsList,MainWindow* parent,Ui::MainWindow* ui);        
     ~cards();
+
+public slots:
+    void NextColorSlot();
 
 signals:
 

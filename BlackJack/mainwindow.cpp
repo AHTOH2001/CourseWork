@@ -54,10 +54,21 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].closeButton = ui->closeButton_6;
 
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( );
-    effect->setBlurRadius( 5 );
-    effect->setOffset(-4,-3);
+    effect->setBlurRadius(5);
+    effect->setOffset(-3,-3);
     //seat[0].mainBet->setGraphicsEffect( effect );
-    ui->CentralLabel->setGraphicsEffect( effect );
+    ui->CentralLabel->setGraphicsEffect(effect);
+
+    TimerForDealNow = new QTimer();
+    TimerForDealNow->setInterval(100);
+
+    /*DealButtonAnimation = new QPropertyAnimation(ui->DealNow, "geometry");
+    DealButtonAnimation->setDuration(800);
+    connect(DealButtonAnimation,SIGNAL(finished()),DealButtonAnimation,SLOT(start()));
+    DealButtonAnimation->start();*/
+
+
+    // animation->start();
 
     for (auto & i : seat)
     {
@@ -78,6 +89,7 @@ MainWindow::MainWindow(QWidget *parent)
     auto* item = new cards(nullptr,this,ui);
     item->setFlag(QGraphicsItem::ItemIsFocusable, true);
     item->setPos(0,0);
+    connect(TimerForDealNow,SIGNAL(timeout()),item,SLOT(NextColorSlot()));
     scene->addItem(item);
 }
 
@@ -113,24 +125,14 @@ void MainWindow::closeFunc(int i)
     isSeat = false;
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat) isSeat = true;
-
-    ui->TotalBetAmount->display(ui->TotalBetAmount->value()-RealValueSpinBox[seat[i].perfectPair]);
-    ui->BalanceAmount->display(ui->BalanceAmount->value()+RealValueSpinBox[seat[i].perfectPair]);
     seat[i].perfectPair->setValue(0);
-    RealValueSpinBox[seat[i].perfectPair] = 0;
-
-    ui->TotalBetAmount->display(ui->TotalBetAmount->value()-RealValueSpinBox[seat[i].mainBet]);
-    ui->BalanceAmount->display(ui->BalanceAmount->value()+RealValueSpinBox[seat[i].mainBet]);
+    ValueChangedByUserSlot(seat[i].perfectPair);
     seat[i].mainBet->setValue(0);
-    RealValueSpinBox[seat[i].mainBet] = 0;
-
-    ui->TotalBetAmount->display(ui->TotalBetAmount->value()-RealValueSpinBox[seat[i].triple]);
-    ui->BalanceAmount->display(ui->BalanceAmount->value()+RealValueSpinBox[seat[i].triple]);
+    ValueChangedByUserSlot(seat[i].mainBet);
     seat[i].triple->setValue(0);
-    RealValueSpinBox[seat[i].triple] = 0;
-
-    DeleteTrash();
+    ValueChangedByUserSlot(seat[i].triple);
     scene->update();
+
 }
 void MainWindow::on_closeButton_1_clicked()
 {
@@ -242,9 +244,12 @@ void MainWindow::DeleteTrash()
     if (ui->TotalBetAmount->value()-(int)ui->TotalBetAmount->value()<0.0000000001) ui->TotalBetAmount->display((int)ui->TotalBetAmount->value());
     if (ui->BalanceAmount->value()-(int)ui->BalanceAmount->value()<0.0000000001) ui->BalanceAmount->display((int)ui->BalanceAmount->value());
 }
-void MainWindow::ValueChangedByUserSlot()
+
+void MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
 {
     auto* sender=dynamic_cast<QSpinBox*>(QObject::sender());
+    if (sender==nullptr) sender = (QSpinBox*)SpinBox;
+
     if (sender->value()-RealValueSpinBox[sender]>ui->BalanceAmount->value())
     {
         QMessageBox::critical(this,"Error","Not enough money");
@@ -258,6 +263,31 @@ void MainWindow::ValueChangedByUserSlot()
     ui->BalanceAmount->display(ui->BalanceAmount->value()-(sender->value()-RealValueSpinBox[sender]));
     DeleteTrash();
     RealValueSpinBox[sender] = sender->value();
+
+    bool NoOneIsZero = true;
+    for (int i = 0;i<6;i++)
+        if (seat[i].mainBet->value()==0 && seat[i].isSeat) NoOneIsZero = false;
+    if (NoOneIsZero && ui->TotalBetAmount->value()!=0)
+    {
+        ui->lcdTimer->show();
+        ui->DealNow->show();
+        TimerForDealNow->start();
+        for (int i = 0;i<6;i++)
+            seat[i].multiSeat->setDisabled(true);
+        ui->comboBoxCurrency->setDisabled(true);
+    }
+    else
+    {
+        ui->lcdTimer->hide();
+        ui->DealNow->hide();
+        TimerForDealNow->stop();
+        tick = 0;
+        for (int i = 0;i<6;i++)
+            seat[i].multiSeat->setDisabled(false);
+        ui->comboBoxCurrency->setDisabled(false);
+    }
+
+
 }
 
 int prevCurrency = 0;
@@ -289,12 +319,21 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
     prevCurrency = index;
 }
 
+void MainWindow::on_DealNow_clicked()
+{
+    for (int i = 0;i<6;i++)
+    {
+        seat[i].perfectPair->setValue(RealValueSpinBox[seat[i].perfectPair]);
+        seat[i].perfectPair->setDisabled(true);
+        seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
+        seat[i].mainBet->setDisabled(true);
+        seat[i].triple->setValue(RealValueSpinBox[seat[i].triple]);
+        seat[i].triple->setDisabled(true);
+        seat[i].closeButton->setDisabled(true);
+    }
+    tick = 0;
+    TimerForDealNow->stop();
+    ui->lcdTimer->hide();
+    ui->DealNow->hide();
 
-
-
-
-
-
-
-
-
+}
