@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>1160</y>
+      <y>1180</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -1093,13 +1093,13 @@ QPushButton:hover
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1117,13 +1117,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1141,13 +1141,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1165,13 +1165,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1189,13 +1189,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1213,13 +1213,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/multi_seat.png);
+             border-image: url(images/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/multi_seat_hover.png);
+		border-image: url(images/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/multi_seat_pressed.png);
+		border-image: url(images/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">

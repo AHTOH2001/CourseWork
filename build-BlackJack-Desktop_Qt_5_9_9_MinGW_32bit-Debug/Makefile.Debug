@@ -345,14 +345,6 @@ debug/moc_mainwindow.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMa
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsView \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsscene.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGridLayout \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
@@ -361,6 +353,7 @@ debug/moc_mainwindow.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMa
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QLCDNumber \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlcdnumber.h \
@@ -398,6 +391,11 @@ debug/moc_mainwindow.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMa
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qanimationgroup.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPainter \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPaintEvent \
 		../BlackJack/mainwindow.h \
 		debug/moc_predefs.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/bin/moc.exe
@@ -659,14 +657,6 @@ debug/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsView \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsscene.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGridLayout \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
@@ -675,6 +665,7 @@ debug/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QLCDNumber \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlcdnumber.h \
@@ -711,7 +702,12 @@ debug/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QSequentialAnimationGroup \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qanimationgroup.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QString
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPainter \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPaintEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\BlackJack\main.cpp
 
 debug/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
@@ -846,14 +842,6 @@ debug/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsView \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsscene.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGridLayout \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
@@ -862,6 +850,7 @@ debug/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QLCDNumber \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlcdnumber.h \
@@ -898,7 +887,13 @@ debug/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QSequentialAnimationGroup \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qanimationgroup.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QString
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QString \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPainter \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPaintEvent \
+		../BlackJack/card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\BlackJack\mainwindow.cpp
 
 debug/moc_card.o: debug/moc_card.cpp 

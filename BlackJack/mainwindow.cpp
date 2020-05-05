@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    srand(QTime::currentTime().msec());
     //this->showFullScreen();
     this->resize(1500,900);
     this->showMaximized();
@@ -62,8 +63,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     TimerForDealNow = new QTimer();
-    TimerForDealNow->setInterval(100);
     connect(TimerForDealNow,SIGNAL(timeout()),this,SLOT(NextColorSlot()));
+
+    TimerForHit = new QTimer();
+    connect(TimerForHit,SIGNAL(timeout()),this,SLOT(HitNext()));
+
 
     QString s = "images/cards/";
     for (int i = 0;i<13;i++)
@@ -95,14 +99,7 @@ MainWindow::MainWindow(QWidget *parent)
         connect(i.triple,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
     }
     QStringList temp = {"€","$","£","₽","Br","₪","￥"};
-    //scene->setSceneRect(0,0,3000,2000);
     ui->comboBoxCurrency->addItems(temp);
-    /*auto* item = new FrontEnd(nullptr,this,ui);
-    item->setFlag(QGraphicsItem::ItemIsFocusable, true);
-    item->setPos(0,0);
-
-    scene->addItem(item);*/
-
 
 }
 
@@ -130,6 +127,17 @@ void MainWindow::HighlightCentralLabel()
         delete context;
     } );
     timer->start(800);
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << event->pos();
+    //qDebug() << seat[0].cards[0]->CardAnimation->state();
+    //seat[0].cards[0]->CardAnimation->setEndValue(QRect(rand()%1400,800,200,200));
+
+    //seat[0].cards[0]->CardAnimation->setDuration(10000);
+    //seat[0].cards[0]->CardAnimation->start();
+    //seat[0].cards[0]->CardAnimation->start();
 }
 
 void MainWindow::on_Exit_clicked()
@@ -186,7 +194,17 @@ void MainWindow::paintEvent(QPaintEvent *event)
             else
             {
                 seat[i].underSeat->show();
-                seat[i].underSeat->setGeometry((seatX[i]-62+3)*koefW,(seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
+                seat[i].underSeat->setGeometry((seatX[i]-62+3)*koefW,(seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);                
+                int counter = 0;
+                for (auto &card:seat[i].cards)
+                {
+                    if (card->CardAnimation->state()==QAbstractAnimation::State::Stopped)
+                        card->setGeometry(QRect((seatX[i]+counter*15)*koefW,(seatY[i]-counter*30)*koefH,92*koefW,135*koefH));
+                    else
+                        card->CardAnimation->setEndValue(QRect((seatX[i]+counter*15)*koefW,(seatY[i]-counter*30)*koefH,92*koefW,135*koefH));
+
+                    counter++;
+                }
             }
     }
     ui->gridLayoutWidget->setGeometry(QRect(10*koefW,765*koefH,251*koefW,111*koefH));
@@ -212,7 +230,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
     //    DealButtonAnimation->setEndValue(DealNowButtonGeometry);
     //DealButtonAnimation->setKeyValueAt(1, DealNowButtonGeometry);
     ui->DealNow->setFont(QFont("MS Shell Dlg 2", 20*koefW));
-    ui->lcdTimer->setGeometry(702*koefW,620*koefH,81*koefW,81*koefH);
+    ui->lcdTimer->setGeometry(712*koefW,630*koefH,61*koefW,61*koefH);
+
 
     if (DEBUGMODE)
     {
@@ -286,6 +305,10 @@ void MainWindow::multiSeatFunc(int i)
     seat[i].isSeat = true;
     isSeat = true;
     seat[i].multiSeat->hide();
+    for (int i = 0;i<6;i++)
+        seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
+                                         "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
+                                         "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
     update();
 }
 void MainWindow::on_multiSeatButton_1_clicked()
@@ -388,7 +411,7 @@ void MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
     {
         ui->lcdTimer->show();
         ui->DealNow->show();
-        TimerForDealNow->start();
+        TimerForDealNow->start(100);
         for (int i = 0;i<6;i++)
             seat[i].multiSeat->setDisabled(true);
         ui->comboBoxCurrency->setDisabled(true);
@@ -440,11 +463,10 @@ void MainWindow::on_DealNow_clicked()
 {
     for (int i = 0;i<6;i++)
     {
-        seat[i].perfectPair->setValue(RealValueSpinBox[seat[i].perfectPair]);
         seat[i].perfectPair->setDisabled(true);
-        seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
+        if (seat[i].mainBet->value()==0)
+            seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
         seat[i].mainBet->setDisabled(true);
-        seat[i].triple->setValue(RealValueSpinBox[seat[i].triple]);
         seat[i].triple->setDisabled(true);
         seat[i].closeButton->hide();
     }
@@ -464,11 +486,6 @@ void MainWindow::on_DealNow_clicked()
         delete context;
     } );
     timer->start(2000);
-}
-
-void MainWindow::Dealing()
-{
-
 }
 
 void MainWindow::NextColorSlot()
@@ -493,3 +510,46 @@ void MainWindow::NextColorSlot()
         //func
     }
 }
+
+QQueue<int> QueueForHit;
+void MainWindow::Hit(int i)
+{
+    QueueForHit.enqueue(i);
+    TimerForHit->start(500);
+}
+void MainWindow::HitNext()
+{
+    if (QueueForHit.empty())
+    {
+        TimerForHit->stop();
+        return;
+    }
+    Card *Q = new Card(rand(),this);
+    int i = QueueForHit.dequeue();
+    seat[i].cards.append(Q);
+    Q->setGeometry(seatX[i],seatY[i],92,135);
+    Q->show();
+    Q->CardAnimation->setDuration(1000);
+    Q->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));    
+    Q->CardAnimation->setEndValue(QRect((seatX[i]+(seat[i].cards.count()-1)*15)*koefW,(seatY[i]-(seat[i].cards.count()-1)*30)*koefH,92*koefW,135*koefH));//TODO
+    Q->CardAnimation->start();
+}
+
+void MainWindow::Dealing()
+{
+
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+            Hit(i);
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+            Hit(i);
+
+}
+
+
+
+
+
+
+

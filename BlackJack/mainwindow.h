@@ -15,6 +15,9 @@
 #include <QString>
 #include <QPainter>
 #include <QPaintEvent>
+#include "card.h"
+#include <QTime>
+#include <QQueue>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,27 +27,11 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    bool DEBUGMODE = false; //!!!!!!
+public:    
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool DEBUGMODE = false;
     QImage cardsList[13][4];
-    bool isSeat = false,isNowPlay = false;
-    const int seatX[6] = {87,311,530,877,1097,1323};
-    const int seatY[6] = {511,573,624,624,573,511};
-    const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
-    struct TypeForSeat
-    {
-        QSpinBox *perfectPair, *mainBet, *triple;
-        QPushButton *multiSeat;
-        bool isSeat = false;        
-        QWidget *underSeat;
-        QPushButton *closeButton;
-    };
-    TypeForSeat seat[6];    
-    QTimer *TimerForDealNow;
-    void HighlightCentralLabel();
-   // QPropertyAnimation *DealButtonAnimation;
 public slots:
 
     void on_DealNow_clicked();
@@ -85,11 +72,14 @@ private slots:
 
     void NextColorSlot();
 
+    void HitNext();    
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QMap<QSpinBox*,QTimer*> timersForColor;
+    QTimer *TimerForDealNow;
+    QTimer* TimerForHit;
     void paintEvent(QPaintEvent *event) override;
     void closeFunc(int i);
     void multiSeatFunc(int i);
@@ -99,6 +89,23 @@ private:
     void Dealing();
     double koefW=1,koefH=1;
     int tick = 0;
+    void Hit(int i);
+    bool isSeat = false,isNowPlay = false;
+    const int seatX[6] = {87,311,530,879,1099,1325};
+    const int seatY[6] = {511,573,624,624,573,511};
+    const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
+    struct TypeForSeat
+    {
+        QSpinBox *perfectPair, *mainBet, *triple;
+        QPushButton *multiSeat;
+        bool isSeat = false;
+        QWidget *underSeat;
+        QPushButton *closeButton;
+        QVector<Card*> cards;
+    };
+    TypeForSeat seat[6];
+    void HighlightCentralLabel();
+    void mousePressEvent(QMouseEvent *event);
 
 
 };

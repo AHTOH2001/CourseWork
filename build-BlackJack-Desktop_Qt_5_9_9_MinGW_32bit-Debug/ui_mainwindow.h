@@ -211,7 +211,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(240, 1160, 93, 28));
+        pushButton->setGeometry(QRect(240, 1180, 93, 28));
         pushButton->setMaximumSize(QSize(93, 16777215));
         pushButton->setStyleSheet(QLatin1String("\n"
 "QPushButton{\n"
@@ -771,73 +771,73 @@ public:
         multiSeatButton_1->setObjectName(QStringLiteral("multiSeatButton_1"));
         multiSeatButton_1->setGeometry(QRect(1470, 580, 141, 191));
         multiSeatButton_1->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_2 = new QPushButton(centralwidget);
         multiSeatButton_2->setObjectName(QStringLiteral("multiSeatButton_2"));
         multiSeatButton_2->setGeometry(QRect(1500, 610, 141, 191));
         multiSeatButton_2->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_3 = new QPushButton(centralwidget);
         multiSeatButton_3->setObjectName(QStringLiteral("multiSeatButton_3"));
         multiSeatButton_3->setGeometry(QRect(1630, 580, 141, 191));
         multiSeatButton_3->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_4 = new QPushButton(centralwidget);
         multiSeatButton_4->setObjectName(QStringLiteral("multiSeatButton_4"));
         multiSeatButton_4->setGeometry(QRect(1690, 630, 141, 191));
         multiSeatButton_4->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_5 = new QPushButton(centralwidget);
         multiSeatButton_5->setObjectName(QStringLiteral("multiSeatButton_5"));
         multiSeatButton_5->setGeometry(QRect(1820, 630, 141, 191));
         multiSeatButton_5->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_6 = new QPushButton(centralwidget);
         multiSeatButton_6->setObjectName(QStringLiteral("multiSeatButton_6"));
         multiSeatButton_6->setGeometry(QRect(1940, 610, 141, 191));
         multiSeatButton_6->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/multi_seat.png);\n"
+"             border-image: url(images/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/multi_seat_hover.png);\n"
+"		border-image: url(images/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/multi_seat_pressed.png);\n"
+"		border-image: url(images/sit_here_pressed.png);\n"
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
