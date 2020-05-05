@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
@@ -33,7 +32,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QGraphicsView *graphicsView;
     QPushButton *pushButton;
     QPushButton *Exit;
     QWidget *gridLayoutWidget_14;
@@ -211,12 +209,9 @@ public:
 ""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        graphicsView = new QGraphicsView(centralwidget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(0, 0, 1500, 900));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(170, 1180, 93, 28));
+        pushButton->setGeometry(QRect(240, 1160, 93, 28));
         pushButton->setMaximumSize(QSize(93, 16777215));
         pushButton->setStyleSheet(QLatin1String("\n"
 "QPushButton{\n"
@@ -243,7 +238,7 @@ public:
 "                background-color: rgb(255,0,0); }"));
         gridLayoutWidget_14 = new QWidget(centralwidget);
         gridLayoutWidget_14->setObjectName(QStringLiteral("gridLayoutWidget_14"));
-        gridLayoutWidget_14->setGeometry(QRect(320, 1030, 301, 161));
+        gridLayoutWidget_14->setGeometry(QRect(360, 650, 301, 161));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_14);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -352,7 +347,7 @@ public:
 
         gridLayoutWidget_15 = new QWidget(centralwidget);
         gridLayoutWidget_15->setObjectName(QStringLiteral("gridLayoutWidget_15"));
-        gridLayoutWidget_15->setGeometry(QRect(630, 1040, 237, 154));
+        gridLayoutWidget_15->setGeometry(QRect(700, 600, 237, 154));
         gridLayout_3 = new QGridLayout(gridLayoutWidget_15);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -458,7 +453,7 @@ public:
 
         gridLayoutWidget_16 = new QWidget(centralwidget);
         gridLayoutWidget_16->setObjectName(QStringLiteral("gridLayoutWidget_16"));
-        gridLayoutWidget_16->setGeometry(QRect(880, 1040, 256, 154));
+        gridLayoutWidget_16->setGeometry(QRect(950, 600, 256, 154));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_16);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -563,7 +558,7 @@ public:
 
         gridLayoutWidget_17 = new QWidget(centralwidget);
         gridLayoutWidget_17->setObjectName(QStringLiteral("gridLayoutWidget_17"));
-        gridLayoutWidget_17->setGeometry(QRect(1160, 1010, 237, 154));
+        gridLayoutWidget_17->setGeometry(QRect(1230, 570, 237, 154));
         gridLayout_5 = new QGridLayout(gridLayoutWidget_17);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -669,7 +664,7 @@ public:
 
         gridLayoutWidget_18 = new QWidget(centralwidget);
         gridLayoutWidget_18->setObjectName(QStringLiteral("gridLayoutWidget_18"));
-        gridLayoutWidget_18->setGeometry(QRect(1220, 1190, 249, 154));
+        gridLayoutWidget_18->setGeometry(QRect(1290, 750, 249, 154));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_18);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -774,7 +769,7 @@ public:
 
         multiSeatButton_1 = new QPushButton(centralwidget);
         multiSeatButton_1->setObjectName(QStringLiteral("multiSeatButton_1"));
-        multiSeatButton_1->setGeometry(QRect(1400, 1020, 141, 191));
+        multiSeatButton_1->setGeometry(QRect(1470, 580, 141, 191));
         multiSeatButton_1->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -786,7 +781,7 @@ public:
 "}"));
         multiSeatButton_2 = new QPushButton(centralwidget);
         multiSeatButton_2->setObjectName(QStringLiteral("multiSeatButton_2"));
-        multiSeatButton_2->setGeometry(QRect(1430, 1050, 141, 191));
+        multiSeatButton_2->setGeometry(QRect(1500, 610, 141, 191));
         multiSeatButton_2->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -798,7 +793,7 @@ public:
 "}"));
         multiSeatButton_3 = new QPushButton(centralwidget);
         multiSeatButton_3->setObjectName(QStringLiteral("multiSeatButton_3"));
-        multiSeatButton_3->setGeometry(QRect(1560, 1020, 141, 191));
+        multiSeatButton_3->setGeometry(QRect(1630, 580, 141, 191));
         multiSeatButton_3->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -810,7 +805,7 @@ public:
 "}"));
         multiSeatButton_4 = new QPushButton(centralwidget);
         multiSeatButton_4->setObjectName(QStringLiteral("multiSeatButton_4"));
-        multiSeatButton_4->setGeometry(QRect(1620, 1070, 141, 191));
+        multiSeatButton_4->setGeometry(QRect(1690, 630, 141, 191));
         multiSeatButton_4->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -822,7 +817,7 @@ public:
 "}"));
         multiSeatButton_5 = new QPushButton(centralwidget);
         multiSeatButton_5->setObjectName(QStringLiteral("multiSeatButton_5"));
-        multiSeatButton_5->setGeometry(QRect(1750, 1070, 141, 191));
+        multiSeatButton_5->setGeometry(QRect(1820, 630, 141, 191));
         multiSeatButton_5->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -834,7 +829,7 @@ public:
 "}"));
         multiSeatButton_6 = new QPushButton(centralwidget);
         multiSeatButton_6->setObjectName(QStringLiteral("multiSeatButton_6"));
-        multiSeatButton_6->setGeometry(QRect(1870, 1050, 141, 191));
+        multiSeatButton_6->setGeometry(QRect(1940, 610, 141, 191));
         multiSeatButton_6->setStyleSheet(QLatin1String("QPushButton {\n"
 "             border-image: url(images/multi_seat.png);\n"
 "         }\n"
@@ -846,7 +841,7 @@ public:
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(190, 900, 251, 111));
+        gridLayoutWidget->setGeometry(QRect(230, 520, 251, 111));
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
@@ -927,7 +922,7 @@ public:
 
         gridLayoutWidget_3 = new QWidget(centralwidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(20, 1010, 241, 131));
+        gridLayoutWidget_3->setGeometry(QRect(60, 630, 241, 131));
         gridLayout_1 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_1->setObjectName(QStringLiteral("gridLayout_1"));
         gridLayout_1->setContentsMargins(0, 0, 0, 0);
@@ -1035,7 +1030,7 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(1550, 890, 161, 111));
+        gridLayoutWidget_2->setGeometry(QRect(1620, 450, 161, 111));
         gridLayout_balance_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_balance_2->setObjectName(QStringLiteral("gridLayout_balance_2"));
         gridLayout_balance_2->setContentsMargins(0, 0, 0, 0);
@@ -1067,7 +1062,7 @@ public:
 
         CentralLabel = new QLabel(centralwidget);
         CentralLabel->setObjectName(QStringLiteral("CentralLabel"));
-        CentralLabel->setGeometry(QRect(560, 910, 441, 81));
+        CentralLabel->setGeometry(QRect(630, 470, 441, 81));
         QFont font;
         font.setFamily(QStringLiteral("Segoe Print"));
         font.setPointSize(30);
@@ -1081,7 +1076,7 @@ public:
         CentralLabel->setAlignment(Qt::AlignCenter);
         DealNow = new QPushButton(centralwidget);
         DealNow->setObjectName(QStringLiteral("DealNow"));
-        DealNow->setGeometry(QRect(730, 1220, 251, 81));
+        DealNow->setGeometry(QRect(800, 780, 251, 81));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
@@ -1103,7 +1098,7 @@ public:
         DealNow->setFlat(false);
         lcdTimer = new QLCDNumber(centralwidget);
         lcdTimer->setObjectName(QStringLiteral("lcdTimer"));
-        lcdTimer->setGeometry(QRect(1060, 1210, 61, 61));
+        lcdTimer->setGeometry(QRect(1130, 770, 61, 61));
         lcdTimer->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
 "     border-radius: 10px;\n"
 "     padding: 2px;\n"
@@ -1113,7 +1108,6 @@ public:
         lcdTimer->setDigitCount(2);
         lcdTimer->setProperty("intValue", QVariant(15));
         MainWindow->setCentralWidget(centralwidget);
-        graphicsView->raise();
         CentralLabel->raise();
         pushButton->raise();
         Exit->raise();

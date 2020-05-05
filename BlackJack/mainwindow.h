@@ -13,6 +13,8 @@
 #include <QPropertyAnimation>
 #include <QSequentialAnimationGroup>
 #include <QString>
+#include <QPainter>
+#include <QPaintEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,12 +25,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    bool DEBUGMODE = false; //!!!!!!
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QImage cardsList[13][4];
     bool isSeat = false,isNowPlay = false;
     const int seatX[6] = {87,311,530,877,1097,1323};
-    const int seatY[6] = {513,575,626,626,575,513};
+    const int seatY[6] = {511,573,624,624,573,511};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
     struct TypeForSeat
     {
@@ -38,8 +41,7 @@ public:
         QWidget *underSeat;
         QPushButton *closeButton;
     };
-    TypeForSeat seat[6];
-    int tick;
+    TypeForSeat seat[6];    
     QTimer *TimerForDealNow;
     void HighlightCentralLabel();
    // QPropertyAnimation *DealButtonAnimation;
@@ -81,20 +83,22 @@ private slots:
 
     void ValueChangedByUserSlot(QSpinBox *SpinBox = nullptr);
 
+    void NextColorSlot();
+
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QMap<QSpinBox*,QTimer*> timersForColor;
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event) override;
     void closeFunc(int i);
     void multiSeatFunc(int i);
     void changeColor(QSpinBox *SpinBox,QString color);
     QMap<QSpinBox*,double> RealValueSpinBox;
     void DeleteTrash();    
     void Dealing();
-
-
+    double koefW=1,koefH=1;
+    int tick = 0;
 
 
 };

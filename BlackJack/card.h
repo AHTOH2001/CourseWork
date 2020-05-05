@@ -7,7 +7,7 @@ class Card : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Card(QWidget *parent = nullptr);
+    explicit Card(QWidget * = nullptr);
 
 signals:
 

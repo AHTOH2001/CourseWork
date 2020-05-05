@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "cards.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,13 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
     //this->showFullScreen();
     this->resize(1500,900);
     this->showMaximized();
-    scene = new QGraphicsScene(this);
-    ui->graphicsView->setFixedSize(3002,2005);
-    scene = new QGraphicsScene(this);
-    ui->graphicsView->setScene(scene);
-    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
-    ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
-    ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
     seat[0].underSeat = ui->gridLayoutWidget_3;
     seat[1].underSeat = ui->gridLayoutWidget_14;
     seat[2].underSeat = ui->gridLayoutWidget_15;
@@ -61,13 +53,17 @@ MainWindow::MainWindow(QWidget *parent)
     effect->setBlurRadius(5);
     effect->setOffset(-3,-3);
     ui->DealNow->setGraphicsEffect(effect);
+    ui->DealNow->hide();
     effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
     effect->setOffset(-3,-3);
     ui->lcdTimer->setGraphicsEffect(effect);
+    ui->lcdTimer->hide();
+
 
     TimerForDealNow = new QTimer();
     TimerForDealNow->setInterval(100);
+    connect(TimerForDealNow,SIGNAL(timeout()),this,SLOT(NextColorSlot()));
 
     QString s = "images/cards/";
     for (int i = 0;i<13;i++)
@@ -99,13 +95,15 @@ MainWindow::MainWindow(QWidget *parent)
         connect(i.triple,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
     }
     QStringList temp = {"€","$","£","₽","Br","₪","￥"};
-    scene->setSceneRect(0,0,3000,2000);
+    //scene->setSceneRect(0,0,3000,2000);
     ui->comboBoxCurrency->addItems(temp);
-    auto* item = new cards(nullptr,this,ui);
+    /*auto* item = new FrontEnd(nullptr,this,ui);
     item->setFlag(QGraphicsItem::ItemIsFocusable, true);
     item->setPos(0,0);
-    connect(TimerForDealNow,SIGNAL(timeout()),item,SLOT(NextColorSlot()));
-    scene->addItem(item);
+
+    scene->addItem(item);*/
+
+
 }
 
 MainWindow::~MainWindow()
@@ -117,10 +115,10 @@ MainWindow::~MainWindow()
 void MainWindow::HighlightCentralLabel()
 {
     ui->CentralLabel->setStyleSheet("QLabel{"
-                                        "color:  rgb(102,180,50);"
-                                        "padding: 2px;"
-                                        "border: 3px inset red;"
-                                        "border-radius: 31px;}");
+                                    "color:  rgb(102,180,50);"
+                                    "padding: 2px;"
+                                    "border: 3px inset red;"
+                                    "border-radius: 31px;}");
     QTimer *timer = new QTimer();
     QObject *context = new QObject(this);
     connect(timer, &QTimer::timeout,context, [=]() {
@@ -145,11 +143,85 @@ void MainWindow::on_pushButton_clicked()
     qDebug() << " real: " << this->width();
 }
 
+int debugcounter = 0;
 void MainWindow::paintEvent(QPaintEvent *event)
-{
+{    
     QPainter painter(this);
 
-    Q_UNUSED(event);
+    koefH = height()/900.;
+    koefW = width()/1500.;
+    ui->Exit->setGeometry(width()-40,0,40,25);
+    QImage image;
+    if (!isSeat)
+    {
+        for (int i = 0;i<6;i++)
+            seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
+
+        image.load("images/takeseat");
+        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
+        {
+            ui->CentralLabel->setText("TAKE A SEAT");
+            HighlightCentralLabel();
+        }
+        //image.load("images/label_take_seat");
+        //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
+
+    }
+    else
+    {
+        image.load("images/background");
+        painter.drawLine(100,100,500,500);
+        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")==0)
+        {
+            ui->CentralLabel->setText("PLACE YOUR BETS");
+            HighlightCentralLabel();
+        }
+        for (int i = 0;i<6;i++)
+            if (!seat[i].isSeat)
+            {
+                seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
+            }
+            else
+            {
+                seat[i].underSeat->show();
+                seat[i].underSeat->setGeometry((seatX[i]-62+3)*koefW,(seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
+            }
+    }
+    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,765*koefH,251*koefW,111*koefH));
+    ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
+    ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
+    ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
+    ui->comboBoxCurrency->setMaximumSize(80*koefW,65*koefH);
+
+    ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,765*koefH,161*koefW,111*koefH));
+    ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
+
+
+
+    ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW));
+    int tempW = ui->CentralLabel->text().count()*36;
+    int tempH = 65;
+    ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
+    //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
+    //QRect DealNowButtonGeometry(630*koefW,520*koefH,251*koefW,81*koefH);
+    // DealButtonAnimation->setStartValue(DealNowButtonGeometry);
+    //DealButtonAnimation->setKeyValueAt(0, DealNowButtonGeometry);
+    //    DealButtonAnimation->setKeyValueAt(0.5, DealNowButtonGeometry.adjusted(-10*koefW,0,10*koefW,0));
+    //    DealButtonAnimation->setEndValue(DealNowButtonGeometry);
+    //DealButtonAnimation->setKeyValueAt(1, DealNowButtonGeometry);
+    ui->DealNow->setFont(QFont("MS Shell Dlg 2", 20*koefW));
+    ui->lcdTimer->setGeometry(702*koefW,620*koefH,81*koefW,81*koefH);
+
+    if (DEBUGMODE)
+    {
+    debugcounter++;
+    qDebug() << "paintevent!" << debugcounter << event->region();
+    painter.setPen(QPen(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10)));
+    painter.setBrush(QBrush(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10),Qt::Dense4Pattern));
+    painter.drawRect(event->rect().adjusted(-1,-1,1,1));
+    }
 }
 
 void MainWindow::closeFunc(int i)
@@ -160,13 +232,23 @@ void MainWindow::closeFunc(int i)
     isSeat = false;
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat) isSeat = true;
+    for (int i = 0;i<6;i++)
+        if (!isSeat)
+            seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/sit_here.png);}"
+                                             "QPushButton:hover{border-image: url(images/sit_here_hover.png);}"
+                                             "QPushButton:pressed{ border-image: url(images/sit_here_pressed.png);}");
+        else
+            seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
+                                             "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
+                                             "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
+
     seat[i].perfectPair->setValue(0);
     ValueChangedByUserSlot(seat[i].perfectPair);
     seat[i].mainBet->setValue(0);
     ValueChangedByUserSlot(seat[i].mainBet);
     seat[i].triple->setValue(0);
     ValueChangedByUserSlot(seat[i].triple);
-    scene->update();
+    update();
 
 }
 void MainWindow::on_closeButton_1_clicked()
@@ -204,7 +286,7 @@ void MainWindow::multiSeatFunc(int i)
     seat[i].isSeat = true;
     isSeat = true;
     seat[i].multiSeat->hide();
-    scene->update();
+    update();
 }
 void MainWindow::on_multiSeatButton_1_clicked()
 {
@@ -387,4 +469,27 @@ void MainWindow::on_DealNow_clicked()
 void MainWindow::Dealing()
 {
 
+}
+
+void MainWindow::NextColorSlot()
+{
+    tick++;
+
+    ui->DealNow->setStyleSheet("QPushButton {"
+                               "border: 2px solid rgb(66, 20, 20);"
+                               "border-radius: 40px;"
+                               "color: rgb("+QString::number((int)(100 + tick)) +", 10, 10);"
+                               "background: rgb(0," + QString::number((int)(100 + tick)) + ",57);}"
+                               "QPushButton:hover {"
+                               "color: rgb("+QString::number((int)(80 + tick)) +", 30, 30);"
+                               "background: rgb(30," + QString::number((int)(100 + tick)) + ",87);}");
+
+    //ui->DealNow->resize(ui->DealNow->size().width()-(150-tick),ui->DealNow->size().height());
+    ui->DealNow->setGeometry((460+tick)*koefW,520*koefH,(565-2*tick)*koefW,81*koefH);
+    ui->lcdTimer->display((150-tick)/10);
+    if (tick==150)
+    {
+        on_DealNow_clicked();
+        //func
+    }
 }

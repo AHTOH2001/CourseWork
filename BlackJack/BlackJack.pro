@@ -17,13 +17,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     card.cpp \
-    cards.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     card.h \
-    cards.h \
     mainwindow.h
 
 FORMS += \
