@@ -20,46 +20,56 @@ MainWindow::MainWindow(QWidget *parent)
     seat[0].triple = ui->spinBox_3;
     seat[0].multiSeat = ui->multiSeatButton_1;
     seat[0].closeButton = ui->closeButton_1;
+    seat[0].sumCounter = ui->lcdNumber_1;
     seat[1].perfectPair = ui->spinBox_4;
     seat[1].mainBet = ui->spinBox_5;
     seat[1].triple = ui->spinBox_6;
     seat[1].multiSeat = ui->multiSeatButton_2;
     seat[1].closeButton = ui->closeButton_2;
+    seat[1].sumCounter = ui->lcdNumber_2;
     seat[2].perfectPair = ui->spinBox_7;
     seat[2].mainBet = ui->spinBox_8;
     seat[2].triple = ui->spinBox_9;
     seat[2].multiSeat = ui->multiSeatButton_3;
     seat[2].closeButton = ui->closeButton_3;
+    seat[2].sumCounter = ui->lcdNumber_3;
     seat[3].perfectPair = ui->spinBox_10;
     seat[3].mainBet = ui->spinBox_11;
     seat[3].triple = ui->spinBox_12;
     seat[3].multiSeat = ui->multiSeatButton_4;
     seat[3].closeButton = ui->closeButton_4;
+    seat[3].sumCounter = ui->lcdNumber_4;
     seat[4].perfectPair = ui->spinBox_13;
     seat[4].mainBet = ui->spinBox_14;
     seat[4].triple = ui->spinBox_15;
     seat[4].multiSeat = ui->multiSeatButton_5;
     seat[4].closeButton = ui->closeButton_5;
+    seat[4].sumCounter = ui->lcdNumber_5;
     seat[5].perfectPair = ui->spinBox_16;
     seat[5].mainBet = ui->spinBox_17;
     seat[5].triple = ui->spinBox_18;
     seat[5].multiSeat = ui->multiSeatButton_6;
     seat[5].closeButton = ui->closeButton_6;
+    seat[5].sumCounter = ui->lcdNumber_6;
 
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
-    effect->setOffset(-3,-3);
+    effect->setOffset(3,3);
     ui->CentralLabel->setGraphicsEffect(effect);
     effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
-    effect->setOffset(-3,-3);
+    effect->setOffset(3,3);
     ui->DealNow->setGraphicsEffect(effect);
     ui->DealNow->hide();
     effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
-    effect->setOffset(-3,-3);
+    effect->setOffset(3,3);
     ui->lcdTimer->setGraphicsEffect(effect);
     ui->lcdTimer->hide();
+    effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(5);
+    effect->setOffset(3,3);
+    ui->RepeatButton->setGraphicsEffect(effect);
 
 
     TimerForDealNow = new QTimer();
@@ -87,6 +97,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     for (auto & i : seat)
     {
+        i.sumCounter->hide();
         i.underSeat->hide();
         timersForColor[i.perfectPair] = new QTimer();
         connect(i.perfectPair,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
@@ -132,6 +143,10 @@ void MainWindow::HighlightCentralLabel()
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     qDebug() << event->pos();
+//    for (int i = 0;i<6;i++)
+//        seat[i].mainBet->setValue(10);
+    //Hit(rand()%6);
+
     //qDebug() << seat[0].cards[0]->CardAnimation->state();
     //seat[0].cards[0]->CardAnimation->setEndValue(QRect(rand()%1400,800,200,200));
 
@@ -163,15 +178,16 @@ void MainWindow::paintEvent(QPaintEvent *event)
     if (!isSeat)
     {
         for (int i = 0;i<6;i++)
-            seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
+            seat[i].multiSeat->setGeometry((seatX[i]-2)*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
 
-        image.load("images/takeseat");
+        image.load("images/takeseat");        
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
-        {
+        {            
             ui->CentralLabel->setText("TAKE A SEAT");
             HighlightCentralLabel();
-        }
+        }        
+        ui->RepeatButton->hide();
         //image.load("images/label_take_seat");
         //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
 
@@ -180,16 +196,17 @@ void MainWindow::paintEvent(QPaintEvent *event)
     {
         image.load("images/background");
         painter.drawLine(100,100,500,500);
-        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));        
         if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")==0)
         {
+            ui->RepeatButton->show();
             ui->CentralLabel->setText("PLACE YOUR BETS");
             HighlightCentralLabel();
         }
         for (int i = 0;i<6;i++)
             if (!seat[i].isSeat)
             {
-                seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
+                seat[i].multiSeat->setGeometry((seatX[i]-2)*koefW,seatY[i]*koefH,97*koefW, 135*koefH);
             }
             else
             {
@@ -215,7 +232,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
     ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,765*koefH,161*koefW,111*koefH));
     ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
-
+    ui->RepeatButton->setGeometry(705*koefW,620*koefH,81*koefW,81*koefH);
 
 
     ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW));
@@ -251,15 +268,6 @@ void MainWindow::closeFunc(int i)
     isSeat = false;
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat) isSeat = true;
-    for (int i = 0;i<6;i++)
-        if (!isSeat)
-            seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/sit_here.png);}"
-                                             "QPushButton:hover{border-image: url(images/sit_here_hover.png);}"
-                                             "QPushButton:pressed{ border-image: url(images/sit_here_pressed.png);}");
-        else
-            seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
-                                             "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
-                                             "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
 
     seat[i].perfectPair->setValue(0);
     ValueChangedByUserSlot(seat[i].perfectPair);
@@ -413,8 +421,12 @@ void MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
         ui->DealNow->show();
         TimerForDealNow->start(100);
         for (int i = 0;i<6;i++)
+        {
             seat[i].multiSeat->setDisabled(true);
+            seat[i].multiSeat->setStyleSheet("border-image: url(images/multi_seat_blocked.png);");
+        }
         ui->comboBoxCurrency->setDisabled(true);
+        ui->RepeatButton->hide();
     }
     else
     {
@@ -423,8 +435,19 @@ void MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
         TimerForDealNow->stop();
         tick = 0;
         for (int i = 0;i<6;i++)
+        {
             seat[i].multiSeat->setDisabled(false);
+            if (!isSeat)
+                seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/sit_here.png);}"
+                                                 "QPushButton:hover{border-image: url(images/sit_here_hover.png);}"
+                                                 "QPushButton:pressed{ border-image: url(images/sit_here_pressed.png);}");
+            else
+                seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
+                                                 "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
+                                                 "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
+        }
         ui->comboBoxCurrency->setDisabled(false);
+        ui->RepeatButton->show();
     }
 
 
@@ -469,6 +492,9 @@ void MainWindow::on_DealNow_clicked()
         seat[i].mainBet->setDisabled(true);
         seat[i].triple->setDisabled(true);
         seat[i].closeButton->hide();
+        seat[i].prevBetPair = seat[i].perfectPair->value();
+        seat[i].prevBetMain = seat[i].mainBet->value();
+        seat[i].prevBetTriple = seat[i].triple->value();
     }
     tick = 0;
     TimerForDealNow->stop();
@@ -484,7 +510,7 @@ void MainWindow::on_DealNow_clicked()
         HighlightCentralLabel();
         Dealing();
         delete context;
-    } );
+    });
     timer->start(2000);
 }
 
@@ -524,32 +550,65 @@ void MainWindow::HitNext()
         TimerForHit->stop();
         return;
     }
-    Card *Q = new Card(rand(),this);
+    Card *card = new Card(rand(),this);
     int i = QueueForHit.dequeue();
-    seat[i].cards.append(Q);
-    Q->setGeometry(seatX[i],seatY[i],92,135);
-    Q->show();
-    Q->CardAnimation->setDuration(1000);
-    Q->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));    
-    Q->CardAnimation->setEndValue(QRect((seatX[i]+(seat[i].cards.count()-1)*15)*koefW,(seatY[i]-(seat[i].cards.count()-1)*30)*koefH,92*koefW,135*koefH));//TODO
-    Q->CardAnimation->start();
+    seat[i].cards.append(card);
+    card->setGeometry(seatX[i],seatY[i],92,135);
+    card->show();
+    card->CardAnimation->setDuration(1000);
+    card->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));
+    card->CardAnimation->setEndValue(QRect((seatX[i]+(seat[i].cards.count()-1)*15)*koefW,(seatY[i]-(seat[i].cards.count()-1)*30)*koefH,92*koefW,135*koefH));//TODO
+    card->CardAnimation->start();
+    seat[i].sumCounter->display(seat[i].sumCounter->value()+card->value);
+    if (card->value==11)
+        seat[i].aceCount++;
+
+    if (seat[i].sumCounter->value()>21)
+    {
+        if (seat[i].aceCount>0)
+        {
+            seat[i].aceCount--;
+            seat[i].sumCounter->display(seat[i].sumCounter->value()-10);
+        }
+        else
+        {
+            //TODO block hit;
+            seat[i].sumCounter->setStyleSheet("background: red;");
+        }
+    }
+    else
+    if (seat[i].sumCounter->value()==21)
+    {
+        seat[i].sumCounter->setStyleSheet("border-image: url(images/blackjack.png);");
+        seat[i].sumCounter->display("");
+    }
 }
 
 void MainWindow::Dealing()
-{
-
+{    
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+        {
+            seat[i].sumCounter->show();
+            Hit(i);
+        }
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat)
             Hit(i);
-    for (int i = 0;i<6;i++)
-        if (seat[i].isSeat)
-            Hit(i);
-
 }
 
+void MainWindow::on_RepeatButton_clicked()
+{
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+        {
+            seat[i].perfectPair->setValue(seat[i].prevBetPair);
+            ValueChangedByUserSlot(seat[i].perfectPair);
+            seat[i].mainBet->setValue(seat[i].prevBetMain);
+            ValueChangedByUserSlot(seat[i].mainBet);
+            seat[i].triple->setValue(seat[i].prevBetTriple);
+            ValueChangedByUserSlot(seat[i].triple);
+        }
 
 
-
-
-
-
+}

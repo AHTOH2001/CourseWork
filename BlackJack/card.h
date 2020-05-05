@@ -11,13 +11,15 @@ class Card : public QWidget
 public:
     explicit Card(int key, QWidget *parent = nullptr);
     QPropertyAnimation *CardAnimation;
+    int value,suit;
 
 signals:
 
 private:
     void paintEvent(QPaintEvent *event) override;
     QImage image;
-    int value,suit;
+    int i,j;
+
 };
 
 #endif // CARD_H
