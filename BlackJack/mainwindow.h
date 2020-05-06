@@ -38,31 +38,6 @@ public slots:
 
 private slots:
     void on_Exit_clicked();
-    void on_pushButton_clicked();
-
-    void on_multiSeatButton_1_clicked();
-
-    void on_multiSeatButton_2_clicked();
-
-    void on_multiSeatButton_3_clicked();
-
-    void on_multiSeatButton_4_clicked();
-
-    void on_multiSeatButton_5_clicked();
-
-    void on_multiSeatButton_6_clicked();
-
-    void on_closeButton_1_clicked();
-
-    void on_closeButton_2_clicked();
-
-    void on_closeButton_3_clicked();
-
-    void on_closeButton_4_clicked();
-
-    void on_closeButton_5_clicked();
-
-    void on_closeButton_6_clicked();
 
     void on_comboBoxCurrency_currentIndexChanged(int index);
 
@@ -72,28 +47,34 @@ private slots:
 
     void NextColorSlot();
 
-    void HitNext();    
+    void HitNext();
 
     void on_RepeatButton_clicked();
 
     void on_DoubleButton_clicked();
 
+    void Hit(int i = -1);
+
+    void Stand(int i = -1);
+
+    void closeFunc(int i = -1);
+
+    void multiSeatFunc(int i = -1);
+
+    void NextSecond();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QMap<QSpinBox*,QTimer*> timersForColor;
-    QTimer *TimerForDealNow;
-    QTimer* TimerForHit;
+    QTimer *TimerForDealNow, *TimerForHit, *TimerForCommit;
     void paintEvent(QPaintEvent *event) override;
-    void closeFunc(int i);
-    void multiSeatFunc(int i);
+
     void changeColor(QSpinBox *SpinBox,QString color);
     QMap<QSpinBox*,double> RealValueSpinBox;
-    void DeleteTrash();    
+    void DeleteTrash();
     void Dealing();
     double koefW=1,koefH=1;
     int tick = 0;
-    void Hit(int i);
     bool isSeat = false,isNowPlay = false, isDealingEnd = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {513,573,624,625,575,512};
@@ -101,10 +82,9 @@ private:
     struct TypeForSeat
     {
         QSpinBox *perfectPair, *mainBet, *triple;
-        QPushButton *multiSeat;
+        QPushButton *multiSeat,*closeButton,*doubleButton,*hitButton,*standButton,*splitButton;
         bool isSeat = false;
         QWidget *underSeat;
-        QPushButton *closeButton;
         QVector<Card*> cards;
         QLCDNumber *sumCounter;
         QLabel *pairStatus, *tripleStatus;
@@ -113,12 +93,12 @@ private:
     TypeForSeat seat[6];
     QVector<Card*> dealerCards;
     QPropertyAnimation* dealerSumCounterAnimation;
-    int dealerAceCount = 0;
+    QMap<QPushButton*,int> seatIdentifier;
+    int dealerAceCount = 0,stillPlayingAmount;
     void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 800);
-    void RecountSum(QLCDNumber* sumCounter,Card *card,int *aceCounter);
+    void RecountSum(QLCDNumber* sumCounter, Card *card, const int cardsAmount, int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;
     void CountExtraBets();
-
-
+    void CommitsEnd();
 };
 #endif // MAINWINDOW_H

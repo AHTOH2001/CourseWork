@@ -32,25 +32,28 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *pushButton;
     QPushButton *Exit;
     QWidget *gridLayoutWidget_14;
     QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout_15;
+    QSpinBox *spinBox_6;
+    QLabel *label_10;
     QSpacerItem *horizontalSpacer_28;
-    QGridLayout *gridLayout_14;
-    QSpacerItem *horizontalSpacer_10;
-    QSpinBox *spinBox_5;
-    QLabel *label_9;
-    QSpacerItem *horizontalSpacer_7;
     QGridLayout *gridLayout_13;
     QLabel *label_8;
     QSpinBox *spinBox_4;
     QPushButton *closeButton_2;
     QSpacerItem *horizontalSpacer_9;
-    QGridLayout *gridLayout_15;
-    QSpinBox *spinBox_6;
-    QLabel *label_10;
     QLCDNumber *lcdNumber_2;
+    QGridLayout *gridLayout_14;
+    QSpinBox *spinBox_5;
+    QLabel *label_9;
+    QGridLayout *gridLayout_8;
+    QPushButton *doubleButton_2;
+    QPushButton *hitButton_2;
+    QGridLayout *gridLayout_9;
+    QPushButton *standButton_2;
+    QPushButton *splitButton_2;
     QWidget *gridLayoutWidget_15;
     QGridLayout *gridLayout_3;
     QPushButton *closeButton_3;
@@ -58,33 +61,41 @@ public:
     QLabel *label_11;
     QSpinBox *spinBox_7;
     QSpacerItem *horizontalSpacer_11;
-    QGridLayout *gridLayout_17;
-    QSpacerItem *horizontalSpacer_12;
-    QSpinBox *spinBox_8;
-    QLabel *label_12;
-    QSpacerItem *horizontalSpacer_13;
     QSpacerItem *horizontalSpacer_25;
     QGridLayout *gridLayout_18;
     QSpinBox *spinBox_9;
     QLabel *label_13;
     QLCDNumber *lcdNumber_3;
+    QGridLayout *gridLayout_17;
+    QSpinBox *spinBox_8;
+    QLabel *label_12;
+    QGridLayout *gridLayout_12;
+    QPushButton *doubleButton_3;
+    QPushButton *hitButton_3;
+    QGridLayout *gridLayout_22;
+    QPushButton *standButton_3;
+    QPushButton *splitButton_3;
     QWidget *gridLayoutWidget_16;
     QGridLayout *gridLayout_4;
+    QLCDNumber *lcdNumber_4;
+    QSpacerItem *horizontalSpacer_26;
     QGridLayout *gridLayout_19;
     QLabel *label_14;
     QSpinBox *spinBox_10;
+    QSpacerItem *horizontalSpacer_14;
     QPushButton *closeButton_4;
     QGridLayout *gridLayout_21;
     QSpinBox *spinBox_12;
     QLabel *label_16;
-    QSpacerItem *horizontalSpacer_14;
     QGridLayout *gridLayout_20;
-    QSpacerItem *horizontalSpacer_15;
     QLabel *label_15;
-    QSpacerItem *horizontalSpacer_16;
     QSpinBox *spinBox_11;
-    QSpacerItem *horizontalSpacer_26;
-    QLCDNumber *lcdNumber_4;
+    QGridLayout *gridLayout_26;
+    QPushButton *doubleButton_4;
+    QPushButton *hitButton_4;
+    QGridLayout *gridLayout_30;
+    QPushButton *standButton_4;
+    QPushButton *splitButton_4;
     QWidget *gridLayoutWidget_17;
     QGridLayout *gridLayout_5;
     QSpacerItem *horizontalSpacer_24;
@@ -92,26 +103,34 @@ public:
     QGridLayout *gridLayout_23;
     QLabel *label_17;
     QSpinBox *spinBox_13;
+    QPushButton *closeButton_5;
     QGridLayout *gridLayout_25;
     QSpinBox *spinBox_15;
     QLabel *label_19;
-    QGridLayout *gridLayout_24;
-    QSpacerItem *horizontalSpacer_18;
-    QLabel *label_18;
-    QSpacerItem *horizontalSpacer_19;
-    QSpinBox *spinBox_14;
-    QPushButton *closeButton_5;
     QLCDNumber *lcdNumber_5;
+    QGridLayout *gridLayout_24;
+    QLabel *label_18;
+    QSpinBox *spinBox_14;
+    QGridLayout *gridLayout_31;
+    QPushButton *doubleButton_5;
+    QPushButton *hitButton_5;
+    QGridLayout *gridLayout_32;
+    QPushButton *splitButton_5;
+    QPushButton *standButton_5;
     QWidget *gridLayoutWidget_18;
     QGridLayout *gridLayout_6;
     QGridLayout *gridLayout_27;
     QLabel *label_20;
     QSpinBox *spinBox_16;
     QGridLayout *gridLayout_28;
-    QSpacerItem *horizontalSpacer_21;
     QLabel *label_21;
-    QSpacerItem *horizontalSpacer_22;
     QSpinBox *spinBox_17;
+    QGridLayout *gridLayout_33;
+    QPushButton *doubleButton_6;
+    QPushButton *hitButton_6;
+    QGridLayout *gridLayout_34;
+    QPushButton *standButton_6;
+    QPushButton *splitButton_6;
     QGridLayout *gridLayout_29;
     QSpinBox *spinBox_18;
     QLabel *label_22;
@@ -138,10 +157,14 @@ public:
     QLabel *label_5;
     QSpinBox *spinBox_1;
     QGridLayout *gridLayout_49;
-    QSpacerItem *horizontalSpacer_5;
-    QSpacerItem *horizontalSpacer_6;
     QSpinBox *spinBox_2;
     QLabel *label_7;
+    QGridLayout *gridLayout;
+    QPushButton *standButton_1;
+    QPushButton *splitButton_1;
+    QGridLayout *gridLayout_7;
+    QPushButton *doubleButton_1;
+    QPushButton *hitButton_1;
     QSpacerItem *horizontalSpacer_23;
     QGridLayout *gridLayout_11;
     QLabel *label_6;
@@ -164,7 +187,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(2132, 1549);
+        MainWindow->resize(2110, 1410);
         MainWindow->setStyleSheet(QLatin1String(" QSpinBox {\n"
 "	 background: green;\n"
 "	 border-style: solid;\n"
@@ -225,22 +248,6 @@ public:
 ""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(240, 1180, 93, 28));
-        pushButton->setMaximumSize(QSize(93, 16777215));
-        pushButton->setStyleSheet(QLatin1String("\n"
-"QPushButton{\n"
-"                background-color: rgb(235, 28, 28);\n"
-"                border-radius: 4px transparent;\n"
-"                border-bottom: 3px transparent;\n"
-"                border-right: 2px transparent;\n"
-"                border-left: 2px transparent;}\n"
-"				QPushButton:pressed  {\n"
-"                background-color: rgb(255, 255, 0);\n"
-"              }\n"
-"\n"
-""));
         Exit = new QPushButton(centralwidget);
         Exit->setObjectName(QStringLiteral("Exit"));
         Exit->setGeometry(QRect(1890, 30, 25, 25));
@@ -254,48 +261,39 @@ public:
 "                background-color: rgb(255,0,0); }"));
         gridLayoutWidget_14 = new QWidget(centralwidget);
         gridLayoutWidget_14->setObjectName(QStringLiteral("gridLayoutWidget_14"));
-        gridLayoutWidget_14->setGeometry(QRect(240, 790, 301, 161));
+        gridLayoutWidget_14->setGeometry(QRect(50, 190, 497, 161));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_14);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setHorizontalSpacing(0);
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout_15 = new QGridLayout();
+        gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
+        spinBox_6 = new QSpinBox(gridLayoutWidget_14);
+        spinBox_6->setObjectName(QStringLiteral("spinBox_6"));
+        spinBox_6->setMaximum(999999999);
+        spinBox_6->setSingleStep(10);
 
-        gridLayout_2->addItem(horizontalSpacer_28, 0, 4, 1, 1);
+        gridLayout_15->addWidget(spinBox_6, 1, 1, 1, 1);
 
-        gridLayout_14 = new QGridLayout();
-        gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
-        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_14->addItem(horizontalSpacer_10, 1, 0, 1, 1);
-
-        spinBox_5 = new QSpinBox(gridLayoutWidget_14);
-        spinBox_5->setObjectName(QStringLiteral("spinBox_5"));
-        spinBox_5->setMaximum(999999999);
-        spinBox_5->setSingleStep(10);
-
-        gridLayout_14->addWidget(spinBox_5, 1, 1, 1, 1);
-
-        label_9 = new QLabel(gridLayoutWidget_14);
-        label_9->setObjectName(QStringLiteral("label_9"));
+        label_10 = new QLabel(gridLayoutWidget_14);
+        label_10->setObjectName(QStringLiteral("label_10"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy);
-        label_9->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"	font: 87 8pt \"Arial Black\";\n"
+        sizePolicy.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
+        label_10->setSizePolicy(sizePolicy);
+        label_10->setStyleSheet(QLatin1String("QLabel{color:white;\n"
 "}\n"
 ""));
 
-        gridLayout_14->addWidget(label_9, 0, 1, 1, 1);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_14->addItem(horizontalSpacer_7, 1, 2, 1, 1);
+        gridLayout_15->addWidget(label_10, 0, 1, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout_14, 1, 0, 1, 6);
+        gridLayout_2->addLayout(gridLayout_15, 0, 5, 1, 1);
+
+        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_28, 0, 4, 1, 1);
 
         gridLayout_13 = new QGridLayout();
         gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
@@ -340,28 +338,6 @@ public:
 
         gridLayout_2->addItem(horizontalSpacer_9, 0, 1, 1, 1);
 
-        gridLayout_15 = new QGridLayout();
-        gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
-        spinBox_6 = new QSpinBox(gridLayoutWidget_14);
-        spinBox_6->setObjectName(QStringLiteral("spinBox_6"));
-        spinBox_6->setMaximum(999999999);
-        spinBox_6->setSingleStep(10);
-
-        gridLayout_15->addWidget(spinBox_6, 1, 1, 1, 1);
-
-        label_10 = new QLabel(gridLayoutWidget_14);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        sizePolicy.setHeightForWidth(label_10->sizePolicy().hasHeightForWidth());
-        label_10->setSizePolicy(sizePolicy);
-        label_10->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"}\n"
-""));
-
-        gridLayout_15->addWidget(label_10, 0, 1, 1, 1);
-
-
-        gridLayout_2->addLayout(gridLayout_15, 0, 5, 1, 1);
-
         lcdNumber_2 = new QLCDNumber(gridLayoutWidget_14);
         lcdNumber_2->setObjectName(QStringLiteral("lcdNumber_2"));
         lcdNumber_2->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
@@ -369,9 +345,80 @@ public:
 
         gridLayout_2->addWidget(lcdNumber_2, 0, 2, 1, 1);
 
+        gridLayout_14 = new QGridLayout();
+        gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
+        spinBox_5 = new QSpinBox(gridLayoutWidget_14);
+        spinBox_5->setObjectName(QStringLiteral("spinBox_5"));
+        spinBox_5->setMaximum(999999999);
+        spinBox_5->setSingleStep(10);
+
+        gridLayout_14->addWidget(spinBox_5, 1, 1, 1, 1);
+
+        label_9 = new QLabel(gridLayoutWidget_14);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
+        label_9->setSizePolicy(sizePolicy1);
+        label_9->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"	font: 87 8pt \"Arial Black\";\n"
+"}\n"
+""));
+
+        gridLayout_14->addWidget(label_9, 0, 1, 1, 1);
+
+        gridLayout_8 = new QGridLayout();
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
+        doubleButton_2 = new QPushButton(gridLayoutWidget_14);
+        doubleButton_2->setObjectName(QStringLiteral("doubleButton_2"));
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(doubleButton_2->sizePolicy().hasHeightForWidth());
+        doubleButton_2->setSizePolicy(sizePolicy2);
+        doubleButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_8->addWidget(doubleButton_2, 0, 0, 1, 1);
+
+        hitButton_2 = new QPushButton(gridLayoutWidget_14);
+        hitButton_2->setObjectName(QStringLiteral("hitButton_2"));
+        sizePolicy2.setHeightForWidth(hitButton_2->sizePolicy().hasHeightForWidth());
+        hitButton_2->setSizePolicy(sizePolicy2);
+        hitButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_8->addWidget(hitButton_2, 0, 1, 1, 1);
+
+
+        gridLayout_14->addLayout(gridLayout_8, 0, 0, 2, 1);
+
+        gridLayout_9 = new QGridLayout();
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
+        standButton_2 = new QPushButton(gridLayoutWidget_14);
+        standButton_2->setObjectName(QStringLiteral("standButton_2"));
+        sizePolicy2.setHeightForWidth(standButton_2->sizePolicy().hasHeightForWidth());
+        standButton_2->setSizePolicy(sizePolicy2);
+        standButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_9->addWidget(standButton_2, 0, 0, 1, 1);
+
+        splitButton_2 = new QPushButton(gridLayoutWidget_14);
+        splitButton_2->setObjectName(QStringLiteral("splitButton_2"));
+        sizePolicy2.setHeightForWidth(splitButton_2->sizePolicy().hasHeightForWidth());
+        splitButton_2->setSizePolicy(sizePolicy2);
+        splitButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_9->addWidget(splitButton_2, 0, 1, 1, 1);
+
+
+        gridLayout_14->addLayout(gridLayout_9, 0, 2, 2, 1);
+
+
+        gridLayout_2->addLayout(gridLayout_14, 1, 0, 1, 6);
+
         gridLayoutWidget_15 = new QWidget(centralwidget);
         gridLayoutWidget_15->setObjectName(QStringLiteral("gridLayoutWidget_15"));
-        gridLayoutWidget_15->setGeometry(QRect(700, 790, 276, 154));
+        gridLayoutWidget_15->setGeometry(QRect(60, 370, 497, 154));
         gridLayout_3 = new QGridLayout(gridLayoutWidget_15);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         gridLayout_3->setHorizontalSpacing(0);
@@ -419,37 +466,6 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer_11, 0, 1, 1, 1);
 
-        gridLayout_17 = new QGridLayout();
-        gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
-        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_17->addItem(horizontalSpacer_12, 1, 2, 1, 1);
-
-        spinBox_8 = new QSpinBox(gridLayoutWidget_15);
-        spinBox_8->setObjectName(QStringLiteral("spinBox_8"));
-        spinBox_8->setMaximum(999999999);
-        spinBox_8->setSingleStep(10);
-
-        gridLayout_17->addWidget(spinBox_8, 1, 1, 1, 1);
-
-        label_12 = new QLabel(gridLayoutWidget_15);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        sizePolicy.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy);
-        label_12->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"	font: 87 8pt \"Arial Black\";\n"
-"}\n"
-""));
-
-        gridLayout_17->addWidget(label_12, 0, 1, 1, 1);
-
-        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_17->addItem(horizontalSpacer_13, 1, 0, 1, 1);
-
-
-        gridLayout_3->addLayout(gridLayout_17, 1, 0, 1, 6);
-
         horizontalSpacer_25 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_3->addItem(horizontalSpacer_25, 0, 4, 1, 1);
@@ -483,13 +499,89 @@ public:
 
         gridLayout_3->addWidget(lcdNumber_3, 0, 2, 1, 1);
 
+        gridLayout_17 = new QGridLayout();
+        gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
+        spinBox_8 = new QSpinBox(gridLayoutWidget_15);
+        spinBox_8->setObjectName(QStringLiteral("spinBox_8"));
+        spinBox_8->setMaximum(999999999);
+        spinBox_8->setSingleStep(10);
+
+        gridLayout_17->addWidget(spinBox_8, 1, 1, 1, 1);
+
+        label_12 = new QLabel(gridLayoutWidget_15);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        sizePolicy1.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
+        label_12->setSizePolicy(sizePolicy1);
+        label_12->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"	font: 87 8pt \"Arial Black\";\n"
+"}\n"
+""));
+
+        gridLayout_17->addWidget(label_12, 0, 1, 1, 1);
+
+        gridLayout_12 = new QGridLayout();
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        doubleButton_3 = new QPushButton(gridLayoutWidget_15);
+        doubleButton_3->setObjectName(QStringLiteral("doubleButton_3"));
+        sizePolicy2.setHeightForWidth(doubleButton_3->sizePolicy().hasHeightForWidth());
+        doubleButton_3->setSizePolicy(sizePolicy2);
+        doubleButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_12->addWidget(doubleButton_3, 0, 0, 1, 1);
+
+        hitButton_3 = new QPushButton(gridLayoutWidget_15);
+        hitButton_3->setObjectName(QStringLiteral("hitButton_3"));
+        sizePolicy2.setHeightForWidth(hitButton_3->sizePolicy().hasHeightForWidth());
+        hitButton_3->setSizePolicy(sizePolicy2);
+        hitButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_12->addWidget(hitButton_3, 0, 1, 1, 1);
+
+
+        gridLayout_17->addLayout(gridLayout_12, 0, 0, 2, 1);
+
+        gridLayout_22 = new QGridLayout();
+        gridLayout_22->setObjectName(QStringLiteral("gridLayout_22"));
+        standButton_3 = new QPushButton(gridLayoutWidget_15);
+        standButton_3->setObjectName(QStringLiteral("standButton_3"));
+        sizePolicy2.setHeightForWidth(standButton_3->sizePolicy().hasHeightForWidth());
+        standButton_3->setSizePolicy(sizePolicy2);
+        standButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_22->addWidget(standButton_3, 0, 0, 1, 1);
+
+        splitButton_3 = new QPushButton(gridLayoutWidget_15);
+        splitButton_3->setObjectName(QStringLiteral("splitButton_3"));
+        sizePolicy2.setHeightForWidth(splitButton_3->sizePolicy().hasHeightForWidth());
+        splitButton_3->setSizePolicy(sizePolicy2);
+        splitButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_22->addWidget(splitButton_3, 0, 1, 1, 1);
+
+
+        gridLayout_17->addLayout(gridLayout_22, 0, 2, 2, 1);
+
+
+        gridLayout_3->addLayout(gridLayout_17, 1, 0, 1, 6);
+
         gridLayoutWidget_16 = new QWidget(centralwidget);
         gridLayoutWidget_16->setObjectName(QStringLiteral("gridLayoutWidget_16"));
-        gridLayoutWidget_16->setGeometry(QRect(1040, 790, 256, 154));
+        gridLayoutWidget_16->setGeometry(QRect(60, 550, 497, 154));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_16);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         gridLayout_4->setHorizontalSpacing(0);
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
+        lcdNumber_4 = new QLCDNumber(gridLayoutWidget_16);
+        lcdNumber_4->setObjectName(QStringLiteral("lcdNumber_4"));
+        lcdNumber_4->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
+        lcdNumber_4->setDigitCount(2);
+
+        gridLayout_4->addWidget(lcdNumber_4, 0, 2, 1, 1);
+
+        horizontalSpacer_26 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_26, 0, 4, 1, 1);
+
         gridLayout_19 = new QGridLayout();
         gridLayout_19->setObjectName(QStringLiteral("gridLayout_19"));
         label_14 = new QLabel(gridLayoutWidget_16);
@@ -511,6 +603,10 @@ public:
 
 
         gridLayout_4->addLayout(gridLayout_19, 0, 0, 1, 1);
+
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer_14, 0, 1, 1, 1);
 
         closeButton_4 = new QPushButton(gridLayoutWidget_16);
         closeButton_4->setObjectName(QStringLiteral("closeButton_4"));
@@ -550,30 +646,18 @@ public:
 
         gridLayout_4->addLayout(gridLayout_21, 0, 5, 1, 1);
 
-        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_14, 0, 1, 1, 1);
-
         gridLayout_20 = new QGridLayout();
         gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
-        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_20->addItem(horizontalSpacer_15, 1, 2, 1, 1);
-
         label_15 = new QLabel(gridLayoutWidget_16);
         label_15->setObjectName(QStringLiteral("label_15"));
-        sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
-        label_15->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
+        label_15->setSizePolicy(sizePolicy1);
         label_15->setStyleSheet(QLatin1String("QLabel{color:white;\n"
 "	font: 87 8pt \"Arial Black\";\n"
 "}\n"
 ""));
 
         gridLayout_20->addWidget(label_15, 0, 1, 1, 1);
-
-        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_20->addItem(horizontalSpacer_16, 1, 0, 1, 1);
 
         spinBox_11 = new QSpinBox(gridLayoutWidget_16);
         spinBox_11->setObjectName(QStringLiteral("spinBox_11"));
@@ -582,23 +666,54 @@ public:
 
         gridLayout_20->addWidget(spinBox_11, 1, 1, 1, 1);
 
+        gridLayout_26 = new QGridLayout();
+        gridLayout_26->setObjectName(QStringLiteral("gridLayout_26"));
+        doubleButton_4 = new QPushButton(gridLayoutWidget_16);
+        doubleButton_4->setObjectName(QStringLiteral("doubleButton_4"));
+        sizePolicy2.setHeightForWidth(doubleButton_4->sizePolicy().hasHeightForWidth());
+        doubleButton_4->setSizePolicy(sizePolicy2);
+        doubleButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_26->addWidget(doubleButton_4, 0, 0, 1, 1);
+
+        hitButton_4 = new QPushButton(gridLayoutWidget_16);
+        hitButton_4->setObjectName(QStringLiteral("hitButton_4"));
+        sizePolicy2.setHeightForWidth(hitButton_4->sizePolicy().hasHeightForWidth());
+        hitButton_4->setSizePolicy(sizePolicy2);
+        hitButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_26->addWidget(hitButton_4, 0, 1, 1, 1);
+
+
+        gridLayout_20->addLayout(gridLayout_26, 0, 0, 2, 1);
+
+        gridLayout_30 = new QGridLayout();
+        gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
+        standButton_4 = new QPushButton(gridLayoutWidget_16);
+        standButton_4->setObjectName(QStringLiteral("standButton_4"));
+        sizePolicy2.setHeightForWidth(standButton_4->sizePolicy().hasHeightForWidth());
+        standButton_4->setSizePolicy(sizePolicy2);
+        standButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_30->addWidget(standButton_4, 0, 0, 1, 1);
+
+        splitButton_4 = new QPushButton(gridLayoutWidget_16);
+        splitButton_4->setObjectName(QStringLiteral("splitButton_4"));
+        sizePolicy2.setHeightForWidth(splitButton_4->sizePolicy().hasHeightForWidth());
+        splitButton_4->setSizePolicy(sizePolicy2);
+        splitButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_30->addWidget(splitButton_4, 0, 1, 1, 1);
+
+
+        gridLayout_20->addLayout(gridLayout_30, 0, 2, 2, 1);
+
 
         gridLayout_4->addLayout(gridLayout_20, 1, 0, 1, 6);
 
-        horizontalSpacer_26 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_26, 0, 4, 1, 1);
-
-        lcdNumber_4 = new QLCDNumber(gridLayoutWidget_16);
-        lcdNumber_4->setObjectName(QStringLiteral("lcdNumber_4"));
-        lcdNumber_4->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
-        lcdNumber_4->setDigitCount(2);
-
-        gridLayout_4->addWidget(lcdNumber_4, 0, 2, 1, 1);
-
         gridLayoutWidget_17 = new QWidget(centralwidget);
         gridLayoutWidget_17->setObjectName(QStringLiteral("gridLayoutWidget_17"));
-        gridLayoutWidget_17->setGeometry(QRect(1230, 570, 241, 154));
+        gridLayoutWidget_17->setGeometry(QRect(50, 730, 497, 161));
         gridLayout_5 = new QGridLayout(gridLayoutWidget_17);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         gridLayout_5->setHorizontalSpacing(0);
@@ -633,6 +748,23 @@ public:
 
         gridLayout_5->addLayout(gridLayout_23, 0, 0, 1, 1);
 
+        closeButton_5 = new QPushButton(gridLayoutWidget_17);
+        closeButton_5->setObjectName(QStringLiteral("closeButton_5"));
+        closeButton_5->setMinimumSize(QSize(20, 20));
+        closeButton_5->setMaximumSize(QSize(20, 20));
+        closeButton_5->setStyleSheet(QLatin1String("\n"
+"QPushButton\n"
+"{\n"
+"	color: white;\n"
+"    background: rgb(66, 20, 20);\n"
+"}\n"
+"QPushButton:hover  \n"
+"{\n"
+"    background: rgb(98, 8, 8);\n"
+"}"));
+
+        gridLayout_5->addWidget(closeButton_5, 0, 3, 1, 1);
+
         gridLayout_25 = new QGridLayout();
         gridLayout_25->setObjectName(QStringLiteral("gridLayout_25"));
         spinBox_15 = new QSpinBox(gridLayoutWidget_17);
@@ -655,26 +787,25 @@ public:
 
         gridLayout_5->addLayout(gridLayout_25, 0, 5, 1, 1);
 
+        lcdNumber_5 = new QLCDNumber(gridLayoutWidget_17);
+        lcdNumber_5->setObjectName(QStringLiteral("lcdNumber_5"));
+        lcdNumber_5->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
+        lcdNumber_5->setDigitCount(2);
+
+        gridLayout_5->addWidget(lcdNumber_5, 0, 2, 1, 1);
+
         gridLayout_24 = new QGridLayout();
         gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
-        horizontalSpacer_18 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_24->addItem(horizontalSpacer_18, 1, 2, 1, 1);
-
         label_18 = new QLabel(gridLayoutWidget_17);
         label_18->setObjectName(QStringLiteral("label_18"));
-        sizePolicy.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
-        label_18->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
+        label_18->setSizePolicy(sizePolicy1);
         label_18->setStyleSheet(QLatin1String("QLabel{color:white;\n"
 "	font: 87 8pt \"Arial Black\";\n"
 "}\n"
 ""));
 
         gridLayout_24->addWidget(label_18, 0, 1, 1, 1);
-
-        horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_24->addItem(horizontalSpacer_19, 1, 0, 1, 1);
 
         spinBox_14 = new QSpinBox(gridLayoutWidget_17);
         spinBox_14->setObjectName(QStringLiteral("spinBox_14"));
@@ -683,36 +814,54 @@ public:
 
         gridLayout_24->addWidget(spinBox_14, 1, 1, 1, 1);
 
+        gridLayout_31 = new QGridLayout();
+        gridLayout_31->setObjectName(QStringLiteral("gridLayout_31"));
+        doubleButton_5 = new QPushButton(gridLayoutWidget_17);
+        doubleButton_5->setObjectName(QStringLiteral("doubleButton_5"));
+        sizePolicy2.setHeightForWidth(doubleButton_5->sizePolicy().hasHeightForWidth());
+        doubleButton_5->setSizePolicy(sizePolicy2);
+        doubleButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_31->addWidget(doubleButton_5, 0, 0, 1, 1);
+
+        hitButton_5 = new QPushButton(gridLayoutWidget_17);
+        hitButton_5->setObjectName(QStringLiteral("hitButton_5"));
+        sizePolicy2.setHeightForWidth(hitButton_5->sizePolicy().hasHeightForWidth());
+        hitButton_5->setSizePolicy(sizePolicy2);
+        hitButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_31->addWidget(hitButton_5, 0, 1, 1, 1);
+
+
+        gridLayout_24->addLayout(gridLayout_31, 0, 0, 2, 1);
+
+        gridLayout_32 = new QGridLayout();
+        gridLayout_32->setObjectName(QStringLiteral("gridLayout_32"));
+        splitButton_5 = new QPushButton(gridLayoutWidget_17);
+        splitButton_5->setObjectName(QStringLiteral("splitButton_5"));
+        sizePolicy2.setHeightForWidth(splitButton_5->sizePolicy().hasHeightForWidth());
+        splitButton_5->setSizePolicy(sizePolicy2);
+        splitButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_32->addWidget(splitButton_5, 0, 1, 1, 1);
+
+        standButton_5 = new QPushButton(gridLayoutWidget_17);
+        standButton_5->setObjectName(QStringLiteral("standButton_5"));
+        sizePolicy2.setHeightForWidth(standButton_5->sizePolicy().hasHeightForWidth());
+        standButton_5->setSizePolicy(sizePolicy2);
+        standButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_32->addWidget(standButton_5, 0, 0, 1, 1);
+
+
+        gridLayout_24->addLayout(gridLayout_32, 0, 2, 2, 1);
+
 
         gridLayout_5->addLayout(gridLayout_24, 1, 0, 1, 6);
 
-        closeButton_5 = new QPushButton(gridLayoutWidget_17);
-        closeButton_5->setObjectName(QStringLiteral("closeButton_5"));
-        closeButton_5->setMinimumSize(QSize(20, 20));
-        closeButton_5->setMaximumSize(QSize(20, 20));
-        closeButton_5->setStyleSheet(QLatin1String("\n"
-"QPushButton\n"
-"{\n"
-"	color: white;\n"
-"    background: rgb(66, 20, 20);\n"
-"}\n"
-"QPushButton:hover  \n"
-"{\n"
-"    background: rgb(98, 8, 8);\n"
-"}"));
-
-        gridLayout_5->addWidget(closeButton_5, 0, 3, 1, 1);
-
-        lcdNumber_5 = new QLCDNumber(gridLayoutWidget_17);
-        lcdNumber_5->setObjectName(QStringLiteral("lcdNumber_5"));
-        lcdNumber_5->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
-        lcdNumber_5->setDigitCount(2);
-
-        gridLayout_5->addWidget(lcdNumber_5, 0, 2, 1, 1);
-
         gridLayoutWidget_18 = new QWidget(centralwidget);
         gridLayoutWidget_18->setObjectName(QStringLiteral("gridLayoutWidget_18"));
-        gridLayoutWidget_18->setGeometry(QRect(1330, 800, 249, 154));
+        gridLayoutWidget_18->setGeometry(QRect(50, 930, 497, 154));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_18);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setHorizontalSpacing(0);
@@ -739,21 +888,13 @@ public:
 
         gridLayout_28 = new QGridLayout();
         gridLayout_28->setObjectName(QStringLiteral("gridLayout_28"));
-        horizontalSpacer_21 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_28->addItem(horizontalSpacer_21, 1, 2, 1, 1);
-
         label_21 = new QLabel(gridLayoutWidget_18);
         label_21->setObjectName(QStringLiteral("label_21"));
-        sizePolicy.setHeightForWidth(label_21->sizePolicy().hasHeightForWidth());
-        label_21->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(label_21->sizePolicy().hasHeightForWidth());
+        label_21->setSizePolicy(sizePolicy1);
         label_21->setStyleSheet(QStringLiteral("color:white; font: 87 8pt \"Arial Black\";"));
 
         gridLayout_28->addWidget(label_21, 0, 1, 1, 1);
-
-        horizontalSpacer_22 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_28->addItem(horizontalSpacer_22, 1, 0, 1, 1);
 
         spinBox_17 = new QSpinBox(gridLayoutWidget_18);
         spinBox_17->setObjectName(QStringLiteral("spinBox_17"));
@@ -761,6 +902,48 @@ public:
         spinBox_17->setSingleStep(10);
 
         gridLayout_28->addWidget(spinBox_17, 1, 1, 1, 1);
+
+        gridLayout_33 = new QGridLayout();
+        gridLayout_33->setObjectName(QStringLiteral("gridLayout_33"));
+        doubleButton_6 = new QPushButton(gridLayoutWidget_18);
+        doubleButton_6->setObjectName(QStringLiteral("doubleButton_6"));
+        sizePolicy2.setHeightForWidth(doubleButton_6->sizePolicy().hasHeightForWidth());
+        doubleButton_6->setSizePolicy(sizePolicy2);
+        doubleButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_33->addWidget(doubleButton_6, 0, 0, 1, 1);
+
+        hitButton_6 = new QPushButton(gridLayoutWidget_18);
+        hitButton_6->setObjectName(QStringLiteral("hitButton_6"));
+        sizePolicy2.setHeightForWidth(hitButton_6->sizePolicy().hasHeightForWidth());
+        hitButton_6->setSizePolicy(sizePolicy2);
+        hitButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_33->addWidget(hitButton_6, 0, 1, 1, 1);
+
+
+        gridLayout_28->addLayout(gridLayout_33, 0, 0, 2, 1);
+
+        gridLayout_34 = new QGridLayout();
+        gridLayout_34->setObjectName(QStringLiteral("gridLayout_34"));
+        standButton_6 = new QPushButton(gridLayoutWidget_18);
+        standButton_6->setObjectName(QStringLiteral("standButton_6"));
+        sizePolicy2.setHeightForWidth(standButton_6->sizePolicy().hasHeightForWidth());
+        standButton_6->setSizePolicy(sizePolicy2);
+        standButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_34->addWidget(standButton_6, 0, 0, 1, 1);
+
+        splitButton_6 = new QPushButton(gridLayoutWidget_18);
+        splitButton_6->setObjectName(QStringLiteral("splitButton_6"));
+        sizePolicy2.setHeightForWidth(splitButton_6->sizePolicy().hasHeightForWidth());
+        splitButton_6->setSizePolicy(sizePolicy2);
+        splitButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_34->addWidget(splitButton_6, 0, 1, 1, 1);
+
+
+        gridLayout_28->addLayout(gridLayout_34, 0, 2, 2, 1);
 
 
         gridLayout_6->addLayout(gridLayout_28, 1, 0, 1, 6);
@@ -885,17 +1068,17 @@ public:
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(230, 520, 251, 111));
+        gridLayoutWidget->setGeometry(QRect(850, 290, 251, 111));
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
         labelBalance = new QLabel(gridLayoutWidget);
         labelBalance->setObjectName(QStringLiteral("labelBalance"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
-        labelBalance->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
+        labelBalance->setSizePolicy(sizePolicy3);
         labelBalance->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -905,11 +1088,11 @@ public:
 
         BalanceAmount = new QLCDNumber(gridLayoutWidget);
         BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(2);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
-        BalanceAmount->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(2);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
+        BalanceAmount->setSizePolicy(sizePolicy4);
         BalanceAmount->setStyleSheet(QStringLiteral(""));
         BalanceAmount->setSmallDecimalPoint(true);
         BalanceAmount->setDigitCount(6);
@@ -962,7 +1145,7 @@ public:
 
         gridLayoutWidget_3 = new QWidget(centralwidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(60, 630, 293, 131));
+        gridLayoutWidget_3->setGeometry(QRect(50, 50, 497, 131));
         gridLayout_1 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_1->setObjectName(QStringLiteral("gridLayout_1"));
         gridLayout_1->setHorizontalSpacing(0);
@@ -1013,14 +1196,6 @@ public:
 
         gridLayout_49 = new QGridLayout();
         gridLayout_49->setObjectName(QStringLiteral("gridLayout_49"));
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_49->addItem(horizontalSpacer_5, 1, 2, 1, 1);
-
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_49->addItem(horizontalSpacer_6, 1, 4, 1, 1);
-
         spinBox_2 = new QSpinBox(gridLayoutWidget_3);
         spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
         spinBox_2->setMaximum(999999999);
@@ -1030,14 +1205,56 @@ public:
 
         label_7 = new QLabel(gridLayoutWidget_3);
         label_7->setObjectName(QStringLiteral("label_7"));
-        sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy1);
         label_7->setStyleSheet(QLatin1String("QLabel{color:white;\n"
 "	font: 87 8pt \"Arial Black\";\n"
 "}\n"
 ""));
 
         gridLayout_49->addWidget(label_7, 0, 3, 1, 1);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        standButton_1 = new QPushButton(gridLayoutWidget_3);
+        standButton_1->setObjectName(QStringLiteral("standButton_1"));
+        sizePolicy2.setHeightForWidth(standButton_1->sizePolicy().hasHeightForWidth());
+        standButton_1->setSizePolicy(sizePolicy2);
+        standButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout->addWidget(standButton_1, 0, 0, 1, 1);
+
+        splitButton_1 = new QPushButton(gridLayoutWidget_3);
+        splitButton_1->setObjectName(QStringLiteral("splitButton_1"));
+        sizePolicy2.setHeightForWidth(splitButton_1->sizePolicy().hasHeightForWidth());
+        splitButton_1->setSizePolicy(sizePolicy2);
+        splitButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout->addWidget(splitButton_1, 0, 1, 1, 1);
+
+
+        gridLayout_49->addLayout(gridLayout, 0, 4, 2, 1);
+
+        gridLayout_7 = new QGridLayout();
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        doubleButton_1 = new QPushButton(gridLayoutWidget_3);
+        doubleButton_1->setObjectName(QStringLiteral("doubleButton_1"));
+        sizePolicy2.setHeightForWidth(doubleButton_1->sizePolicy().hasHeightForWidth());
+        doubleButton_1->setSizePolicy(sizePolicy2);
+        doubleButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_7->addWidget(doubleButton_1, 0, 0, 1, 1);
+
+        hitButton_1 = new QPushButton(gridLayoutWidget_3);
+        hitButton_1->setObjectName(QStringLiteral("hitButton_1"));
+        sizePolicy2.setHeightForWidth(hitButton_1->sizePolicy().hasHeightForWidth());
+        hitButton_1->setSizePolicy(sizePolicy2);
+        hitButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+
+        gridLayout_7->addWidget(hitButton_1, 0, 1, 1, 1);
+
+
+        gridLayout_49->addLayout(gridLayout_7, 0, 2, 2, 1);
 
 
         gridLayout_1->addLayout(gridLayout_49, 2, 0, 1, 6);
@@ -1085,8 +1302,8 @@ public:
         gridLayout_balance_2->setContentsMargins(0, 0, 0, 0);
         TotalBetAmount = new QLCDNumber(gridLayoutWidget_2);
         TotalBetAmount->setObjectName(QStringLiteral("TotalBetAmount"));
-        sizePolicy2.setHeightForWidth(TotalBetAmount->sizePolicy().hasHeightForWidth());
-        TotalBetAmount->setSizePolicy(sizePolicy2);
+        sizePolicy4.setHeightForWidth(TotalBetAmount->sizePolicy().hasHeightForWidth());
+        TotalBetAmount->setSizePolicy(sizePolicy4);
         TotalBetAmount->setStyleSheet(QStringLiteral(""));
         TotalBetAmount->setDigitCount(6);
         TotalBetAmount->setProperty("value", QVariant(0));
@@ -1096,8 +1313,8 @@ public:
 
         labelTotalBet = new QLabel(gridLayoutWidget_2);
         labelTotalBet->setObjectName(QStringLiteral("labelTotalBet"));
-        sizePolicy1.setHeightForWidth(labelTotalBet->sizePolicy().hasHeightForWidth());
-        labelTotalBet->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(labelTotalBet->sizePolicy().hasHeightForWidth());
+        labelTotalBet->setSizePolicy(sizePolicy3);
         labelTotalBet->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -1122,11 +1339,11 @@ public:
         DealNow = new QPushButton(centralwidget);
         DealNow->setObjectName(QStringLiteral("DealNow"));
         DealNow->setGeometry(QRect(800, 970, 251, 81));
-        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(DealNow->sizePolicy().hasHeightForWidth());
-        DealNow->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(DealNow->sizePolicy().hasHeightForWidth());
+        DealNow->setSizePolicy(sizePolicy5);
         QFont font1;
         font1.setPointSize(20);
         font1.setBold(true);
@@ -1179,7 +1396,6 @@ public:
         dealerSumCounter->setDigitCount(2);
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
-        pushButton->raise();
         Exit->raise();
         gridLayoutWidget_14->raise();
         gridLayoutWidget_15->raise();
@@ -1202,7 +1418,7 @@ public:
         dealerSumCounter->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 2132, 26));
+        menubar->setGeometry(QRect(0, 0, 2110, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -1219,26 +1435,45 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
         Exit->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
-        label_9->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        label_10->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_2->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
-        label_10->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
+        label_9->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        doubleButton_2->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_2->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        standButton_2->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        splitButton_2->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
         closeButton_3->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_11->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
-        label_12->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         label_13->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
+        label_12->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        doubleButton_3->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_3->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        standButton_3->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        splitButton_3->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
         label_14->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_4->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_16->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_15->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        doubleButton_4->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_4->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        standButton_4->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        splitButton_4->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
         label_17->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
+        closeButton_5->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_19->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_18->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        closeButton_5->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
+        doubleButton_5->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_5->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        splitButton_5->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
+        standButton_5->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         label_20->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_21->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        doubleButton_6->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_6->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        standButton_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        splitButton_6->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
         label_22->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         closeButton_6->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         multiSeatButton_1->setText(QString());
@@ -1251,6 +1486,10 @@ public:
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
+        standButton_1->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        splitButton_1->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
+        doubleButton_1->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
+        hitButton_1->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         labelTotalBet->setText(QApplication::translate("MainWindow", "Total bet", Q_NULLPTR));
         CentralLabel->setText(QApplication::translate("MainWindow", "TAKE A SEAT", Q_NULLPTR));
