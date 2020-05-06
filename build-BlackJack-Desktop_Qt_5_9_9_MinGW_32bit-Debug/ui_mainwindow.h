@@ -155,6 +155,8 @@ public:
     QPushButton *DealNow;
     QLCDNumber *lcdTimer;
     QPushButton *RepeatButton;
+    QPushButton *DoubleButton;
+    QLCDNumber *dealerSumCounter;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -1169,6 +1171,24 @@ public:
 "QPushButton:hover{\n"
 "			border-image: url(images/repeat_hover.png);\n"
 "}"));
+        DoubleButton = new QPushButton(centralwidget);
+        DoubleButton->setObjectName(QStringLiteral("DoubleButton"));
+        DoubleButton->setGeometry(QRect(705, 730, 81, 81));
+        DoubleButton->setStyleSheet(QLatin1String("QPushButton {\n"
+"            border-image: url(images/double.png);\n"
+"			color: blue;\n"
+"         }\n"
+"QPushButton:hover{\n"
+"			border-image: url(images/double_hover.png);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"		border-image: url(images/double_pressed.png);\n"
+"}"));
+        dealerSumCounter = new QLCDNumber(centralwidget);
+        dealerSumCounter->setObjectName(QStringLiteral("dealerSumCounter"));
+        dealerSumCounter->setGeometry(QRect(340, 110, 37, 47));
+        dealerSumCounter->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
+        dealerSumCounter->setDigitCount(2);
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         pushButton->raise();
@@ -1190,6 +1210,8 @@ public:
         DealNow->raise();
         lcdTimer->raise();
         RepeatButton->raise();
+        DoubleButton->raise();
+        dealerSumCounter->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2132, 26));
@@ -1246,6 +1268,7 @@ public:
         CentralLabel->setText(QApplication::translate("MainWindow", "TAKE A SEAT", Q_NULLPTR));
         DealNow->setText(QApplication::translate("MainWindow", "DEAL NOW", Q_NULLPTR));
         RepeatButton->setText(QString());
+        DoubleButton->setText(QString());
     } // retranslateUi
 
 };

@@ -76,6 +76,8 @@ private slots:
 
     void on_RepeatButton_clicked();
 
+    void on_DoubleButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -108,7 +110,11 @@ private:
         int aceCount = 0,prevBetPair = 0,prevBetMain = 10,prevBetTriple = 0;//prevbet=0
     };
     TypeForSeat seat[6];
+    QVector<Card*> dealerCards;
+    QPropertyAnimation* dealerSumCounterAnimation;
+    int dealerAceCount = 0;
     void HighlightCentralLabel();
+    void RecountSum(QLCDNumber* sumCounter,Card *card,int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;
 
 

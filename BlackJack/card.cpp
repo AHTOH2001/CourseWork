@@ -8,11 +8,11 @@ Card::Card(int key, QWidget *parent) : QWidget(parent)
     i = key%52%13;
     j = key%52/13;
     image = ((MainWindow*)parent)->cardsList[i][j];
-    if (i<=8) value = i+2;
+    if (i<=8) _value = i+2;
     else
-        if (i<=11) value = 10;
-        else value = 11;
-    suit = j+1;
+        if (i<=11) _value = 10;
+        else _value = 11;
+    _suit = j+1;
     CardAnimation = new QPropertyAnimation(this, "geometry");
     //QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect();
     //effect->setBlurRadius(5);
@@ -20,9 +20,27 @@ Card::Card(int key, QWidget *parent) : QWidget(parent)
     //this->setGraphicsEffect(effect);
 }
 
+int Card::value()
+{
+    if (isOpen) return _value;
+            return 0;
+}
+
+int Card::suit()
+{
+    if (isOpen) return  _suit;
+        return -1;
+}
+
 void Card::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
+    if (isOpen)
     painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+    else
+    {
+        QImage tempImage("images/cards/closed");
+        painter.drawImage(0,0,tempImage.scaled(width(), height(),Qt::IgnoreAspectRatio));
+    }
     Q_UNUSED(event);
 }
