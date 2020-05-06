@@ -544,7 +544,7 @@ QPushButton:hover
    <widget class="QWidget" name="gridLayoutWidget_16">
     <property name="geometry">
      <rect>
-      <x>950</x>
+      <x>1040</x>
       <y>790</y>
       <width>256</width>
       <height>154</height>
@@ -953,8 +953,8 @@ QPushButton:hover
    <widget class="QWidget" name="gridLayoutWidget_18">
     <property name="geometry">
      <rect>
-      <x>1290</x>
-      <y>750</y>
+      <x>1330</x>
+      <y>800</y>
       <width>249</width>
       <height>154</height>
      </rect>
@@ -974,9 +974,7 @@ QPushButton:hover
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-}
-</string>
+          <string notr="true">color:white;</string>
          </property>
          <property name="text">
           <string>Perfect pair:</string>
@@ -1019,10 +1017,7 @@ QPushButton:hover
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-	font: 87 8pt &quot;Arial Black&quot;;
-}
-</string>
+          <string notr="true">color:white; font: 87 8pt &quot;Arial Black&quot;;</string>
          </property>
          <property name="text">
           <string>Main bet:</string>
@@ -1075,8 +1070,7 @@ QPushButton:hover
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QLabel{color:white;
-}</string>
+          <string notr="true">color:white;</string>
          </property>
          <property name="text">
           <string>21+3:</string>
@@ -1113,16 +1107,10 @@ QPushButton:hover
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-QPushButton
-{
-	color: white;
-    background: rgb(66, 20, 20);
-}
+        <string notr="true">QPushButton
+{color: white; background: rgb(66, 20, 20);}
 QPushButton:hover  
-{
-    background: rgb(98, 8, 8);
-}</string>
+{background: rgb(98, 8, 8);}</string>
        </property>
        <property name="text">
         <string>X</string>
@@ -1799,8 +1787,8 @@ QPushButton:hover{
    <widget class="QPushButton" name="DoubleButton">
     <property name="geometry">
      <rect>
-      <x>705</x>
-      <y>730</y>
+      <x>780</x>
+      <y>690</y>
       <width>81</width>
       <height>81</height>
      </rect>
@@ -1824,8 +1812,8 @@ QPushButton:pressed{
    <widget class="QLCDNumber" name="dealerSumCounter">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>110</y>
+      <x>580</x>
+      <y>780</y>
       <width>37</width>
       <height>47</height>
      </rect>

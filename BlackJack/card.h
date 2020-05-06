@@ -13,13 +13,15 @@ public:
     QPropertyAnimation *CardAnimation;
     int value();
     int suit();
+    int number();
     bool isOpen = true;
+
 signals:
 
 private:
     void paintEvent(QPaintEvent *event) override;
     QImage image;
-    int i,j,_value,_suit;
+    int i,j,_value,_suit,_number;
 
 };
 

@@ -94,7 +94,7 @@ private:
     double koefW=1,koefH=1;
     int tick = 0;
     void Hit(int i);
-    bool isSeat = false,isNowPlay = false;
+    bool isSeat = false,isNowPlay = false, isDealingEnd = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {513,573,624,625,575,512};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
@@ -106,16 +106,18 @@ private:
         QWidget *underSeat;
         QPushButton *closeButton;
         QVector<Card*> cards;
-        QLCDNumber* sumCounter;        
-        int aceCount = 0,prevBetPair = 0,prevBetMain = 10,prevBetTriple = 0;//prevbet=0
+        QLCDNumber *sumCounter;
+        QLabel *pairStatus, *tripleStatus;
+        int aceCount = 0,prevBetPair = 10,prevBetMain = 10,prevBetTriple = 10;//prevbet=0
     };
     TypeForSeat seat[6];
     QVector<Card*> dealerCards;
     QPropertyAnimation* dealerSumCounterAnimation;
     int dealerAceCount = 0;
-    void HighlightCentralLabel();
+    void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 800);
     void RecountSum(QLCDNumber* sumCounter,Card *card,int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;
+    void CountExtraBets();
 
 
 };

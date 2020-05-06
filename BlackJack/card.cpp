@@ -7,6 +7,7 @@ Card::Card(int key, QWidget *parent) : QWidget(parent)
 
     i = key%52%13;
     j = key%52/13;
+    _number = i+2;
     image = ((MainWindow*)parent)->cardsList[i][j];
     if (i<=8) _value = i+2;
     else
@@ -23,20 +24,26 @@ Card::Card(int key, QWidget *parent) : QWidget(parent)
 int Card::value()
 {
     if (isOpen) return _value;
-            return 0;
+    return 0;
 }
 
 int Card::suit()
 {
     if (isOpen) return  _suit;
-        return -1;
+    return -1;
+}
+
+int Card::number()
+{
+    if (isOpen) return _number;
+    return 0;
 }
 
 void Card::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     if (isOpen)
-    painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
     else
     {
         QImage tempImage("images/cards/closed");

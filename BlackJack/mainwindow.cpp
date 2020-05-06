@@ -112,6 +112,20 @@ MainWindow::MainWindow(QWidget *parent)
         timersForColor[i.triple] = new QTimer();
         connect(i.triple,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
         connect(i.triple,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
+        i.pairStatus = new QLabel(ui->centralwidget);
+        i.pairStatus->setStyleSheet("QLabel{\n"
+                                    "color:  rgb(102,180,50);\n"
+                                    "padding: 2px;\n"
+                                    "border: 3px solid rgb(231,181,77);\n"
+                                    "border-radius: 31px;\n}");
+        i.pairStatus->setAlignment(Qt::AlignCenter);
+        i.tripleStatus = new QLabel(ui->centralwidget);
+        i.tripleStatus->setStyleSheet("QLabel{\n"
+                                      "color:  rgb(102,180,50);\n"
+                                      "padding: 2px;\n"
+                                      "border: 3px solid rgb(231,181,77);\n"
+                                      "border-radius: 31px;\n}");
+        i.tripleStatus->setAlignment(Qt::AlignCenter);
     }
     QStringList temp = {"€","$","£","₽","Br","₪","￥"};
     ui->comboBoxCurrency->addItems(temp);
@@ -127,24 +141,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::HighlightCentralLabel()
-{
-    ui->CentralLabel->setStyleSheet("QLabel{"
-                                    "color:  rgb(102,180,50);"
-                                    "padding: 2px;"
-                                    "border: 3px inset red;"
-                                    "border-radius: 31px;}");
+void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
+{        
+    label->setStyleSheet("QLabel{"
+                         "color:  rgb(102,180,50);"
+                         "padding: 2px;"
+                         "border: 3px inset red;"
+                         "border-radius: 31px;}");
     QTimer *timer = new QTimer();
     QObject *context = new QObject(this);
     connect(timer, &QTimer::timeout,context, [=]() {
-        ui->CentralLabel->setStyleSheet("QLabel{"
-                                        "color:  rgb(102,180,50);"
-                                        "padding: 2px;"
-                                        "border: 3px solid rgb(231,181,77);"
-                                        "border-radius: 31px;}");
+        label->setStyleSheet("QLabel{"
+                             "color:  rgb(102,180,50);"
+                             "padding: 2px;"
+                             "border: 3px solid rgb(231,181,77);"
+                             "border-radius: 31px;}");
+        if (hideLater)
+            label->hide();
         delete context;
     } );
-    timer->start(800);
+    timer->start(timeMs);
+    label->raise();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -196,7 +213,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
         if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
         {            
             ui->CentralLabel->setText("TAKE A SEAT");
-            HighlightCentralLabel();
+            HighlightLabel(ui->CentralLabel);
         }        
         ui->RepeatButton->hide();
         ui->DoubleButton->hide();
@@ -214,7 +231,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
             ui->RepeatButton->show();
             ui->DoubleButton->show();
             ui->CentralLabel->setText("PLACE YOUR BETS");
-            HighlightCentralLabel();
+            HighlightLabel(ui->CentralLabel);
         }
         for (int i = 0;i<6;i++)
             if (!seat[i].isSeat)
@@ -234,6 +251,13 @@ void MainWindow::paintEvent(QPaintEvent *event)
                         card->CardAnimation->setEndValue(QRect((seatX[i]+counter*15)*koefW,(seatY[i]-counter*30)*koefH,92*koefW,135*koefH));
 
                     counter++;
+                    int tempW = seat[i].pairStatus->text().count()*20;
+                    int tempH = 65;
+                    seat[i].pairStatus->setFont(QFont("Segoe Print", 20*koefW));
+                    seat[i].pairStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(tempH+31))*koefH,tempW*koefW,tempH*koefH);
+                    tempW = seat[i].tripleStatus->text().count()*20;
+                    seat[i].tripleStatus->setFont(QFont("Segoe Print", 20*koefW));
+                    seat[i].tripleStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(tempH+31))*koefH,tempW*koefW,tempH*koefH);
                 }
             }
         int counter = 0;
@@ -252,13 +276,13 @@ void MainWindow::paintEvent(QPaintEvent *event)
             counter++;
         }
     }
-    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,765*koefH,251*koefW,111*koefH));
+    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,251*koefW,111*koefH));
     ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
     ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
     ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
     ui->comboBoxCurrency->setMaximumSize(80*koefW,65*koefH);
 
-    ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,765*koefH,161*koefW,111*koefH));
+    ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,760*koefH,161*koefW,111*koefH));
     ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
     ui->RepeatButton->setGeometry(705*koefW,620*koefH,81*koefW,81*koefH);
     ui->DoubleButton->setGeometry(705*koefW,730*koefH,81*koefW,81*koefH);
@@ -533,13 +557,13 @@ void MainWindow::on_DealNow_clicked()
     ui->DealNow->hide();
     ui->DoubleButton->hide();
     ui->CentralLabel->setText("BETS CLOSED AND ACCEPTED");
-    HighlightCentralLabel();
+    HighlightLabel(ui->CentralLabel);
     //TODO cool background effects
     QTimer *timer = new QTimer();
     QObject *context = new QObject(this);
     connect(timer, &QTimer::timeout,context, [=]() {
         ui->CentralLabel->setText("DEALING");
-        HighlightCentralLabel();
+        HighlightLabel(ui->CentralLabel);
         Dealing();
         delete context;
     });
@@ -577,6 +601,11 @@ void MainWindow::HitNext()
     if (QueueForHit.empty())
     {
         TimerForHit->stop();
+        if (!isDealingEnd)
+        {
+            isDealingEnd = true;
+            CountExtraBets();
+        }
         return;
     }
     Card *card = new Card(rand(),this);
@@ -685,8 +714,6 @@ void MainWindow::on_RepeatButton_clicked()
             seat[i].triple->setValue(seat[i].prevBetTriple);
             ValueChangedByUserSlot(seat[i].triple);
         }
-
-
 }
 
 void MainWindow::on_DoubleButton_clicked()
@@ -702,6 +729,115 @@ void MainWindow::on_DoubleButton_clicked()
             ValueChangedByUserSlot(seat[i].triple);
         }
 }
+
+void MainWindow::CountExtraBets()
+{
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+        {
+            Card *card1 = seat[i].cards[0];
+            Card *card2 = seat[i].cards[1];
+            Card *card3 = dealerCards[0];
+            bool isPair = false,isTriple = false;
+
+            if (card1->number()==card2->number())
+            {
+                if (card1->suit()==card2->suit())
+                {
+                    seat[i].perfectPair->setValue(seat[i].perfectPair->value()*26);
+                    isPair = true;
+                    seat[i].pairStatus->setText("Perfect Pair");
+                }
+                else
+                    if (card1->suit() % 2 == card2->suit() % 2)
+                    {
+                        seat[i].perfectPair->setValue(seat[i].perfectPair->value()*13);
+                        isPair = true;
+                        seat[i].pairStatus->setText("Coloured Pair");
+                    }
+                    else
+                    {
+                        seat[i].perfectPair->setValue(seat[i].perfectPair->value()*7);
+                        isPair = true;
+                        seat[i].pairStatus->setText("Mixed Pair");
+                    }
+            }
+            else
+                seat[i].perfectPair->setValue(0);
+
+            if (card1->number()>card2->number()) qSwap(card1,card2);
+            if (card1->number()>card3->number()) qSwap(card1,card3);
+            if (card2->number()>card3->number()) qSwap(card2,card3);
+
+            if (card1->number()==card2->number() && card2->number()==card3->number())
+            {
+                if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
+                {
+                    seat[i].triple->setValue(seat[i].triple->value()*101);
+                    isTriple = true;
+                    seat[i].tripleStatus->setText("Suited Trips");
+                }
+                else
+                {
+                    seat[i].triple->setValue(seat[i].triple->value()*31);
+                    isTriple = true;
+                    seat[i].tripleStatus->setText("Three of a Kind");
+                }
+            }
+            else
+                if ((card1->number()+1==card2->number() && card2->number()+1==card3->number()) || (card1->number()==2 && card2->number()==3 && card3->number()==14))
+                {
+                    if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
+                    {
+                        seat[i].triple->setValue(seat[i].triple->value()*41);
+                        isTriple = true;
+                        seat[i].tripleStatus->setText("Straight Flush");
+                    }
+                    else
+                    {
+                        seat[i].triple->setValue(seat[i].triple->value()*11);
+                        isTriple = true;
+                        seat[i].tripleStatus->setText("Straight");
+                    }
+                }
+                else
+                    if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
+                    {
+                        seat[i].triple->setValue(seat[i].triple->value()*6);
+                        isTriple = true;
+                        seat[i].tripleStatus->setText("Flush");
+                    }
+                    else
+                        seat[i].triple->setValue(0);
+
+            if (isPair)
+            {
+                seat[i].pairStatus->show();
+                HighlightLabel(seat[i].pairStatus,true,2000);
+                if (isTriple)
+                {
+                    QTimer *timer = new QTimer();
+                    QObject *context = new QObject(this);
+                    connect(timer, &QTimer::timeout,context, [=]() {
+                        seat[i].tripleStatus->show();
+                        HighlightLabel(seat[i].tripleStatus,true,2000);
+                        delete context;
+                    } );
+                    timer->start(2007);
+                }
+            }
+            else
+            {
+                if (isTriple)
+                {
+                    seat[i].tripleStatus->show();
+                    HighlightLabel(seat[i].tripleStatus,true,2000);
+                }
+            }
+
+        }
+}
+
 
 
 

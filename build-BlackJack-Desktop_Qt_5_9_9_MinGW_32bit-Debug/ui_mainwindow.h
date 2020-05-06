@@ -485,7 +485,7 @@ public:
 
         gridLayoutWidget_16 = new QWidget(centralwidget);
         gridLayoutWidget_16->setObjectName(QStringLiteral("gridLayoutWidget_16"));
-        gridLayoutWidget_16->setGeometry(QRect(950, 790, 256, 154));
+        gridLayoutWidget_16->setGeometry(QRect(1040, 790, 256, 154));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_16);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         gridLayout_4->setHorizontalSpacing(0);
@@ -712,7 +712,7 @@ public:
 
         gridLayoutWidget_18 = new QWidget(centralwidget);
         gridLayoutWidget_18->setObjectName(QStringLiteral("gridLayoutWidget_18"));
-        gridLayoutWidget_18->setGeometry(QRect(1290, 750, 249, 154));
+        gridLayoutWidget_18->setGeometry(QRect(1330, 800, 249, 154));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_18);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         gridLayout_6->setHorizontalSpacing(0);
@@ -723,9 +723,7 @@ public:
         label_20->setObjectName(QStringLiteral("label_20"));
         sizePolicy.setHeightForWidth(label_20->sizePolicy().hasHeightForWidth());
         label_20->setSizePolicy(sizePolicy);
-        label_20->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"}\n"
-""));
+        label_20->setStyleSheet(QStringLiteral("color:white;"));
 
         gridLayout_27->addWidget(label_20, 0, 0, 1, 1);
 
@@ -749,10 +747,7 @@ public:
         label_21->setObjectName(QStringLiteral("label_21"));
         sizePolicy.setHeightForWidth(label_21->sizePolicy().hasHeightForWidth());
         label_21->setSizePolicy(sizePolicy);
-        label_21->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"	font: 87 8pt \"Arial Black\";\n"
-"}\n"
-""));
+        label_21->setStyleSheet(QStringLiteral("color:white; font: 87 8pt \"Arial Black\";"));
 
         gridLayout_28->addWidget(label_21, 0, 1, 1, 1);
 
@@ -783,8 +778,7 @@ public:
         label_22->setObjectName(QStringLiteral("label_22"));
         sizePolicy.setHeightForWidth(label_22->sizePolicy().hasHeightForWidth());
         label_22->setSizePolicy(sizePolicy);
-        label_22->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"}"));
+        label_22->setStyleSheet(QStringLiteral("color:white;"));
 
         gridLayout_29->addWidget(label_22, 0, 1, 1, 1);
 
@@ -799,16 +793,10 @@ public:
         closeButton_6->setObjectName(QStringLiteral("closeButton_6"));
         closeButton_6->setMinimumSize(QSize(20, 20));
         closeButton_6->setMaximumSize(QSize(20, 20));
-        closeButton_6->setStyleSheet(QLatin1String("\n"
-"QPushButton\n"
-"{\n"
-"	color: white;\n"
-"    background: rgb(66, 20, 20);\n"
-"}\n"
+        closeButton_6->setStyleSheet(QLatin1String("QPushButton\n"
+"{color: white; background: rgb(66, 20, 20);}\n"
 "QPushButton:hover  \n"
-"{\n"
-"    background: rgb(98, 8, 8);\n"
-"}"));
+"{background: rgb(98, 8, 8);}"));
 
         gridLayout_6->addWidget(closeButton_6, 0, 3, 1, 1);
 
@@ -1173,7 +1161,7 @@ public:
 "}"));
         DoubleButton = new QPushButton(centralwidget);
         DoubleButton->setObjectName(QStringLiteral("DoubleButton"));
-        DoubleButton->setGeometry(QRect(705, 730, 81, 81));
+        DoubleButton->setGeometry(QRect(780, 690, 81, 81));
         DoubleButton->setStyleSheet(QLatin1String("QPushButton {\n"
 "            border-image: url(images/double.png);\n"
 "			color: blue;\n"
@@ -1186,7 +1174,7 @@ public:
 "}"));
         dealerSumCounter = new QLCDNumber(centralwidget);
         dealerSumCounter->setObjectName(QStringLiteral("dealerSumCounter"));
-        dealerSumCounter->setGeometry(QRect(340, 110, 37, 47));
+        dealerSumCounter->setGeometry(QRect(580, 780, 37, 47));
         dealerSumCounter->setStyleSheet(QStringLiteral("background: rgb(66, 20, 20);"));
         dealerSumCounter->setDigitCount(2);
         MainWindow->setCentralWidget(centralwidget);
