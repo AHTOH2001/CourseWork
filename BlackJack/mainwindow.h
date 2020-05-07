@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "seatclass.h"
+#include "card.h"
+
 #include <QMainWindow>
 #include "ui_mainwindow.h"
 #include <QDebug>
@@ -15,9 +18,9 @@
 #include <QString>
 #include <QPainter>
 #include <QPaintEvent>
-#include "card.h"
 #include <QTime>
 #include <QQueue>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,7 +46,7 @@ private slots:
 
     void valueChangedSlot(int newValue);
 
-    void ValueChangedByUserSlot(QSpinBox *SpinBox = nullptr);
+    bool ValueChangedByUserSlot(QSpinBox *SpinBox = nullptr);
 
     void NextColorSlot();
 
@@ -53,15 +56,19 @@ private slots:
 
     void on_DoubleButton_clicked();
 
-    void Hit(int i = -1);
+    void Hit(int i = -7);
 
-    void Stand(int i = -1);
+    void Stand(int i = -7);
 
-    void closeFunc(int i = -1);
+    void closeFunc(int i = -7);
 
-    void multiSeatFunc(int i = -1);
+    void multiSeatFunc(int i = -7);
 
     void NextSecond();
+
+    void DoubleDown(int i = -7);
+
+    void Split(int i = -7);
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -79,22 +86,11 @@ private:
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {513,573,624,625,575,512};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
-    struct TypeForSeat
-    {
-        QSpinBox *perfectPair, *mainBet, *triple;
-        QPushButton *multiSeat,*closeButton,*doubleButton,*hitButton,*standButton,*splitButton;
-        bool isSeat = false;
-        QWidget *underSeat;
-        QVector<Card*> cards;
-        QLCDNumber *sumCounter;
-        QLabel *pairStatus, *tripleStatus;
-        int aceCount = 0,prevBetPair = 10,prevBetMain = 10,prevBetTriple = 10;//prevbet=0
-    };
-    TypeForSeat seat[6];
+    SeatClass seat[6];
     QVector<Card*> dealerCards;
     QPropertyAnimation* dealerSumCounterAnimation;
     QMap<QPushButton*,int> seatIdentifier;
-    int dealerAceCount = 0,stillPlayingAmount;
+    int dealerAceCount = 0,stillPlayingAmount = 0;
     void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 800);
     void RecountSum(QLCDNumber* sumCounter, Card *card, const int cardsAmount, int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;

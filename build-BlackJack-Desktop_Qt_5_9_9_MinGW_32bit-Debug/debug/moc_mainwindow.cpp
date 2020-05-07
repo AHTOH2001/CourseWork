@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[21];
-    char stringdata0[277];
+    QByteArrayData data[23];
+    char stringdata0[294];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,7 +51,9 @@ QT_MOC_LITERAL(16, 234, 1), // "i"
 QT_MOC_LITERAL(17, 236, 5), // "Stand"
 QT_MOC_LITERAL(18, 242, 9), // "closeFunc"
 QT_MOC_LITERAL(19, 252, 13), // "multiSeatFunc"
-QT_MOC_LITERAL(20, 266, 10) // "NextSecond"
+QT_MOC_LITERAL(20, 266, 10), // "NextSecond"
+QT_MOC_LITERAL(21, 277, 10), // "DoubleDown"
+QT_MOC_LITERAL(22, 288, 5) // "Split"
 
     },
     "MainWindow\0on_DealNow_clicked\0\0"
@@ -61,7 +63,7 @@ QT_MOC_LITERAL(20, 266, 10) // "NextSecond"
     "SpinBox\0NextColorSlot\0HitNext\0"
     "on_RepeatButton_clicked\0on_DoubleButton_clicked\0"
     "Hit\0i\0Stand\0closeFunc\0multiSeatFunc\0"
-    "NextSecond"
+    "NextSecond\0DoubleDown\0Split"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +73,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,33 +81,37 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  109,    2, 0x0a /* Public */,
-       3,    0,  110,    2, 0x08 /* Private */,
-       4,    1,  111,    2, 0x08 /* Private */,
-       6,    1,  114,    2, 0x08 /* Private */,
-       8,    1,  117,    2, 0x08 /* Private */,
-       8,    0,  120,    2, 0x28 /* Private | MethodCloned */,
-      11,    0,  121,    2, 0x08 /* Private */,
-      12,    0,  122,    2, 0x08 /* Private */,
-      13,    0,  123,    2, 0x08 /* Private */,
-      14,    0,  124,    2, 0x08 /* Private */,
-      15,    1,  125,    2, 0x08 /* Private */,
-      15,    0,  128,    2, 0x28 /* Private | MethodCloned */,
-      17,    1,  129,    2, 0x08 /* Private */,
-      17,    0,  132,    2, 0x28 /* Private | MethodCloned */,
-      18,    1,  133,    2, 0x08 /* Private */,
-      18,    0,  136,    2, 0x28 /* Private | MethodCloned */,
-      19,    1,  137,    2, 0x08 /* Private */,
-      19,    0,  140,    2, 0x28 /* Private | MethodCloned */,
-      20,    0,  141,    2, 0x08 /* Private */,
+       1,    0,  129,    2, 0x0a /* Public */,
+       3,    0,  130,    2, 0x08 /* Private */,
+       4,    1,  131,    2, 0x08 /* Private */,
+       6,    1,  134,    2, 0x08 /* Private */,
+       8,    1,  137,    2, 0x08 /* Private */,
+       8,    0,  140,    2, 0x28 /* Private | MethodCloned */,
+      11,    0,  141,    2, 0x08 /* Private */,
+      12,    0,  142,    2, 0x08 /* Private */,
+      13,    0,  143,    2, 0x08 /* Private */,
+      14,    0,  144,    2, 0x08 /* Private */,
+      15,    1,  145,    2, 0x08 /* Private */,
+      15,    0,  148,    2, 0x28 /* Private | MethodCloned */,
+      17,    1,  149,    2, 0x08 /* Private */,
+      17,    0,  152,    2, 0x28 /* Private | MethodCloned */,
+      18,    1,  153,    2, 0x08 /* Private */,
+      18,    0,  156,    2, 0x28 /* Private | MethodCloned */,
+      19,    1,  157,    2, 0x08 /* Private */,
+      19,    0,  160,    2, 0x28 /* Private | MethodCloned */,
+      20,    0,  161,    2, 0x08 /* Private */,
+      21,    1,  162,    2, 0x08 /* Private */,
+      21,    0,  165,    2, 0x28 /* Private | MethodCloned */,
+      22,    1,  166,    2, 0x08 /* Private */,
+      22,    0,  169,    2, 0x28 /* Private | MethodCloned */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    5,
     QMetaType::Void, QMetaType::Int,    7,
-    QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void,
+    QMetaType::Bool, 0x80000000 | 9,   10,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -118,6 +124,10 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   16,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   16,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   16,
     QMetaType::Void,
 
        0        // eod
@@ -133,8 +143,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_Exit_clicked(); break;
         case 2: _t->on_comboBoxCurrency_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->valueChangedSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: _t->ValueChangedByUserSlot((*reinterpret_cast< QSpinBox*(*)>(_a[1]))); break;
-        case 5: _t->ValueChangedByUserSlot(); break;
+        case 4: { bool _r = _t->ValueChangedByUserSlot((*reinterpret_cast< QSpinBox*(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 5: { bool _r = _t->ValueChangedByUserSlot();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 6: _t->NextColorSlot(); break;
         case 7: _t->HitNext(); break;
         case 8: _t->on_RepeatButton_clicked(); break;
@@ -148,6 +160,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: _t->multiSeatFunc((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 17: _t->multiSeatFunc(); break;
         case 18: _t->NextSecond(); break;
+        case 19: _t->DoubleDown((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->DoubleDown(); break;
+        case 21: _t->Split((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 22: _t->Split(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -189,13 +205,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 23;
     }
     return _id;
 }
