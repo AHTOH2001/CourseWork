@@ -247,6 +247,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
 {        
+    label->show();
     label->setStyleSheet("QLabel{"
                          "color:  rgb(102,180,50);"
                          "padding: 2px;"
@@ -260,11 +261,19 @@ void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
                              "padding: 2px;"
                              "border: 3px solid rgb(231,181,77);"
                              "border-radius: 31px;}");
-        if (hideLater)
-            label->hide();
         delete context;
     } );
-    timer->start(timeMs);
+    if (hideLater)
+    {
+        QTimer *timer = new QTimer();
+        QObject *context = new QObject(this);
+        connect(timer, &QTimer::timeout,context, [=]() {
+                label->hide();
+            delete context;
+        } );
+        timer->start(timeMs);
+    }
+    timer->start(timeMs/2);
     label->raise();
 }
 
@@ -283,7 +292,7 @@ void MainWindow::on_Exit_clicked()
 }
 
 int debugcounter = 0;
-void MainWindow::paintEvent(QPaintEvent *event)
+void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setting
 {    
     QPainter painter(this);
 
@@ -791,8 +800,8 @@ void MainWindow::HitNext()
         }
         return;
     }
-    //    Card *card = new Card(rand()%1 + 13,this);
-//    Card *card = new Card(rand()%2 + 50,this);
+//    Card *card = new Card(rand()%1 + 13,this);
+    //Card *card = new Card(rand()%2 + 50,this);
     Card *card = new Card(rand(),this);
     card->show();
     int i = QueueForHit.dequeue();
@@ -1023,8 +1032,7 @@ void MainWindow::CountExtraBets()
             }
 
             if (isPair)
-            {
-                seat[i].pairStatus->show();
+            {                
                 HighlightLabel(seat[i].pairStatus,true,2000);
                 if (isTriple)
                 {
@@ -1041,10 +1049,8 @@ void MainWindow::CountExtraBets()
             else
             {
                 if (isTriple)
-                {
-                    seat[i].tripleStatus->show();
                     HighlightLabel(seat[i].tripleStatus,true,2000);
-                }
+
             }
 
         }
@@ -1058,7 +1064,6 @@ void MainWindow::NextSecond()
     {
         for (int i = 0;i<12;i++)
             Stand(i);
-        CommitsEnd();
     }
 
 
@@ -1070,36 +1075,148 @@ void MainWindow::CommitsEnd()
     ui->lcdTimer->hide();
     TimerForCommit->stop();
     stage = 0;
-    OpenCardProcess();
+    OpenDealerCardsProcess();
 }
 
 
-void MainWindow::OpenCardProcess()
+void MainWindow::OpenDealerCardsProcess()
 {
     if (stage == 0)
     {
         dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
         dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(92*koefW,0,0,0));
         dealerCards[1]->CardAnimation->start();
-        connect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenCardProcess()));
+        connect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenDealerCardsProcess()));
     }
-    if (stage == 1)
-    {
-        dealerCards[1]->isOpen = true;
-        dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
-        dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(0,0,92*koefW,0));
-        dealerCards[1]->CardAnimation->start();
-    }
-    if (stage == 2)
-    {
-        RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what to do?
-        dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
-        dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(-92*koefW,0,-92*koefW,0));
-        dealerCards[1]->CardAnimation->start();
-        disconnect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenCardProcess()));
-    }
+    else
+        if (stage == 1)
+        {
+            dealerCards[1]->isOpen = true;
+            dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
+            dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(0,0,92*koefW,0));
+            dealerCards[1]->CardAnimation->start();
+        }
+        else
+            if (stage == 2)
+            {
+                RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what to do?
+                dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
+                dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(-92*koefW,0,-92*koefW,0));
+                dealerCards[1]->CardAnimation->start();
+            }
+            else
+            {
+                if (ui->dealerSumCounter->value()<17)
+                {
+                    if (QueueForHit.isEmpty())
+                        Hit(-1);
+                }
+                else
+                {
+                    disconnect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenDealerCardsProcess()));
+                    ResultStage();
+                }
+            }
     stage++;
 }
+//TODO soft situation image
+void MainWindow::ResultStage()
+{
+    double TotalWin = 0;
+    for (int i = 0;i<6;i++)
+    {
+
+        if (seat[i].extra.isExist)
+        {
+            double delta = 0;
+            if (seat[i].sumCounter->value()>21)
+            {
+                seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+            }
+            else
+                if (ui->dealerSumCounter->value()>21 || seat[i].sumCounter->value() > ui->dealerSumCounter->value())
+                {
+                    delta+=seat[i].mainBet->value();
+                    seat[i].sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                }
+                else
+                    if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
+                    {
+                        delta+=seat[i].mainBet->value()/2;
+                        seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                    }
+                    else
+                    {
+                        seat[i].sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                    }
+
+
+            if (seat[i].extra.sumCounter->value()>21)
+            {
+                seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+            }
+            else
+                if (ui->dealerSumCounter->value()>21 || seat[i].extra.sumCounter->value() > ui->dealerSumCounter->value())
+                {
+                    delta+=seat[i].mainBet->value();
+                    seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                }
+                else
+                    if (seat[i].extra.sumCounter->value()==ui->dealerSumCounter->value())
+                    {
+                        delta+=seat[i].mainBet->value()/2;
+                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                    }
+                    else
+                    {
+                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                    }
+
+            seat[i].mainBet->setValue(delta);
+        }
+        else
+            if (seat[i].sumCounter->value()==0)
+                seat[i].mainBet->setValue(seat[i].mainBet->value()*5/2);
+            else
+                if (seat[i].sumCounter->value()>21)
+                {
+                    seat[i].mainBet->setValue(0);
+                    seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+                }
+                else
+                    if (ui->dealerSumCounter->value()>21 || seat[i].sumCounter->value() > ui->dealerSumCounter->value())
+                    {
+                        seat[i].mainBet->setValue(seat[i].mainBet->value()*2);
+                        seat[i].sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                    }
+                    else
+                        if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
+                        {
+                            seat[i].mainBet->setValue(seat[i].mainBet->value());
+                            seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                        }
+                        else
+                        {
+                            seat[i].mainBet->setValue(0);
+                            seat[i].sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                        }
+
+        TotalWin+=seat[i].mainBet->value();
+        TotalWin+=seat[i].perfectPair->value();
+        TotalWin+=seat[i].triple->value();
+    }
+    if (TotalWin > ui->TotalBetAmount->value())
+        ui->CentralLabel->setText("You win: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
+    else
+        if (TotalWin==0)
+            ui->CentralLabel->setText("Dealer wins");
+        else
+            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
+
+    HighlightLabel(ui->CentralLabel,true,4000);
+}
+
+
 
 
 

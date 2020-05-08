@@ -70,7 +70,7 @@ private slots:
 
     void Split(int i = -7);
 
-    void OpenCardProcess();
+    void OpenDealerCardsProcess();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -93,10 +93,11 @@ private:
     QPropertyAnimation* dealerSumCounterAnimation;
     QMap<QPushButton*,int> seatIdentifier;
     int dealerAceCount = 0,stillPlayingAmount = 0;
-    void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 800);
+    void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 1600);
     void RecountSum(QLCDNumber* sumCounter, Card *card, const int cardsAmount, int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;
     void CountExtraBets();
     void CommitsEnd();
+    void ResultStage();
 };
 #endif // MAINWINDOW_H

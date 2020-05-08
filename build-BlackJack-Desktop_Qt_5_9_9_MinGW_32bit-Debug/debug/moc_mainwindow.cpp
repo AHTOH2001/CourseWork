@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[24];
-    char stringdata0[310];
+    char stringdata0[317];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,7 +54,7 @@ QT_MOC_LITERAL(19, 252, 13), // "multiSeatFunc"
 QT_MOC_LITERAL(20, 266, 10), // "NextSecond"
 QT_MOC_LITERAL(21, 277, 10), // "DoubleDown"
 QT_MOC_LITERAL(22, 288, 5), // "Split"
-QT_MOC_LITERAL(23, 294, 15) // "OpenCardProcess"
+QT_MOC_LITERAL(23, 294, 22) // "OpenDealerCardsProcess"
 
     },
     "MainWindow\0on_DealNow_clicked\0\0"
@@ -64,7 +64,8 @@ QT_MOC_LITERAL(23, 294, 15) // "OpenCardProcess"
     "SpinBox\0NextColorSlot\0HitNext\0"
     "on_RepeatButton_clicked\0on_DoubleButton_clicked\0"
     "Hit\0i\0Stand\0closeFunc\0multiSeatFunc\0"
-    "NextSecond\0DoubleDown\0Split\0OpenCardProcess"
+    "NextSecond\0DoubleDown\0Split\0"
+    "OpenDealerCardsProcess"
 };
 #undef QT_MOC_LITERAL
 
@@ -167,7 +168,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 20: _t->DoubleDown(); break;
         case 21: _t->Split((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 22: _t->Split(); break;
-        case 23: _t->OpenCardProcess(); break;
+        case 23: _t->OpenDealerCardsProcess(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

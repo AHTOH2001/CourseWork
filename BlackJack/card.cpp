@@ -3,8 +3,8 @@
 
 
 Card::Card(int key, QWidget *parent) : QWidget(parent)
-{    
-
+{
+    this->raise();
     i = key%52%13;
     j = key%52/13;
     _number = i+2;

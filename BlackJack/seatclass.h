@@ -22,7 +22,7 @@ public:
     QVector<Card*> cards;
     QLCDNumber *sumCounter;
     QLabel *pairStatus, *tripleStatus;
-    int aceCount = 0,prevBetPair = 10,prevBetMain = 10,prevBetTriple = 10;//prevbet=0
+    int aceCount = 0,prevBetPair = 10,prevBetMain = 100,prevBetTriple = 10;//prevbet=0
     QGridLayout *gridLayoutLeft,*gridLayoutRight;
     QSpacerItem *horizontalSpacerLeft, *horizontalSpacerRight;
     struct TypeForExtraSeat
