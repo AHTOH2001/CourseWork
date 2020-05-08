@@ -367,13 +367,14 @@ void MainWindow::paintEvent(QPaintEvent *event)
             dealerSumCounterAnimation->setEndValue(QRect((579+shiftUnit-92/2-50)*koefW,5*koefH,50*koefW,50*koefH));
 
         for (auto &card:dealerCards)
-        {
             if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
+            {
+
                 card->setGeometry(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
-                        else
-                        card->CardAnimation->setEndValue(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
-            counter++;
-        }
+                //      else
+                //card->CardAnimation->setEndValue(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
+                counter++;
+            }
     }
     ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,251*koefW,111*koefH));
     ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
@@ -742,7 +743,8 @@ void MainWindow::Stand(int i)
     }
     ui->lcdTimer->display(11);
     stillPlayingAmount--;
-    if (stillPlayingAmount==0) CommitsEnd();
+    if (stillPlayingAmount==0)
+        if (isDealingEnd) CommitsEnd();
 
 }
 QQueue<int> QueueForHit;
@@ -778,16 +780,19 @@ void MainWindow::HitNext()
                         seat[i].splitButton->setDisabled(true);
                     }
                 }
+
             ui->lcdTimer->show();
             ui->lcdTimer->display(15);
             TimerForCommit->start(1000);
             ui->CentralLabel->hide();
             CountExtraBets();
+            if (stillPlayingAmount==0)
+                CommitsEnd();
         }
         return;
     }
     //    Card *card = new Card(rand()%1 + 13,this);
-    //Card *card = new Card(rand()%2 + 50,this);
+//    Card *card = new Card(rand()%2 + 50,this);
     Card *card = new Card(rand(),this);
     card->show();
     int i = QueueForHit.dequeue();
@@ -1017,7 +1022,7 @@ void MainWindow::CountExtraBets()
                 seat[i].pairStatus->setText("BlackJack");
             }
 
-            if (isPair) //TODO black jack status
+            if (isPair)
             {
                 seat[i].pairStatus->show();
                 HighlightLabel(seat[i].pairStatus,true,2000);
@@ -1059,10 +1064,41 @@ void MainWindow::NextSecond()
 
 }
 
+int stage;
 void MainWindow::CommitsEnd()
 {
     ui->lcdTimer->hide();
     TimerForCommit->stop();
+    stage = 0;
+    OpenCardProcess();
+}
+
+
+void MainWindow::OpenCardProcess()
+{
+    if (stage == 0)
+    {
+        dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
+        dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(92*koefW,0,0,0));
+        dealerCards[1]->CardAnimation->start();
+        connect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenCardProcess()));
+    }
+    if (stage == 1)
+    {
+        dealerCards[1]->isOpen = true;
+        dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
+        dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(0,0,92*koefW,0));
+        dealerCards[1]->CardAnimation->start();
+    }
+    if (stage == 2)
+    {
+        RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what to do?
+        dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
+        dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(-92*koefW,0,-92*koefW,0));
+        dealerCards[1]->CardAnimation->start();
+        disconnect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenCardProcess()));
+    }
+    stage++;
 }
 
 

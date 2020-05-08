@@ -69,11 +69,13 @@ private slots:
     void DoubleDown(int i = -7);
 
     void Split(int i = -7);
+
+    void OpenCardProcess();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QMap<QSpinBox*,QTimer*> timersForColor;
-    QTimer *TimerForDealNow, *TimerForHit, *TimerForCommit;
+    QTimer *TimerForDealNow, *TimerForHit, *TimerForCommit, *TimerForOpenCard;
     void paintEvent(QPaintEvent *event) override;
 
     void changeColor(QSpinBox *SpinBox,QString color);
