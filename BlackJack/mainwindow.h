@@ -71,6 +71,8 @@ private slots:
     void Split(int i = -7);
 
     void OpenDealerCardsProcess();
+
+    void NewGamePreparation();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -84,7 +86,7 @@ private:
     void Dealing();
     double koefW=1,koefH=1;
     int tick = 0;
-    bool isSeat = false,isNowPlay = false, isDealingEnd = false;
+    bool isSeat = false, isDealingEnd = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {513,573,624,625,575,512};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};

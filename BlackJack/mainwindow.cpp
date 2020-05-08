@@ -1213,9 +1213,77 @@ void MainWindow::ResultStage()
         else
             ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
 
-    HighlightLabel(ui->CentralLabel,true,4000);
+    HighlightLabel(ui->CentralLabel,true,4500);
+    QTimer *timer = new QTimer();
+    timer->setSingleShot(true);
+    connect(timer,SIGNAL(timeout()),this,SLOT(NewGamePreparation())); //TODO In parallel dealer gathering cards;
+    timer->start(5000);
+   // timer->deleteLater();
 }
+//TODO display delta in balance
+void MainWindow::NewGamePreparation()
+{
+    for (int i = 0;i<6;i++)
+    {
+        for (auto &card:seat[i].cards)
+        {
+            card->deleteLater();
+            card->hide();
+        }
 
+        seat[i].cards.clear(); //and Delete
+
+        for (auto &card:seat[i].extra.cards)
+        {
+            card->deleteLater();
+            card->hide();
+        }
+        seat[i].extra.cards.clear();
+        RealValueSpinBox[seat[i].perfectPair] = seat[i].perfectPair->value();
+        seat[i].perfectPair->setValue(0);
+        ValueChangedByUserSlot(seat[i].perfectPair);
+        RealValueSpinBox[seat[i].mainBet] = seat[i].mainBet->value();
+        seat[i].mainBet->setValue(0);
+        ValueChangedByUserSlot(seat[i].mainBet);
+        RealValueSpinBox[seat[i].triple] = seat[i].triple->value();
+        seat[i].triple->setValue(0);
+        ValueChangedByUserSlot(seat[i].triple);
+
+        seat[i].extra.isExist=false;
+        seat[i].extra.aceCount = 0;
+        seat[i].aceCount = 0;
+        seat[i].extra.sumCounter->setStyleSheet("background: rgb(66, 20, 20);");
+        seat[i].extra.sumCounter->display(0);
+        seat[i].extra.sumCounter->hide();
+        seat[i].sumCounter->setStyleSheet("background: rgb(66, 20, 20);");
+        seat[i].sumCounter->display(0);
+        seat[i].sumCounter->hide();
+        seat[i].extra.horizontalSpacer->changeSize(0,0);
+        seat[i].closeButton->show();
+        seat[i].horizontalSpacerLeft->changeSize(0,0);
+        seat[i].horizontalSpacerRight->changeSize(0,0);
+
+        seat[i].perfectPair->setDisabled(false);
+        seat[i].mainBet->setDisabled(false);
+        seat[i].triple->setDisabled(false);
+    }
+    ui->TotalBetAmount->display(0);
+    ui->CentralLabel->setText("TAKE A SEAT");
+    for (auto &card:dealerCards)
+    {
+        card->deleteLater();
+        card->hide();
+    }
+    dealerCards.clear();
+    dealerAceCount=0;
+    isDealingEnd = false;
+    ui->dealerSumCounter->display(0);
+    ui->dealerSumCounter->hide();
+    tick = 0;
+    isDealingEnd = false;
+    ui->comboBoxCurrency->setDisabled(false);
+    ui->dealerSumCounter->setStyleSheet("background: rgb(66, 20, 20);");
+}
 
 
 
