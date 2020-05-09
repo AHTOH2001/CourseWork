@@ -216,6 +216,7 @@ public:
     QPushButton *standButtonExtra_4;
     QPushButton *standButtonExtra_5;
     QPushButton *standButtonExtra_6;
+    QLabel *DeltaBalanceStatus;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -1209,7 +1210,7 @@ public:
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(810, 560, 251, 111));
+        gridLayoutWidget->setGeometry(QRect(810, 560, 290, 123));
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
@@ -1630,6 +1631,17 @@ public:
         sizePolicy2.setHeightForWidth(standButtonExtra_6->sizePolicy().hasHeightForWidth());
         standButtonExtra_6->setSizePolicy(sizePolicy2);
         standButtonExtra_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        DeltaBalanceStatus = new QLabel(centralwidget);
+        DeltaBalanceStatus->setObjectName(QStringLiteral("DeltaBalanceStatus"));
+        DeltaBalanceStatus->setGeometry(QRect(1110, 620, 150, 50));
+        DeltaBalanceStatus->setFont(font);
+        DeltaBalanceStatus->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:  rgb(102,180,50);\n"
+"	padding: 2px;\n"
+"	border: 3px solid rgb(231,181,77);\n"
+"	border-radius: 23px;\n"
+"}"));
+        DeltaBalanceStatus->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         Exit->raise();
@@ -1664,6 +1676,7 @@ public:
         standButtonExtra_4->raise();
         standButtonExtra_5->raise();
         standButtonExtra_6->raise();
+        DeltaBalanceStatus->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2110, 26));
@@ -1756,6 +1769,7 @@ public:
         standButtonExtra_4->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         standButtonExtra_5->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         standButtonExtra_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        DeltaBalanceStatus->setText(QApplication::translate("MainWindow", "+123", Q_NULLPTR));
     } // retranslateUi
 
 };

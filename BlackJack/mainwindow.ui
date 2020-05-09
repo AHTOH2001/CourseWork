@@ -1763,8 +1763,8 @@ QPushButton:pressed{
      <rect>
       <x>810</x>
       <y>560</y>
-      <width>251</width>
-      <height>111</height>
+      <width>290</width>
+      <height>123</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_balance">
@@ -2664,6 +2664,36 @@ color: white;</string>
      <string>STAND</string>
     </property>
    </widget>
+   <widget class="QLabel" name="DeltaBalanceStatus">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>620</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color:  rgb(102,180,50);
+	padding: 2px;
+	border: 3px solid rgb(231,181,77);
+	border-radius: 23px;
+}</string>
+    </property>
+    <property name="text">
+     <string>+123</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>CentralLabel</zorder>
    <zorder>Exit</zorder>
    <zorder>gridLayoutWidget_14</zorder>
@@ -2697,6 +2727,7 @@ color: white;</string>
    <zorder>standButtonExtra_4</zorder>
    <zorder>standButtonExtra_5</zorder>
    <zorder>standButtonExtra_6</zorder>
+   <zorder>DeltaBalanceStatus</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

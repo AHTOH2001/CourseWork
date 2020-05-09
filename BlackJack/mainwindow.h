@@ -73,6 +73,8 @@ private slots:
     void OpenDealerCardsProcess();
 
     void NewGamePreparation();
+
+    void ResultStage();
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -88,7 +90,7 @@ private:
     int tick = 0;
     bool isSeat = false, isDealingEnd = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
-    const int seatY[6] = {513,573,624,625,575,512};
+    const int seatY[6] = {506,566,617,618,568,505};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
     SeatClass seat[6];
     QVector<Card*> dealerCards;
@@ -100,6 +102,6 @@ private:
     void mousePressEvent(QMouseEvent *event) override;
     void CountExtraBets();
     void CommitsEnd();
-    void ResultStage();
+
 };
 #endif // MAINWINDOW_H

@@ -219,11 +219,17 @@ MainWindow::MainWindow(QWidget *parent)
         seatIdentifier[i.extra.hitButton] = counter+6;
         seatIdentifier[i.extra.standButton] = counter+6;
         i.doubleButton->hide();
+        i.doubleButton->setStyleSheet("border-image: url(images/doubleButton.png);");        //TODO buttons images
         i.hitButton->hide();
+        i.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
         i.standButton->hide();
+        i.standButton->setStyleSheet("border-image: url(images/standButton.png);");
         i.splitButton->hide();
+        i.splitButton->setStyleSheet("border-image: url(images/splitButton.png);");
         i.extra.hitButton->hide();
+        i.extra.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
         i.extra.standButton->hide();
+        i.extra.standButton->setStyleSheet("border-image: url(images/standButton.png);");
         i.horizontalSpacerLeft->changeSize(0,0);
         i.horizontalSpacerRight->changeSize(0,0);
         counter++;
@@ -237,6 +243,7 @@ MainWindow::MainWindow(QWidget *parent)
     dealerSumCounterAnimation = new QPropertyAnimation(ui->dealerSumCounter,"geometry");
     dealerSumCounterAnimation->setDuration(300);
     ui->dealerSumCounter->hide();
+    ui->DeltaBalanceStatus->hide();
 }
 
 MainWindow::~MainWindow()
@@ -313,10 +320,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
             HighlightLabel(ui->CentralLabel);
         }        
         ui->RepeatButton->hide();
-        ui->DoubleButton->hide();
-        //image.load("images/label_take_seat");
-        //painter->drawImage((1500-image.size().width())/2*koefW,(900-image.size().height()-100)/2*koefH,image.scaled(image.size().width()*koefW,image.size().height()*koefH,Qt::KeepAspectRatio));
-
+        ui->DoubleButton->hide();        
     }
     else
     {
@@ -385,7 +389,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
                 counter++;
             }
     }
-    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,251*koefW,111*koefH));
+    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,240*koefW,111*koefH));
     ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
     ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
     ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
@@ -401,6 +405,12 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
     int tempW = ui->CentralLabel->text().count()*36;
     int tempH = 65;
     ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
+
+    ui->DeltaBalanceStatus->setFont(QFont("Segoe Print", 30*koefW));
+    tempW = ui->DeltaBalanceStatus->text().count()*36;
+    tempH = 62;
+    ui->DeltaBalanceStatus->setGeometry(QRect(ui->gridLayoutWidget->pos() + QPoint(250*koefW,48*koefH),QSize(tempW*koefW,tempH*koefH)));
+
     ui->DealNow->setFont(QFont("MS Shell Dlg 2", 20*koefW));
     ui->lcdTimer->setGeometry(712*koefW,630*koefH,61*koefW,61*koefH);
 
@@ -587,9 +597,9 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
         delta += RealValueSpinBox[seat[i].triple] - (int)RealValueSpinBox[seat[i].triple];
         RealValueSpinBox[seat[i].triple] = (int)RealValueSpinBox[seat[i].triple];
 
-        seat[i].perfectPair->setValue((int)RealValueSpinBox[seat[i].perfectPair]);
-        seat[i].mainBet->setValue((int)RealValueSpinBox[seat[i].mainBet]);
-        seat[i].triple->setValue((int)RealValueSpinBox[seat[i].triple]);
+        seat[i].perfectPair->setValue(RealValueSpinBox[seat[i].perfectPair]);
+        seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
+        seat[i].triple->setValue(RealValueSpinBox[seat[i].triple]);
     }
     ui->TotalBetAmount->display(ui->TotalBetAmount->value()*koef - delta);
     ui->BalanceAmount->display(ui->BalanceAmount->value()*koef + delta);
@@ -732,6 +742,11 @@ void MainWindow::Stand(int i)
     }
     if (i<6)
     {
+        if (seat[i].sumCounter->value()>21)
+        {
+            RealValueSpinBox[seat[i].mainBet] = 0;
+            seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
+        }
         if (!seat[i].stillPlay) return;
         seat[i].stillPlay = false;
         seat[i].doubleButton->hide();
@@ -741,9 +756,19 @@ void MainWindow::Stand(int i)
         seat[i].horizontalSpacerLeft->changeSize(100,20);
         if (!seat[i].extra.isExist)
             seat[i].horizontalSpacerRight->changeSize(100,20);
+        if (seat[i].sumCounter->value()==0)
+        {
+            RealValueSpinBox[seat[i].mainBet] *= 5/2.;
+            seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
+        }
     }
     else
     {
+        if (seat[i-6].extra.sumCounter->value()>21)
+        {
+            RealValueSpinBox[seat[i-6].mainBet] = 0;
+            seat[i-6].mainBet->setValue(RealValueSpinBox[seat[i-6].mainBet]);
+        }
         if (!seat[i-6].extra.stillPlay) return;
         seat[i-6].extra.stillPlay = false;
         seat[i-6].extra.hitButton->hide();
@@ -880,7 +905,10 @@ void MainWindow::RecountSum(QLCDNumber *sumCounter, Card *card,const int cardsAm
 {
     sumCounter->display(sumCounter->value()+card->value());
     if (card->value()==11)
+    {
         (*aceCounter)++;
+        sumCounter->setStyleSheet("background: rgb(127, 106, 0);");
+    }
 
     if (sumCounter->value()>21)
     {
@@ -888,10 +916,12 @@ void MainWindow::RecountSum(QLCDNumber *sumCounter, Card *card,const int cardsAm
         {
             (*aceCounter)--;
             sumCounter->display(sumCounter->value()-10);
+            if ((*aceCounter)==0)
+                sumCounter->setStyleSheet("background: rgb(66, 20, 20);");
         }
         else
         {
-            sumCounter->setStyleSheet("background: red;");   //TODO busted image
+            sumCounter->setStyleSheet("background: red;");
         }
     }
     else
@@ -899,7 +929,8 @@ void MainWindow::RecountSum(QLCDNumber *sumCounter, Card *card,const int cardsAm
         {
             sumCounter->setStyleSheet("border-image: url(images/blackjack.png);");
             sumCounter->display("");
-        }
+        }    
+
 }
 
 void MainWindow::Dealing()
@@ -923,11 +954,11 @@ void MainWindow::on_RepeatButton_clicked()
         if (seat[i].isSeat)
         {
             seat[i].perfectPair->setValue(seat[i].prevBetPair);
-            ValueChangedByUserSlot(seat[i].perfectPair);
+            if (!ValueChangedByUserSlot(seat[i].perfectPair)) return;
             seat[i].mainBet->setValue(seat[i].prevBetMain);
-            ValueChangedByUserSlot(seat[i].mainBet);
+            if (!ValueChangedByUserSlot(seat[i].mainBet)) return;
             seat[i].triple->setValue(seat[i].prevBetTriple);
-            ValueChangedByUserSlot(seat[i].triple);
+            if (!ValueChangedByUserSlot(seat[i].triple)) return;
         }
 }
 
@@ -960,6 +991,7 @@ void MainWindow::CountExtraBets()
                 if (card1->suit()==card2->suit())
                 {
                     seat[i].perfectPair->setValue(seat[i].perfectPair->value()*26);
+                    RealValueSpinBox[seat[i].perfectPair]*=26;
                     isPair = true;
                     seat[i].pairStatus->setText("Perfect Pair");
                 }
@@ -967,18 +999,23 @@ void MainWindow::CountExtraBets()
                     if (card1->suit() % 2 == card2->suit() % 2)
                     {
                         seat[i].perfectPair->setValue(seat[i].perfectPair->value()*13);
+                        RealValueSpinBox[seat[i].perfectPair]*=13;
                         isPair = true;
                         seat[i].pairStatus->setText("Coloured Pair");
                     }
                     else
                     {
                         seat[i].perfectPair->setValue(seat[i].perfectPair->value()*7);
+                        RealValueSpinBox[seat[i].perfectPair]*=7;
                         isPair = true;
                         seat[i].pairStatus->setText("Mixed Pair");
                     }
             }
             else
+            {
                 seat[i].perfectPair->setValue(0);
+                RealValueSpinBox[seat[i].perfectPair] = 0;
+            }
 
             if (card1->number()>card2->number()) qSwap(card1,card2);
             if (card1->number()>card3->number()) qSwap(card1,card3);
@@ -989,12 +1026,14 @@ void MainWindow::CountExtraBets()
                 if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
                 {
                     seat[i].triple->setValue(seat[i].triple->value()*101);
+                    RealValueSpinBox[seat[i].triple]*=101;
                     isTriple = true;
                     seat[i].tripleStatus->setText("Suited Trips");
                 }
                 else
                 {
                     seat[i].triple->setValue(seat[i].triple->value()*31);
+                    RealValueSpinBox[seat[i].triple]*=31;
                     isTriple = true;
                     seat[i].tripleStatus->setText("Three of a Kind");
                 }
@@ -1005,12 +1044,14 @@ void MainWindow::CountExtraBets()
                     if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
                     {
                         seat[i].triple->setValue(seat[i].triple->value()*41);
+                        RealValueSpinBox[seat[i].triple]*=41;
                         isTriple = true;
                         seat[i].tripleStatus->setText("Straight Flush");
                     }
                     else
                     {
                         seat[i].triple->setValue(seat[i].triple->value()*11);
+                        RealValueSpinBox[seat[i].triple]*=11;
                         isTriple = true;
                         seat[i].tripleStatus->setText("Straight");
                     }
@@ -1019,11 +1060,15 @@ void MainWindow::CountExtraBets()
                     if (card1->suit()==card2->suit() && card2->suit()==card3->suit())
                     {
                         seat[i].triple->setValue(seat[i].triple->value()*6);
+                        RealValueSpinBox[seat[i].triple]*=6;
                         isTriple = true;
                         seat[i].tripleStatus->setText("Flush");
                     }
                     else
+                    {
                         seat[i].triple->setValue(0);
+                        RealValueSpinBox[seat[i].triple] = 0;
+                    }
 
             if (seat[i].sumCounter->value()==0)
             {
@@ -1114,13 +1159,15 @@ void MainWindow::OpenDealerCardsProcess()
                 else
                 {
                     disconnect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenDealerCardsProcess()));
-                    ResultStage();
+                    QTimer *timer = new QTimer();
+                    timer->setSingleShot(true);
+                    connect(timer,SIGNAL(timeout()),this,SLOT(ResultStage()));
+                    timer->start(800);
                 }
             }
     stage++;
 }
-//TODO soft situation image
-void MainWindow::ResultStage()
+void MainWindow::ResultStage()   //TODO result images
 {
     double TotalWin = 0;
     for (int i = 0;i<6;i++)
@@ -1173,46 +1220,60 @@ void MainWindow::ResultStage()
                     }
 
             seat[i].mainBet->setValue(delta);
+            RealValueSpinBox[seat[i].mainBet] = delta;
+            seat[i].sumCounter->display("");
+            seat[i].extra.sumCounter->display("");
         }
         else
             if (seat[i].sumCounter->value()==0)
-                seat[i].mainBet->setValue(seat[i].mainBet->value()*5/2);
+            {
+                //BlackJack already calculated;
+            }
             else
                 if (seat[i].sumCounter->value()>21)
-                {
-                    seat[i].mainBet->setValue(0);
+                {                    
                     seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
                 }
                 else
                     if (ui->dealerSumCounter->value()>21 || seat[i].sumCounter->value() > ui->dealerSumCounter->value())
                     {
                         seat[i].mainBet->setValue(seat[i].mainBet->value()*2);
+                        RealValueSpinBox[seat[i].mainBet] *= 2;
                         seat[i].sumCounter->setStyleSheet("border-image: url(images/win.png);");
                     }
                     else
                         if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
-                        {
-                            seat[i].mainBet->setValue(seat[i].mainBet->value());
+                        {                            
                             seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
                         }
                         else
                         {
                             seat[i].mainBet->setValue(0);
+                            RealValueSpinBox[seat[i].mainBet] = 0;
                             seat[i].sumCounter->setStyleSheet("border-image: url(images/lose.png);");
                         }
 
-        TotalWin+=seat[i].mainBet->value();
-        TotalWin+=seat[i].perfectPair->value();
-        TotalWin+=seat[i].triple->value();
+        TotalWin+=RealValueSpinBox[seat[i].perfectPair];
+        TotalWin+=RealValueSpinBox[seat[i].mainBet];
+        TotalWin+=RealValueSpinBox[seat[i].triple];
+        seat[i].sumCounter->display("");
     }
     if (TotalWin > ui->TotalBetAmount->value())
+    {
         ui->CentralLabel->setText("You win: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
+        ui->DeltaBalanceStatus->setText("+" + QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->comboBoxCurrency->currentText());
+    }
     else
+    {
         if (TotalWin==0)
             ui->CentralLabel->setText("Dealer wins");
         else
-            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
+            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());    
 
+        ui->DeltaBalanceStatus->setText(QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->comboBoxCurrency->currentText());
+        if (TotalWin == ui->TotalBetAmount->value())
+            ui->DeltaBalanceStatus->setText("+0" + ui->comboBoxCurrency->currentText());
+    }
     HighlightLabel(ui->CentralLabel,true,4500);
     QTimer *timer = new QTimer();
     timer->setSingleShot(true);
@@ -1220,9 +1281,9 @@ void MainWindow::ResultStage()
     timer->start(5000);
    // timer->deleteLater();
 }
-//TODO display delta in balance
 void MainWindow::NewGamePreparation()
-{
+{    
+    HighlightLabel(ui->DeltaBalanceStatus,true,2500);
     for (int i = 0;i<6;i++)
     {
         for (auto &card:seat[i].cards)
@@ -1230,7 +1291,6 @@ void MainWindow::NewGamePreparation()
             card->deleteLater();
             card->hide();
         }
-
         seat[i].cards.clear(); //and Delete
 
         for (auto &card:seat[i].extra.cards)
@@ -1239,13 +1299,11 @@ void MainWindow::NewGamePreparation()
             card->hide();
         }
         seat[i].extra.cards.clear();
-        RealValueSpinBox[seat[i].perfectPair] = seat[i].perfectPair->value();
+
         seat[i].perfectPair->setValue(0);
         ValueChangedByUserSlot(seat[i].perfectPair);
-        RealValueSpinBox[seat[i].mainBet] = seat[i].mainBet->value();
         seat[i].mainBet->setValue(0);
         ValueChangedByUserSlot(seat[i].mainBet);
-        RealValueSpinBox[seat[i].triple] = seat[i].triple->value();
         seat[i].triple->setValue(0);
         ValueChangedByUserSlot(seat[i].triple);
 
@@ -1266,6 +1324,16 @@ void MainWindow::NewGamePreparation()
         seat[i].perfectPair->setDisabled(false);
         seat[i].mainBet->setDisabled(false);
         seat[i].triple->setDisabled(false);
+
+        seat[i].splitButton->setDisabled(false);
+        seat[i].splitButton->setStyleSheet("border-image: url(images/splitButton.png);");
+        seat[i].doubleButton->setDisabled(false);
+        seat[i].doubleButton->setStyleSheet("border-image: url(images/doubleButton.png);");
+
+        seat[i].gridLayoutLeft->addWidget(seat[i].doubleButton,0,0,1,1);
+        seat[i].gridLayoutLeft->addWidget(seat[i].hitButton,0,1,1,1);
+        seat[i].gridLayoutRight->addWidget(seat[i].standButton,0,0,1,1);
+        seat[i].gridLayoutRight->addWidget(seat[i].splitButton,0,1,1,1);
     }
     ui->TotalBetAmount->display(0);
     ui->CentralLabel->setText("TAKE A SEAT");
@@ -1284,7 +1352,6 @@ void MainWindow::NewGamePreparation()
     ui->comboBoxCurrency->setDisabled(false);
     ui->dealerSumCounter->setStyleSheet("background: rgb(66, 20, 20);");
 }
-
 
 
 
