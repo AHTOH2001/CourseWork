@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     srand(QTime::currentTime().msec());
-    //this->showFullScreen();
     this->resize(1500,900);
     this->showMaximized();
     seat[0].underSeat = ui->gridLayoutWidget_3;
@@ -244,6 +243,7 @@ MainWindow::MainWindow(QWidget *parent)
     dealerSumCounterAnimation->setDuration(300);
     ui->dealerSumCounter->hide();
     ui->DeltaBalanceStatus->hide();
+    ui->MinimumBetNumber->display((int)(minimumBet*course[0]));
 }
 
 MainWindow::~MainWindow()
@@ -414,6 +414,8 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
     ui->RepeatButton->setGeometry(705*koefW,620*koefH,81*koefW,81*koefH);
     ui->DoubleButton->setGeometry(705*koefW,730*koefH,81*koefW,81*koefH);
 
+    ui->gridLayoutWidget_4->setGeometry(QRect(1320*koefW,35*koefH,161*koefW,111*koefH));
+    ui->LabelMinimumBet->setFont(QFont("BankGothic Lt BT", 15*koefW));
 
     ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW));
     int tempW = ui->CentralLabel->text().count()*36;
@@ -552,7 +554,7 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
     {
         bool NoOneIsZero = true;
         for (int i = 0;i<6;i++)
-            if (seat[i].mainBet->value()==0 && seat[i].isSeat) NoOneIsZero = false;
+            if (seat[i].mainBet->value() < ui->MinimumBetNumber->value() && seat[i].isSeat) NoOneIsZero = false;
         if (NoOneIsZero && ui->TotalBetAmount->value()!=0)
         {
             ui->lcdTimer->show();
@@ -596,6 +598,7 @@ int prevCurrency = 0;
 void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
 {
     double koef = course[index]/course[prevCurrency];
+    ui->MinimumBetNumber->display((int)(minimumBet*course[index]));
     double delta = 0;
     for (int i = 0;i<6;i++)
     {
@@ -627,7 +630,7 @@ void MainWindow::on_DealNow_clicked()
     for (int i = 0;i<6;i++)
     {
         seat[i].perfectPair->setDisabled(true);
-        if (seat[i].mainBet->value()==0)
+        if (seat[i].mainBet->value() < ui->MinimumBetNumber->value())
             seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
         seat[i].mainBet->setDisabled(true);
         seat[i].triple->setDisabled(true);
@@ -1167,7 +1170,7 @@ void MainWindow::OpenDealerCardsProcess()
         else
             if (stage == 2)
             {
-                RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what todo?
+                RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);
                 dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
                 dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(-92*koefW,0,-92*koefW,0));
                 dealerCards[1]->CardAnimation->start();
@@ -1303,16 +1306,10 @@ void MainWindow::ResultStage()   //TODO result images
     timer1->setSingleShot(true);
     connect(timer1,SIGNAL(timeout()),this,SLOT(gatheringCards()));
     timer1->start(1500);
-//    QTimer *timer2 = new QTimer();
-//    timer2->setSingleShot(true);
-//    connect(timer2,SIGNAL(timeout()),this,SLOT(NewGamePreparation())); //TODO In parallel dealer gathering cards;  setEasingCurve(QEasingCurve::InCubic)
-//    timer2->start(5000);
-    // timer->deleteLater();
-
 }
 int amountX,amountY;
 
-int i = -1, j = 0; //del
+int i = -1, j = 0;
 double speed;
 Card *prevCard = nullptr,*thisCard = nullptr;
 void MainWindow::gatheringCards()
@@ -1321,7 +1318,6 @@ void MainWindow::gatheringCards()
     j = 0;
     prevCard = nullptr;
     thisCard = nullptr;
-//    isGathering = true;
     int dx = 0,dy = 0,prevX = -1,prevY = -1;
     for (auto &card:dealerCards)
     {
@@ -1347,7 +1343,6 @@ void MainWindow::gatheringCards()
             }
             if (seat[i].extra.isExist)
             {
-//                dx+=92*koefW;
                 for (auto &card:seat[i].extra.cards)
                 {
                     dx+=qAbs(prevX - card->pos().x());
@@ -1357,20 +1352,11 @@ void MainWindow::gatheringCards()
                 }
             }
         }
-
-//    dx+
     amountX = dx/koefW;
     amountY = dy/koefH;
     speed = 3500./(amountX+amountY);
     if (speed>1.5) speed = 1.5;
     NextIterationGathering();
-
-    //    dealerCards[0]->CardAnimation->setStartValue(dealerCards[0]->geometry());
-    //    dealerCards[0]->CardAnimation->setEndValue(dealerCards[1]->geometry());
-    //    dealerCards[0]->CardAnimation->setDuration();
-    //    prevCard=dealerCards[0];
-    //    thisCard=dealerCards[1];
-
 
 }
 void MainWindow::NextIterationGathering()
@@ -1436,7 +1422,6 @@ void MainWindow::NextIterationGathering()
                 i++;
                 j = 0;
                 isOtherDeck = true;
-                //                break;
             }
             else
             {
@@ -1459,7 +1444,7 @@ void MainWindow::NextIterationGathering()
 
     prevCard->CardAnimation->setStartValue(prevCard->geometry());
     prevCard->CardAnimation->setEndValue(thisCard->geometry());
-
+//    prevCard->CardAnimation->setEasingCurve(QEasingCurve::Linear);
     if (isOtherDeck)
     {
         int dx = qAbs(thisCard->x() - prevCard->x())/koefW + 92;
@@ -1479,9 +1464,11 @@ void MainWindow::NextIterationGathering()
 
 
             }
+          //  prevCard->CardAnimation->setEasingCurve(QEasingCurve::OutQuad);
         }
+
         prevCard->CardAnimation->setKeyValueAt((dx - 92. + dy)/(dx+dy),thisCard->geometry().adjusted(-92*koefW,0,-92*koefW,0));
-//        prevCard->CardAnimation->setEasingCurve(QEasingCurve::InCubic);
+
     }
     else
     {

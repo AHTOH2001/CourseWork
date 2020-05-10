@@ -2694,6 +2694,61 @@ color: white;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QWidget" name="gridLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>290</y>
+      <width>161</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_MinimumBet">
+     <item row="1" column="0">
+      <widget class="QLCDNumber" name="MinimumBetNumber">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>2</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="digitCount">
+        <number>6</number>
+       </property>
+       <property name="value" stdset="0">
+        <double>0.000000000000000</double>
+       </property>
+       <property name="intValue" stdset="0">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="LabelMinimumBet">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{color: rgb(205, 200, 0);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Minimum bet</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <zorder>CentralLabel</zorder>
    <zorder>Exit</zorder>
    <zorder>gridLayoutWidget_14</zorder>
@@ -2728,6 +2783,7 @@ color: white;</string>
    <zorder>standButtonExtra_5</zorder>
    <zorder>standButtonExtra_6</zorder>
    <zorder>DeltaBalanceStatus</zorder>
+   <zorder>gridLayoutWidget_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

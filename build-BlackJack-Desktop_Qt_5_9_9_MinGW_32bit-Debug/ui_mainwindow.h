@@ -217,6 +217,10 @@ public:
     QPushButton *standButtonExtra_5;
     QPushButton *standButtonExtra_6;
     QLabel *DeltaBalanceStatus;
+    QWidget *gridLayoutWidget_4;
+    QGridLayout *gridLayout_MinimumBet;
+    QLCDNumber *MinimumBetNumber;
+    QLabel *LabelMinimumBet;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -1642,6 +1646,34 @@ public:
 "	border-radius: 23px;\n"
 "}"));
         DeltaBalanceStatus->setAlignment(Qt::AlignCenter);
+        gridLayoutWidget_4 = new QWidget(centralwidget);
+        gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
+        gridLayoutWidget_4->setGeometry(QRect(1120, 290, 161, 111));
+        gridLayout_MinimumBet = new QGridLayout(gridLayoutWidget_4);
+        gridLayout_MinimumBet->setObjectName(QStringLiteral("gridLayout_MinimumBet"));
+        gridLayout_MinimumBet->setContentsMargins(0, 0, 0, 0);
+        MinimumBetNumber = new QLCDNumber(gridLayoutWidget_4);
+        MinimumBetNumber->setObjectName(QStringLiteral("MinimumBetNumber"));
+        sizePolicy3.setHeightForWidth(MinimumBetNumber->sizePolicy().hasHeightForWidth());
+        MinimumBetNumber->setSizePolicy(sizePolicy3);
+        MinimumBetNumber->setStyleSheet(QStringLiteral(""));
+        MinimumBetNumber->setDigitCount(6);
+        MinimumBetNumber->setProperty("value", QVariant(0));
+        MinimumBetNumber->setProperty("intValue", QVariant(0));
+
+        gridLayout_MinimumBet->addWidget(MinimumBetNumber, 1, 0, 1, 1);
+
+        LabelMinimumBet = new QLabel(gridLayoutWidget_4);
+        LabelMinimumBet->setObjectName(QStringLiteral("LabelMinimumBet"));
+        sizePolicy4.setHeightForWidth(LabelMinimumBet->sizePolicy().hasHeightForWidth());
+        LabelMinimumBet->setSizePolicy(sizePolicy4);
+        LabelMinimumBet->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
+"}\n"
+""));
+        LabelMinimumBet->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        gridLayout_MinimumBet->addWidget(LabelMinimumBet, 2, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         Exit->raise();
@@ -1677,6 +1709,7 @@ public:
         standButtonExtra_5->raise();
         standButtonExtra_6->raise();
         DeltaBalanceStatus->raise();
+        gridLayoutWidget_4->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2110, 26));
@@ -1770,6 +1803,7 @@ public:
         standButtonExtra_5->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         standButtonExtra_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         DeltaBalanceStatus->setText(QApplication::translate("MainWindow", "+123", Q_NULLPTR));
+        LabelMinimumBet->setText(QApplication::translate("MainWindow", "Minimum bet", Q_NULLPTR));
     } // retranslateUi
 
 };
