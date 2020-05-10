@@ -17,7 +17,7 @@ public:
     SeatClass();
     QSpinBox *perfectPair, *mainBet, *triple;
     QPushButton *multiSeat,*closeButton,*doubleButton,*hitButton,*standButton,*splitButton;
-    bool isSeat = false,stillPlay = false;
+    bool isSeat = false,stillPlay = false,blockCardAnimation = false;
     QWidget *underSeat;
     QVector<Card*> cards;
     QLCDNumber *sumCounter;
@@ -28,7 +28,7 @@ public:
     struct TypeForExtraSeat
     {
         QPushButton *hitButton,*standButton;
-        bool isExist = false,stillPlay = false;
+        bool isExist = false,stillPlay = false,blockCardAnimation = false;
         QVector<Card*> cards;
         QLCDNumber *sumCounter;
         int aceCount = 0;

@@ -362,6 +362,39 @@ release/moc_mainwindow.cpp: ../BlackJack/seatclass.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		ui_mainwindow.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qcombobox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QDebug \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsItem \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsitem.h \
@@ -382,6 +415,8 @@ release/moc_mainwindow.cpp: ../BlackJack/seatclass.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdatetime.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QQueue \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QtMath \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmath.h \
 		../BlackJack/mainwindow.h \
 		release/moc_predefs.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/bin/moc.exe
@@ -544,6 +579,39 @@ release/card.o: ../BlackJack/card.cpp ../BlackJack/card.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		ui_mainwindow.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qcombobox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QDebug \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsItem \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsitem.h \
@@ -563,7 +631,9 @@ release/card.o: ../BlackJack/card.cpp ../BlackJack/card.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTime \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdatetime.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QQueue \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QtMath \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\card.o ..\BlackJack\card.cpp
 
 release/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
@@ -702,6 +772,39 @@ release/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		ui_mainwindow.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qcombobox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QDebug \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsItem \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsitem.h \
@@ -722,13 +825,8 @@ release/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdatetime.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QQueue \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QtMath \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\BlackJack\main.cpp
 
 release/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
@@ -867,6 +965,39 @@ release/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		ui_mainwindow.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QVariant \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QAction \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QApplication \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeventloop.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QComboBox \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qcombobox.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyleoption.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractslider.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstyle.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabbar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QDebug \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGraphicsItem \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgraphicsitem.h \
@@ -886,7 +1017,9 @@ release/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QTime \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdatetime.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QQueue \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qqueue.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QtMath \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\BlackJack\mainwindow.cpp
 
 release/seatclass.o: ../BlackJack/seatclass.cpp ../BlackJack/seatclass.h \

@@ -14,7 +14,7 @@ public:
     int value();
     int suit();
     int number();
-    bool isOpen = true;
+    bool isOpen = true,isBlur = false;
 
 signals:
 

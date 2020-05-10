@@ -253,7 +253,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
-{        
+{
     label->show();
     label->setStyleSheet("QLabel{"
                          "color:  rgb(102,180,50);"
@@ -300,7 +300,7 @@ void MainWindow::on_Exit_clicked()
 
 int debugcounter = 0;
 void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setting
-{    
+{
     QPainter painter(this);
 
     koefH = height()/900.;
@@ -312,21 +312,22 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
         for (int i = 0;i<6;i++)
             seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,92*koefW, 135*koefH);
 
-        image.load("images/takeseat");        
+        image.load("images/takeseat");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
-        {            
+        {
             ui->CentralLabel->setText("TAKE A SEAT");
             HighlightLabel(ui->CentralLabel);
-        }        
+        }
         ui->RepeatButton->hide();
-        ui->DoubleButton->hide();        
+        ui->DoubleButton->hide();
+        if (stashCard!=nullptr)
+            stashCard->isBlur = true;
     }
     else
     {
         image.load("images/background");
-        painter.drawLine(100,100,500,500);
-        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));        
+        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")==0)
         {
             ui->RepeatButton->show();
@@ -344,25 +345,32 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
                 seat[i].underSeat->show();
                 seat[i].underSeat->setGeometry((seatX[i]-62+3)*koefW,(seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
 
-                int counter = 0;
-                for (auto &card:seat[i].cards)
-                    if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
-                    {
-                        if (seat[i].extra.isExist)
-                            card->setGeometry((seatX[i]-92/2-5+counter*3)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
-                        else
-                            card->setGeometry((seatX[i]+counter*15)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
+                if (!seat[i].blockCardAnimation)
+                {
+                    int counter = 0;
+                    for (auto &card:seat[i].cards)
+                        if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
+                        {
+                            if (seat[i].extra.isExist)
+                                card->setGeometry((seatX[i]-92/2-5+counter*3)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
+                            else
+                                card->setGeometry((seatX[i]+counter*15)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
 
-                        counter++;
-                    }
-                counter = 0;
-                for (auto &card:seat[i].extra.cards)
-                    if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
-                    {
-                        card->setGeometry((seatX[i]+92/2+5+counter*3)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
+                            counter++;
+                        }
+                }
 
-                        counter++;
-                    }
+                if (!seat[i].extra.blockCardAnimation)
+                {
+                    int counter = 0;
+                    for (auto &card:seat[i].extra.cards)
+                        if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
+                        {
+                            card->setGeometry((seatX[i]+92/2+5+counter*3)*koefW,(seatY[i]-counter*35)*koefH,92*koefW,135*koefH);
+
+                            counter++;
+                        }
+                }
                 int tempW = seat[i].pairStatus->text().count()*20;
                 int tempH = 65;
                 seat[i].pairStatus->setFont(QFont("Segoe Print", 20*koefW));
@@ -370,7 +378,11 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
                 tempW = seat[i].tripleStatus->text().count()*20;
                 seat[i].tripleStatus->setFont(QFont("Segoe Print", 20*koefW));
                 seat[i].tripleStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(tempH+36))*koefH,tempW*koefW,tempH*koefH);
-
+                if (stashCard!=nullptr && stashCard->CardAnimation->state()==QAbstractAnimation::Stopped)
+                {
+                    stashCard->isBlur = false;
+                    stashCard->setGeometry(10*koefW,10*koefH,92*koefW,135*koefH);
+                }
             }
         int counter = 0;
         int shiftUnit = (941-579) / (dealerCards.count()+1);
@@ -378,16 +390,18 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
             ui->dealerSumCounter->setGeometry(QRect((579+shiftUnit-92/2-50)*koefW,5*koefH,50*koefW,50*koefH));
         else
             dealerSumCounterAnimation->setEndValue(QRect((579+shiftUnit-92/2-50)*koefW,5*koefH,50*koefW,50*koefH));
+        if (!dealerBlockCardAnimation)
+        {
+            for (auto &card:dealerCards)
+                if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
+                {
 
-        for (auto &card:dealerCards)
-            if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
-            {
-
-                card->setGeometry(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
-                //      else
-                //card->CardAnimation->setEndValue(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
-                counter++;
-            }
+                    card->setGeometry(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
+                    //      else
+                    //card->CardAnimation->setEndValue(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
+                    counter++;
+                }
+        }
     }
     ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,240*koefW,111*koefH));
     ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
@@ -407,7 +421,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
     ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
 
     ui->DeltaBalanceStatus->setFont(QFont("Segoe Print", 30*koefW));
-    tempW = ui->DeltaBalanceStatus->text().count()*36;
+    tempW = ui->DeltaBalanceStatus->text().count()*37;
     tempH = 62;
     ui->DeltaBalanceStatus->setGeometry(QRect(ui->gridLayoutWidget->pos() + QPoint(250*koefW,48*koefH),QSize(tempW*koefW,tempH*koefH)));
 
@@ -460,7 +474,7 @@ void MainWindow::multiSeatFunc(int i)
 }
 
 void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
-{    
+{
     SpinBox->setStyleSheet(Color);
     QObject *context = new QObject(this);
     connect(timersForColor[SpinBox], &QTimer::timeout,context, [=]() {
@@ -470,7 +484,7 @@ void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
     timersForColor[SpinBox]->start(500);
 }
 
-QMap<QSpinBox*,int> prevValueForColor;
+QHash<QSpinBox*,int> prevValueForColor;
 void MainWindow::valueChangedSlot(int newValue)
 {
     auto* sender=dynamic_cast<QSpinBox*>(QObject::sender());
@@ -650,7 +664,7 @@ void MainWindow::on_DealNow_clicked()
         Dealing();
         delete context;
     });
-    timer->start(2000);    
+    timer->start(2000);
 }
 
 void MainWindow::NextColorSlot()
@@ -787,7 +801,12 @@ void MainWindow::Hit(int i)
     if (i==-7)
     {
         auto* sender=dynamic_cast<QPushButton*>(QObject::sender());
-        if (sender!=nullptr) i = seatIdentifier[sender];
+        if (sender!=nullptr)
+        {
+            i = seatIdentifier[sender];
+            sender->setStyleSheet("border-image: url(images/hit_blocked.png);");
+            sender->setDisabled(true);
+        }
     }
     QueueForHit.enqueue(i);
     TimerForHit->start(500);
@@ -861,6 +880,8 @@ void MainWindow::HitNext()
     else
         if (i<6)
         {
+            seat[i].hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+            seat[i].hitButton->setDisabled(false);
             if (isDealingEnd)
             {
                 seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
@@ -886,6 +907,8 @@ void MainWindow::HitNext()
         }
         else
         {
+            seat[i-6].extra.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+            seat[i-6].extra.hitButton->setDisabled(false);
             seat[i-6].extra.cards.append(card);
             card->CardAnimation->setDuration(1000);
             card->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));
@@ -929,12 +952,12 @@ void MainWindow::RecountSum(QLCDNumber *sumCounter, Card *card,const int cardsAm
         {
             sumCounter->setStyleSheet("border-image: url(images/blackjack.png);");
             sumCounter->display("");
-        }    
+        }
 
 }
 
 void MainWindow::Dealing()
-{    
+{
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat)
         {
@@ -1077,7 +1100,7 @@ void MainWindow::CountExtraBets()
             }
 
             if (isPair)
-            {                
+            {
                 HighlightLabel(seat[i].pairStatus,true,2000);
                 if (isTriple)
                 {
@@ -1144,7 +1167,7 @@ void MainWindow::OpenDealerCardsProcess()
         else
             if (stage == 2)
             {
-                RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what to do?
+                RecountSum(ui->dealerSumCounter,dealerCards[1],-1,&dealerAceCount);    //dealer black jack case what todo?
                 dealerCards[1]->CardAnimation->setStartValue(dealerCards[1]->geometry());
                 dealerCards[1]->CardAnimation->setEndValue(dealerCards[1]->geometry().adjusted(-92*koefW,0,-92*koefW,0));
                 dealerCards[1]->CardAnimation->start();
@@ -1231,7 +1254,7 @@ void MainWindow::ResultStage()   //TODO result images
             }
             else
                 if (seat[i].sumCounter->value()>21)
-                {                    
+                {
                     seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
                 }
                 else
@@ -1243,7 +1266,7 @@ void MainWindow::ResultStage()   //TODO result images
                     }
                     else
                         if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
-                        {                            
+                        {
                             seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
                         }
                         else
@@ -1258,6 +1281,7 @@ void MainWindow::ResultStage()   //TODO result images
         TotalWin+=RealValueSpinBox[seat[i].triple];
         seat[i].sumCounter->display("");
     }
+
     if (TotalWin > ui->TotalBetAmount->value())
     {
         ui->CentralLabel->setText("You win: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
@@ -1268,22 +1292,253 @@ void MainWindow::ResultStage()   //TODO result images
         if (TotalWin==0)
             ui->CentralLabel->setText("Dealer wins");
         else
-            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());    
+            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
 
         ui->DeltaBalanceStatus->setText(QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->comboBoxCurrency->currentText());
         if (TotalWin == ui->TotalBetAmount->value())
             ui->DeltaBalanceStatus->setText("+0" + ui->comboBoxCurrency->currentText());
     }
     HighlightLabel(ui->CentralLabel,true,4500);
-    QTimer *timer = new QTimer();
-    timer->setSingleShot(true);
-    connect(timer,SIGNAL(timeout()),this,SLOT(NewGamePreparation())); //TODO In parallel dealer gathering cards;
-    timer->start(5000);
-   // timer->deleteLater();
+    QTimer *timer1 = new QTimer();
+    timer1->setSingleShot(true);
+    connect(timer1,SIGNAL(timeout()),this,SLOT(gatheringCards()));
+    timer1->start(1500);
+//    QTimer *timer2 = new QTimer();
+//    timer2->setSingleShot(true);
+//    connect(timer2,SIGNAL(timeout()),this,SLOT(NewGamePreparation())); //TODO In parallel dealer gathering cards;  setEasingCurve(QEasingCurve::InCubic)
+//    timer2->start(5000);
+    // timer->deleteLater();
+
+}
+int amountX,amountY;
+
+int i = -1, j = 0; //del
+double speed;
+Card *prevCard = nullptr,*thisCard = nullptr;
+void MainWindow::gatheringCards()
+{
+    i = -1;
+    j = 0;
+    prevCard = nullptr;
+    thisCard = nullptr;
+//    isGathering = true;
+    int dx = 0,dy = 0,prevX = -1,prevY = -1;
+    for (auto &card:dealerCards)
+    {
+        if (!(prevX == -1 && prevY == -1))
+        {
+            dx+=qAbs(prevX - card->pos().x());
+            dy+=qAbs(prevY - card->pos().y());
+        }
+        prevX = card->pos().x();
+        prevY = card->pos().y();
+    }
+
+    for (int i = 0;i<6;i++)
+        if (seat[i].isSeat)
+        {
+            dx+=92*koefW;
+            for (auto &card:seat[i].cards)
+            {
+                dx+=qAbs(prevX - card->pos().x());
+                dy+=qAbs(prevY - card->pos().y());
+                prevX = card->pos().x();
+                prevY = card->pos().y();
+            }
+            if (seat[i].extra.isExist)
+            {
+//                dx+=92*koefW;
+                for (auto &card:seat[i].extra.cards)
+                {
+                    dx+=qAbs(prevX - card->pos().x());
+                    dy+=qAbs(prevY - card->pos().y());
+                    prevX = card->pos().x();
+                    prevY = card->pos().y();
+                }
+            }
+        }
+
+//    dx+
+    amountX = dx/koefW;
+    amountY = dy/koefH;
+    speed = 3500./(amountX+amountY);
+    if (speed>1.5) speed = 1.5;
+    NextIterationGathering();
+
+    //    dealerCards[0]->CardAnimation->setStartValue(dealerCards[0]->geometry());
+    //    dealerCards[0]->CardAnimation->setEndValue(dealerCards[1]->geometry());
+    //    dealerCards[0]->CardAnimation->setDuration();
+    //    prevCard=dealerCards[0];
+    //    thisCard=dealerCards[1];
+
+
+}
+void MainWindow::NextIterationGathering()
+{
+    if (prevCard!=nullptr)
+    {
+        prevCard->hide();
+        prevCard->deleteLater();
+    }
+    prevCard = thisCard;
+    bool isOtherDeck = false,dealer = false;
+    if (i==-1)
+    {
+        dealerBlockCardAnimation = true;
+        if (j>=dealerCards.count())
+        {
+            dealerCards.clear();
+            dealerBlockCardAnimation = false;
+            i++;
+            j = 0;
+            isOtherDeck = true;
+            dealer = true;
+        }
+        else
+        {
+            thisCard = dealerCards[j];
+            j++;
+            if (prevCard==nullptr)
+            {
+                prevCard = thisCard;
+                thisCard = dealerCards[j];
+                j++;
+            }
+        }
+    }
+
+    while (i!=-1)
+    {
+
+        while (i<6 && !seat[i].isSeat)
+        {
+            i++;
+            j = 0;
+            isOtherDeck = true;
+        }
+
+        if (i>=6)
+        {
+            stage = 0;
+            thisCard = prevCard;
+            CloseCardProcess();
+            return;
+        }
+
+        if (j>=seat[i].cards.count())
+        {
+            if (!seat[i].extra.isExist || j-seat[i].cards.count()>=seat[i].extra.cards.count())
+            {
+                seat[i].cards.clear();
+                seat[i].extra.cards.clear();
+                seat[i].blockCardAnimation = false;
+                seat[i].extra.blockCardAnimation = false;
+                i++;
+                j = 0;
+                isOtherDeck = true;
+                //                break;
+            }
+            else
+            {
+                seat[i].extra.blockCardAnimation = true;
+                thisCard = seat[i].extra.cards[j-seat[i].cards.count()];
+                j++;
+                break;
+            }
+
+        }
+        else
+        {
+            seat[i].blockCardAnimation = true;
+            thisCard = seat[i].cards[j];
+            j++;
+            break;
+        }
+    }
+
+
+    prevCard->CardAnimation->setStartValue(prevCard->geometry());
+    prevCard->CardAnimation->setEndValue(thisCard->geometry());
+
+    if (isOtherDeck)
+    {
+        int dx = qAbs(thisCard->x() - prevCard->x())/koefW + 92;
+        int dy = qAbs(thisCard->y() - prevCard->y())/koefH;
+        prevCard->CardAnimation->setDuration(speed*(dx+dy));
+        if (dealer)
+        {
+            double lastX = thisCard->x()/koefW - 92,lastY = thisCard->y()/koefH,time = 0;
+            double n = 20,x = prevCard->x()/koefW,y = prevCard->y()/koefH, sqrA = (lastX - x) * (lastX - x), sqrB = (lastY - y) * (lastY - y);    //TODO should use polar coordinates for ellipse;
+            for (int i = 1;i<n;i++)
+            {
+                time += (dx - 92. + dy)/(dx+dy) / n;
+                x += (lastX - (double)prevCard->x()/koefW) / n;
+                y = lastY - qSqrt(sqrB * (1 - (double)(x - prevCard->x()/koefW) * (x - prevCard->x()/koefW) / sqrA));
+                prevCard->CardAnimation->setKeyValueAt(time,QRect(QPoint(x*koefW,y*koefH),QSize(thisCard->size())));
+
+
+
+            }
+        }
+        prevCard->CardAnimation->setKeyValueAt((dx - 92. + dy)/(dx+dy),thisCard->geometry().adjusted(-92*koefW,0,-92*koefW,0));
+//        prevCard->CardAnimation->setEasingCurve(QEasingCurve::InCubic);
+    }
+    else
+    {
+        int dx = qAbs(thisCard->x() - prevCard->x())/koefW;
+        int dy = qAbs(thisCard->y() - prevCard->y())/koefH;
+        prevCard->CardAnimation->setDuration(speed*(dx+dy));
+    }
+    connect(prevCard->CardAnimation,SIGNAL(finished()),this,SLOT(NextIterationGathering()));
+    prevCard->CardAnimation->start();
+
+}
+
+void MainWindow::CloseCardProcess()
+{
+    if (stage == 0)
+    {
+
+        thisCard->CardAnimation->setStartValue(thisCard->geometry());
+        thisCard->CardAnimation->setEndValue(thisCard->geometry().adjusted(0,0,-92*koefW,0));
+        thisCard->CardAnimation->setDuration(300);
+        thisCard->CardAnimation->start();
+        connect(thisCard->CardAnimation,SIGNAL(finished()),this,SLOT(CloseCardProcess()));
+    }
+    else
+        if (stage == 1)
+        {
+            thisCard->isOpen = false;
+            thisCard->CardAnimation->setStartValue(thisCard->geometry());
+            thisCard->CardAnimation->setEndValue(thisCard->geometry().adjusted(-92*koefW,0,0,0));
+            thisCard->CardAnimation->start();
+        }
+        else
+            if (stage == 2)
+            {
+                HighlightLabel(ui->DeltaBalanceStatus,true,3000);
+                thisCard->CardAnimation->setStartValue(thisCard->geometry());
+                thisCard->CardAnimation->setEndValue(QRect(QPoint(10*koefW,10*koefH),thisCard->size()));
+                thisCard->CardAnimation->setDuration(speed * (qAbs(thisCard->x()/koefW - 10) + qAbs(thisCard->y()/koefH - 10)) / 2);
+                thisCard->CardAnimation->start();
+            }
+            else
+            {
+                if (stashCard!=nullptr)
+                {
+                    stashCard->hide();
+                    stashCard->deleteLater();
+                }
+                stashCard = thisCard;
+                disconnect(thisCard->CardAnimation,SIGNAL(finished()),this,SLOT(CloseCardProcess()));
+                NewGamePreparation();
+            }
+
+
+    stage++;
 }
 void MainWindow::NewGamePreparation()
-{    
-    HighlightLabel(ui->DeltaBalanceStatus,true,2500);
+{
     for (int i = 0;i<6;i++)
     {
         for (auto &card:seat[i].cards)
@@ -1291,14 +1546,12 @@ void MainWindow::NewGamePreparation()
             card->deleteLater();
             card->hide();
         }
-        seat[i].cards.clear(); //and Delete
 
         for (auto &card:seat[i].extra.cards)
         {
             card->deleteLater();
             card->hide();
         }
-        seat[i].extra.cards.clear();
 
         seat[i].perfectPair->setValue(0);
         ValueChangedByUserSlot(seat[i].perfectPair);
@@ -1342,7 +1595,6 @@ void MainWindow::NewGamePreparation()
         card->deleteLater();
         card->hide();
     }
-    dealerCards.clear();
     dealerAceCount=0;
     isDealingEnd = false;
     ui->dealerSumCounter->display(0);
@@ -1352,7 +1604,7 @@ void MainWindow::NewGamePreparation()
     ui->comboBoxCurrency->setDisabled(false);
     ui->dealerSumCounter->setStyleSheet("background: rgb(66, 20, 20);");
 }
-
+//TODO insurance
 
 
 
