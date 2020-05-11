@@ -85,6 +85,10 @@ private slots:
     void NextIterationGathering();
 
     void CloseCardProcess();
+    void on_InsuranceNo_clicked();
+
+    void on_InsuranceYes_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMap<QSpinBox*,QTimer*> timersForColor;
@@ -97,7 +101,7 @@ private:
     void Dealing();
     double koefW=1,koefH=1;
     int tick = 0;
-    bool isSeat = false, isDealingEnd = false,dealerBlockCardAnimation = false;
+    bool isSeat = false, isDealingEnd = false,dealerBlockCardAnimation = false,isInsurance = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {506,566,617,618,568,505};
     const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};   //TODO course from the internet

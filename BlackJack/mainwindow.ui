@@ -1761,8 +1761,8 @@ QPushButton:pressed{
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>560</y>
+      <x>850</x>
+      <y>750</y>
       <width>290</width>
       <height>123</height>
      </rect>
@@ -2245,8 +2245,8 @@ QPushButton:hover
    <widget class="QLabel" name="CentralLabel">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>470</y>
+      <x>590</x>
+      <y>410</y>
       <width>441</width>
       <height>81</height>
      </rect>
@@ -2667,8 +2667,8 @@ color: white;</string>
    <widget class="QLabel" name="DeltaBalanceStatus">
     <property name="geometry">
      <rect>
-      <x>1110</x>
-      <y>620</y>
+      <x>1150</x>
+      <y>650</y>
       <width>150</width>
       <height>50</height>
      </rect>
@@ -2749,6 +2749,78 @@ color: white;</string>
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="InsuranceYes">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>530</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  border: 2px solid rgb(66, 20, 20);
+  border-radius: 40px;
+  color: rgb(66, 20, 20);
+  background: rgb(0,150,57);
+  border-radius: 19px;}
+QPushButton:hover {
+  background: rgb(135,193,163);
+  color: rgb(66, 20, 20);}</string>
+    </property>
+    <property name="text">
+     <string>YES</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="InsuranceNo">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>530</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Print</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+  border: 2px solid rgb(66, 20, 20);
+  border-radius: 40px;
+  color: rgb(66, 20, 20);
+  background: rgb(188, 20, 26);
+  border-radius: 19px;}
+QPushButton:hover {
+  background: rgb(241,97,72);
+  color: rgb(66, 20, 20);}</string>
+    </property>
+    <property name="text">
+     <string>NO</string>
+    </property>
+   </widget>
    <zorder>CentralLabel</zorder>
    <zorder>Exit</zorder>
    <zorder>gridLayoutWidget_14</zorder>
@@ -2784,6 +2856,8 @@ color: white;</string>
    <zorder>standButtonExtra_6</zorder>
    <zorder>DeltaBalanceStatus</zorder>
    <zorder>gridLayoutWidget_4</zorder>
+   <zorder>InsuranceYes</zorder>
+   <zorder>InsuranceNo</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

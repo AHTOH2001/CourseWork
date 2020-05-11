@@ -221,6 +221,8 @@ public:
     QGridLayout *gridLayout_MinimumBet;
     QLCDNumber *MinimumBetNumber;
     QLabel *LabelMinimumBet;
+    QPushButton *InsuranceYes;
+    QPushButton *InsuranceNo;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -1214,7 +1216,7 @@ public:
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(810, 560, 290, 123));
+        gridLayoutWidget->setGeometry(QRect(850, 750, 290, 123));
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
@@ -1491,7 +1493,7 @@ public:
 
         CentralLabel = new QLabel(centralwidget);
         CentralLabel->setObjectName(QStringLiteral("CentralLabel"));
-        CentralLabel->setGeometry(QRect(630, 470, 441, 81));
+        CentralLabel->setGeometry(QRect(590, 410, 441, 81));
         QFont font;
         font.setFamily(QStringLiteral("Segoe Print"));
         font.setPointSize(30);
@@ -1637,7 +1639,7 @@ public:
         standButtonExtra_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
         DeltaBalanceStatus = new QLabel(centralwidget);
         DeltaBalanceStatus->setObjectName(QStringLiteral("DeltaBalanceStatus"));
-        DeltaBalanceStatus->setGeometry(QRect(1110, 620, 150, 50));
+        DeltaBalanceStatus->setGeometry(QRect(1150, 650, 150, 50));
         DeltaBalanceStatus->setFont(font);
         DeltaBalanceStatus->setStyleSheet(QLatin1String("QLabel{\n"
 "	color:  rgb(102,180,50);\n"
@@ -1674,6 +1676,39 @@ public:
 
         gridLayout_MinimumBet->addWidget(LabelMinimumBet, 2, 0, 1, 1);
 
+        InsuranceYes = new QPushButton(centralwidget);
+        InsuranceYes->setObjectName(QStringLiteral("InsuranceYes"));
+        InsuranceYes->setGeometry(QRect(650, 530, 81, 41));
+        sizePolicy2.setHeightForWidth(InsuranceYes->sizePolicy().hasHeightForWidth());
+        InsuranceYes->setSizePolicy(sizePolicy2);
+        QFont font2;
+        font2.setFamily(QStringLiteral("Segoe Print"));
+        font2.setPointSize(20);
+        InsuranceYes->setFont(font2);
+        InsuranceYes->setStyleSheet(QLatin1String("QPushButton {\n"
+"  border: 2px solid rgb(66, 20, 20);\n"
+"  border-radius: 40px;\n"
+"  color: rgb(66, 20, 20);\n"
+"  background: rgb(0,150,57);\n"
+"  border-radius: 19px;}\n"
+"QPushButton:hover {\n"
+"  background: rgb(135,193,163);\n"
+"  color: rgb(66, 20, 20);}"));
+        InsuranceNo = new QPushButton(centralwidget);
+        InsuranceNo->setObjectName(QStringLiteral("InsuranceNo"));
+        InsuranceNo->setGeometry(QRect(760, 530, 81, 41));
+        sizePolicy2.setHeightForWidth(InsuranceNo->sizePolicy().hasHeightForWidth());
+        InsuranceNo->setSizePolicy(sizePolicy2);
+        InsuranceNo->setFont(font2);
+        InsuranceNo->setStyleSheet(QLatin1String("QPushButton {\n"
+"  border: 2px solid rgb(66, 20, 20);\n"
+"  border-radius: 40px;\n"
+"  color: rgb(66, 20, 20);\n"
+"  background: rgb(188, 20, 26);\n"
+"  border-radius: 19px;}\n"
+"QPushButton:hover {\n"
+"  background: rgb(241,97,72);\n"
+"  color: rgb(66, 20, 20);}"));
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         Exit->raise();
@@ -1710,6 +1745,8 @@ public:
         standButtonExtra_6->raise();
         DeltaBalanceStatus->raise();
         gridLayoutWidget_4->raise();
+        InsuranceYes->raise();
+        InsuranceNo->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2110, 26));
@@ -1804,6 +1841,8 @@ public:
         standButtonExtra_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         DeltaBalanceStatus->setText(QApplication::translate("MainWindow", "+123", Q_NULLPTR));
         LabelMinimumBet->setText(QApplication::translate("MainWindow", "Minimum bet", Q_NULLPTR));
+        InsuranceYes->setText(QApplication::translate("MainWindow", "YES", Q_NULLPTR));
+        InsuranceNo->setText(QApplication::translate("MainWindow", "NO", Q_NULLPTR));
     } // retranslateUi
 
 };
