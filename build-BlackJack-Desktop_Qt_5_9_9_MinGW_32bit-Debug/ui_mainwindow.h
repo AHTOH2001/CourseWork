@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
@@ -21,6 +22,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
@@ -166,9 +168,8 @@ public:
     QPushButton *multiSeatButton_6;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout_balance;
-    QLCDNumber *BalanceAmount;
     QLabel *labelBalance;
-    QComboBox *comboBoxCurrency;
+    QLCDNumber *BalanceAmount;
     QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout_1;
     QGridLayout *gridLayout_49;
@@ -176,12 +177,12 @@ public:
     QPushButton *doubleButton_1;
     QPushButton *hitButton_1;
     QSpacerItem *horizontalSpacerLeft_1;
+    QSpinBox *spinBox_2;
+    QLabel *label_7;
     QGridLayout *gridLayoutRight_1;
     QPushButton *standButton_1;
     QPushButton *splitButton_1;
     QSpacerItem *horizontalSpacerRight_1;
-    QLabel *label_7;
-    QSpinBox *spinBox_2;
     QLCDNumber *lcdNumberExtra_1;
     QSpacerItem *horizontalSpacer_23;
     QGridLayout *gridLayout_11;
@@ -223,6 +224,16 @@ public:
     QLabel *LabelMinimumBet;
     QPushButton *InsuranceYes;
     QPushButton *InsuranceNo;
+    QLabel *AdditionalStatus;
+    QFrame *SettingsFrame;
+    QComboBox *comboBoxCurrency;
+    QLabel *labelCurrency;
+    QSlider *AnimationSpeedSetting;
+    QSlider *FontSizeSetting;
+    QLabel *AnimationSpeedLabel;
+    QLabel *FontSizeLabel;
+    QPushButton *SettingsButton;
+    QLabel *CurrentCurrency;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -1220,28 +1231,13 @@ public:
         gridLayout_balance = new QGridLayout(gridLayoutWidget);
         gridLayout_balance->setObjectName(QStringLiteral("gridLayout_balance"));
         gridLayout_balance->setContentsMargins(0, 0, 0, 0);
-        BalanceAmount = new QLCDNumber(gridLayoutWidget);
-        BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(2);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
-        BalanceAmount->setSizePolicy(sizePolicy3);
-        BalanceAmount->setStyleSheet(QStringLiteral(""));
-        BalanceAmount->setSmallDecimalPoint(true);
-        BalanceAmount->setDigitCount(6);
-        BalanceAmount->setProperty("value", QVariant(10000));
-        BalanceAmount->setProperty("intValue", QVariant(10000));
-
-        gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
-
         labelBalance = new QLabel(gridLayoutWidget);
         labelBalance->setObjectName(QStringLiteral("labelBalance"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
-        labelBalance->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(labelBalance->sizePolicy().hasHeightForWidth());
+        labelBalance->setSizePolicy(sizePolicy3);
         labelBalance->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -1249,51 +1245,24 @@ public:
 
         gridLayout_balance->addWidget(labelBalance, 0, 0, 1, 1);
 
-        comboBoxCurrency = new QComboBox(gridLayoutWidget);
-        comboBoxCurrency->setObjectName(QStringLiteral("comboBoxCurrency"));
-        comboBoxCurrency->setEnabled(true);
-        comboBoxCurrency->setMinimumSize(QSize(80, 65));
-        comboBoxCurrency->setMaximumSize(QSize(80, 65));
-        comboBoxCurrency->setFocusPolicy(Qt::StrongFocus);
-        comboBoxCurrency->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"     border: 2px inset green;\n"
-"     border-radius: 10px;\n"
-"     padding: 0px;\n"
-"	 color: rgb(205, 200, 0);\n"
-" }\n"
-"\n"
-" QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"	background: rgb(0,115,57);\n"
-" }\n"
-"\n"
-" /* QComboBox \320\277\320\276\320\273\321\203\321\207\320\260\320\265\321\202 \321\201\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265 \"on\" \320\272\320\276\320\263\320\264\320\260 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\270\320\271 \321\201\320\277\320\270\321\201\320\276\320\272 \321\200\320\260\321\201\320\272\321\200\321\213\321\202 */\n"
-" QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"     background: green;\n"
-" }\n"
-"\n"
-" QComboBox::drop-down {\n"
-"     width: 15px;\n"
-"\n"
-"     border-left-width: 1px;\n"
-"     border-left-color: green;\n"
-"     border-left-style: solid; /* \321\202\320\276\320\273\321\214\320\272\320\276 \320\276\320\264\320\275\320\260 \320\273\320\270\320\275\320\270\321\217"
-                        " */\n"
-" }\n"
-"\n"
-" QComboBox::down-arrow {\n"
-"	width: 16;\n"
-"     top: 1px;\n"
-"     left: 0px;\n"
-"     image: url(images/spin/spinup.png);\n"
-" }\n"
-"\n"
-""));
+        BalanceAmount = new QLCDNumber(gridLayoutWidget);
+        BalanceAmount->setObjectName(QStringLiteral("BalanceAmount"));
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(2);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(BalanceAmount->sizePolicy().hasHeightForWidth());
+        BalanceAmount->setSizePolicy(sizePolicy4);
+        BalanceAmount->setStyleSheet(QStringLiteral(""));
+        BalanceAmount->setSmallDecimalPoint(true);
+        BalanceAmount->setDigitCount(6);
+        BalanceAmount->setProperty("value", QVariant(1000));
+        BalanceAmount->setProperty("intValue", QVariant(1000));
 
-        gridLayout_balance->addWidget(comboBoxCurrency, 1, 1, 1, 1);
+        gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
 
         gridLayoutWidget_3 = new QWidget(centralwidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(50, 50, 601, 161));
+        gridLayoutWidget_3->setGeometry(QRect(50, 50, 605, 163));
         gridLayout_1 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_1->setObjectName(QStringLiteral("gridLayout_1"));
         gridLayout_1->setHorizontalSpacing(0);
@@ -1326,6 +1295,24 @@ public:
 
         gridLayout_49->addLayout(gridLayoutLeft_1, 0, 2, 2, 1);
 
+        spinBox_2 = new QSpinBox(gridLayoutWidget_3);
+        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
+        spinBox_2->setMaximum(999999999);
+        spinBox_2->setSingleStep(10);
+
+        gridLayout_49->addWidget(spinBox_2, 1, 3, 1, 1);
+
+        label_7 = new QLabel(gridLayoutWidget_3);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy1);
+        label_7->setStyleSheet(QLatin1String("QLabel{color:white;\n"
+"	font: 87 8pt \"Arial Black\";\n"
+"}\n"
+""));
+
+        gridLayout_49->addWidget(label_7, 0, 3, 1, 1);
+
         gridLayoutRight_1 = new QGridLayout();
         gridLayoutRight_1->setObjectName(QStringLiteral("gridLayoutRight_1"));
         standButton_1 = new QPushButton(gridLayoutWidget_3);
@@ -1350,24 +1337,6 @@ public:
 
 
         gridLayout_49->addLayout(gridLayoutRight_1, 0, 4, 2, 1);
-
-        label_7 = new QLabel(gridLayoutWidget_3);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy1);
-        label_7->setStyleSheet(QLatin1String("QLabel{color:white;\n"
-"	font: 87 8pt \"Arial Black\";\n"
-"}\n"
-""));
-
-        gridLayout_49->addWidget(label_7, 0, 3, 1, 1);
-
-        spinBox_2 = new QSpinBox(gridLayoutWidget_3);
-        spinBox_2->setObjectName(QStringLiteral("spinBox_2"));
-        spinBox_2->setMaximum(999999999);
-        spinBox_2->setSingleStep(10);
-
-        gridLayout_49->addWidget(spinBox_2, 1, 3, 1, 1);
 
 
         gridLayout_1->addLayout(gridLayout_49, 2, 0, 1, 8);
@@ -1465,14 +1434,14 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(1620, 450, 161, 111));
+        gridLayoutWidget_2->setGeometry(QRect(1310, 480, 161, 111));
         gridLayout_balance_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_balance_2->setObjectName(QStringLiteral("gridLayout_balance_2"));
         gridLayout_balance_2->setContentsMargins(0, 0, 0, 0);
         TotalBetAmount = new QLCDNumber(gridLayoutWidget_2);
         TotalBetAmount->setObjectName(QStringLiteral("TotalBetAmount"));
-        sizePolicy3.setHeightForWidth(TotalBetAmount->sizePolicy().hasHeightForWidth());
-        TotalBetAmount->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(TotalBetAmount->sizePolicy().hasHeightForWidth());
+        TotalBetAmount->setSizePolicy(sizePolicy4);
         TotalBetAmount->setStyleSheet(QStringLiteral(""));
         TotalBetAmount->setDigitCount(6);
         TotalBetAmount->setProperty("value", QVariant(0));
@@ -1482,8 +1451,8 @@ public:
 
         labelTotalBet = new QLabel(gridLayoutWidget_2);
         labelTotalBet->setObjectName(QStringLiteral("labelTotalBet"));
-        sizePolicy4.setHeightForWidth(labelTotalBet->sizePolicy().hasHeightForWidth());
-        labelTotalBet->setSizePolicy(sizePolicy4);
+        sizePolicy3.setHeightForWidth(labelTotalBet->sizePolicy().hasHeightForWidth());
+        labelTotalBet->setSizePolicy(sizePolicy3);
         labelTotalBet->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -1656,8 +1625,8 @@ public:
         gridLayout_MinimumBet->setContentsMargins(0, 0, 0, 0);
         MinimumBetNumber = new QLCDNumber(gridLayoutWidget_4);
         MinimumBetNumber->setObjectName(QStringLiteral("MinimumBetNumber"));
-        sizePolicy3.setHeightForWidth(MinimumBetNumber->sizePolicy().hasHeightForWidth());
-        MinimumBetNumber->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(MinimumBetNumber->sizePolicy().hasHeightForWidth());
+        MinimumBetNumber->setSizePolicy(sizePolicy4);
         MinimumBetNumber->setStyleSheet(QStringLiteral(""));
         MinimumBetNumber->setDigitCount(6);
         MinimumBetNumber->setProperty("value", QVariant(0));
@@ -1667,8 +1636,8 @@ public:
 
         LabelMinimumBet = new QLabel(gridLayoutWidget_4);
         LabelMinimumBet->setObjectName(QStringLiteral("LabelMinimumBet"));
-        sizePolicy4.setHeightForWidth(LabelMinimumBet->sizePolicy().hasHeightForWidth());
-        LabelMinimumBet->setSizePolicy(sizePolicy4);
+        sizePolicy3.setHeightForWidth(LabelMinimumBet->sizePolicy().hasHeightForWidth());
+        LabelMinimumBet->setSizePolicy(sizePolicy3);
         LabelMinimumBet->setStyleSheet(QLatin1String("QLabel{color: rgb(205, 200, 0);\n"
 "}\n"
 ""));
@@ -1709,6 +1678,115 @@ public:
 "QPushButton:hover {\n"
 "  background: rgb(241,97,72);\n"
 "  color: rgb(66, 20, 20);}"));
+        AdditionalStatus = new QLabel(centralwidget);
+        AdditionalStatus->setObjectName(QStringLiteral("AdditionalStatus"));
+        AdditionalStatus->setGeometry(QRect(860, 510, 441, 81));
+        AdditionalStatus->setFont(font);
+        AdditionalStatus->setStyleSheet(QLatin1String("QLabel{\n"
+"	color:  rgb(102,180,50);\n"
+"	padding: 2px;\n"
+"	border: 3px solid rgb(231,181,77);\n"
+"	border-radius: 31px;\n"
+"}"));
+        AdditionalStatus->setAlignment(Qt::AlignCenter);
+        SettingsFrame = new QFrame(centralwidget);
+        SettingsFrame->setObjectName(QStringLiteral("SettingsFrame"));
+        SettingsFrame->setGeometry(QRect(1390, 150, 491, 311));
+        SettingsFrame->setStyleSheet(QLatin1String("QFrame{\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(173, 130, 45, 255), stop:1 rgba(231, 181, 77, 255));\n"
+"border-radius: 10px;\n"
+"border: 3px inset rgb(173, 130, 45);\n"
+"border-width: 2px;}"));
+        SettingsFrame->setFrameShape(QFrame::StyledPanel);
+        SettingsFrame->setFrameShadow(QFrame::Raised);
+        comboBoxCurrency = new QComboBox(SettingsFrame);
+        comboBoxCurrency->setObjectName(QStringLiteral("comboBoxCurrency"));
+        comboBoxCurrency->setEnabled(true);
+        comboBoxCurrency->setGeometry(QRect(30, 50, 431, 65));
+        comboBoxCurrency->setFocusPolicy(Qt::StrongFocus);
+        comboBoxCurrency->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 0px;\n"
+"	 color: rgb(205, 200, 0);\n"
+" }\n"
+"\n"
+" QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"	background: rgb(0,120,120);\n"
+" }\n"
+"\n"
+" /* QComboBox \320\277\320\276\320\273\321\203\321\207\320\260\320\265\321\202 \321\201\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265 \"on\" \320\272\320\276\320\263\320\264\320\260 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\270\320\271 \321\201\320\277\320\270\321\201\320\276\320\272 \321\200\320\260\321\201\320\272\321\200\321\213\321\202 */\n"
+" QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"     background: green;\n"
+" }\n"
+"\n"
+" QComboBox::drop-down {\n"
+"     width: 15px;\n"
+"\n"
+"     border-left-width: 1px;\n"
+"     border-left-color: green;\n"
+"     border-left-style: solid; /* \321\202\320\276\320\273\321\214\320\272\320\276 \320\276\320\264\320\275\320\260 \320\273\320\270\320\275\320\270\321\217"
+                        " */\n"
+" }\n"
+"\n"
+" QComboBox::down-arrow {\n"
+"	width: 16;\n"
+"     top: 1px;\n"
+"     left: 0px;\n"
+"     image: url(images/spin/spindown.png);\n"
+" }\n"
+"\n"
+""));
+        labelCurrency = new QLabel(SettingsFrame);
+        labelCurrency->setObjectName(QStringLiteral("labelCurrency"));
+        labelCurrency->setGeometry(QRect(40, 20, 171, 21));
+        QFont font3;
+        font3.setPointSize(12);
+        labelCurrency->setFont(font3);
+        labelCurrency->setStyleSheet(QLatin1String("background: 0px;\n"
+"border:0px;"));
+        AnimationSpeedSetting = new QSlider(SettingsFrame);
+        AnimationSpeedSetting->setObjectName(QStringLiteral("AnimationSpeedSetting"));
+        AnimationSpeedSetting->setGeometry(QRect(40, 180, 421, 22));
+        AnimationSpeedSetting->setMinimum(0);
+        AnimationSpeedSetting->setMaximum(100);
+        AnimationSpeedSetting->setValue(50);
+        AnimationSpeedSetting->setOrientation(Qt::Horizontal);
+        AnimationSpeedSetting->setTickPosition(QSlider::TicksBelow);
+        AnimationSpeedSetting->setTickInterval(25);
+        FontSizeSetting = new QSlider(SettingsFrame);
+        FontSizeSetting->setObjectName(QStringLiteral("FontSizeSetting"));
+        FontSizeSetting->setGeometry(QRect(40, 250, 421, 22));
+        FontSizeSetting->setMinimum(0);
+        FontSizeSetting->setMaximum(100);
+        FontSizeSetting->setValue(50);
+        FontSizeSetting->setOrientation(Qt::Horizontal);
+        FontSizeSetting->setTickPosition(QSlider::TicksBelow);
+        FontSizeSetting->setTickInterval(25);
+        AnimationSpeedLabel = new QLabel(SettingsFrame);
+        AnimationSpeedLabel->setObjectName(QStringLiteral("AnimationSpeedLabel"));
+        AnimationSpeedLabel->setGeometry(QRect(50, 150, 171, 31));
+        AnimationSpeedLabel->setFont(font3);
+        AnimationSpeedLabel->setStyleSheet(QLatin1String("background: 0px;\n"
+"border:0px;"));
+        FontSizeLabel = new QLabel(SettingsFrame);
+        FontSizeLabel->setObjectName(QStringLiteral("FontSizeLabel"));
+        FontSizeLabel->setGeometry(QRect(50, 220, 171, 31));
+        FontSizeLabel->setFont(font3);
+        FontSizeLabel->setStyleSheet(QLatin1String("background: 0px;\n"
+"border:0px;"));
+        SettingsButton = new QPushButton(centralwidget);
+        SettingsButton->setObjectName(QStringLiteral("SettingsButton"));
+        SettingsButton->setGeometry(QRect(1340, 100, 51, 51));
+        SettingsButton->setStyleSheet(QStringLiteral("border-image: url(images/settings.png);"));
+        CurrentCurrency = new QLabel(centralwidget);
+        CurrentCurrency->setObjectName(QStringLiteral("CurrentCurrency"));
+        CurrentCurrency->setGeometry(QRect(1150, 810, 171, 57));
+        CurrentCurrency->setStyleSheet(QLatin1String("     border: 2px inset green;\n"
+"     border-radius: 10px;\n"
+"     padding: 0px;\n"
+"	 color: rgb(205, 200, 0);\n"
+" "));
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         Exit->raise();
@@ -1747,6 +1825,10 @@ public:
         gridLayoutWidget_4->raise();
         InsuranceYes->raise();
         InsuranceNo->raise();
+        AdditionalStatus->raise();
+        SettingsFrame->raise();
+        SettingsButton->raise();
+        CurrentCurrency->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2110, 26));
@@ -1816,9 +1898,9 @@ public:
         labelBalance->setText(QApplication::translate("MainWindow", "Balance", Q_NULLPTR));
         doubleButton_1->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
         hitButton_1->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         standButton_1->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
         splitButton_1->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
-        label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
         label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
@@ -1843,6 +1925,12 @@ public:
         LabelMinimumBet->setText(QApplication::translate("MainWindow", "Minimum bet", Q_NULLPTR));
         InsuranceYes->setText(QApplication::translate("MainWindow", "YES", Q_NULLPTR));
         InsuranceNo->setText(QApplication::translate("MainWindow", "NO", Q_NULLPTR));
+        AdditionalStatus->setText(QApplication::translate("MainWindow", "Additional status", Q_NULLPTR));
+        labelCurrency->setText(QApplication::translate("MainWindow", "Currency", Q_NULLPTR));
+        AnimationSpeedLabel->setText(QApplication::translate("MainWindow", "Animation speed", Q_NULLPTR));
+        FontSizeLabel->setText(QApplication::translate("MainWindow", "Font size", Q_NULLPTR));
+        SettingsButton->setText(QString());
+        CurrentCurrency->setText(QString());
     } // retranslateUi
 
 };

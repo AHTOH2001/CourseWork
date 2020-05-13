@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,12 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     card.cpp \
+    course.cpp \
+    downloader.cpp \
     main.cpp \
     mainwindow.cpp \
     seatclass.cpp
 
 HEADERS += \
     card.h \
+    course.h \
+    downloader.h \
     mainwindow.h \
     seatclass.h
 

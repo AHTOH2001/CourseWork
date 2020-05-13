@@ -3,6 +3,8 @@
 
 #include "seatclass.h"
 #include "card.h"
+#include "downloader.h"
+#include "course.h"
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
@@ -21,6 +23,7 @@
 #include <QTime>
 #include <QQueue>
 #include <QtMath>
+#include <QDir>
 
 
 QT_BEGIN_NAMESPACE
@@ -35,7 +38,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     bool DEBUGMODE = false;
-    int minimumBet = 100;
+    double minimumBet = 1000; //in UAH
     QImage cardsList[13][4];
 public slots:
 
@@ -85,9 +88,19 @@ private slots:
     void NextIterationGathering();
 
     void CloseCardProcess();
+
     void on_InsuranceNo_clicked();
 
     void on_InsuranceYes_clicked();
+
+    void AfterDownloadingCurrency(bool error);    
+
+
+    void on_SettingsButton_clicked();
+
+    void on_AnimationSpeedSetting_valueChanged(int value);
+
+    void on_FontSizeSetting_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
@@ -99,18 +112,19 @@ private:
     QMap<QSpinBox*,double> RealValueSpinBox;
     void DeleteTrash();
     void Dealing();
-    double koefW=1,koefH=1;
+    double koefW=1,koefH=1,koefFont=1,koefSpeed=1;
     int tick = 0;
-    bool isSeat = false, isDealingEnd = false,dealerBlockCardAnimation = false,isInsurance = false;
+    bool isSeat = false, isDealingEnd = false, dealerBlockCardAnimation = false, isInsurance = false;
     const int seatX[6] = {88,311,531,880,1100,1326};
     const int seatY[6] = {506,566,617,618,568,505};
-    const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};   //TODO course from the internet
+//    const double course[7] = {0.920387,1,0.759763,62.84,2.2055,3.6550,7.3377};
     SeatClass seat[6];
     QVector<Card*> dealerCards;
     QPropertyAnimation* dealerSumCounterAnimation;
     QMap<QPushButton*,int> seatIdentifier;
     int dealerAceCount = 0,stillPlayingAmount = 0;
     Card* stashCard = nullptr;
+    Downloader *downloader;
     void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 1600);
     void RecountSum(QLCDNumber* sumCounter, Card *card, const int cardsAmount, int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;

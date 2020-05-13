@@ -146,6 +146,10 @@ MainWindow::MainWindow(QWidget *parent)
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->DoubleButton->setGraphicsEffect(effect);
+    effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(5);
+    effect->setOffset(3,3);
+    ui->AdditionalStatus->setGraphicsEffect(effect);
 
 
     TimerForDealNow = new QTimer();
@@ -236,16 +240,29 @@ MainWindow::MainWindow(QWidget *parent)
         i.extra.horizontalSpacer->changeSize(0,0);
         i.extra.sumCounter->hide();
     }
-    QStringList temp = {"€","$","£","₽","Br","₪","￥"};
-    ui->comboBoxCurrency->addItems(temp);
+//    QStringList temp = {"€","$","£","₽","Br","₪","￥"};
+//    ui->comboBoxCurrency->addItems(temp);
+//    QString temps = "fds";
+//    ui->comboBoxCurrency->addItem(temps);
+//    ui->comboBoxCurrency->addItem("fdsf");
 
     dealerSumCounterAnimation = new QPropertyAnimation(ui->dealerSumCounter,"geometry");
-    dealerSumCounterAnimation->setDuration(300);
+    dealerSumCounterAnimation->setDuration(300*koefSpeed);
     ui->dealerSumCounter->hide();
-    ui->DeltaBalanceStatus->hide();
-    ui->MinimumBetNumber->display(((double)minimumBet*course[0]));
+    ui->DeltaBalanceStatus->hide();    
     ui->InsuranceYes->hide();
     ui->InsuranceNo->hide();
+    ui->AdditionalStatus->hide();
+   // qDebug() << QDir::currentPath();
+//    qDebug() << QCoreApplication::applicationDirPath();
+    downloader = new Downloader(this);
+    connect(downloader,SIGNAL(onReady(bool)),this,SLOT(AfterDownloadingCurrency(bool)));
+    downloader->getData();
+
+    ui->SettingsFrame->hide();
+
+//    ui->textBrowser->setText(downloader->data);
+
 }
 
 MainWindow::~MainWindow()
@@ -288,10 +305,13 @@ void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << event->pos();
+    if (!ui->SettingsFrame->geometry().contains(event->pos()))
+        ui->SettingsFrame->hide();
+    qDebug() << event->pos();    
+    qDebug() << ui->BalanceAmount->value() << "balance";
+    qDebug() << ui->TotalBetAmount->value() << "totalbet";
 
-    qDebug() << ui->BalanceAmount->value();
-    qDebug() << ui->TotalBetAmount->value();
+    qDebug() << minimumBet*downloader->course->koef[downloader->course->ind[ui->comboBoxCurrency->currentIndex()]] << "minbetreal";
     for (int i = 0;i<6;i++)
         if (seat[i].isSeat)
         {
@@ -312,7 +332,7 @@ void MainWindow::on_Exit_clicked()
 }
 
 int debugcounter = 0;
-void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setting
+void MainWindow::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
 
@@ -320,6 +340,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
     koefW = width()/1500.;
     ui->Exit->setGeometry(width()-40,0,40,25);
     QImage image;
+    int tempW;
     if (!isSeat)
     {
         for (int i = 0;i<6;i++)
@@ -327,7 +348,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
 
         image.load("images/takeseat");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
-        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")!=0)
+        if (ui->CentralLabel->text()!="TAKE A SEAT")
         {
             ui->CentralLabel->setText("TAKE A SEAT");
             HighlightLabel(ui->CentralLabel);
@@ -336,17 +357,25 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
         ui->DoubleButton->hide();
         if (stashCard!=nullptr)
             stashCard->isBlur = true;
+
+        if (ui->AdditionalStatus->text()!="COURSES LOADED" && ui->AdditionalStatus->text()!="FAILED TO LOAD COURSES")
+        {
+            ui->AdditionalStatus->hide();
+            ui->AdditionalStatus->setText("");
+        }
     }
     else
     {
         image.load("images/background");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
-        if (strcmp(ui->CentralLabel->text().toLatin1(),"TAKE A SEAT")==0)
+        if (ui->CentralLabel->text()=="TAKE A SEAT")
         {
             ui->RepeatButton->show();
             ui->DoubleButton->show();
             ui->CentralLabel->setText("PLACE YOUR BETS");
             HighlightLabel(ui->CentralLabel);
+            ui->AdditionalStatus->setText("MINIMUM BET " + QString::number(ui->MinimumBetNumber->value()));
+            HighlightLabel(ui->AdditionalStatus);
         }
         for (int i = 0;i<6;i++)
             if (!seat[i].isSeat)
@@ -356,7 +385,7 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
             else
             {
                 seat[i].underSeat->show();
-                seat[i].underSeat->setGeometry((seatX[i]-62+3)*koefW,(seatY[i]+135+10)*koefH,(221-3)*koefW,100*koefH);
+                seat[i].underSeat->setGeometry((seatX[i]-60)*koefW,(seatY[i]+135+10)*koefH,212*koefW,100*koefH);
 
                 if (!seat[i].blockCardAnimation)
                 {
@@ -384,18 +413,17 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
                             counter++;
                         }
                 }
-                int tempW = seat[i].pairStatus->text().count()*20;
-                int tempH = 65;
-                seat[i].pairStatus->setFont(QFont("Segoe Print", 20*koefW));
-                seat[i].pairStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(tempH+36))*koefH,tempW*koefW,tempH*koefH);
+                tempW = seat[i].pairStatus->text().count()*20;
+                seat[i].pairStatus->setFont(QFont("Segoe Print", 20*koefW*koefFont));
+                seat[i].pairStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(65+36))*koefH,tempW*koefW,65*koefH);
                 tempW = seat[i].tripleStatus->text().count()*20;
-                seat[i].tripleStatus->setFont(QFont("Segoe Print", 20*koefW));
-                seat[i].tripleStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(tempH+36))*koefH,tempW*koefW,tempH*koefH);
+                seat[i].tripleStatus->setFont(QFont("Segoe Print", 20*koefW*koefFont));
+                seat[i].tripleStatus->setGeometry((seatX[i]+92/2-tempW/2)*koefW,(seatY[i]-(65+36))*koefH,tempW*koefW,65*koefH);
                 if (stashCard!=nullptr && stashCard->CardAnimation->state()==QAbstractAnimation::Stopped)
                 {
                     stashCard->isBlur = false;
                     stashCard->setGeometry(10*koefW,10*koefH,92*koefW,135*koefH);
-                }
+                }                
             }
         int counter = 0;
         int shiftUnit = (941-579) / (dealerCards.count()+1);
@@ -415,44 +443,64 @@ void MainWindow::paintEvent(QPaintEvent *event)     //TODO animation speed setti
                     counter++;
                 }
         }
+        //        if (strcmp(ui->AdditionalStatus->text().toLatin1(),"COURSES LOADED")==0)
+        //            ui->AdditionalStatus->hide();
+
+
     }
-    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,240*koefW,111*koefH));
-    ui->comboBoxCurrency->setFont(QFont("Times", 36*koefW));
-    ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW));
-    ui->comboBoxCurrency->setMinimumSize(80*koefW,65*koefH);
-    ui->comboBoxCurrency->setMaximumSize(80*koefW,65*koefH);
+    tempW = 20*ui->CurrentCurrency->text().count() + 60;
+    ui->gridLayoutWidget->setGeometry(QRect(10*koefW,760*koefH,170*koefW,111*koefH));
+    ui->CurrentCurrency->setFont(QFont("Times", 30*koefW*koefFont));
+    ui->labelBalance->setFont(QFont("BankGothic Lt BT", 20*koefW*koefFont));
+    ui->CurrentCurrency->setGeometry(QRect(ui->gridLayoutWidget->pos() + QPoint(175*koefW,60*koefH),QSize(tempW*koefW,52*koefH)));
+
 
     ui->gridLayoutWidget_2->setGeometry(QRect(1320*koefW,760*koefH,161*koefW,111*koefH));
-    ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW));
-    ui->RepeatButton->setGeometry(705*koefW,620*koefH,81*koefW,81*koefH);
-    ui->DoubleButton->setGeometry(705*koefW,730*koefH,81*koefW,81*koefH);
+    ui->labelTotalBet->setFont(QFont("BankGothic Lt BT", 18*koefW*koefFont));
+
+
+    ui->RepeatButton->setGeometry(710*koefW,620*koefH,80*koefW,80*koefH);
+    ui->DoubleButton->setGeometry(710*koefW,730*koefH,80*koefW,80*koefH);
 
     ui->gridLayoutWidget_4->setGeometry(QRect(1320*koefW,35*koefH,161*koefW,111*koefH));
-    ui->LabelMinimumBet->setFont(QFont("BankGothic Lt BT", 15*koefW));
+    ui->LabelMinimumBet->setFont(QFont("BankGothic Lt BT", 15*koefW*koefFont));
 
-    ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW));
-    int tempW = ui->CentralLabel->text().count()*36;
-    int tempH = 65;
-    ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-tempH+40)/2*koefH,tempW*koefW,tempH*koefH);
+    ui->CentralLabel->setFont(QFont("Segoe Print", 30*koefW*koefFont));
+    tempW = ui->CentralLabel->text().count()*36;
+    ui->CentralLabel->setGeometry((1500-tempW)/2*koefW,(900-65+40)/2*koefH,tempW*koefW,65*koefH);
 
-    ui->DeltaBalanceStatus->setFont(QFont("Segoe Print", 30*koefW));
-    tempW = ui->DeltaBalanceStatus->text().count()*37;
-    tempH = 62;
-    ui->DeltaBalanceStatus->setGeometry(QRect(ui->gridLayoutWidget->pos() + QPoint(250*koefW,48*koefH),QSize(tempW*koefW,tempH*koefH)));
+    ui->AdditionalStatus->setFont(QFont("Segoe Print", 30*koefW*koefFont));
+    tempW = ui->AdditionalStatus->text().count()*36;
+    ui->AdditionalStatus->setGeometry((1500-tempW)/2*koefW,(900-65+80+130)/2*koefH,tempW*koefW,65*koefH);
 
-    ui->DealNow->setFont(QFont("MS Shell Dlg 2", 20*koefW));
+    ui->DeltaBalanceStatus->setFont(QFont("Segoe Print", 30*koefW*koefFont));
+    tempW = ui->DeltaBalanceStatus->text().count()*37;  
+    ui->DeltaBalanceStatus->setGeometry(QRect(ui->CurrentCurrency->pos() + QPoint(ui->CurrentCurrency->width()+5*koefW,-5*koefH),QSize(tempW*koefW,62*koefH)));
+
+    ui->DealNow->setFont(QFont("MS Shell Dlg 2", 20*koefW*koefFont));
     ui->lcdTimer->setGeometry(712*koefW,630*koefH,61*koefW,61*koefH);
 
     ui->InsuranceYes->setGeometry(650*koefW,530*koefH,81*koefW,41*koefH);
     ui->InsuranceNo->setGeometry(760*koefW,530*koefH,81*koefW,41*koefH);
 
+
+    ui->SettingsButton->setGeometry(110*koefW,10*koefH,51*koefW,51*koefH);
+    ui->SettingsFrame->setGeometry(160*koefW,60*koefH,400*koefW,270*koefH);
+    ui->labelCurrency->setGeometry(15*koefW,10*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
+    ui->comboBoxCurrency->setGeometry(10*koefW,40*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
+    ui->comboBoxCurrency->setFont(QFont("Times", 13*koefW*koefFont));
+    ui->AnimationSpeedLabel->setGeometry(15*koefW,100*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
+    ui->AnimationSpeedSetting->setGeometry(10*koefW,130*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
+    ui->FontSizeLabel->setGeometry(15*koefW,190*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
+    ui->FontSizeSetting->setGeometry(10*koefW,220*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
+
     if (DEBUGMODE)
     {
-    debugcounter++;
-    qDebug() << "paintevent!" << debugcounter << event->region();
-    painter.setPen(QPen(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10)));
-    painter.setBrush(QBrush(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10),Qt::Dense4Pattern));
-    painter.drawRect(event->rect().adjusted(-1,-1,1,1));
+        debugcounter++;
+        qDebug() << "paintevent!" << debugcounter << event->region();
+        painter.setPen(QPen(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10)));
+        painter.setBrush(QBrush(qRgb(debugcounter%25*10,debugcounter%25*10,debugcounter%25*10),Qt::Dense4Pattern));
+        painter.drawRect(event->rect().adjusted(-1,-1,1,1));
     }
 }
 
@@ -499,7 +547,7 @@ void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
         SpinBox->setStyleSheet("");
         delete context;
     } );
-    timersForColor[SpinBox]->start(500);
+    timersForColor[SpinBox]->start(500*koefSpeed);
 }
 
 QHash<QSpinBox*,int> prevValueForColor;
@@ -571,13 +619,13 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
         bool NoOneIsZero = true;
         for (int i = 0;i<6;i++)
             if (seat[i].isSeat)
-                if (RealValueSpinBox[seat[i].perfectPair]+RealValueSpinBox[seat[i].mainBet]+RealValueSpinBox[seat[i].triple] < ui->MinimumBetNumber->value() || seat[i].mainBet->value()==0)
+                if (RealValueSpinBox[seat[i].perfectPair]+RealValueSpinBox[seat[i].mainBet]+RealValueSpinBox[seat[i].triple] < minimumBet*downloader->course->koef[downloader->course->ind[ui->comboBoxCurrency->currentIndex()]]-0.00001 || seat[i].mainBet->value()==0)
                     NoOneIsZero = false;
         if (NoOneIsZero && ui->TotalBetAmount->value()!=0)
         {
             ui->lcdTimer->show();
             ui->DealNow->show();
-            TimerForDealNow->start(100);
+            TimerForDealNow->start(100*koefSpeed);
             for (int i = 0;i<6;i++)
             {
                 seat[i].multiSeat->setDisabled(true);
@@ -585,6 +633,8 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
             }
             ui->comboBoxCurrency->setDisabled(true);
             ui->RepeatButton->hide();
+            ui->AdditionalStatus->hide();
+            ui->AdditionalStatus->setText("");
         }
         else
         {
@@ -606,6 +656,8 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
             }
             ui->comboBoxCurrency->setDisabled(false);
             ui->RepeatButton->show();
+            ui->AdditionalStatus->setText("MINIMUM BET " + QString::number(ui->MinimumBetNumber->value()));
+            HighlightLabel(ui->AdditionalStatus);
         }
     }
     return true;
@@ -614,9 +666,18 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
 
 int prevCurrency = 0;
 void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
-{
-    double koef = course[index]/course[prevCurrency];
-    ui->MinimumBetNumber->display(((double)minimumBet*course[index]));
+{        
+    QString ind = downloader->course->ind[index];
+    double koef = downloader->course->koef[ind]/downloader->course->koef[downloader->course->ind[prevCurrency]];
+//    ui->comboBoxCurrency->setItemText(prevCurrency,downloader->course->symbol[downloader->course->ind[prevCurrency]] + "     " + downloader->course->title[downloader->course->ind[prevCurrency]]);
+//    ui->comboBoxCurrency->setItemText(index,downloader->course->symbol[ind]);
+    ui->CurrentCurrency->setText(downloader->course->symbol[downloader->course->ind[index]]);
+    ui->MinimumBetNumber->display(qCeil(minimumBet*downloader->course->koef[ind]));
+    if (ui->AdditionalStatus->text()[0]=="M")
+    {
+        ui->AdditionalStatus->setText("MINIMUM BET " + QString::number(ui->MinimumBetNumber->value()));
+        HighlightLabel(ui->AdditionalStatus);
+    }
 //    double delta = 0;
     for (int i = 0;i<6;i++)
     {
@@ -656,7 +717,7 @@ void MainWindow::on_DealNow_clicked()
 
         if (seat[i].mainBet->value() == 0)
             seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
-        if (seat[i].perfectPair->value()+seat[i].mainBet->value()+seat[i].triple->value() < ui->MinimumBetNumber->value())
+        if (seat[i].perfectPair->value()+seat[i].mainBet->value()+seat[i].triple->value() < minimumBet*downloader->course->koef[downloader->course->ind[ui->comboBoxCurrency->currentIndex()]])
         {
             seat[i].perfectPair->setValue(RealValueSpinBox[seat[i].perfectPair]);
             seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]);
@@ -709,7 +770,7 @@ void MainWindow::on_DealNow_clicked()
         Dealing();
         delete context;
     });
-    timer->start(2000);
+    timer->start(2000*koefSpeed);
 }
 
 void MainWindow::NextColorSlot()
@@ -791,11 +852,11 @@ void MainWindow::Split(int i)
         }
         seat[i].cards[0]->CardAnimation->setStartValue(seat[i].cards[0]->geometry());
         seat[i].cards[0]->CardAnimation->setEndValue(QRect((seatX[i]-92/2-5)*koefW,seatY[i]*koefH,92*koefW,135*koefH));
-        seat[i].cards[0]->CardAnimation->setDuration(500);
+        seat[i].cards[0]->CardAnimation->setDuration(500*koefSpeed);
         seat[i].cards[0]->CardAnimation->start();
         seat[i].extra.cards[0]->CardAnimation->setStartValue(seat[i].extra.cards[0]->geometry());
         seat[i].extra.cards[0]->CardAnimation->setEndValue(QRect((seatX[i]+92/2+5)*koefW,seatY[i]*koefH,92*koefW,135*koefH));
-        seat[i].extra.cards[0]->CardAnimation->setDuration(500);
+        seat[i].extra.cards[0]->CardAnimation->setDuration(500*koefSpeed);
         seat[i].extra.cards[0]->CardAnimation->start();
 
     }
@@ -852,7 +913,7 @@ void MainWindow::Hit(int i)
         }
     }
     QueueForHit.enqueue(i);
-    TimerForHit->start(500);
+    TimerForHit->start(500*koefSpeed);
     ui->lcdTimer->display(11);
 }
 void MainWindow::HitNext()
@@ -889,8 +950,8 @@ void MainWindow::HitNext()
         return;
     }
 //    Card *card = new Card(rand()%1 + 13,this);
-    Card *card = new Card(rand()%2 + 50,this);
-//    Card *card = new Card(rand(),this);
+//    Card *card = new Card(rand()%2 + 50,this);
+    Card *card = new Card(rand(),this);
     card->show();
     int i = QueueForHit.dequeue();
     if (i==-1)
@@ -900,7 +961,7 @@ void MainWindow::HitNext()
             card->isOpen=false;
         }
         dealerCards.append(card);
-        card->CardAnimation->setDuration(300);
+        card->CardAnimation->setDuration(300*koefSpeed);
         int shiftUnit = (941-579) / (dealerCards.count()+1);
         if (dealerCards.count()==1)
         {
@@ -955,7 +1016,7 @@ void MainWindow::HitNext()
                 seat[i].splitButton->setDisabled(true);
             }
             seat[i].cards.append(card);
-            card->CardAnimation->setDuration(1000);
+            card->CardAnimation->setDuration(1000*koefSpeed);
             card->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));
             if (seat[i].extra.isExist)
                 card->CardAnimation->setEndValue(QRect((seatX[i]-92/2-5+(seat[i].cards.count()-1)*3)*koefW,(seatY[i]-(seat[i].cards.count()-1)*35)*koefH,92*koefW,135*koefH));
@@ -977,7 +1038,7 @@ void MainWindow::HitNext()
             seat[i-6].extra.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
             seat[i-6].extra.hitButton->setDisabled(false);
             seat[i-6].extra.cards.append(card);
-            card->CardAnimation->setDuration(1000);
+            card->CardAnimation->setDuration(1000*koefSpeed);
             card->CardAnimation->setStartValue(QRect((1500-92)/2*koefW,-140*koefH,92*koefW,135*koefH));
             card->CardAnimation->setEndValue(QRect((seatX[i-6]+92/2+5+(seat[i-6].extra.cards.count()-1)*3)*koefW,(seatY[i-6]-(seat[i-6].extra.cards.count()-1)*35)*koefH,92*koefW,135*koefH));
             card->CardAnimation->start();
@@ -1255,7 +1316,7 @@ void MainWindow::OpenDealerCardsProcess()
                     QTimer *timer = new QTimer();
                     timer->setSingleShot(true);
                     connect(timer,SIGNAL(timeout()),this,SLOT(ResultStage()));
-                    timer->start(800);
+                    timer->start(800*koefSpeed);
                 }
             }
     stage++;
@@ -1369,25 +1430,25 @@ void MainWindow::ResultStage()   //TODO result images
 
     if (TotalWin > ui->TotalBetAmount->value())
     {
-        ui->CentralLabel->setText("You win: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
-        ui->DeltaBalanceStatus->setText("+" + QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->comboBoxCurrency->currentText());
+        ui->CentralLabel->setText("You win: " + QString::number(TotalWin) + ui->CurrentCurrency->text());
+        ui->DeltaBalanceStatus->setText("+" + QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->CurrentCurrency->text());
     }
     else
     {
         if (TotalWin==0)
             ui->CentralLabel->setText("Dealer wins");
         else
-            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->comboBoxCurrency->currentText());
+            ui->CentralLabel->setText("Push: " + QString::number(TotalWin) + ui->CurrentCurrency->text());
 
-        ui->DeltaBalanceStatus->setText(QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->comboBoxCurrency->currentText());
+        ui->DeltaBalanceStatus->setText(QString::number(TotalWin-ui->TotalBetAmount->value()) + ui->CurrentCurrency->text());
         if (TotalWin == ui->TotalBetAmount->value())
-            ui->DeltaBalanceStatus->setText("+0" + ui->comboBoxCurrency->currentText());
+            ui->DeltaBalanceStatus->setText("+0" + ui->CurrentCurrency->text());
     }
     HighlightLabel(ui->CentralLabel,true,4500);
     QTimer *timer1 = new QTimer();
     timer1->setSingleShot(true);
     connect(timer1,SIGNAL(timeout()),this,SLOT(gatheringCards()));
-    timer1->start(1500);
+    timer1->start(1500*koefSpeed);
 }
 int amountX,amountY;
 
@@ -1438,6 +1499,7 @@ void MainWindow::gatheringCards()
     amountY = dy/koefH;
     speed = 3500./(amountX+amountY);
     if (speed>1.5) speed = 1.5;
+    speed*=koefSpeed;
     NextIterationGathering();
 
 }
@@ -1570,7 +1632,7 @@ void MainWindow::CloseCardProcess()
 
         thisCard->CardAnimation->setStartValue(thisCard->geometry());
         thisCard->CardAnimation->setEndValue(thisCard->geometry().adjusted(0,0,-92*koefW,0));
-        thisCard->CardAnimation->setDuration(300);
+        thisCard->CardAnimation->setDuration(300*koefSpeed);
         thisCard->CardAnimation->start();
         connect(thisCard->CardAnimation,SIGNAL(finished()),this,SLOT(CloseCardProcess()));
     }
@@ -1602,7 +1664,6 @@ void MainWindow::CloseCardProcess()
                 disconnect(thisCard->CardAnimation,SIGNAL(finished()),this,SLOT(CloseCardProcess()));
                 NewGamePreparation();
             }
-
 
     stage++;
 }
@@ -1674,7 +1735,6 @@ void MainWindow::NewGamePreparation()
     ui->dealerSumCounter->setStyleSheet("background: rgb(66, 20, 20);");
     isInsurance = false;
 }
-//TODO insurance
 
 
 void MainWindow::on_InsuranceNo_clicked()
@@ -1710,4 +1770,44 @@ void MainWindow::on_InsuranceYes_clicked()
     ui->InsuranceYes->hide();
     ui->InsuranceNo->hide();
     ui->lcdTimer->display(11);
+}
+void MainWindow::AfterDownloadingCurrency(bool error)
+{
+    if (error)
+    {
+        ui->AdditionalStatus->setText("FAILED TO LOAD COURSES");
+        HighlightLabel(ui->AdditionalStatus,false,2500);
+    }
+    else
+    {
+        ui->AdditionalStatus->setText("COURSES LOADED"); //TODO failed case
+        HighlightLabel(ui->AdditionalStatus,false,2500);
+        //        for (int i = 0;)
+    }
+    ui->MinimumBetNumber->display(qCeil(minimumBet*downloader->course->koef[downloader->course->ind[0]]));
+    for (auto &ind:downloader->course->ind)
+        //        ui->comboBoxCurrency->addItem(downloader->course->symbol["RUB"]);
+        ui->comboBoxCurrency->addItem(downloader->course->symbol[ind] + "     " + downloader->course->title[ind]);
+    ui->CurrentCurrency->setText(downloader->course->symbol[downloader->course->ind[0]]);
+    //    ui->CurrentCurrency->setText("$");
+
+}
+//TODO F1 button
+
+void MainWindow::on_SettingsButton_clicked()
+{
+    if (ui->SettingsFrame->isVisible())
+        ui->SettingsFrame->hide();
+    else
+        ui->SettingsFrame->show();
+}
+
+void MainWindow::on_AnimationSpeedSetting_valueChanged(int value)
+{
+    koefSpeed = 2 - (value+50)/100.;
+}
+
+void MainWindow::on_FontSizeSetting_valueChanged(int value)
+{
+    koefFont = (value+50)/100.;
 }
