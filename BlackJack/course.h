@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QRegularExpression>
 #include <QMap>
+#include <QFile>
+#include <QDebug>
 
 class Course : public QObject
 {

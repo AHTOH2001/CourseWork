@@ -16,13 +16,14 @@ void Downloader::getData()
 
 void Downloader::onResult(QNetworkReply *reply)
 {    
-    if(reply->error()){
+    QByteArray rawData = reply->readAll();
+    if(reply->error() || rawData==""){
         qDebug() << "ERROR";
         qDebug() << reply->errorString();
         course = new Course("",this);
         emit onReady(true);
     } else {
-        course = new Course(reply->readAll(),this);
+        course = new Course(rawData,this);
         emit onReady(false);
     }
 }

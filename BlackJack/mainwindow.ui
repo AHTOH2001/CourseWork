@@ -300,10 +300,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -316,10 +318,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -349,10 +353,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -365,10 +371,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -462,10 +470,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -478,10 +488,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -511,10 +523,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -527,10 +541,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -879,10 +895,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -895,10 +913,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -928,10 +948,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -944,10 +966,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1073,10 +1097,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1089,10 +1115,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1122,10 +1150,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1138,10 +1168,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1462,10 +1494,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1478,10 +1512,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1511,10 +1547,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1527,10 +1565,12 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1845,10 +1885,12 @@ QPushButton:pressed{
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/double.png);}
+QPushButton:hover{border-image: url(images/double_hover.png);}
+QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>2x</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1861,10 +1903,12 @@ QPushButton:pressed{
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>HIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1923,10 +1967,12 @@ QPushButton:pressed{
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>STAND</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1939,10 +1985,12 @@ QPushButton:pressed{
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">            border-image: url(images/blackjack.png);</string>
+            <string notr="true">QPushButton {border-image: url(images/split.png);}
+QPushButton:hover{border-image: url(images/split_hover.png);}
+QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
            </property>
            <property name="text">
-            <string>SPLIT</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -2312,14 +2360,14 @@ QPushButton:hover{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-            border-image: url(images/double.png);
+            border-image: url(images/doubleButton.png);
 			color: blue;
          }
 QPushButton:hover{
-			border-image: url(images/double_hover.png);
+			border-image: url(images/doubleButton_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/double_pressed.png);
+		border-image: url(images/doubleButton_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -2358,11 +2406,12 @@ QPushButton:pressed{
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);
-color: white;</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_1">
@@ -2381,11 +2430,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);
-color: white;</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="hitButtonExtra_2">
@@ -2404,10 +2454,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="hitButtonExtra_3">
@@ -2426,10 +2478,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="hitButtonExtra_4">
@@ -2448,10 +2502,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="hitButtonExtra_5">
@@ -2470,10 +2526,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="hitButtonExtra_6">
@@ -2492,10 +2550,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/hit.png);}
+QPushButton:hover{border-image: url(images/hit_hover.png);}
+QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>HIT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_2">
@@ -2514,10 +2574,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_3">
@@ -2536,10 +2598,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_4">
@@ -2558,10 +2622,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_5">
@@ -2580,10 +2646,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="standButtonExtra_6">
@@ -2602,10 +2670,12 @@ color: white;</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">            border-image: url(images/blackjack.png);</string>
+     <string notr="true">QPushButton {border-image: url(images/stand.png);}
+QPushButton:hover{border-image: url(images/stand_hover.png);}
+QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
     </property>
     <property name="text">
-     <string>STAND</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="DeltaBalanceStatus">
@@ -3000,7 +3070,15 @@ border:0px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(images/settings.png);</string>
+     <string notr="true">QPushButton {
+             border-image: url(images/settings.png);
+         }
+QPushButton:hover{
+		border-image: url(images/settings_hover.png);
+}
+QPushButton:pressed{
+		border-image: url(images/settings_pressed.png);
+}</string>
     </property>
     <property name="text">
      <string/>

@@ -222,17 +222,17 @@ MainWindow::MainWindow(QWidget *parent)
         seatIdentifier[i.extra.hitButton] = counter+6;
         seatIdentifier[i.extra.standButton] = counter+6;
         i.doubleButton->hide();
-        i.doubleButton->setStyleSheet("border-image: url(images/doubleButton.png);");        //TODO buttons images
+        //i.doubleButton->setStyleSheet("border-image: url(images/double.png);");        //TODO buttons images
         i.hitButton->hide();
-        i.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+        //i.hitButton->setStyleSheet("border-image: url(images/hit.png);");
         i.standButton->hide();
-        i.standButton->setStyleSheet("border-image: url(images/standButton.png);");
+//        i.standButton->setStyleSheet("border-image: url(images/stand.png);");
         i.splitButton->hide();
-        i.splitButton->setStyleSheet("border-image: url(images/splitButton.png);");
+//        i.splitButton->setStyleSheet("border-image: url(images/split.png);");
         i.extra.hitButton->hide();
-        i.extra.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+        //i.extra.hitButton->setStyleSheet("border-image: url(images/hit.png);");
         i.extra.standButton->hide();
-        i.extra.standButton->setStyleSheet("border-image: url(images/standButton.png);");
+        //i.extra.standButton->setStyleSheet("border-image: url(images/stand.png);");
         i.horizontalSpacerLeft->changeSize(0,0);
         i.horizontalSpacerRight->changeSize(0,0);
         counter++;
@@ -307,7 +307,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if (!ui->SettingsFrame->geometry().contains(event->pos()))
         ui->SettingsFrame->hide();
-    qDebug() << event->pos();    
+    qDebug() << event->pos();
     qDebug() << ui->BalanceAmount->value() << "balance";
     qDebug() << ui->TotalBetAmount->value() << "totalbet";
 
@@ -484,7 +484,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
     ui->InsuranceNo->setGeometry(760*koefW,530*koefH,81*koefW,41*koefH);
 
 
-    ui->SettingsButton->setGeometry(110*koefW,10*koefH,51*koefW,51*koefH);
+    ui->SettingsButton->setGeometry(110*koefW,10*koefH,51*koefW,51*koefW);
     ui->SettingsFrame->setGeometry(160*koefW,60*koefH,400*koefW,270*koefH);
     ui->labelCurrency->setGeometry(15*koefW,10*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
     ui->comboBoxCurrency->setGeometry(10*koefW,40*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
@@ -549,7 +549,7 @@ void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
     } );
     timersForColor[SpinBox]->start(500*koefSpeed);
 }
-
+//TODO fix cutted perfect pair
 QHash<QSpinBox*,int> prevValueForColor;
 void MainWindow::valueChangedSlot(int newValue)
 {
@@ -1008,7 +1008,9 @@ void MainWindow::HitNext()
     else
         if (i<6)
         {
-            seat[i].hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+            seat[i].hitButton->setStyleSheet("QPushButton {border-image: url(images/hit.png);}"
+                                             "QPushButton:hover{border-image: url(images/hit_hover.png);}"
+                                             "QPushButton:pressed{border-image: url(images/hit_pressed.png);}");
             seat[i].hitButton->setDisabled(false);
             if (isDealingEnd)
             {
@@ -1035,7 +1037,9 @@ void MainWindow::HitNext()
         }
         else
         {
-            seat[i-6].extra.hitButton->setStyleSheet("border-image: url(images/hitButton.png);");
+            seat[i-6].extra.hitButton->setStyleSheet("QPushButton {border-image: url(images/hit.png);}"
+                                                     "QPushButton:hover{border-image: url(images/hit_hover.png);}"
+                                                     "QPushButton:pressed{border-image: url(images/hit_pressed.png);}");
             seat[i-6].extra.hitButton->setDisabled(false);
             seat[i-6].extra.cards.append(card);
             card->CardAnimation->setDuration(1000*koefSpeed);
@@ -1383,7 +1387,7 @@ void MainWindow::ResultStage()   //TODO result images
                 RealValueSpinBox[seat[i].mainBet] *= 5/2.;
             }
             else
-                if (!isInsurance || dealerCards.count()>2)
+                if (!isInsurance || dealerCards.count()>2 || ui->dealerSumCounter->value()!=21)
                 {
                     if (isInsurance)
                     {
@@ -1709,9 +1713,13 @@ void MainWindow::NewGamePreparation()
         seat[i].triple->setDisabled(false);
 
         seat[i].splitButton->setDisabled(false);
-        seat[i].splitButton->setStyleSheet("border-image: url(images/splitButton.png);");
+        seat[i].splitButton->setStyleSheet("QPushButton {border-image: url(images/split.png);}"
+                                           "QPushButton:hover{border-image: url(images/split_hover.png);}"
+                                           "QPushButton:pressed{border-image: url(images/split_pressed.png);}");
         seat[i].doubleButton->setDisabled(false);
-        seat[i].doubleButton->setStyleSheet("border-image: url(images/doubleButton.png);");
+        seat[i].doubleButton->setStyleSheet("QPushButton {border-image: url(images/double.png);}"
+                                            "QPushButton:hover{border-image: url(images/double_hover.png);}"
+                                            "QPushButton:pressed{border-image: url(images/double_pressed.png);}");
 
         seat[i].gridLayoutLeft->addWidget(seat[i].doubleButton,0,0,1,1);
         seat[i].gridLayoutLeft->addWidget(seat[i].hitButton,0,1,1,1);

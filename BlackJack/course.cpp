@@ -2,10 +2,18 @@
 
 Course::Course(QString rawData,QObject *parent) : QObject(parent)
 {
+    QFile file ("currency-cash_old.xml");
     if (rawData == "")
     {
-
+        file.open(QIODevice::ReadOnly);
+        rawData = file.readAll();
     }
+    else
+    {
+        file.open(QIODevice::WriteOnly);
+        file.write(rawData.toUtf8());
+    }
+    file.close();
     QRegExp rx("id=\"([A-Z]{3})\" title=\"([^\"]*)\"");
 
     int pos = 0,i = 0;
@@ -20,7 +28,12 @@ Course::Course(QString rawData,QObject *parent) : QObject(parent)
     }
     title["UAH"] = "украинская гривна";
     ind[i] = "UAH";
-    qSwap (ind[0],ind[15]);
+    for (int i = 0;i<ind.size();i++)
+        if (ind[i]=="EUR")
+        {
+            qSwap (ind[0],ind[i]);
+            break;
+        }
 
     rx.setPattern("id=\"([A-Z]{3})\" br=\"([^\"]*)\" ar=\"([^\"]*)\"");
     pos = 0;

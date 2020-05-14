@@ -440,7 +440,9 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(hitButton_2->sizePolicy().hasHeightForWidth());
         hitButton_2->setSizePolicy(sizePolicy2);
-        hitButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_2->addWidget(hitButton_2, 0, 1, 1, 1);
 
@@ -448,7 +450,9 @@ public:
         doubleButton_2->setObjectName(QStringLiteral("doubleButton_2"));
         sizePolicy2.setHeightForWidth(doubleButton_2->sizePolicy().hasHeightForWidth());
         doubleButton_2->setSizePolicy(sizePolicy2);
-        doubleButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_2->addWidget(doubleButton_2, 0, 0, 1, 1);
 
@@ -465,7 +469,9 @@ public:
         standButton_2->setObjectName(QStringLiteral("standButton_2"));
         sizePolicy2.setHeightForWidth(standButton_2->sizePolicy().hasHeightForWidth());
         standButton_2->setSizePolicy(sizePolicy2);
-        standButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_2->addWidget(standButton_2, 0, 0, 1, 1);
 
@@ -473,7 +479,9 @@ public:
         splitButton_2->setObjectName(QStringLiteral("splitButton_2"));
         sizePolicy2.setHeightForWidth(splitButton_2->sizePolicy().hasHeightForWidth());
         splitButton_2->setSizePolicy(sizePolicy2);
-        splitButton_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_2->addWidget(splitButton_2, 0, 1, 1, 1);
 
@@ -525,7 +533,9 @@ public:
         hitButton_3->setObjectName(QStringLiteral("hitButton_3"));
         sizePolicy2.setHeightForWidth(hitButton_3->sizePolicy().hasHeightForWidth());
         hitButton_3->setSizePolicy(sizePolicy2);
-        hitButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_3->addWidget(hitButton_3, 0, 1, 1, 1);
 
@@ -533,7 +543,9 @@ public:
         doubleButton_3->setObjectName(QStringLiteral("doubleButton_3"));
         sizePolicy2.setHeightForWidth(doubleButton_3->sizePolicy().hasHeightForWidth());
         doubleButton_3->setSizePolicy(sizePolicy2);
-        doubleButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_3->addWidget(doubleButton_3, 0, 0, 1, 1);
 
@@ -550,7 +562,9 @@ public:
         splitButton_3->setObjectName(QStringLiteral("splitButton_3"));
         sizePolicy2.setHeightForWidth(splitButton_3->sizePolicy().hasHeightForWidth());
         splitButton_3->setSizePolicy(sizePolicy2);
-        splitButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_3->addWidget(splitButton_3, 0, 1, 1, 1);
 
@@ -558,7 +572,9 @@ public:
         standButton_3->setObjectName(QStringLiteral("standButton_3"));
         sizePolicy2.setHeightForWidth(standButton_3->sizePolicy().hasHeightForWidth());
         standButton_3->setSizePolicy(sizePolicy2);
-        standButton_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_3->addWidget(standButton_3, 0, 0, 1, 1);
 
@@ -751,7 +767,9 @@ public:
         hitButton_4->setObjectName(QStringLiteral("hitButton_4"));
         sizePolicy2.setHeightForWidth(hitButton_4->sizePolicy().hasHeightForWidth());
         hitButton_4->setSizePolicy(sizePolicy2);
-        hitButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_4->addWidget(hitButton_4, 0, 1, 1, 1);
 
@@ -759,7 +777,9 @@ public:
         doubleButton_4->setObjectName(QStringLiteral("doubleButton_4"));
         sizePolicy2.setHeightForWidth(doubleButton_4->sizePolicy().hasHeightForWidth());
         doubleButton_4->setSizePolicy(sizePolicy2);
-        doubleButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_4->addWidget(doubleButton_4, 0, 0, 1, 1);
 
@@ -776,7 +796,9 @@ public:
         splitButton_4->setObjectName(QStringLiteral("splitButton_4"));
         sizePolicy2.setHeightForWidth(splitButton_4->sizePolicy().hasHeightForWidth());
         splitButton_4->setSizePolicy(sizePolicy2);
-        splitButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_4->addWidget(splitButton_4, 0, 1, 1, 1);
 
@@ -784,7 +806,9 @@ public:
         standButton_4->setObjectName(QStringLiteral("standButton_4"));
         sizePolicy2.setHeightForWidth(standButton_4->sizePolicy().hasHeightForWidth());
         standButton_4->setSizePolicy(sizePolicy2);
-        standButton_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_4->addWidget(standButton_4, 0, 0, 1, 1);
 
@@ -862,7 +886,9 @@ public:
         hitButton_5->setObjectName(QStringLiteral("hitButton_5"));
         sizePolicy2.setHeightForWidth(hitButton_5->sizePolicy().hasHeightForWidth());
         hitButton_5->setSizePolicy(sizePolicy2);
-        hitButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_5->addWidget(hitButton_5, 0, 1, 1, 1);
 
@@ -870,7 +896,9 @@ public:
         doubleButton_5->setObjectName(QStringLiteral("doubleButton_5"));
         sizePolicy2.setHeightForWidth(doubleButton_5->sizePolicy().hasHeightForWidth());
         doubleButton_5->setSizePolicy(sizePolicy2);
-        doubleButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_5->addWidget(doubleButton_5, 0, 0, 1, 1);
 
@@ -887,7 +915,9 @@ public:
         splitButton_5->setObjectName(QStringLiteral("splitButton_5"));
         sizePolicy2.setHeightForWidth(splitButton_5->sizePolicy().hasHeightForWidth());
         splitButton_5->setSizePolicy(sizePolicy2);
-        splitButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_5->addWidget(splitButton_5, 0, 1, 1, 1);
 
@@ -895,7 +925,9 @@ public:
         standButton_5->setObjectName(QStringLiteral("standButton_5"));
         sizePolicy2.setHeightForWidth(standButton_5->sizePolicy().hasHeightForWidth());
         standButton_5->setSizePolicy(sizePolicy2);
-        standButton_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_5->addWidget(standButton_5, 0, 0, 1, 1);
 
@@ -1076,7 +1108,9 @@ public:
         doubleButton_6->setObjectName(QStringLiteral("doubleButton_6"));
         sizePolicy2.setHeightForWidth(doubleButton_6->sizePolicy().hasHeightForWidth());
         doubleButton_6->setSizePolicy(sizePolicy2);
-        doubleButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_6->addWidget(doubleButton_6, 0, 0, 1, 1);
 
@@ -1084,7 +1118,9 @@ public:
         hitButton_6->setObjectName(QStringLiteral("hitButton_6"));
         sizePolicy2.setHeightForWidth(hitButton_6->sizePolicy().hasHeightForWidth());
         hitButton_6->setSizePolicy(sizePolicy2);
-        hitButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_6->addWidget(hitButton_6, 0, 1, 1, 1);
 
@@ -1101,7 +1137,9 @@ public:
         splitButton_6->setObjectName(QStringLiteral("splitButton_6"));
         sizePolicy2.setHeightForWidth(splitButton_6->sizePolicy().hasHeightForWidth());
         splitButton_6->setSizePolicy(sizePolicy2);
-        splitButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_6->addWidget(splitButton_6, 0, 1, 1, 1);
 
@@ -1109,7 +1147,9 @@ public:
         standButton_6->setObjectName(QStringLiteral("standButton_6"));
         sizePolicy2.setHeightForWidth(standButton_6->sizePolicy().hasHeightForWidth());
         standButton_6->setSizePolicy(sizePolicy2);
-        standButton_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_6->addWidget(standButton_6, 0, 0, 1, 1);
 
@@ -1276,7 +1316,9 @@ public:
         doubleButton_1->setObjectName(QStringLiteral("doubleButton_1"));
         sizePolicy2.setHeightForWidth(doubleButton_1->sizePolicy().hasHeightForWidth());
         doubleButton_1->setSizePolicy(sizePolicy2);
-        doubleButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        doubleButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
+"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
 
         gridLayoutLeft_1->addWidget(doubleButton_1, 0, 1, 1, 1);
 
@@ -1284,7 +1326,9 @@ public:
         hitButton_1->setObjectName(QStringLiteral("hitButton_1"));
         sizePolicy2.setHeightForWidth(hitButton_1->sizePolicy().hasHeightForWidth());
         hitButton_1->setSizePolicy(sizePolicy2);
-        hitButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
 
         gridLayoutLeft_1->addWidget(hitButton_1, 0, 2, 1, 1);
 
@@ -1319,7 +1363,9 @@ public:
         standButton_1->setObjectName(QStringLiteral("standButton_1"));
         sizePolicy2.setHeightForWidth(standButton_1->sizePolicy().hasHeightForWidth());
         standButton_1->setSizePolicy(sizePolicy2);
-        standButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
 
         gridLayoutRight_1->addWidget(standButton_1, 0, 0, 1, 1);
 
@@ -1327,7 +1373,9 @@ public:
         splitButton_1->setObjectName(QStringLiteral("splitButton_1"));
         sizePolicy2.setHeightForWidth(splitButton_1->sizePolicy().hasHeightForWidth());
         splitButton_1->setSizePolicy(sizePolicy2);
-        splitButton_1->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        splitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
+"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
 
         gridLayoutRight_1->addWidget(splitButton_1, 0, 1, 1, 1);
 
@@ -1518,14 +1566,14 @@ public:
         DoubleButton->setObjectName(QStringLiteral("DoubleButton"));
         DoubleButton->setGeometry(QRect(780, 690, 81, 81));
         DoubleButton->setStyleSheet(QLatin1String("QPushButton {\n"
-"            border-image: url(images/double.png);\n"
+"            border-image: url(images/doubleButton.png);\n"
 "			color: blue;\n"
 "         }\n"
 "QPushButton:hover{\n"
-"			border-image: url(images/double_hover.png);\n"
+"			border-image: url(images/doubleButton_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/double_pressed.png);\n"
+"		border-image: url(images/doubleButton_pressed.png);\n"
 "}"));
         dealerSumCounter = new QLCDNumber(centralwidget);
         dealerSumCounter->setObjectName(QStringLiteral("dealerSumCounter"));
@@ -1537,75 +1585,97 @@ public:
         hitButtonExtra_1->setGeometry(QRect(710, 20, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_1->sizePolicy().hasHeightForWidth());
         hitButtonExtra_1->setSizePolicy(sizePolicy2);
-        hitButtonExtra_1->setStyleSheet(QLatin1String("            border-image: url(images/blackjack.png);\n"
-"color: white;"));
+        hitButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         standButtonExtra_1 = new QPushButton(centralwidget);
         standButtonExtra_1->setObjectName(QStringLiteral("standButtonExtra_1"));
         standButtonExtra_1->setGeometry(QRect(860, 20, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_1->sizePolicy().hasHeightForWidth());
         standButtonExtra_1->setSizePolicy(sizePolicy2);
-        standButtonExtra_1->setStyleSheet(QLatin1String("            border-image: url(images/blackjack.png);\n"
-"color: white;"));
+        standButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         hitButtonExtra_2 = new QPushButton(centralwidget);
         hitButtonExtra_2->setObjectName(QStringLiteral("hitButtonExtra_2"));
         hitButtonExtra_2->setGeometry(QRect(710, 80, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_2->sizePolicy().hasHeightForWidth());
         hitButtonExtra_2->setSizePolicy(sizePolicy2);
-        hitButtonExtra_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         hitButtonExtra_3 = new QPushButton(centralwidget);
         hitButtonExtra_3->setObjectName(QStringLiteral("hitButtonExtra_3"));
         hitButtonExtra_3->setGeometry(QRect(710, 140, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_3->sizePolicy().hasHeightForWidth());
         hitButtonExtra_3->setSizePolicy(sizePolicy2);
-        hitButtonExtra_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         hitButtonExtra_4 = new QPushButton(centralwidget);
         hitButtonExtra_4->setObjectName(QStringLiteral("hitButtonExtra_4"));
         hitButtonExtra_4->setGeometry(QRect(710, 200, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_4->sizePolicy().hasHeightForWidth());
         hitButtonExtra_4->setSizePolicy(sizePolicy2);
-        hitButtonExtra_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         hitButtonExtra_5 = new QPushButton(centralwidget);
         hitButtonExtra_5->setObjectName(QStringLiteral("hitButtonExtra_5"));
         hitButtonExtra_5->setGeometry(QRect(710, 260, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_5->sizePolicy().hasHeightForWidth());
         hitButtonExtra_5->setSizePolicy(sizePolicy2);
-        hitButtonExtra_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         hitButtonExtra_6 = new QPushButton(centralwidget);
         hitButtonExtra_6->setObjectName(QStringLiteral("hitButtonExtra_6"));
         hitButtonExtra_6->setGeometry(QRect(710, 320, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_6->sizePolicy().hasHeightForWidth());
         hitButtonExtra_6->setSizePolicy(sizePolicy2);
-        hitButtonExtra_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        hitButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
+"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
         standButtonExtra_2 = new QPushButton(centralwidget);
         standButtonExtra_2->setObjectName(QStringLiteral("standButtonExtra_2"));
         standButtonExtra_2->setGeometry(QRect(860, 80, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_2->sizePolicy().hasHeightForWidth());
         standButtonExtra_2->setSizePolicy(sizePolicy2);
-        standButtonExtra_2->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         standButtonExtra_3 = new QPushButton(centralwidget);
         standButtonExtra_3->setObjectName(QStringLiteral("standButtonExtra_3"));
         standButtonExtra_3->setGeometry(QRect(860, 140, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_3->sizePolicy().hasHeightForWidth());
         standButtonExtra_3->setSizePolicy(sizePolicy2);
-        standButtonExtra_3->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         standButtonExtra_4 = new QPushButton(centralwidget);
         standButtonExtra_4->setObjectName(QStringLiteral("standButtonExtra_4"));
         standButtonExtra_4->setGeometry(QRect(860, 200, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_4->sizePolicy().hasHeightForWidth());
         standButtonExtra_4->setSizePolicy(sizePolicy2);
-        standButtonExtra_4->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         standButtonExtra_5 = new QPushButton(centralwidget);
         standButtonExtra_5->setObjectName(QStringLiteral("standButtonExtra_5"));
         standButtonExtra_5->setGeometry(QRect(860, 260, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_5->sizePolicy().hasHeightForWidth());
         standButtonExtra_5->setSizePolicy(sizePolicy2);
-        standButtonExtra_5->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         standButtonExtra_6 = new QPushButton(centralwidget);
         standButtonExtra_6->setObjectName(QStringLiteral("standButtonExtra_6"));
         standButtonExtra_6->setGeometry(QRect(860, 320, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_6->sizePolicy().hasHeightForWidth());
         standButtonExtra_6->setSizePolicy(sizePolicy2);
-        standButtonExtra_6->setStyleSheet(QStringLiteral("            border-image: url(images/blackjack.png);"));
+        standButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
+"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
         DeltaBalanceStatus = new QLabel(centralwidget);
         DeltaBalanceStatus->setObjectName(QStringLiteral("DeltaBalanceStatus"));
         DeltaBalanceStatus->setGeometry(QRect(1150, 650, 150, 50));
@@ -1778,7 +1848,15 @@ public:
         SettingsButton = new QPushButton(centralwidget);
         SettingsButton->setObjectName(QStringLiteral("SettingsButton"));
         SettingsButton->setGeometry(QRect(1340, 100, 51, 51));
-        SettingsButton->setStyleSheet(QStringLiteral("border-image: url(images/settings.png);"));
+        SettingsButton->setStyleSheet(QLatin1String("QPushButton {\n"
+"             border-image: url(images/settings.png);\n"
+"         }\n"
+"QPushButton:hover{\n"
+"		border-image: url(images/settings_hover.png);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"		border-image: url(images/settings_pressed.png);\n"
+"}"));
         CurrentCurrency = new QLabel(centralwidget);
         CurrentCurrency->setObjectName(QStringLiteral("CurrentCurrency"));
         CurrentCurrency->setGeometry(QRect(1150, 810, 171, 57));
@@ -1853,41 +1931,41 @@ public:
         label_10->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_8->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_9->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        hitButton_2->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        doubleButton_2->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        standButton_2->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        splitButton_2->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
+        hitButton_2->setText(QString());
+        doubleButton_2->setText(QString());
+        standButton_2->setText(QString());
+        splitButton_2->setText(QString());
         label_12->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        hitButton_3->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        doubleButton_3->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        splitButton_3->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
-        standButton_3->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        hitButton_3->setText(QString());
+        doubleButton_3->setText(QString());
+        splitButton_3->setText(QString());
+        standButton_3->setText(QString());
         label_13->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         closeButton_3->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_11->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_14->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         closeButton_4->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_15->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        hitButton_4->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        doubleButton_4->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        splitButton_4->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
-        standButton_4->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        hitButton_4->setText(QString());
+        doubleButton_4->setText(QString());
+        splitButton_4->setText(QString());
+        standButton_4->setText(QString());
         label_16->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_18->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        hitButton_5->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        doubleButton_5->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        splitButton_5->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
-        standButton_5->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        hitButton_5->setText(QString());
+        doubleButton_5->setText(QString());
+        splitButton_5->setText(QString());
+        standButton_5->setText(QString());
         label_19->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         closeButton_5->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_17->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_20->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
         label_22->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         label_21->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        doubleButton_6->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        hitButton_6->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        splitButton_6->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
-        standButton_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        doubleButton_6->setText(QString());
+        hitButton_6->setText(QString());
+        splitButton_6->setText(QString());
+        standButton_6->setText(QString());
         closeButton_6->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         multiSeatButton_1->setText(QString());
         multiSeatButton_2->setText(QString());
@@ -1896,11 +1974,11 @@ public:
         multiSeatButton_5->setText(QString());
         multiSeatButton_6->setText(QString());
         labelBalance->setText(QApplication::translate("MainWindow", "Balance", Q_NULLPTR));
-        doubleButton_1->setText(QApplication::translate("MainWindow", "2x", Q_NULLPTR));
-        hitButton_1->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
+        doubleButton_1->setText(QString());
+        hitButton_1->setText(QString());
         label_7->setText(QApplication::translate("MainWindow", "Main bet:", Q_NULLPTR));
-        standButton_1->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        splitButton_1->setText(QApplication::translate("MainWindow", "SPLIT", Q_NULLPTR));
+        standButton_1->setText(QString());
+        splitButton_1->setText(QString());
         label_6->setText(QApplication::translate("MainWindow", "21+3:", Q_NULLPTR));
         closeButton_1->setText(QApplication::translate("MainWindow", "X", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Perfect pair:", Q_NULLPTR));
@@ -1909,18 +1987,18 @@ public:
         DealNow->setText(QApplication::translate("MainWindow", "DEAL NOW", Q_NULLPTR));
         RepeatButton->setText(QString());
         DoubleButton->setText(QString());
-        hitButtonExtra_1->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        standButtonExtra_1->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        hitButtonExtra_2->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        hitButtonExtra_3->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        hitButtonExtra_4->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        hitButtonExtra_5->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        hitButtonExtra_6->setText(QApplication::translate("MainWindow", "HIT", Q_NULLPTR));
-        standButtonExtra_2->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        standButtonExtra_3->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        standButtonExtra_4->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        standButtonExtra_5->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
-        standButtonExtra_6->setText(QApplication::translate("MainWindow", "STAND", Q_NULLPTR));
+        hitButtonExtra_1->setText(QString());
+        standButtonExtra_1->setText(QString());
+        hitButtonExtra_2->setText(QString());
+        hitButtonExtra_3->setText(QString());
+        hitButtonExtra_4->setText(QString());
+        hitButtonExtra_5->setText(QString());
+        hitButtonExtra_6->setText(QString());
+        standButtonExtra_2->setText(QString());
+        standButtonExtra_3->setText(QString());
+        standButtonExtra_4->setText(QString());
+        standButtonExtra_5->setText(QString());
+        standButtonExtra_6->setText(QString());
         DeltaBalanceStatus->setText(QApplication::translate("MainWindow", "+123", Q_NULLPTR));
         LabelMinimumBet->setText(QApplication::translate("MainWindow", "Minimum bet", Q_NULLPTR));
         InsuranceYes->setText(QApplication::translate("MainWindow", "YES", Q_NULLPTR));
