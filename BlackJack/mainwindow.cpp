@@ -222,7 +222,7 @@ MainWindow::MainWindow(QWidget *parent)
         seatIdentifier[i.extra.hitButton] = counter+6;
         seatIdentifier[i.extra.standButton] = counter+6;
         i.doubleButton->hide();
-        //i.doubleButton->setStyleSheet("border-image: url(images/double.png);");        //TODO buttons images
+        //i.doubleButton->setStyleSheet("border-image: url(images/double.png);");
         i.hitButton->hide();
         //i.hitButton->setStyleSheet("border-image: url(images/hit.png);");
         i.standButton->hide();
@@ -330,7 +330,6 @@ void MainWindow::on_Exit_clicked()
     //save!
     qApp->exit();
 }
-
 int debugcounter = 0;
 void MainWindow::paintEvent(QPaintEvent *event)
 {
@@ -348,7 +347,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
         image.load("images/takeseat");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
-        if (ui->CentralLabel->text()!="TAKE A SEAT")
+        if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY")
         {
             ui->CentralLabel->setText("TAKE A SEAT");
             HighlightLabel(ui->CentralLabel);
@@ -549,7 +548,6 @@ void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
     } );
     timersForColor[SpinBox]->start(500*koefSpeed);
 }
-//TODO fix cutted perfect pair
 QHash<QSpinBox*,int> prevValueForColor;
 void MainWindow::valueChangedSlot(int newValue)
 {
@@ -582,7 +580,6 @@ void MainWindow::DeleteTrash()
     if (ui->TotalBetAmount->value()-(int)ui->TotalBetAmount->value()<0.0000000001) ui->TotalBetAmount->display((int)ui->TotalBetAmount->value());
     if (ui->BalanceAmount->value()-(int)ui->BalanceAmount->value()<0.0000000001) ui->BalanceAmount->display((int)ui->BalanceAmount->value());
 }
-//TODO your balance is too low to play
 bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
 {
     auto* sender=dynamic_cast<QSpinBox*>(QObject::sender());
@@ -590,7 +587,7 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
 
     if (sender->value()-RealValueSpinBox[sender]>ui->BalanceAmount->value())
     {
-        QMessageBox::critical(this,"Error","Not enough money");
+        QMessageBox::critical(this,"BlackJack","Not enough money");
         sender->setValue(RealValueSpinBox[sender]);
         return false;
     }
@@ -678,6 +675,13 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
         ui->AdditionalStatus->setText("MINIMUM BET " + QString::number(ui->MinimumBetNumber->value()));
         HighlightLabel(ui->AdditionalStatus);
     }
+    int singleStep = ui->MinimumBetNumber->value()/3/10;
+    for (int i = 10;i<1e8;i*=10)
+        if (singleStep<i)
+        {
+            singleStep = i;
+            break;
+        }
 //    double delta = 0;
     for (int i = 0;i<6;i++)
     {
@@ -700,6 +704,10 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
         seat[i].prevBetPair *= koef;
         seat[i].prevBetMain *=  koef;
         seat[i].prevBetTriple *= koef;
+
+        seat[i].perfectPair->setSingleStep(singleStep);
+        seat[i].mainBet->setSingleStep(singleStep);
+        seat[i].triple->setSingleStep(singleStep);
     }
     ui->TotalBetAmount->display(ui->TotalBetAmount->value()*koef /*- delta*/);
     ui->BalanceAmount->display(ui->BalanceAmount->value()*koef /*+ delta*/);
@@ -799,6 +807,16 @@ void MainWindow::DoubleDown(int i)
     if (sender!=nullptr)
     {
         i = seatIdentifier[sender];
+        if (seat[i].sumCounter->value()>=17)
+        {
+            TimerForCommit->stop();
+            if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure you want\nto get another card?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
+            {
+                TimerForCommit->start();
+                return;
+            }
+            TimerForCommit->start();
+        }
         on_InsuranceNo_clicked();
     }
     seat[i].mainBet->setValue(seat[i].mainBet->value() * 2);
@@ -868,7 +886,17 @@ void MainWindow::Stand(int i)
         auto* sender=dynamic_cast<QPushButton*>(QObject::sender());
         if (sender!=nullptr)
         {
-            i = seatIdentifier[sender];
+            i = seatIdentifier[sender];                            
+            if ((i>6 && seat[i-6].extra.sumCounter->value()<=9) || (i<=6 && seat[i].sumCounter->value()<=9))
+            {
+                TimerForCommit->stop();
+                if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure\nyou want to stand?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
+                {
+                    TimerForCommit->start();
+                    return;
+                }
+                TimerForCommit->start();
+            }
             on_InsuranceNo_clicked();
         }
     }
@@ -880,9 +908,13 @@ void MainWindow::Stand(int i)
         seat[i].hitButton->hide();
         seat[i].standButton->hide();
         seat[i].splitButton->hide();
-        seat[i].horizontalSpacerLeft->changeSize(100,20);
-        if (!seat[i].extra.isExist)
-            seat[i].horizontalSpacerRight->changeSize(100,20);
+        if (seat[i].extra.stillPlay)
+            seat[i].horizontalSpacerLeft->changeSize(72*koefW,20);
+        else
+        {
+            seat[i].horizontalSpacerLeft->changeSize(0,20);
+            seat[i].horizontalSpacerRight->changeSize(0,20);
+        }
     }
     else
     {
@@ -890,7 +922,15 @@ void MainWindow::Stand(int i)
         seat[i-6].extra.stillPlay = false;
         seat[i-6].extra.hitButton->hide();
         seat[i-6].extra.standButton->hide();
-        seat[i-6].horizontalSpacerRight->changeSize(100,20);
+        if (seat[i-6].stillPlay)
+        {
+            seat[i-6].horizontalSpacerRight->changeSize(72*koefW,20);
+        }
+        else
+        {
+            seat[i-6].horizontalSpacerLeft->changeSize(0,20);
+            seat[i-6].horizontalSpacerRight->changeSize(0,20);
+        }
     }
     ui->lcdTimer->display(11);
     stillPlayingAmount--;
@@ -907,6 +947,17 @@ void MainWindow::Hit(int i)
         if (sender!=nullptr)
         {
             i = seatIdentifier[sender];
+            if ((i>6 && seat[i-6].extra.sumCounter->value()>=18) || (i<=6 && seat[i].sumCounter->value()>=18))
+            {
+                TimerForCommit->stop();
+                if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure you want\nto get another card?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
+                {
+                    TimerForCommit->start();
+                    return;
+                }
+                TimerForCommit->start();
+            }
+
             sender->setStyleSheet("border-image: url(images/hit_blocked.png);");
             sender->setDisabled(true);
             on_InsuranceNo_clicked();
@@ -955,7 +1006,7 @@ void MainWindow::HitNext()
     card->show();
     int i = QueueForHit.dequeue();
     if (i==-1)
-    {
+    {        
         if (dealerCards.count()==1)
         {
             card->isOpen=false;
@@ -1325,6 +1376,7 @@ void MainWindow::OpenDealerCardsProcess()
             }
     stage++;
 }
+//TODO fix split and right hit crush
 void MainWindow::ResultStage()   //TODO result images
 {
     double TotalWin = 0;
@@ -1589,7 +1641,6 @@ void MainWindow::NextIterationGathering()
         }
     }
 
-
     prevCard->CardAnimation->setStartValue(prevCard->geometry());
     prevCard->CardAnimation->setEndValue(thisCard->geometry());
 //    prevCard->CardAnimation->setEasingCurve(QEasingCurve::Linear);
@@ -1608,9 +1659,6 @@ void MainWindow::NextIterationGathering()
                 x += (lastX - (double)prevCard->x()/koefW) / n;
                 y = lastY - qSqrt(sqrB * (1 - (double)(x - prevCard->x()/koefW) * (x - prevCard->x()/koefW) / sqrA));
                 prevCard->CardAnimation->setKeyValueAt(time,QRect(QPoint(x*koefW,y*koefH),QSize(thisCard->size())));
-
-
-
             }
           //  prevCard->CardAnimation->setEasingCurve(QEasingCurve::OutQuad);
         }
@@ -1742,8 +1790,21 @@ void MainWindow::NewGamePreparation()
     ui->comboBoxCurrency->setDisabled(false);
     ui->dealerSumCounter->setStyleSheet("background: rgb(66, 20, 20);");
     isInsurance = false;
-}
+    if (ui->BalanceAmount->value() < minimumBet*downloader->course->koef[downloader->course->ind[ui->comboBoxCurrency->currentIndex()]])
+    {
+        for (int i = 0;i<6;i++)
+            closeFunc(i);
 
+
+        for (int i = 0;i<6;i++)
+        {
+            seat[i].multiSeat->setStyleSheet("border-image: url(images/multi_seat_blocked.png);");
+            seat[i].multiSeat->setDisabled(true);
+        }
+        ui->CentralLabel->setText("YOUR BALANCE IS TOO LOW TO PLAY");
+        HighlightLabel(ui->CentralLabel);
+    }
+}
 
 void MainWindow::on_InsuranceNo_clicked()
 {
@@ -1788,7 +1849,7 @@ void MainWindow::AfterDownloadingCurrency(bool error)
     }
     else
     {
-        ui->AdditionalStatus->setText("COURSES LOADED"); //TODO failed case
+        ui->AdditionalStatus->setText("COURSES LOADED");
         HighlightLabel(ui->AdditionalStatus,false,2500);
         //        for (int i = 0;)
     }

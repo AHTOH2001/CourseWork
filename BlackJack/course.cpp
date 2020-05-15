@@ -29,7 +29,7 @@ Course::Course(QString rawData,QObject *parent) : QObject(parent)
     title["UAH"] = "украинская гривна";
     ind[i] = "UAH";
     for (int i = 0;i<ind.size();i++)
-        if (ind[i]=="EUR")
+        if (ind[i]=="EUR" || ind[i]=="GBP")
         {
             qSwap (ind[0],ind[i]);
             break;

@@ -1295,8 +1295,8 @@ public:
         BalanceAmount->setStyleSheet(QStringLiteral(""));
         BalanceAmount->setSmallDecimalPoint(true);
         BalanceAmount->setDigitCount(6);
-        BalanceAmount->setProperty("value", QVariant(1000));
-        BalanceAmount->setProperty("intValue", QVariant(1000));
+        BalanceAmount->setProperty("value", QVariant(10000));
+        BalanceAmount->setProperty("intValue", QVariant(10000));
 
         gridLayout_balance->addWidget(BalanceAmount, 1, 0, 1, 1);
 
