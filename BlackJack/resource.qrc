@@ -3,6 +3,9 @@
         <file>images/buttons/doubleButton.png</file>
         <file>images/buttons/doubleButton_hover.png</file>
         <file>images/buttons/doubleButton_pressed.png</file>
+        <file>images/buttons/help.png</file>
+        <file>images/buttons/help_hover.png</file>
+        <file>images/buttons/help_pressed.png</file>
         <file>images/buttons/multi_seat.png</file>
         <file>images/buttons/multi_seat_blocked.png</file>
         <file>images/buttons/multi_seat_hover.png</file>
@@ -98,6 +101,7 @@
         <file>images/spin/spinup_hover.png</file>
         <file>images/spin/spinup_pressed.png</file>
         <file>images/background.png</file>
-        <file>images/takeseat.png</file>
+        <file>images/background_blured.png</file>
+        <file>README.md</file>
     </qresource>
 </RCC>

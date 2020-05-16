@@ -5,6 +5,7 @@
 #include "card.h"
 #include "downloader.h"
 #include "course.h"
+#include "rules.h"
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
@@ -102,13 +103,17 @@ private slots:
 
     void on_FontSizeSetting_valueChanged(int value);
 
+    void on_helpButton_clicked();
+
+    void HighlightNextSpin();
+
 private:
     Ui::MainWindow *ui;
     QMap<QSpinBox*,QTimer*> timersForColor;
-    QTimer *TimerForDealNow, *TimerForHit, *TimerForCommit, *TimerForOpenCard;
+    QTimer *TimerForDealNow, *TimerForHit, *TimerForCommit, *TimerForOpenCard, *TimerForHighlideSpins;
     void paintEvent(QPaintEvent *event) override;
 
-    void changeColor(QSpinBox *SpinBox,QString color);
+    void changeColor(QSpinBox *SpinBox,QString color,int timeMs = 500);
     QMap<QSpinBox*,double> RealValueSpinBox;
     void DeleteTrash();
     void Dealing();
@@ -125,11 +130,14 @@ private:
     int dealerAceCount = 0,stillPlayingAmount = 0;
     Card* stashCard = nullptr;
     Downloader *downloader;
+    Rules *rules;
+    int stage;
     void HighlightLabel(QLabel *label,bool hideLater = false,int timeMs = 1600);
     void RecountSum(QLCDNumber* sumCounter, Card *card, const int cardsAmount, int *aceCounter);
     void mousePressEvent(QMouseEvent *event) override;
     void CountExtraBets();
     void CommitsEnd();
-
+    void keyPressEvent(QKeyEvent *event) override;
+    void trySeat(int i);
 };
 #endif // MAINWINDOW_H

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[37];
-    char stringdata0[583];
+    QByteArrayData data[39];
+    char stringdata0[623];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -67,7 +67,9 @@ QT_MOC_LITERAL(32, 475, 5), // "error"
 QT_MOC_LITERAL(33, 481, 25), // "on_SettingsButton_clicked"
 QT_MOC_LITERAL(34, 507, 37), // "on_AnimationSpeedSetting_valu..."
 QT_MOC_LITERAL(35, 545, 5), // "value"
-QT_MOC_LITERAL(36, 551, 31) // "on_FontSizeSetting_valueChanged"
+QT_MOC_LITERAL(36, 551, 31), // "on_FontSizeSetting_valueChanged"
+QT_MOC_LITERAL(37, 583, 21), // "on_helpButton_clicked"
+QT_MOC_LITERAL(38, 605, 17) // "HighlightNextSpin"
 
     },
     "MainWindow\0on_DealNow_clicked\0\0"
@@ -85,7 +87,8 @@ QT_MOC_LITERAL(36, 551, 31) // "on_FontSizeSetting_valueChanged"
     "AfterDownloadingCurrency\0error\0"
     "on_SettingsButton_clicked\0"
     "on_AnimationSpeedSetting_valueChanged\0"
-    "value\0on_FontSizeSetting_valueChanged"
+    "value\0on_FontSizeSetting_valueChanged\0"
+    "on_helpButton_clicked\0HighlightNextSpin"
 };
 #undef QT_MOC_LITERAL
 
@@ -95,7 +98,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      35,   14, // methods
+      37,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -103,41 +106,43 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  189,    2, 0x08 /* Private */,
-       3,    0,  190,    2, 0x08 /* Private */,
-       4,    1,  191,    2, 0x08 /* Private */,
-       6,    1,  194,    2, 0x08 /* Private */,
-       8,    1,  197,    2, 0x08 /* Private */,
-       8,    0,  200,    2, 0x28 /* Private | MethodCloned */,
-      11,    0,  201,    2, 0x08 /* Private */,
-      12,    0,  202,    2, 0x08 /* Private */,
-      13,    0,  203,    2, 0x08 /* Private */,
-      14,    0,  204,    2, 0x08 /* Private */,
-      15,    1,  205,    2, 0x08 /* Private */,
-      15,    0,  208,    2, 0x28 /* Private | MethodCloned */,
-      17,    1,  209,    2, 0x08 /* Private */,
-      17,    0,  212,    2, 0x28 /* Private | MethodCloned */,
-      18,    1,  213,    2, 0x08 /* Private */,
-      18,    0,  216,    2, 0x28 /* Private | MethodCloned */,
-      19,    1,  217,    2, 0x08 /* Private */,
-      19,    0,  220,    2, 0x28 /* Private | MethodCloned */,
-      20,    0,  221,    2, 0x08 /* Private */,
-      21,    1,  222,    2, 0x08 /* Private */,
-      21,    0,  225,    2, 0x28 /* Private | MethodCloned */,
-      22,    1,  226,    2, 0x08 /* Private */,
-      22,    0,  229,    2, 0x28 /* Private | MethodCloned */,
-      23,    0,  230,    2, 0x08 /* Private */,
-      24,    0,  231,    2, 0x08 /* Private */,
-      25,    0,  232,    2, 0x08 /* Private */,
-      26,    0,  233,    2, 0x08 /* Private */,
-      27,    0,  234,    2, 0x08 /* Private */,
-      28,    0,  235,    2, 0x08 /* Private */,
-      29,    0,  236,    2, 0x08 /* Private */,
-      30,    0,  237,    2, 0x08 /* Private */,
-      31,    1,  238,    2, 0x08 /* Private */,
-      33,    0,  241,    2, 0x08 /* Private */,
-      34,    1,  242,    2, 0x08 /* Private */,
-      36,    1,  245,    2, 0x08 /* Private */,
+       1,    0,  199,    2, 0x08 /* Private */,
+       3,    0,  200,    2, 0x08 /* Private */,
+       4,    1,  201,    2, 0x08 /* Private */,
+       6,    1,  204,    2, 0x08 /* Private */,
+       8,    1,  207,    2, 0x08 /* Private */,
+       8,    0,  210,    2, 0x28 /* Private | MethodCloned */,
+      11,    0,  211,    2, 0x08 /* Private */,
+      12,    0,  212,    2, 0x08 /* Private */,
+      13,    0,  213,    2, 0x08 /* Private */,
+      14,    0,  214,    2, 0x08 /* Private */,
+      15,    1,  215,    2, 0x08 /* Private */,
+      15,    0,  218,    2, 0x28 /* Private | MethodCloned */,
+      17,    1,  219,    2, 0x08 /* Private */,
+      17,    0,  222,    2, 0x28 /* Private | MethodCloned */,
+      18,    1,  223,    2, 0x08 /* Private */,
+      18,    0,  226,    2, 0x28 /* Private | MethodCloned */,
+      19,    1,  227,    2, 0x08 /* Private */,
+      19,    0,  230,    2, 0x28 /* Private | MethodCloned */,
+      20,    0,  231,    2, 0x08 /* Private */,
+      21,    1,  232,    2, 0x08 /* Private */,
+      21,    0,  235,    2, 0x28 /* Private | MethodCloned */,
+      22,    1,  236,    2, 0x08 /* Private */,
+      22,    0,  239,    2, 0x28 /* Private | MethodCloned */,
+      23,    0,  240,    2, 0x08 /* Private */,
+      24,    0,  241,    2, 0x08 /* Private */,
+      25,    0,  242,    2, 0x08 /* Private */,
+      26,    0,  243,    2, 0x08 /* Private */,
+      27,    0,  244,    2, 0x08 /* Private */,
+      28,    0,  245,    2, 0x08 /* Private */,
+      29,    0,  246,    2, 0x08 /* Private */,
+      30,    0,  247,    2, 0x08 /* Private */,
+      31,    1,  248,    2, 0x08 /* Private */,
+      33,    0,  251,    2, 0x08 /* Private */,
+      34,    1,  252,    2, 0x08 /* Private */,
+      36,    1,  255,    2, 0x08 /* Private */,
+      37,    0,  258,    2, 0x08 /* Private */,
+      38,    0,  259,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -175,6 +180,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   35,
     QMetaType::Void, QMetaType::Int,   35,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -222,6 +229,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 32: _t->on_SettingsButton_clicked(); break;
         case 33: _t->on_AnimationSpeedSetting_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 34: _t->on_FontSizeSetting_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 35: _t->on_helpButton_clicked(); break;
+        case 36: _t->HighlightNextSpin(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -263,13 +272,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 35)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 35;
+        _id -= 37;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 35)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 35;
+        _id -= 37;
     }
     return _id;
 }

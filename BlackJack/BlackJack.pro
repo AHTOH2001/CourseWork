@@ -21,6 +21,7 @@ SOURCES += \
     downloader.cpp \
     main.cpp \
     mainwindow.cpp \
+    rules.cpp \
     seatclass.cpp
 
 HEADERS += \
@@ -28,6 +29,7 @@ HEADERS += \
     course.h \
     downloader.h \
     mainwindow.h \
+    rules.h \
     seatclass.h
 
 FORMS += \
@@ -40,3 +42,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES +=

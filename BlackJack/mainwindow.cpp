@@ -161,6 +161,9 @@ MainWindow::MainWindow(QWidget *parent)
     TimerForCommit = new QTimer();
     connect(TimerForCommit,SIGNAL(timeout()),this,SLOT(NextSecond()));
 
+    TimerForHighlideSpins = new QTimer();
+    connect(TimerForHighlideSpins,SIGNAL(timeout()),this,SLOT(HighlightNextSpin()));
+
 
     QString s = ":/images/cards/";
     for (int i = 0;i<13;i++)
@@ -244,11 +247,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->AdditionalStatus->hide();
    // qDebug() << QDir::currentPath();
 //    qDebug() << QCoreApplication::applicationDirPath();
+    ui->SettingsFrame->hide();
+    QFile file(":/README.md");
+    file.open(QIODevice::ReadOnly);
+    rules = new Rules();
+    rules->setHtml(file.readAll());
     downloader = new Downloader(this);
     connect(downloader,SIGNAL(onReady(bool)),this,SLOT(AfterDownloadingCurrency(bool)));
     downloader->getData();
 
-    ui->SettingsFrame->hide();
+
 
 }
 
@@ -312,10 +320,40 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 //    Hit(-1);
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key())
+    {
+    case Qt::Key_F1 : on_helpButton_clicked(); break;
+    case Qt::Key_Escape : on_Exit_clicked(); break;
+    case Qt::Key_Shift : on_SettingsButton_clicked(); break;
+    case Qt::Key_1 : trySeat(0); break;
+    case Qt::Key_2 : trySeat(1); break;
+    case Qt::Key_3 : trySeat(2); break;
+    case Qt::Key_4 : trySeat(3); break;
+    case Qt::Key_5 : trySeat(4); break;
+    case Qt::Key_6 : trySeat(5); break;
+    case Qt::Key_R : if (ui->RepeatButton->isVisible()) on_RepeatButton_clicked(); break;
+    case Qt::Key_D : if (ui->DoubleButton->isVisible()) on_DoubleButton_clicked(); break;
+    case Qt::Key_Return : if (ui->DealNow->isVisible()) on_DealNow_clicked(); break;
+    }
+}
+
+void MainWindow::trySeat(int i)
+{
+    if (stillPlayingAmount==0 && seat[i].multiSeat->isEnabled())
+    {
+        if (seat[i].isSeat)
+            closeFunc(i);
+        else
+            multiSeatFunc(i);
+    }
+}
+
 void MainWindow::on_Exit_clicked()
 {
-    //save!
-    qApp->exit();
+    if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure you want to quit?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+        qApp->exit();
 }
 int debugcounter = 0;
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -332,7 +370,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
         for (int i = 0;i<6;i++)
             seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,92*koefW, 135*koefH);
 
-        image.load(":/images/takeseat");
+        image.load(":/images/background_blured");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY")
         {
@@ -471,7 +509,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 
     ui->SettingsButton->setGeometry(110*koefW,10*koefH,51*koefW,51*koefW);
-    ui->SettingsFrame->setGeometry(160*koefW,60*koefH,400*koefW,270*koefH);
+    ui->SettingsFrame->setGeometry(160*koefW,70*koefH,400*koefW,270*koefH);
     ui->labelCurrency->setGeometry(15*koefW,10*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
     ui->comboBoxCurrency->setGeometry(10*koefW,40*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
     ui->comboBoxCurrency->setFont(QFont("Times", 13*koefW*koefFont));
@@ -479,6 +517,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
     ui->AnimationSpeedSetting->setGeometry(10*koefW,130*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
     ui->FontSizeLabel->setGeometry(15*koefW,190*koefH,ui->SettingsFrame->width() - 30*koefW,30*koefH);
     ui->FontSizeSetting->setGeometry(10*koefW,220*koefH,ui->SettingsFrame->width() - 20*koefW,40*koefH);
+
+    ui->helpButton->setGeometry(190*koefW,10*koefH,51*koefW,51*koefH);
 
     if (DEBUGMODE)
     {
@@ -525,7 +565,7 @@ void MainWindow::multiSeatFunc(int i)
     update();
 }
 
-void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
+void MainWindow::changeColor(QSpinBox *SpinBox, QString Color, int timeMs)
 {
     SpinBox->setStyleSheet(Color);
     QObject *context = new QObject(this);
@@ -533,7 +573,7 @@ void MainWindow::changeColor(QSpinBox *SpinBox, QString Color)
         SpinBox->setStyleSheet("");
         delete context;
     } );
-    timersForColor[SpinBox]->start(500*koefSpeed);
+    timersForColor[SpinBox]->start(timeMs*koefSpeed);
 }
 QHash<QSpinBox*,int> prevValueForColor;
 void MainWindow::valueChangedSlot(int newValue)
@@ -755,6 +795,8 @@ void MainWindow::on_DealNow_clicked()
     ui->DealNow->hide();
     ui->DoubleButton->hide();
     ui->CentralLabel->setText("BETS CLOSED AND ACCEPTED");
+    stage = 0;
+    TimerForHighlideSpins->start(100);
     HighlightLabel(ui->CentralLabel);
     //TODO cool background effects
     QTimer *timer = new QTimer();
@@ -766,6 +808,31 @@ void MainWindow::on_DealNow_clicked()
         delete context;
     });
     timer->start(2000*koefSpeed);
+}
+
+void MainWindow::HighlightNextSpin()
+{
+    QSpinBox *target;
+    QString color;
+    switch (stage % 6)
+    {
+    case 0 : target = seat[stage/3].perfectPair; color = "rgb(255,0,0)"; break;
+    case 1 : target = seat[stage/3].mainBet; color = "rgb(255,255,0)"; break;
+    case 2 : target = seat[stage/3].triple; color = "rgb(0,255,0)"; break;
+    case 3 : target = seat[stage/3].perfectPair; color = "rgb(0,255,255)"; break;
+    case 4 : target = seat[stage/3].mainBet; color = "rgb(0,0,255)"; break;
+    case 5 : target = seat[stage/3].triple; color = "rgb(255,0,255)"; break;
+    }
+    changeColor(target,"QSpinBox{"
+                       "border-style: outset;"
+                       "border-color: "+ color +";}",1000);
+
+    stage++;
+    if (stage == 18)
+    {
+        stage = 0;
+        TimerForHighlideSpins->stop();
+    }
 }
 
 void MainWindow::NextColorSlot()
@@ -788,7 +855,6 @@ void MainWindow::NextColorSlot()
         on_DealNow_clicked();
 }
 //TODO main label repaint;
-//TODO fix card bordering
 void MainWindow::DoubleDown(int i)
 {
     auto* sender=dynamic_cast<QPushButton*>(QObject::sender());
@@ -948,6 +1014,11 @@ void MainWindow::Hit(int i)
 
             sender->setStyleSheet("border-image: url(:/images/commitButtons/hit_blocked.png);");
             sender->setDisabled(true);
+            if (i<6)
+            {
+                seat[i].doubleButton->setStyleSheet("border-image: url(:/images/commitButtons/double_blocked.png);");
+                seat[i].doubleButton->setDisabled(true);
+            }
             on_InsuranceNo_clicked();
         }
     }
@@ -1051,6 +1122,13 @@ void MainWindow::HitNext()
                                              "QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}"
                                              "QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}");
             seat[i].hitButton->setDisabled(false);
+            if (seat[i].mainBet->value() <= ui->BalanceAmount->value() && !isInsurance)
+            {
+                seat[i].doubleButton->setStyleSheet("QPushButton {border-image: url(:/images/commitButtons/double.png);}"
+                                                    "QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}"
+                                                    "QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}");
+                seat[i].doubleButton->setDisabled(false);
+            }
             if (isDealingEnd)
             {
                 seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
@@ -1308,7 +1386,7 @@ void MainWindow::NextSecond()
 
 }
 
-int stage;
+
 void MainWindow::CommitsEnd()
 {
     ui->CentralLabel->hide();
@@ -1636,6 +1714,7 @@ void MainWindow::NextIterationGathering()
         int dx = qAbs(thisCard->x() - prevCard->x())/koefW + 92;
         int dy = qAbs(thisCard->y() - prevCard->y())/koefH;
         prevCard->CardAnimation->setDuration(speed*(dx+dy));
+        prevCard->lower();
         if (dealer)
         {
             double lastX = thisCard->x()/koefW - 92,lastY = thisCard->y()/koefH,time = 0;
@@ -1848,7 +1927,6 @@ void MainWindow::AfterDownloadingCurrency(bool error)
     //    ui->CurrentCurrency->setText("$");
 
 }
-//TODO F1 button
 
 void MainWindow::on_SettingsButton_clicked()
 {
@@ -1866,4 +1944,12 @@ void MainWindow::on_AnimationSpeedSetting_valueChanged(int value)
 void MainWindow::on_FontSizeSetting_valueChanged(int value)
 {
     koefFont = (value+50)/100.;
+}
+
+void MainWindow::on_helpButton_clicked()
+{
+    rules->showNormal();
+    rules->setGeometry(this->geometry().adjusted(30,30,-width()/2+30,-30));
+    rules->raise();
+    rules->activateWindow();
 }

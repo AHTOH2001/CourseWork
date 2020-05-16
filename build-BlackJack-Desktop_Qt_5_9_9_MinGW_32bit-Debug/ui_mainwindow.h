@@ -220,8 +220,8 @@ public:
     QLabel *DeltaBalanceStatus;
     QWidget *gridLayoutWidget_4;
     QGridLayout *gridLayout_MinimumBet;
-    QLCDNumber *MinimumBetNumber;
     QLabel *LabelMinimumBet;
+    QLCDNumber *MinimumBetNumber;
     QPushButton *InsuranceYes;
     QPushButton *InsuranceNo;
     QLabel *AdditionalStatus;
@@ -234,6 +234,7 @@ public:
     QLabel *FontSizeLabel;
     QPushButton *SettingsButton;
     QLabel *CurrentCurrency;
+    QPushButton *helpButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -242,6 +243,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(2110, 1410);
+        MainWindow->setFocusPolicy(Qt::ClickFocus);
         MainWindow->setStyleSheet(QLatin1String(" QSpinBox {\n"
 "	 background: green;\n"
 "	 border-style: solid;\n"
@@ -255,15 +257,15 @@ public:
 "     subcontrol-position: top right;\n"
 "\n"
 "     width: 16px;\n"
-"     border-image: url(images/spin/spinup.png) 1;\n"
+"     border-image: url(:/images/spin/spinup.png) 1;\n"
 " }\n"
 "\n"
 " QSpinBox::up-button:hover {\n"
-"     border-image: url(images/spin/spinup_hover.png) 1;\n"
+"     border-image: url(:/images/spin/spinup_hover.png) 1;\n"
 " }\n"
 "\n"
 " QSpinBox::up-button:pressed {\n"
-"     border-image: url(images/spin/spinup_pressed.png) 1;\n"
+"     border-image: url(:/images/spin/spinup_pressed.png) 1;\n"
 " }\n"
 "\n"
 " QSpinBox::down-button {\n"
@@ -271,20 +273,20 @@ public:
 "     subcontrol-position: bottom right; \n"
 "\n"
 "     width: 16px;\n"
-"     border-image: url(images/spin/spindown.png) 1;\n"
+"     border-image: url(:/images/spin/spindown.png) 1;\n"
 " }\n"
 "\n"
 " QSpinBox::down-button:hover {\n"
-"     border-image: url(images/spin/spindown_hover.png) 1;\n"
+"     border-image: url(:/images/spin/spindown_hover.png) 1;\n"
 " }\n"
 "\n"
 " QSpinBox::down-button:pressed {\n"
-"     border-image: url(images/spin/spindown_pressed.png) 1;\n"
+"     border-image: url(:/images/spin/spindown_pressed.png) 1;\n"
 " }\n"
 "\n"
 "QLCDNumber{\n"
-"     border: 2px"
-                        " inset green;\n"
+"    "
+                        " border: 2px inset green;\n"
 "     border-radius: 10px;\n"
 "     padding: 2px;\n"
 "	 color: yellow;\n"
@@ -1715,17 +1717,6 @@ public:
         gridLayout_MinimumBet = new QGridLayout(gridLayoutWidget_4);
         gridLayout_MinimumBet->setObjectName(QStringLiteral("gridLayout_MinimumBet"));
         gridLayout_MinimumBet->setContentsMargins(0, 0, 0, 0);
-        MinimumBetNumber = new QLCDNumber(gridLayoutWidget_4);
-        MinimumBetNumber->setObjectName(QStringLiteral("MinimumBetNumber"));
-        sizePolicy4.setHeightForWidth(MinimumBetNumber->sizePolicy().hasHeightForWidth());
-        MinimumBetNumber->setSizePolicy(sizePolicy4);
-        MinimumBetNumber->setStyleSheet(QStringLiteral(""));
-        MinimumBetNumber->setDigitCount(6);
-        MinimumBetNumber->setProperty("value", QVariant(0));
-        MinimumBetNumber->setProperty("intValue", QVariant(0));
-
-        gridLayout_MinimumBet->addWidget(MinimumBetNumber, 1, 0, 1, 1);
-
         LabelMinimumBet = new QLabel(gridLayoutWidget_4);
         LabelMinimumBet->setObjectName(QStringLiteral("LabelMinimumBet"));
         sizePolicy3.setHeightForWidth(LabelMinimumBet->sizePolicy().hasHeightForWidth());
@@ -1736,6 +1727,17 @@ public:
         LabelMinimumBet->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         gridLayout_MinimumBet->addWidget(LabelMinimumBet, 2, 0, 1, 1);
+
+        MinimumBetNumber = new QLCDNumber(gridLayoutWidget_4);
+        MinimumBetNumber->setObjectName(QStringLiteral("MinimumBetNumber"));
+        sizePolicy4.setHeightForWidth(MinimumBetNumber->sizePolicy().hasHeightForWidth());
+        MinimumBetNumber->setSizePolicy(sizePolicy4);
+        MinimumBetNumber->setStyleSheet(QStringLiteral(""));
+        MinimumBetNumber->setDigitCount(6);
+        MinimumBetNumber->setProperty("value", QVariant(0));
+        MinimumBetNumber->setProperty("intValue", QVariant(0));
+
+        gridLayout_MinimumBet->addWidget(MinimumBetNumber, 1, 0, 1, 1);
 
         InsuranceYes = new QPushButton(centralwidget);
         InsuranceYes->setObjectName(QStringLiteral("InsuranceYes"));
@@ -1796,7 +1798,7 @@ public:
         comboBoxCurrency->setEnabled(true);
         comboBoxCurrency->setGeometry(QRect(30, 50, 431, 65));
         comboBoxCurrency->setFocusPolicy(Qt::StrongFocus);
-        comboBoxCurrency->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+        comboBoxCurrency->setStyleSheet(QLatin1String("QComboBox {\n"
 "     border: 2px inset green;\n"
 "     border-radius: 10px;\n"
 "     padding: 0px;\n"
@@ -1807,7 +1809,6 @@ public:
 "	background: rgb(0,120,120);\n"
 " }\n"
 "\n"
-" /* QComboBox \320\277\320\276\320\273\321\203\321\207\320\260\320\265\321\202 \321\201\320\276\321\201\321\202\320\276\321\217\320\275\320\270\320\265 \"on\" \320\272\320\276\320\263\320\264\320\260 \320\262\321\213\320\277\320\260\320\264\320\260\321\216\321\211\320\270\320\271 \321\201\320\277\320\270\321\201\320\276\320\272 \321\200\320\260\321\201\320\272\321\200\321\213\321\202 */\n"
 " QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
 "     background: green;\n"
 " }\n"
@@ -1817,15 +1818,14 @@ public:
 "\n"
 "     border-left-width: 1px;\n"
 "     border-left-color: green;\n"
-"     border-left-style: solid; /* \321\202\320\276\320\273\321\214\320\272\320\276 \320\276\320\264\320\275\320\260 \320\273\320\270\320\275\320\270\321\217"
-                        " */\n"
+"     border-left-style: solid;\n"
 " }\n"
 "\n"
 " QComboBox::down-arrow {\n"
 "	width: 16;\n"
 "     top: 1px;\n"
 "     left: 0px;\n"
-"     image: url(images/spin/spindown.png);\n"
+"     image: url(:/images/spin/spindown.png);\n"
 " }\n"
 "\n"
 ""));
@@ -1887,6 +1887,12 @@ public:
 "     padding: 0px;\n"
 "	 color: rgb(205, 200, 0);\n"
 " "));
+        helpButton = new QPushButton(centralwidget);
+        helpButton->setObjectName(QStringLiteral("helpButton"));
+        helpButton->setGeometry(QRect(1040, 90, 71, 51));
+        helpButton->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/buttons/help.png);}\n"
+"QPushButton:hover{border-image: url(:/images/buttons/help_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/buttons/help_pressed.png);}"));
         MainWindow->setCentralWidget(centralwidget);
         CentralLabel->raise();
         Exit->raise();
@@ -1929,6 +1935,7 @@ public:
         SettingsFrame->raise();
         SettingsButton->raise();
         CurrentCurrency->raise();
+        helpButton->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 2110, 26));
@@ -1936,6 +1943,82 @@ public:
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         MainWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(comboBoxCurrency, AnimationSpeedSetting);
+        QWidget::setTabOrder(AnimationSpeedSetting, FontSizeSetting);
+        QWidget::setTabOrder(FontSizeSetting, helpButton);
+        QWidget::setTabOrder(helpButton, Exit);
+        QWidget::setTabOrder(Exit, multiSeatButton_1);
+        QWidget::setTabOrder(multiSeatButton_1, closeButton_1);
+        QWidget::setTabOrder(closeButton_1, spinBox_1);
+        QWidget::setTabOrder(spinBox_1, spinBox_2);
+        QWidget::setTabOrder(spinBox_2, spinBox_3);
+        QWidget::setTabOrder(spinBox_3, doubleButton_1);
+        QWidget::setTabOrder(doubleButton_1, hitButton_1);
+        QWidget::setTabOrder(hitButton_1, standButton_1);
+        QWidget::setTabOrder(standButton_1, splitButton_1);
+        QWidget::setTabOrder(splitButton_1, hitButtonExtra_1);
+        QWidget::setTabOrder(hitButtonExtra_1, standButtonExtra_1);
+        QWidget::setTabOrder(standButtonExtra_1, multiSeatButton_2);
+        QWidget::setTabOrder(multiSeatButton_2, closeButton_2);
+        QWidget::setTabOrder(closeButton_2, spinBox_4);
+        QWidget::setTabOrder(spinBox_4, spinBox_5);
+        QWidget::setTabOrder(spinBox_5, spinBox_6);
+        QWidget::setTabOrder(spinBox_6, doubleButton_2);
+        QWidget::setTabOrder(doubleButton_2, hitButton_2);
+        QWidget::setTabOrder(hitButton_2, standButton_2);
+        QWidget::setTabOrder(standButton_2, splitButton_2);
+        QWidget::setTabOrder(splitButton_2, hitButtonExtra_2);
+        QWidget::setTabOrder(hitButtonExtra_2, standButtonExtra_2);
+        QWidget::setTabOrder(standButtonExtra_2, multiSeatButton_3);
+        QWidget::setTabOrder(multiSeatButton_3, closeButton_3);
+        QWidget::setTabOrder(closeButton_3, spinBox_7);
+        QWidget::setTabOrder(spinBox_7, spinBox_8);
+        QWidget::setTabOrder(spinBox_8, spinBox_9);
+        QWidget::setTabOrder(spinBox_9, doubleButton_3);
+        QWidget::setTabOrder(doubleButton_3, hitButton_3);
+        QWidget::setTabOrder(hitButton_3, standButton_3);
+        QWidget::setTabOrder(standButton_3, splitButton_3);
+        QWidget::setTabOrder(splitButton_3, hitButtonExtra_3);
+        QWidget::setTabOrder(hitButtonExtra_3, standButtonExtra_3);
+        QWidget::setTabOrder(standButtonExtra_3, DealNow);
+        QWidget::setTabOrder(DealNow, InsuranceYes);
+        QWidget::setTabOrder(InsuranceYes, InsuranceNo);
+        QWidget::setTabOrder(InsuranceNo, RepeatButton);
+        QWidget::setTabOrder(RepeatButton, DoubleButton);
+        QWidget::setTabOrder(DoubleButton, multiSeatButton_4);
+        QWidget::setTabOrder(multiSeatButton_4, closeButton_4);
+        QWidget::setTabOrder(closeButton_4, spinBox_10);
+        QWidget::setTabOrder(spinBox_10, spinBox_11);
+        QWidget::setTabOrder(spinBox_11, spinBox_12);
+        QWidget::setTabOrder(spinBox_12, doubleButton_4);
+        QWidget::setTabOrder(doubleButton_4, hitButton_4);
+        QWidget::setTabOrder(hitButton_4, standButton_4);
+        QWidget::setTabOrder(standButton_4, splitButton_4);
+        QWidget::setTabOrder(splitButton_4, hitButtonExtra_4);
+        QWidget::setTabOrder(hitButtonExtra_4, standButtonExtra_4);
+        QWidget::setTabOrder(standButtonExtra_4, multiSeatButton_5);
+        QWidget::setTabOrder(multiSeatButton_5, closeButton_5);
+        QWidget::setTabOrder(closeButton_5, spinBox_13);
+        QWidget::setTabOrder(spinBox_13, spinBox_14);
+        QWidget::setTabOrder(spinBox_14, spinBox_15);
+        QWidget::setTabOrder(spinBox_15, doubleButton_5);
+        QWidget::setTabOrder(doubleButton_5, hitButton_5);
+        QWidget::setTabOrder(hitButton_5, standButton_5);
+        QWidget::setTabOrder(standButton_5, splitButton_5);
+        QWidget::setTabOrder(splitButton_5, hitButtonExtra_5);
+        QWidget::setTabOrder(hitButtonExtra_5, standButtonExtra_5);
+        QWidget::setTabOrder(standButtonExtra_5, multiSeatButton_6);
+        QWidget::setTabOrder(multiSeatButton_6, closeButton_6);
+        QWidget::setTabOrder(closeButton_6, spinBox_16);
+        QWidget::setTabOrder(spinBox_16, spinBox_17);
+        QWidget::setTabOrder(spinBox_17, spinBox_18);
+        QWidget::setTabOrder(spinBox_18, doubleButton_6);
+        QWidget::setTabOrder(doubleButton_6, hitButton_6);
+        QWidget::setTabOrder(hitButton_6, standButton_6);
+        QWidget::setTabOrder(standButton_6, splitButton_6);
+        QWidget::setTabOrder(splitButton_6, hitButtonExtra_6);
+        QWidget::setTabOrder(hitButtonExtra_6, SettingsButton);
+        QWidget::setTabOrder(SettingsButton, standButtonExtra_6);
 
         retranslateUi(MainWindow);
 
@@ -2031,6 +2114,7 @@ public:
         FontSizeLabel->setText(QApplication::translate("MainWindow", "Font size", Q_NULLPTR));
         SettingsButton->setText(QString());
         CurrentCurrency->setText(QString());
+        helpButton->setText(QString());
     } // retranslateUi
 
 };
