@@ -300,9 +300,11 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -318,9 +320,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -353,9 +355,9 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -371,9 +373,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -470,9 +472,11 @@ QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -488,9 +492,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -523,9 +527,9 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -541,9 +545,9 @@ QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -895,9 +899,11 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -913,9 +919,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -948,9 +954,9 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -966,9 +972,9 @@ QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1097,9 +1103,11 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -1115,9 +1123,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1150,9 +1158,9 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1168,9 +1176,9 @@ QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1494,9 +1502,9 @@ QPushButton:hover
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1512,9 +1520,11 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -1547,9 +1557,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1565,9 +1575,9 @@ QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1665,13 +1675,13 @@ QPushButton:hover
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1689,13 +1699,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1713,13 +1723,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1737,13 +1747,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1761,13 +1771,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1785,13 +1795,13 @@ QPushButton:pressed{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/sit_here.png);
+             border-image: url(:/images/buttons/sit_here.png);
          }
 QPushButton:hover{
-		border-image: url(images/sit_here_hover.png);
+		border-image: url(:/images/buttons/sit_here_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/sit_here_pressed.png);
+		border-image: url(:/images/buttons/sit_here_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -1885,9 +1895,9 @@ QPushButton:pressed{
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/double.png);}
-QPushButton:hover{border-image: url(images/double_hover.png);}
-QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/double.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1903,9 +1913,11 @@ QPushButton:pressed{border-image: url(images/double_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
            </property>
            <property name="text">
             <string/>
@@ -1967,9 +1979,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -1985,9 +1997,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {border-image: url(images/split.png);}
-QPushButton:hover{border-image: url(images/split_hover.png);}
-QPushButton:pressed{border-image: url(images/split_pressed.png);}</string>
+            <string notr="true">QPushButton {border-image: url(:/images/commitButtons/split.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}</string>
            </property>
            <property name="text">
             <string/>
@@ -2338,11 +2350,10 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-            border-image: url(images/repeat.png);
-			color: blue;
+            border-image: url(:/images/buttons/repeat.png);
          }
 QPushButton:hover{
-			border-image: url(images/repeat_hover.png);
+			border-image: url(:/images/buttons/repeat_hover.png);
 }</string>
     </property>
     <property name="text">
@@ -2360,14 +2371,13 @@ QPushButton:hover{
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-            border-image: url(images/doubleButton.png);
-			color: blue;
+            border-image: url(:/images/buttons/doubleButton.png);
          }
 QPushButton:hover{
-			border-image: url(images/doubleButton_hover.png);
+			border-image: url(:/images/buttons/doubleButton_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/doubleButton_pressed.png);
+		border-image: url(:/images/buttons/doubleButton_pressed.png);
 }</string>
     </property>
     <property name="text">
@@ -2406,9 +2416,11 @@ QPushButton:pressed{
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2430,9 +2442,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -2454,9 +2466,11 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2478,9 +2492,11 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2502,9 +2518,11 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2526,9 +2544,11 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2550,9 +2570,11 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/hit.png);}
-QPushButton:hover{border-image: url(images/hit_hover.png);}
-QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/hit.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}
+
+</string>
     </property>
     <property name="text">
      <string/>
@@ -2574,9 +2596,9 @@ QPushButton:pressed{border-image: url(images/hit_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -2598,9 +2620,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -2622,9 +2644,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -2646,9 +2668,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -2670,9 +2692,9 @@ QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
      </sizepolicy>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(images/stand.png);}
-QPushButton:hover{border-image: url(images/stand_hover.png);}
-QPushButton:pressed{border-image: url(images/stand_pressed.png);}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/commitButtons/stand.png);}
+QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}
+QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
@@ -3071,13 +3093,13 @@ border:0px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-             border-image: url(images/settings.png);
+             border-image: url(:/images/buttons/settings.png);
          }
 QPushButton:hover{
-		border-image: url(images/settings_hover.png);
+		border-image: url(:/images/buttons/settings_hover.png);
 }
 QPushButton:pressed{
-		border-image: url(images/settings_pressed.png);
+		border-image: url(:/images/buttons/settings_pressed.png);
 }</string>
     </property>
     <property name="text">

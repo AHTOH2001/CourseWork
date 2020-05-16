@@ -48,9 +48,9 @@ void Card::paintEvent(QPaintEvent *event)
     {
         QImage tempImage;
         if (isBlur)
-            tempImage.load("images/cards/closed_blur");
+            tempImage.load(":/images/cards/closed_blur");
         else
-        tempImage.load("images/cards/closed");
+        tempImage.load(":/images/cards/closed");
 
         painter.drawImage(0,0,tempImage.scaled(width(), height(),Qt::IgnoreAspectRatio));
     }

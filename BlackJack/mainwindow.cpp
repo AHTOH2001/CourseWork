@@ -162,11 +162,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(TimerForCommit,SIGNAL(timeout()),this,SLOT(NextSecond()));
 
 
-    QString s = "images/cards/";
+    QString s = ":/images/cards/";
     for (int i = 0;i<13;i++)
         for (int j = 0;j<4;j++)
         {
-            s.resize(13);
+            s.resize(15);
             s.append(QString(QString::number(i+2) + "_" + QString::number(j+1)));
             cardsList[i][j].load(s);
         }
@@ -221,18 +221,12 @@ MainWindow::MainWindow(QWidget *parent)
         seatIdentifier[i.multiSeat] = counter;
         seatIdentifier[i.extra.hitButton] = counter+6;
         seatIdentifier[i.extra.standButton] = counter+6;
-        i.doubleButton->hide();
-        //i.doubleButton->setStyleSheet("border-image: url(images/double.png);");
-        i.hitButton->hide();
-        //i.hitButton->setStyleSheet("border-image: url(images/hit.png);");
+        i.doubleButton->hide();        
+        i.hitButton->hide();        
         i.standButton->hide();
-//        i.standButton->setStyleSheet("border-image: url(images/stand.png);");
         i.splitButton->hide();
-//        i.splitButton->setStyleSheet("border-image: url(images/split.png);");
-        i.extra.hitButton->hide();
-        //i.extra.hitButton->setStyleSheet("border-image: url(images/hit.png);");
-        i.extra.standButton->hide();
-        //i.extra.standButton->setStyleSheet("border-image: url(images/stand.png);");
+        i.extra.hitButton->hide();        
+        i.extra.standButton->hide();        
         i.horizontalSpacerLeft->changeSize(0,0);
         i.horizontalSpacerRight->changeSize(0,0);
         counter++;
@@ -240,11 +234,6 @@ MainWindow::MainWindow(QWidget *parent)
         i.extra.horizontalSpacer->changeSize(0,0);
         i.extra.sumCounter->hide();
     }
-//    QStringList temp = {"€","$","£","₽","Br","₪","￥"};
-//    ui->comboBoxCurrency->addItems(temp);
-//    QString temps = "fds";
-//    ui->comboBoxCurrency->addItem(temps);
-//    ui->comboBoxCurrency->addItem("fdsf");
 
     dealerSumCounterAnimation = new QPropertyAnimation(ui->dealerSumCounter,"geometry");
     dealerSumCounterAnimation->setDuration(300*koefSpeed);
@@ -260,8 +249,6 @@ MainWindow::MainWindow(QWidget *parent)
     downloader->getData();
 
     ui->SettingsFrame->hide();
-
-//    ui->textBrowser->setText(downloader->data);
 
 }
 
@@ -345,7 +332,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
         for (int i = 0;i<6;i++)
             seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,92*koefW, 135*koefH);
 
-        image.load("images/takeseat");
+        image.load(":/images/takeseat");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY")
         {
@@ -365,7 +352,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
     }
     else
     {
-        image.load("images/background");
+        image.load(":/images/background.png");
         painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (ui->CentralLabel->text()=="TAKE A SEAT")
         {
@@ -532,9 +519,9 @@ void MainWindow::multiSeatFunc(int i)
     isSeat = true;
     seat[i].multiSeat->hide();
     for (int i = 0;i<6;i++)
-        seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
-                                         "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
-                                         "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
+        seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(:/images/buttons/multi_seat.png);}"
+                                         "QPushButton:hover{border-image: url(:/images/buttons/multi_seat_hover.png);}"
+                                         "QPushButton:pressed{ border-image: url(:/images/buttons/multi_seat_pressed.png);}");
     update();
 }
 
@@ -558,7 +545,7 @@ void MainWindow::valueChangedSlot(int newValue)
                            "border-style: outset;"
                            "border-color: red;}"
                            "QSpinBox::down-button {"
-                           "border-image: url(images/spin/spindown_pressed.png) 1;}");
+                           "border-image: url(:/images/spin/spindown_pressed.png) 1;}");
     }
     else
         if (prevValueForColor[sender]<newValue)
@@ -568,7 +555,7 @@ void MainWindow::valueChangedSlot(int newValue)
                                "border-style: outset;"
                                "border-color: rgb(0,200,0);}"
                                "QSpinBox::up-button {"
-                               "border-image: url(images/spin/spinup_pressed.png) 1; }");
+                               "border-image: url(:/images/spin/spinup_pressed.png) 1; }");
 
         }
 
@@ -603,9 +590,9 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
         {
             if (seat[i].mainBet->value() > ui->BalanceAmount->value())
             {
-                seat[i].doubleButton->setStyleSheet("border-image: url(images/double_blocked.png);");
+                seat[i].doubleButton->setStyleSheet("border-image: url(:/images/commitButtons/double_blocked.png);");
                 seat[i].doubleButton->setDisabled(true);
-                seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
+                seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
                 seat[i].splitButton->setDisabled(true);
             }
         }
@@ -626,7 +613,7 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
             for (int i = 0;i<6;i++)
             {
                 seat[i].multiSeat->setDisabled(true);
-                seat[i].multiSeat->setStyleSheet("border-image: url(images/multi_seat_blocked.png);");
+                seat[i].multiSeat->setStyleSheet("border-image: url(:/images/buttons/multi_seat_blocked.png);");
             }
             ui->comboBoxCurrency->setDisabled(true);
             ui->RepeatButton->hide();
@@ -643,13 +630,13 @@ bool MainWindow::ValueChangedByUserSlot(QSpinBox *SpinBox)
             {
                 seat[i].multiSeat->setDisabled(false);
                 if (!isSeat)
-                    seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/sit_here.png);}"
-                                                     "QPushButton:hover{border-image: url(images/sit_here_hover.png);}"
-                                                     "QPushButton:pressed{ border-image: url(images/sit_here_pressed.png);}");
+                    seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(:/images/buttons/sit_here.png);}"
+                                                     "QPushButton:hover{border-image: url(:/images/buttons/sit_here_hover.png);}"
+                                                     "QPushButton:pressed{ border-image: url(:/images/buttons/sit_here_pressed.png);}");
                 else
-                    seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(images/multi_seat.png);}"
-                                                     "QPushButton:hover{border-image: url(images/multi_seat_hover.png);}"
-                                                     "QPushButton:pressed{ border-image: url(images/multi_seat_pressed.png);}");
+                    seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(:/images/buttons/multi_seat.png);}"
+                                                     "QPushButton:hover{border-image: url(:/images/buttons/multi_seat_hover.png);}"
+                                                     "QPushButton:pressed{ border-image: url(:/images/buttons/multi_seat_pressed.png);}");
             }
             ui->comboBoxCurrency->setDisabled(false);
             ui->RepeatButton->show();
@@ -753,9 +740,9 @@ void MainWindow::on_DealNow_clicked()
 
         if (seat[i].mainBet->value() > ui->BalanceAmount->value())
         {
-            seat[i].doubleButton->setStyleSheet("border-image: url(images/double_blocked.png);");
+            seat[i].doubleButton->setStyleSheet("border-image: url(:/images/commitButtons/double_blocked.png);");
             seat[i].doubleButton->setDisabled(true);
-            seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
+            seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
             seat[i].splitButton->setDisabled(true);
         }
     }
@@ -800,7 +787,8 @@ void MainWindow::NextColorSlot()
     if (tick==150)
         on_DealNow_clicked();
 }
-
+//TODO main label repaint;
+//TODO fix card bordering
 void MainWindow::DoubleDown(int i)
 {
     auto* sender=dynamic_cast<QPushButton*>(QObject::sender());
@@ -887,7 +875,7 @@ void MainWindow::Stand(int i)
         if (sender!=nullptr)
         {
             i = seatIdentifier[sender];                            
-            if ((i>6 && seat[i-6].extra.sumCounter->value()<=9) || (i<=6 && seat[i].sumCounter->value()<=9))
+            if ((i>=6 && seat[i-6].extra.sumCounter->value()<=9) || (i<6 && seat[i].sumCounter->value()<=9))
             {
                 TimerForCommit->stop();
                 if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure\nyou want to stand?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
@@ -947,7 +935,7 @@ void MainWindow::Hit(int i)
         if (sender!=nullptr)
         {
             i = seatIdentifier[sender];
-            if ((i>6 && seat[i-6].extra.sumCounter->value()>=18) || (i<=6 && seat[i].sumCounter->value()>=18))
+            if ((i>=6 && seat[i-6].extra.sumCounter->value()>=18) || (i<6 && seat[i].sumCounter->value()>=18))
             {
                 TimerForCommit->stop();
                 if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure you want\nto get another card?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
@@ -958,7 +946,7 @@ void MainWindow::Hit(int i)
                 TimerForCommit->start();
             }
 
-            sender->setStyleSheet("border-image: url(images/hit_blocked.png);");
+            sender->setStyleSheet("border-image: url(:/images/commitButtons/hit_blocked.png);");
             sender->setDisabled(true);
             on_InsuranceNo_clicked();
         }
@@ -985,7 +973,7 @@ void MainWindow::HitNext()
                     seat[i].splitButton->show();
                     if (seat[i].cards[0]->number()!=seat[i].cards[1]->number())
                     {
-                        seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
+                        seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
                         seat[i].splitButton->setDisabled(true);
                     }
                 }
@@ -1059,13 +1047,13 @@ void MainWindow::HitNext()
     else
         if (i<6)
         {
-            seat[i].hitButton->setStyleSheet("QPushButton {border-image: url(images/hit.png);}"
-                                             "QPushButton:hover{border-image: url(images/hit_hover.png);}"
-                                             "QPushButton:pressed{border-image: url(images/hit_pressed.png);}");
+            seat[i].hitButton->setStyleSheet("QPushButton {border-image: url(:/images/commitButtons/hit.png);}"
+                                             "QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}"
+                                             "QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}");
             seat[i].hitButton->setDisabled(false);
             if (isDealingEnd)
             {
-                seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
+                seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
                 seat[i].splitButton->setDisabled(true);
             }
             seat[i].cards.append(card);
@@ -1088,9 +1076,9 @@ void MainWindow::HitNext()
         }
         else
         {
-            seat[i-6].extra.hitButton->setStyleSheet("QPushButton {border-image: url(images/hit.png);}"
-                                                     "QPushButton:hover{border-image: url(images/hit_hover.png);}"
-                                                     "QPushButton:pressed{border-image: url(images/hit_pressed.png);}");
+            seat[i-6].extra.hitButton->setStyleSheet("QPushButton {border-image: url(:/images/commitButtons/hit.png);}"
+                                                     "QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}"
+                                                     "QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}");
             seat[i-6].extra.hitButton->setDisabled(false);
             seat[i-6].extra.cards.append(card);
             card->CardAnimation->setDuration(1000*koefSpeed);
@@ -1133,7 +1121,7 @@ void MainWindow::RecountSum(QLCDNumber *sumCounter, Card *card,const int cardsAm
     else
         if (sumCounter->value()==21 && cardsAmount==2)
         {
-            sumCounter->setStyleSheet("border-image: url(images/blackjack.png);");
+            sumCounter->setStyleSheet("border-image: url(:/images/results/blackjack.png);");
             sumCounter->display("");
         }
 
@@ -1376,8 +1364,7 @@ void MainWindow::OpenDealerCardsProcess()
             }
     stage++;
 }
-//TODO fix split and right hit crush
-void MainWindow::ResultStage()   //TODO result images
+void MainWindow::ResultStage()
 {
     double TotalWin = 0;
     for (int i = 0;i<6;i++)
@@ -1387,45 +1374,45 @@ void MainWindow::ResultStage()   //TODO result images
             double delta = 0;
             if (seat[i].sumCounter->value()>21)
             {
-                seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+                seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/bust.png);");
             }
             else
                 if (ui->dealerSumCounter->value()>21 || seat[i].sumCounter->value() > ui->dealerSumCounter->value())
                 {
                     delta+=seat[i].mainBet->value();
-                    seat[i].sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                    seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/win.png);");
                 }
                 else
                     if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
                     {
                         delta+=seat[i].mainBet->value()/2;
-                        seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                        seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/push.png);");
                     }
                     else
                     {
-                        seat[i].sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                        seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/lose.png);");
                     }
 
 
             if (seat[i].extra.sumCounter->value()>21)
             {
-                seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+                seat[i].extra.sumCounter->setStyleSheet("border-image: url(:/images/results/bust.png);");
             }
             else
                 if (ui->dealerSumCounter->value()>21 || seat[i].extra.sumCounter->value() > ui->dealerSumCounter->value())
                 {
                     delta+=seat[i].mainBet->value();
-                    seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                    seat[i].extra.sumCounter->setStyleSheet("border-image: url(:/images/results/win.png);");
                 }
                 else
                     if (seat[i].extra.sumCounter->value()==ui->dealerSumCounter->value())
                     {
                         delta+=seat[i].mainBet->value()/2;
-                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(:/images/results/push.png);");
                     }
                     else
                     {
-                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                        seat[i].extra.sumCounter->setStyleSheet("border-image: url(:/images/results/lose.png);");
                     }
 
             seat[i].mainBet->setValue(delta);
@@ -1450,30 +1437,30 @@ void MainWindow::ResultStage()   //TODO result images
                     {
                         seat[i].mainBet->setValue(0);
                         RealValueSpinBox[seat[i].mainBet] = 0;
-                        seat[i].sumCounter->setStyleSheet("border-image: url(images/bust.png);");
+                        seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/bust.png);");
                     }
                     else
                         if (ui->dealerSumCounter->value()>21 || seat[i].sumCounter->value() > ui->dealerSumCounter->value())
                         {
                             seat[i].mainBet->setValue(seat[i].mainBet->value()*2);
                             RealValueSpinBox[seat[i].mainBet] *= 2;
-                            seat[i].sumCounter->setStyleSheet("border-image: url(images/win.png);");
+                            seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/win.png);");
                         }
                         else
                             if (seat[i].sumCounter->value()==ui->dealerSumCounter->value())
                             {
-                                seat[i].sumCounter->setStyleSheet("border-image: url(images/push.png);");
+                                seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/push.png);");
                             }
                             else
                             {
                                 seat[i].mainBet->setValue(0);
                                 RealValueSpinBox[seat[i].mainBet] = 0;
-                                seat[i].sumCounter->setStyleSheet("border-image: url(images/lose.png);");
+                                seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/lose.png);");
                             }
                 }
                 else
                 {
-                    seat[i].sumCounter->setStyleSheet("border-image: url(images/insurance.png);");
+                    seat[i].sumCounter->setStyleSheet("border-image: url(:/images/results/insurance.png);");
                 }
 
         TotalWin+=RealValueSpinBox[seat[i].perfectPair];
@@ -1761,13 +1748,13 @@ void MainWindow::NewGamePreparation()
         seat[i].triple->setDisabled(false);
 
         seat[i].splitButton->setDisabled(false);
-        seat[i].splitButton->setStyleSheet("QPushButton {border-image: url(images/split.png);}"
-                                           "QPushButton:hover{border-image: url(images/split_hover.png);}"
-                                           "QPushButton:pressed{border-image: url(images/split_pressed.png);}");
+        seat[i].splitButton->setStyleSheet("QPushButton {border-image: url(:/images/commitButtons/split.png);}"
+                                           "QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}"
+                                           "QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}");
         seat[i].doubleButton->setDisabled(false);
-        seat[i].doubleButton->setStyleSheet("QPushButton {border-image: url(images/double.png);}"
-                                            "QPushButton:hover{border-image: url(images/double_hover.png);}"
-                                            "QPushButton:pressed{border-image: url(images/double_pressed.png);}");
+        seat[i].doubleButton->setStyleSheet("QPushButton {border-image: url(:/images/commitButtons/double.png);}"
+                                            "QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}"
+                                            "QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}");
 
         seat[i].gridLayoutLeft->addWidget(seat[i].doubleButton,0,0,1,1);
         seat[i].gridLayoutLeft->addWidget(seat[i].hitButton,0,1,1,1);
@@ -1798,7 +1785,7 @@ void MainWindow::NewGamePreparation()
 
         for (int i = 0;i<6;i++)
         {
-            seat[i].multiSeat->setStyleSheet("border-image: url(images/multi_seat_blocked.png);");
+            seat[i].multiSeat->setStyleSheet("border-image: url(:/images/buttons/multi_seat_blocked.png);");
             seat[i].multiSeat->setDisabled(true);
         }
         ui->CentralLabel->setText("YOUR BALANCE IS TOO LOW TO PLAY");
@@ -1830,9 +1817,9 @@ void MainWindow::on_InsuranceYes_clicked()
             RealValueSpinBox[seat[i].mainBet] *= 3/2.;
             seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet] + 0.5);
 
-            seat[i].doubleButton->setStyleSheet("border-image: url(images/double_blocked.png);");
+            seat[i].doubleButton->setStyleSheet("border-image: url(:/images/commitButtons/double_blocked.png);");
             seat[i].doubleButton->setDisabled(true);
-            seat[i].splitButton->setStyleSheet("border-image: url(images/split_blocked.png);");
+            seat[i].splitButton->setStyleSheet("border-image: url(:/images/commitButtons/split_blocked.png);");
             seat[i].splitButton->setDisabled(true);
         }
     ui->CentralLabel->hide();

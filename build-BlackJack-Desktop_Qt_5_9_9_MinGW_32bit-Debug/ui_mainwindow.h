@@ -440,9 +440,11 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(hitButton_2->sizePolicy().hasHeightForWidth());
         hitButton_2->setSizePolicy(sizePolicy2);
-        hitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_2->addWidget(hitButton_2, 0, 1, 1, 1);
 
@@ -450,9 +452,9 @@ public:
         doubleButton_2->setObjectName(QStringLiteral("doubleButton_2"));
         sizePolicy2.setHeightForWidth(doubleButton_2->sizePolicy().hasHeightForWidth());
         doubleButton_2->setSizePolicy(sizePolicy2);
-        doubleButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_2->addWidget(doubleButton_2, 0, 0, 1, 1);
 
@@ -469,9 +471,9 @@ public:
         standButton_2->setObjectName(QStringLiteral("standButton_2"));
         sizePolicy2.setHeightForWidth(standButton_2->sizePolicy().hasHeightForWidth());
         standButton_2->setSizePolicy(sizePolicy2);
-        standButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_2->addWidget(standButton_2, 0, 0, 1, 1);
 
@@ -479,9 +481,9 @@ public:
         splitButton_2->setObjectName(QStringLiteral("splitButton_2"));
         sizePolicy2.setHeightForWidth(splitButton_2->sizePolicy().hasHeightForWidth());
         splitButton_2->setSizePolicy(sizePolicy2);
-        splitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_2->addWidget(splitButton_2, 0, 1, 1, 1);
 
@@ -533,9 +535,11 @@ public:
         hitButton_3->setObjectName(QStringLiteral("hitButton_3"));
         sizePolicy2.setHeightForWidth(hitButton_3->sizePolicy().hasHeightForWidth());
         hitButton_3->setSizePolicy(sizePolicy2);
-        hitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_3->addWidget(hitButton_3, 0, 1, 1, 1);
 
@@ -543,9 +547,9 @@ public:
         doubleButton_3->setObjectName(QStringLiteral("doubleButton_3"));
         sizePolicy2.setHeightForWidth(doubleButton_3->sizePolicy().hasHeightForWidth());
         doubleButton_3->setSizePolicy(sizePolicy2);
-        doubleButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_3->addWidget(doubleButton_3, 0, 0, 1, 1);
 
@@ -562,9 +566,9 @@ public:
         splitButton_3->setObjectName(QStringLiteral("splitButton_3"));
         sizePolicy2.setHeightForWidth(splitButton_3->sizePolicy().hasHeightForWidth());
         splitButton_3->setSizePolicy(sizePolicy2);
-        splitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_3->addWidget(splitButton_3, 0, 1, 1, 1);
 
@@ -572,9 +576,9 @@ public:
         standButton_3->setObjectName(QStringLiteral("standButton_3"));
         sizePolicy2.setHeightForWidth(standButton_3->sizePolicy().hasHeightForWidth());
         standButton_3->setSizePolicy(sizePolicy2);
-        standButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_3->addWidget(standButton_3, 0, 0, 1, 1);
 
@@ -767,9 +771,11 @@ public:
         hitButton_4->setObjectName(QStringLiteral("hitButton_4"));
         sizePolicy2.setHeightForWidth(hitButton_4->sizePolicy().hasHeightForWidth());
         hitButton_4->setSizePolicy(sizePolicy2);
-        hitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_4->addWidget(hitButton_4, 0, 1, 1, 1);
 
@@ -777,9 +783,9 @@ public:
         doubleButton_4->setObjectName(QStringLiteral("doubleButton_4"));
         sizePolicy2.setHeightForWidth(doubleButton_4->sizePolicy().hasHeightForWidth());
         doubleButton_4->setSizePolicy(sizePolicy2);
-        doubleButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_4->addWidget(doubleButton_4, 0, 0, 1, 1);
 
@@ -796,9 +802,9 @@ public:
         splitButton_4->setObjectName(QStringLiteral("splitButton_4"));
         sizePolicy2.setHeightForWidth(splitButton_4->sizePolicy().hasHeightForWidth());
         splitButton_4->setSizePolicy(sizePolicy2);
-        splitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_4->addWidget(splitButton_4, 0, 1, 1, 1);
 
@@ -806,9 +812,9 @@ public:
         standButton_4->setObjectName(QStringLiteral("standButton_4"));
         sizePolicy2.setHeightForWidth(standButton_4->sizePolicy().hasHeightForWidth());
         standButton_4->setSizePolicy(sizePolicy2);
-        standButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_4->addWidget(standButton_4, 0, 0, 1, 1);
 
@@ -886,9 +892,11 @@ public:
         hitButton_5->setObjectName(QStringLiteral("hitButton_5"));
         sizePolicy2.setHeightForWidth(hitButton_5->sizePolicy().hasHeightForWidth());
         hitButton_5->setSizePolicy(sizePolicy2);
-        hitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_5->addWidget(hitButton_5, 0, 1, 1, 1);
 
@@ -896,9 +904,9 @@ public:
         doubleButton_5->setObjectName(QStringLiteral("doubleButton_5"));
         sizePolicy2.setHeightForWidth(doubleButton_5->sizePolicy().hasHeightForWidth());
         doubleButton_5->setSizePolicy(sizePolicy2);
-        doubleButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_5->addWidget(doubleButton_5, 0, 0, 1, 1);
 
@@ -915,9 +923,9 @@ public:
         splitButton_5->setObjectName(QStringLiteral("splitButton_5"));
         sizePolicy2.setHeightForWidth(splitButton_5->sizePolicy().hasHeightForWidth());
         splitButton_5->setSizePolicy(sizePolicy2);
-        splitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_5->addWidget(splitButton_5, 0, 1, 1, 1);
 
@@ -925,9 +933,9 @@ public:
         standButton_5->setObjectName(QStringLiteral("standButton_5"));
         sizePolicy2.setHeightForWidth(standButton_5->sizePolicy().hasHeightForWidth());
         standButton_5->setSizePolicy(sizePolicy2);
-        standButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_5->addWidget(standButton_5, 0, 0, 1, 1);
 
@@ -1108,9 +1116,9 @@ public:
         doubleButton_6->setObjectName(QStringLiteral("doubleButton_6"));
         sizePolicy2.setHeightForWidth(doubleButton_6->sizePolicy().hasHeightForWidth());
         doubleButton_6->setSizePolicy(sizePolicy2);
-        doubleButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_6->addWidget(doubleButton_6, 0, 0, 1, 1);
 
@@ -1118,9 +1126,11 @@ public:
         hitButton_6->setObjectName(QStringLiteral("hitButton_6"));
         sizePolicy2.setHeightForWidth(hitButton_6->sizePolicy().hasHeightForWidth());
         hitButton_6->setSizePolicy(sizePolicy2);
-        hitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_6->addWidget(hitButton_6, 0, 1, 1, 1);
 
@@ -1137,9 +1147,9 @@ public:
         splitButton_6->setObjectName(QStringLiteral("splitButton_6"));
         sizePolicy2.setHeightForWidth(splitButton_6->sizePolicy().hasHeightForWidth());
         splitButton_6->setSizePolicy(sizePolicy2);
-        splitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_6->addWidget(splitButton_6, 0, 1, 1, 1);
 
@@ -1147,9 +1157,9 @@ public:
         standButton_6->setObjectName(QStringLiteral("standButton_6"));
         sizePolicy2.setHeightForWidth(standButton_6->sizePolicy().hasHeightForWidth());
         standButton_6->setSizePolicy(sizePolicy2);
-        standButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_6->addWidget(standButton_6, 0, 0, 1, 1);
 
@@ -1197,73 +1207,73 @@ public:
         multiSeatButton_1->setObjectName(QStringLiteral("multiSeatButton_1"));
         multiSeatButton_1->setGeometry(QRect(1470, 580, 141, 191));
         multiSeatButton_1->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_2 = new QPushButton(centralwidget);
         multiSeatButton_2->setObjectName(QStringLiteral("multiSeatButton_2"));
         multiSeatButton_2->setGeometry(QRect(1500, 610, 141, 191));
         multiSeatButton_2->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_3 = new QPushButton(centralwidget);
         multiSeatButton_3->setObjectName(QStringLiteral("multiSeatButton_3"));
         multiSeatButton_3->setGeometry(QRect(1630, 580, 141, 191));
         multiSeatButton_3->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_4 = new QPushButton(centralwidget);
         multiSeatButton_4->setObjectName(QStringLiteral("multiSeatButton_4"));
         multiSeatButton_4->setGeometry(QRect(1690, 630, 141, 191));
         multiSeatButton_4->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_5 = new QPushButton(centralwidget);
         multiSeatButton_5->setObjectName(QStringLiteral("multiSeatButton_5"));
         multiSeatButton_5->setGeometry(QRect(1820, 630, 141, 191));
         multiSeatButton_5->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         multiSeatButton_6 = new QPushButton(centralwidget);
         multiSeatButton_6->setObjectName(QStringLiteral("multiSeatButton_6"));
         multiSeatButton_6->setGeometry(QRect(1940, 610, 141, 191));
         multiSeatButton_6->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/sit_here.png);\n"
+"             border-image: url(:/images/buttons/sit_here.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/sit_here_hover.png);\n"
+"		border-image: url(:/images/buttons/sit_here_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/sit_here_pressed.png);\n"
+"		border-image: url(:/images/buttons/sit_here_pressed.png);\n"
 "}"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
@@ -1316,9 +1326,9 @@ public:
         doubleButton_1->setObjectName(QStringLiteral("doubleButton_1"));
         sizePolicy2.setHeightForWidth(doubleButton_1->sizePolicy().hasHeightForWidth());
         doubleButton_1->setSizePolicy(sizePolicy2);
-        doubleButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/double.png);}\n"
-"QPushButton:hover{border-image: url(images/double_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/double_pressed.png);}"));
+        doubleButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/double.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/double_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/double_pressed.png);}"));
 
         gridLayoutLeft_1->addWidget(doubleButton_1, 0, 1, 1, 1);
 
@@ -1326,9 +1336,11 @@ public:
         hitButton_1->setObjectName(QStringLiteral("hitButton_1"));
         sizePolicy2.setHeightForWidth(hitButton_1->sizePolicy().hasHeightForWidth());
         hitButton_1->setSizePolicy(sizePolicy2);
-        hitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
 
         gridLayoutLeft_1->addWidget(hitButton_1, 0, 2, 1, 1);
 
@@ -1363,9 +1375,9 @@ public:
         standButton_1->setObjectName(QStringLiteral("standButton_1"));
         sizePolicy2.setHeightForWidth(standButton_1->sizePolicy().hasHeightForWidth());
         standButton_1->setSizePolicy(sizePolicy2);
-        standButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
 
         gridLayoutRight_1->addWidget(standButton_1, 0, 0, 1, 1);
 
@@ -1373,9 +1385,9 @@ public:
         splitButton_1->setObjectName(QStringLiteral("splitButton_1"));
         sizePolicy2.setHeightForWidth(splitButton_1->sizePolicy().hasHeightForWidth());
         splitButton_1->setSizePolicy(sizePolicy2);
-        splitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/split.png);}\n"
-"QPushButton:hover{border-image: url(images/split_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/split_pressed.png);}"));
+        splitButton_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/split.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/split_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/split_pressed.png);}"));
 
         gridLayoutRight_1->addWidget(splitButton_1, 0, 1, 1, 1);
 
@@ -1556,24 +1568,22 @@ public:
         RepeatButton->setObjectName(QStringLiteral("RepeatButton"));
         RepeatButton->setGeometry(QRect(705, 620, 81, 81));
         RepeatButton->setStyleSheet(QLatin1String("QPushButton {\n"
-"            border-image: url(images/repeat.png);\n"
-"			color: blue;\n"
+"            border-image: url(:/images/buttons/repeat.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"			border-image: url(images/repeat_hover.png);\n"
+"			border-image: url(:/images/buttons/repeat_hover.png);\n"
 "}"));
         DoubleButton = new QPushButton(centralwidget);
         DoubleButton->setObjectName(QStringLiteral("DoubleButton"));
         DoubleButton->setGeometry(QRect(780, 690, 81, 81));
         DoubleButton->setStyleSheet(QLatin1String("QPushButton {\n"
-"            border-image: url(images/doubleButton.png);\n"
-"			color: blue;\n"
+"            border-image: url(:/images/buttons/doubleButton.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"			border-image: url(images/doubleButton_hover.png);\n"
+"			border-image: url(:/images/buttons/doubleButton_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/doubleButton_pressed.png);\n"
+"		border-image: url(:/images/buttons/doubleButton_pressed.png);\n"
 "}"));
         dealerSumCounter = new QLCDNumber(centralwidget);
         dealerSumCounter->setObjectName(QStringLiteral("dealerSumCounter"));
@@ -1585,97 +1595,109 @@ public:
         hitButtonExtra_1->setGeometry(QRect(710, 20, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_1->sizePolicy().hasHeightForWidth());
         hitButtonExtra_1->setSizePolicy(sizePolicy2);
-        hitButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         standButtonExtra_1 = new QPushButton(centralwidget);
         standButtonExtra_1->setObjectName(QStringLiteral("standButtonExtra_1"));
         standButtonExtra_1->setGeometry(QRect(860, 20, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_1->sizePolicy().hasHeightForWidth());
         standButtonExtra_1->setSizePolicy(sizePolicy2);
-        standButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_1->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         hitButtonExtra_2 = new QPushButton(centralwidget);
         hitButtonExtra_2->setObjectName(QStringLiteral("hitButtonExtra_2"));
         hitButtonExtra_2->setGeometry(QRect(710, 80, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_2->sizePolicy().hasHeightForWidth());
         hitButtonExtra_2->setSizePolicy(sizePolicy2);
-        hitButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         hitButtonExtra_3 = new QPushButton(centralwidget);
         hitButtonExtra_3->setObjectName(QStringLiteral("hitButtonExtra_3"));
         hitButtonExtra_3->setGeometry(QRect(710, 140, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_3->sizePolicy().hasHeightForWidth());
         hitButtonExtra_3->setSizePolicy(sizePolicy2);
-        hitButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         hitButtonExtra_4 = new QPushButton(centralwidget);
         hitButtonExtra_4->setObjectName(QStringLiteral("hitButtonExtra_4"));
         hitButtonExtra_4->setGeometry(QRect(710, 200, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_4->sizePolicy().hasHeightForWidth());
         hitButtonExtra_4->setSizePolicy(sizePolicy2);
-        hitButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         hitButtonExtra_5 = new QPushButton(centralwidget);
         hitButtonExtra_5->setObjectName(QStringLiteral("hitButtonExtra_5"));
         hitButtonExtra_5->setGeometry(QRect(710, 260, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_5->sizePolicy().hasHeightForWidth());
         hitButtonExtra_5->setSizePolicy(sizePolicy2);
-        hitButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         hitButtonExtra_6 = new QPushButton(centralwidget);
         hitButtonExtra_6->setObjectName(QStringLiteral("hitButtonExtra_6"));
         hitButtonExtra_6->setGeometry(QRect(710, 320, 119, 59));
         sizePolicy2.setHeightForWidth(hitButtonExtra_6->sizePolicy().hasHeightForWidth());
         hitButtonExtra_6->setSizePolicy(sizePolicy2);
-        hitButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/hit.png);}\n"
-"QPushButton:hover{border-image: url(images/hit_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/hit_pressed.png);}"));
+        hitButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/hit.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/hit_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/hit_pressed.png);}\n"
+"\n"
+""));
         standButtonExtra_2 = new QPushButton(centralwidget);
         standButtonExtra_2->setObjectName(QStringLiteral("standButtonExtra_2"));
         standButtonExtra_2->setGeometry(QRect(860, 80, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_2->sizePolicy().hasHeightForWidth());
         standButtonExtra_2->setSizePolicy(sizePolicy2);
-        standButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_2->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         standButtonExtra_3 = new QPushButton(centralwidget);
         standButtonExtra_3->setObjectName(QStringLiteral("standButtonExtra_3"));
         standButtonExtra_3->setGeometry(QRect(860, 140, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_3->sizePolicy().hasHeightForWidth());
         standButtonExtra_3->setSizePolicy(sizePolicy2);
-        standButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_3->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         standButtonExtra_4 = new QPushButton(centralwidget);
         standButtonExtra_4->setObjectName(QStringLiteral("standButtonExtra_4"));
         standButtonExtra_4->setGeometry(QRect(860, 200, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_4->sizePolicy().hasHeightForWidth());
         standButtonExtra_4->setSizePolicy(sizePolicy2);
-        standButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_4->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         standButtonExtra_5 = new QPushButton(centralwidget);
         standButtonExtra_5->setObjectName(QStringLiteral("standButtonExtra_5"));
         standButtonExtra_5->setGeometry(QRect(860, 260, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_5->sizePolicy().hasHeightForWidth());
         standButtonExtra_5->setSizePolicy(sizePolicy2);
-        standButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_5->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         standButtonExtra_6 = new QPushButton(centralwidget);
         standButtonExtra_6->setObjectName(QStringLiteral("standButtonExtra_6"));
         standButtonExtra_6->setGeometry(QRect(860, 320, 119, 59));
         sizePolicy2.setHeightForWidth(standButtonExtra_6->sizePolicy().hasHeightForWidth());
         standButtonExtra_6->setSizePolicy(sizePolicy2);
-        standButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(images/stand.png);}\n"
-"QPushButton:hover{border-image: url(images/stand_hover.png);}\n"
-"QPushButton:pressed{border-image: url(images/stand_pressed.png);}"));
+        standButtonExtra_6->setStyleSheet(QLatin1String("QPushButton {border-image: url(:/images/commitButtons/stand.png);}\n"
+"QPushButton:hover{border-image: url(:/images/commitButtons/stand_hover.png);}\n"
+"QPushButton:pressed{border-image: url(:/images/commitButtons/stand_pressed.png);}"));
         DeltaBalanceStatus = new QLabel(centralwidget);
         DeltaBalanceStatus->setObjectName(QStringLiteral("DeltaBalanceStatus"));
         DeltaBalanceStatus->setGeometry(QRect(1150, 650, 150, 50));
@@ -1849,13 +1871,13 @@ public:
         SettingsButton->setObjectName(QStringLiteral("SettingsButton"));
         SettingsButton->setGeometry(QRect(1340, 100, 51, 51));
         SettingsButton->setStyleSheet(QLatin1String("QPushButton {\n"
-"             border-image: url(images/settings.png);\n"
+"             border-image: url(:/images/buttons/settings.png);\n"
 "         }\n"
 "QPushButton:hover{\n"
-"		border-image: url(images/settings_hover.png);\n"
+"		border-image: url(:/images/buttons/settings_hover.png);\n"
 "}\n"
 "QPushButton:pressed{\n"
-"		border-image: url(images/settings_pressed.png);\n"
+"		border-image: url(:/images/buttons/settings_pressed.png);\n"
 "}"));
         CurrentCurrency = new QLabel(centralwidget);
         CurrentCurrency->setObjectName(QStringLiteral("CurrentCurrency"));
