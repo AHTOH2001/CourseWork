@@ -96,7 +96,6 @@ private slots:
 
     void AfterDownloadingCurrency(bool error);    
 
-
     void on_SettingsButton_clicked();
 
     void on_AnimationSpeedSetting_valueChanged(int value);

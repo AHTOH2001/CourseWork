@@ -21,8 +21,7 @@ SOURCES += \
     downloader.cpp \
     main.cpp \
     mainwindow.cpp \
-    rules.cpp \
-    seatclass.cpp
+    rules.cpp
 
 HEADERS += \
     card.h \
@@ -44,3 +43,5 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES +=
+
+RC_FILE = myapp.rc

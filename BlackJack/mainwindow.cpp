@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     srand(QTime::currentTime().msec());
     this->resize(1500,900);
     this->showMaximized();
+    this->setWindowIcon(QIcon(":/images/results/blackjack.png"));
+    this->setWindowTitle("BlackJack");
     seat[0].underSeat = ui->gridLayoutWidget_3;
     seat[1].underSeat = ui->gridLayoutWidget_14;
     seat[2].underSeat = ui->gridLayoutWidget_15;
@@ -124,44 +126,44 @@ MainWindow::MainWindow(QWidget *parent)
     seat[5].horizontalSpacerRight = ui->horizontalSpacerRight_6;
 
 
-    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->CentralLabel->setGraphicsEffect(effect);
-    effect = new QGraphicsDropShadowEffect();
+    effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->DealNow->setGraphicsEffect(effect);
     ui->DealNow->hide();
-    effect = new QGraphicsDropShadowEffect();
+    effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->lcdTimer->setGraphicsEffect(effect);
     ui->lcdTimer->hide();
-    effect = new QGraphicsDropShadowEffect();
+    effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->RepeatButton->setGraphicsEffect(effect);
-    effect = new QGraphicsDropShadowEffect();
+    effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->DoubleButton->setGraphicsEffect(effect);
-    effect = new QGraphicsDropShadowEffect();
+    effect = new QGraphicsDropShadowEffect(this);
     effect->setBlurRadius(5);
     effect->setOffset(3,3);
     ui->AdditionalStatus->setGraphicsEffect(effect);
 
 
-    TimerForDealNow = new QTimer();
+    TimerForDealNow = new QTimer(this);
     connect(TimerForDealNow,SIGNAL(timeout()),this,SLOT(NextColorSlot()));
 
-    TimerForHit = new QTimer();
+    TimerForHit = new QTimer(this);
     connect(TimerForHit,SIGNAL(timeout()),this,SLOT(HitNext()));
 
-    TimerForCommit = new QTimer();
+    TimerForCommit = new QTimer(this);
     connect(TimerForCommit,SIGNAL(timeout()),this,SLOT(NextSecond()));
 
-    TimerForHighlideSpins = new QTimer();
+    TimerForHighlideSpins = new QTimer(this);
     connect(TimerForHighlideSpins,SIGNAL(timeout()),this,SLOT(HighlightNextSpin()));
 
 
@@ -185,13 +187,13 @@ MainWindow::MainWindow(QWidget *parent)
     {
         i.sumCounter->hide();
         i.underSeat->hide();
-        timersForColor[i.perfectPair] = new QTimer();
+        timersForColor[i.perfectPair] = new QTimer(this);
         connect(i.perfectPair,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
         connect(i.perfectPair,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
-        timersForColor[i.mainBet] = new QTimer();
+        timersForColor[i.mainBet] = new QTimer(this);
         connect(i.mainBet,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
         connect(i.mainBet,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
-        timersForColor[i.triple] = new QTimer();
+        timersForColor[i.triple] = new QTimer(this);
         connect(i.triple,SIGNAL(valueChanged(int)),this,SLOT(valueChangedSlot(int)));
         connect(i.triple,SIGNAL(editingFinished()),this,SLOT(ValueChangedByUserSlot()));
         i.pairStatus = new QLabel(ui->centralwidget);
@@ -252,6 +254,7 @@ MainWindow::MainWindow(QWidget *parent)
     file.open(QIODevice::ReadOnly);
     rules = new Rules();
     rules->setHtml(file.readAll());
+    rules->setWindowIcon(QIcon(":/images/buttons/help.png"));
     downloader = new Downloader(this);
     connect(downloader,SIGNAL(onReady(bool)),this,SLOT(AfterDownloadingCurrency(bool)));
     downloader->getData();
@@ -274,7 +277,7 @@ void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
                          "padding: 2px;"
                          "border: 3px inset red;"
                          "border-radius: 31px;}");
-    QTimer *timer = new QTimer();
+    QTimer *timer = new QTimer(this);
     QObject *context = new QObject(this);
     connect(timer, &QTimer::timeout,context, [=]() {
         label->setStyleSheet("QLabel{"
@@ -283,19 +286,23 @@ void MainWindow::HighlightLabel(QLabel *label,bool hideLater,int timeMs)
                              "border: 3px solid rgb(231,181,77);"
                              "border-radius: 31px;}");
         delete context;
+        delete timer;
     } );
+    timer->start(timeMs/2);
+    label->raise();
     if (hideLater)
     {
-        QTimer *timer = new QTimer();
+        QTimer *timer = new QTimer(this);
         QObject *context = new QObject(this);
         connect(timer, &QTimer::timeout,context, [=]() {
-                label->hide();
+            label->hide();
+
             delete context;
+            delete timer;
         } );
         timer->start(timeMs);
     }
-    timer->start(timeMs/2);
-    label->raise();
+
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -355,6 +362,7 @@ void MainWindow::on_Exit_clicked()
     if (QMessageBox::warning(this, tr("BlackJack"),tr("Are you sure you want to quit?"),QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
         qApp->exit();
 }
+
 int debugcounter = 0;
 void MainWindow::paintEvent(QPaintEvent *event)
 {
@@ -363,15 +371,13 @@ void MainWindow::paintEvent(QPaintEvent *event)
     koefH = height()/900.;
     koefW = width()/1500.;
     ui->Exit->setGeometry(width()-40,0,40,25);
-    QImage image;
     int tempW;
     if (!isSeat)
     {
         for (int i = 0;i<6;i++)
             seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,92*koefW, 135*koefH);
-
-        image.load(":/images/background_blured");
-        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        QImage image1(":/images/background_blured");
+        painter.drawImage(0,0,image1.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY")
         {
             ui->CentralLabel->setText("TAKE A SEAT");
@@ -390,8 +396,8 @@ void MainWindow::paintEvent(QPaintEvent *event)
     }
     else
     {
-        image.load(":/images/background.png");
-        painter.drawImage(0,0,image.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        QImage image1(":/images/background.png");
+        painter.drawImage(0,0,image1.scaled(width(), height(),Qt::IgnoreAspectRatio));
         if (ui->CentralLabel->text()=="TAKE A SEAT")
         {
             ui->RepeatButton->show();
@@ -697,7 +703,7 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
 //    ui->comboBoxCurrency->setItemText(index,downloader->course->symbol[ind]);
     ui->CurrentCurrency->setText(downloader->course->symbol[downloader->course->ind[index]]);
     ui->MinimumBetNumber->display(qCeil(minimumBet*downloader->course->koef[ind]));
-    if (ui->AdditionalStatus->text()[0]=="M")
+    if (ui->AdditionalStatus->text()[0]=='M')
     {
         ui->AdditionalStatus->setText("MINIMUM BET " + QString::number(ui->MinimumBetNumber->value()));
         HighlightLabel(ui->AdditionalStatus);
@@ -798,8 +804,7 @@ void MainWindow::on_DealNow_clicked()
     stage = 0;
     TimerForHighlideSpins->start(100);
     HighlightLabel(ui->CentralLabel);
-    //TODO cool background effects
-    QTimer *timer = new QTimer();
+    QTimer *timer = new QTimer(this);
     QObject *context = new QObject(this);
     connect(timer, &QTimer::timeout,context, [=]() {
         ui->CentralLabel->setText("DEALING");
@@ -812,16 +817,29 @@ void MainWindow::on_DealNow_clicked()
 
 void MainWindow::HighlightNextSpin()
 {
-    QSpinBox *target;
+    QSpinBox *target = nullptr;
     QString color;
-    switch (stage % 6)
+    switch (stage)
     {
-    case 0 : target = seat[stage/3].perfectPair; color = "rgb(255,0,0)"; break;
-    case 1 : target = seat[stage/3].mainBet; color = "rgb(255,255,0)"; break;
-    case 2 : target = seat[stage/3].triple; color = "rgb(0,255,0)"; break;
-    case 3 : target = seat[stage/3].perfectPair; color = "rgb(0,255,255)"; break;
-    case 4 : target = seat[stage/3].mainBet; color = "rgb(0,0,255)"; break;
-    case 5 : target = seat[stage/3].triple; color = "rgb(255,0,255)"; break;
+    case 0 : target = seat[stage/3].perfectPair; color = "rgb(255,0,85)"; break;
+    case 1 : target = seat[stage/3].mainBet; color = "rgb(255,0,0)"; break;
+    case 2 : target = seat[stage/3].triple; color = "rgb(255,85,0)"; break;
+    case 3 : target = seat[stage/3].perfectPair; color = "rgb(255,170,0)"; break;
+    case 4 : target = seat[stage/3].mainBet; color = "rgb(255,255,0)"; break;
+    case 5 : target = seat[stage/3].triple; color = "rgb(170,255,0)"; break;
+    case 6 : target = seat[stage/3].perfectPair; color = "rgb(85,255,0)"; break;
+    case 7 : target = seat[stage/3].mainBet; color = "rgb(0,255,0)"; break;
+    case 8 : target = seat[stage/3].triple; color = "rgb(0,255,85)"; break;
+    case 9 : target = seat[stage/3].perfectPair; color = "rgb(0,255,170)"; break;
+    case 10 : target = seat[stage/3].mainBet; color = "rgb(0,255,255)"; break;
+    case 11 : target = seat[stage/3].triple; color = "rgb(0,170,255)"; break;
+    case 12 : target = seat[stage/3].perfectPair; color = "rgb(0,85,255)"; break;
+    case 13 : target = seat[stage/3].mainBet; color = "rgb(0,0,255)"; break;
+    case 14 : target = seat[stage/3].triple; color = "rgb(85,0,255)"; break;
+    case 15 : target = seat[stage/3].perfectPair; color = "rgb(170,0,255)"; break;
+    case 16 : target = seat[stage/3].mainBet; color = "rgb(255,0,255)"; break;
+    case 17 : target = seat[stage/3].triple; color = "rgb(255,0,170)"; break;
+
     }
     changeColor(target,"QSpinBox{"
                        "border-style: outset;"
@@ -1353,7 +1371,7 @@ void MainWindow::CountExtraBets()
                 HighlightLabel(seat[i].pairStatus,true,2000);
                 if (isTriple)
                 {
-                    QTimer *timer = new QTimer();
+                    QTimer *timer = new QTimer(this);
                     QObject *context = new QObject(this);
                     connect(timer, &QTimer::timeout,context, [=]() {
                         seat[i].tripleStatus->show();
@@ -1434,7 +1452,7 @@ void MainWindow::OpenDealerCardsProcess()
                 else
                 {
                     disconnect(dealerCards[1]->CardAnimation,SIGNAL(finished()),this,SLOT(OpenDealerCardsProcess()));
-                    QTimer *timer = new QTimer();
+                    QTimer *timer = new QTimer(this);
                     timer->setSingleShot(true);
                     connect(timer,SIGNAL(timeout()),this,SLOT(ResultStage()));
                     timer->start(800*koefSpeed);
@@ -1566,7 +1584,7 @@ void MainWindow::ResultStage()
             ui->DeltaBalanceStatus->setText("+0" + ui->CurrentCurrency->text());
     }
     HighlightLabel(ui->CentralLabel,true,4500);
-    QTimer *timer1 = new QTimer();
+    QTimer *timer1 = new QTimer(this);
     timer1->setSingleShot(true);
     connect(timer1,SIGNAL(timeout()),this,SLOT(gatheringCards()));
     timer1->start(1500*koefSpeed);

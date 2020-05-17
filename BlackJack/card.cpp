@@ -21,6 +21,11 @@ Card::Card(int key, QWidget *parent) : QWidget(parent)
     //this->setGraphicsEffect(effect);
 }
 
+Card::~Card()
+{
+
+}
+
 int Card::value()
 {
     if (isOpen) return _value;
@@ -52,7 +57,7 @@ void Card::paintEvent(QPaintEvent *event)
         else
         tempImage.load(":/images/cards/closed");
 
-        painter.drawImage(0,0,tempImage.scaled(width(), height(),Qt::IgnoreAspectRatio));
+        painter.drawImage(0,0,tempImage.scaled(width(), height(),Qt::IgnoreAspectRatio));        
     }
     Q_UNUSED(event);
 }

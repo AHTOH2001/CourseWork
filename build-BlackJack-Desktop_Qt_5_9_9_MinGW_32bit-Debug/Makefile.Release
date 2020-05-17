@@ -17,13 +17,13 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -fe
 INCPATH       = -I..\BlackJack -I. -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include\QtWidgets -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include\QtGui -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include\QtANGLE -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include\QtNetwork -ID:\prilozuhi\Qt\5.9.9\mingw53_32\include\QtCore -Irelease -I. -ID:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LD:\prilozuhi\Qt\5.9.9\mingw53_32\lib D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Widgets.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Gui.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Network.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Core.a 
+LIBS        =        -lmingw32 -LD:\prilozuhi\Qt\5.9.9\mingw53_32\lib D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\my_sql\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Widgets.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Gui.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Network.a D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\libQt5Core.a release\myapp_res.o 
 QMAKE         = D:\prilozuhi\Qt\5.9.9\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\myapp_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -50,8 +50,7 @@ SOURCES       = ..\BlackJack\card.cpp \
 		..\BlackJack\downloader.cpp \
 		..\BlackJack\main.cpp \
 		..\BlackJack\mainwindow.cpp \
-		..\BlackJack\rules.cpp \
-		..\BlackJack\seatclass.cpp release\qrc_resource.cpp \
+		..\BlackJack\rules.cpp release\qrc_resource.cpp \
 		release\moc_card.cpp \
 		release\moc_course.cpp \
 		release\moc_downloader.cpp \
@@ -63,7 +62,6 @@ OBJECTS       = release/card.o \
 		release/main.o \
 		release/mainwindow.o \
 		release/rules.o \
-		release/seatclass.o \
 		release/qrc_resource.o \
 		release/moc_card.o \
 		release/moc_course.o \
@@ -81,8 +79,7 @@ DIST          =  ..\BlackJack\card.h \
 		..\BlackJack\downloader.cpp \
 		..\BlackJack\main.cpp \
 		..\BlackJack\mainwindow.cpp \
-		..\BlackJack\rules.cpp \
-		..\BlackJack\seatclass.cpp
+		..\BlackJack\rules.cpp
 QMAKE_TARGET  = BlackJack
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = BlackJack.exe
@@ -93,8 +90,11 @@ DESTDIR_TARGET = release\BlackJack.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) release/myapp_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.BlackJack.Release  $(LIBS)
+
+release/myapp_res.o: ../BlackJack/myapp.rc
+	windres -i ..\BlackJack\myapp.rc -o release\myapp_res.o --include-dir=./../BlackJack $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\BlackJack\BlackJack.pro -spec win32-g++ "CONFIG+=debug"
@@ -102,10 +102,11 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) BlackJack.zip $(SOURCES) $(DIST) ..\BlackJack\BlackJack.pro D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\qdevice.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\device_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\sanitize.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\g++-base.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\angle.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\qconfig.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\toolchain.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\default_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\default_post.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\build_pass.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\warn_on.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\resources.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\moc.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\uic.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\file_copies.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exceptions.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\yacc.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\BlackJack\BlackJack.pro ..\BlackJack\resource.qrc D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\qtmain.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Widgets.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Gui.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Network.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Core.prl   ..\BlackJack\resource.qrc D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\BlackJack\card.h ..\BlackJack\course.h ..\BlackJack\downloader.h ..\BlackJack\mainwindow.h ..\BlackJack\rules.h ..\BlackJack\seatclass.h ..\BlackJack\card.cpp ..\BlackJack\course.cpp ..\BlackJack\downloader.cpp ..\BlackJack\main.cpp ..\BlackJack\mainwindow.cpp ..\BlackJack\rules.cpp ..\BlackJack\seatclass.cpp ..\BlackJack\mainwindow.ui    
+	$(ZIP) BlackJack.zip $(SOURCES) $(DIST) ..\BlackJack\BlackJack.pro D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\spec_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\qdevice.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\device_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\sanitize.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\gcc-base.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\g++-base.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\common\angle.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\qconfig.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_core_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_help_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_location_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_network_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt_functions.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\win32-g++\qmake.conf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\toolchain.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\default_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\default_pre.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\resolve_config.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exclusive_builds_post.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\default_post.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\build_pass.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\precompile_header.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\warn_on.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qt.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\resources.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\moc.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\opengl.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\uic.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\qmake_use.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\file_copies.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\win32\windows.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\testcase_targets.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\exceptions.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\yacc.prf D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\lex.prf ..\BlackJack\BlackJack.pro ..\BlackJack\resource.qrc D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\qtmain.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Widgets.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Gui.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Network.prl D:\prilozuhi\Qt\5.9.9\mingw53_32\lib\Qt5Core.prl   ..\BlackJack\resource.qrc D:\prilozuhi\Qt\5.9.9\mingw53_32\mkspecs\features\data\dummy.cpp ..\BlackJack\card.h ..\BlackJack\course.h ..\BlackJack\downloader.h ..\BlackJack\mainwindow.h ..\BlackJack\rules.h ..\BlackJack\seatclass.h ..\BlackJack\card.cpp ..\BlackJack\course.cpp ..\BlackJack\downloader.cpp ..\BlackJack\main.cpp ..\BlackJack\mainwindow.cpp ..\BlackJack\rules.cpp ..\BlackJack\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\card.o release\course.o release\downloader.o release\main.o release\mainwindow.o release\rules.o release\seatclass.o release\qrc_resource.o release\moc_card.o release\moc_course.o release\moc_downloader.o release\moc_mainwindow.o release\moc_rules.o
+	-$(DEL_FILE) release\card.o release\course.o release\downloader.o release\main.o release\mainwindow.o release\rules.o release\qrc_resource.o release\moc_card.o release\moc_course.o release\moc_downloader.o release\moc_mainwindow.o release\moc_rules.o
+	-$(DEL_FILE) release\myapp_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -698,6 +699,15 @@ release/moc_mainwindow.cpp: ../BlackJack/seatclass.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/QNetworkReply \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkreply.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QIODevice \
+		../BlackJack/rules.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QTextBrowser \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextedit.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextdocument.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
@@ -728,7 +738,6 @@ release/moc_mainwindow.cpp: ../BlackJack/seatclass.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
@@ -873,6 +882,7 @@ release/moc_rules.cpp: D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidge
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent \
 		../BlackJack/rules.h \
 		release/moc_predefs.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/bin/moc.exe
@@ -1066,6 +1076,15 @@ release/card.o: ../BlackJack/card.cpp ../BlackJack/card.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/QNetworkReply \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkreply.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QIODevice \
+		../BlackJack/rules.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QTextBrowser \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextedit.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextdocument.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
@@ -1096,7 +1115,6 @@ release/card.o: ../BlackJack/card.cpp ../BlackJack/card.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
@@ -1468,6 +1486,15 @@ release/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/QNetworkReply \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkreply.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QIODevice \
+		../BlackJack/rules.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QTextBrowser \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextedit.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextdocument.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
@@ -1498,7 +1525,6 @@ release/main.o: ../BlackJack/main.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
@@ -1697,6 +1723,15 @@ release/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/QNetworkReply \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtNetwork/qnetworkreply.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QIODevice \
+		../BlackJack/rules.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QTextBrowser \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtextedit.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextdocument.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMainWindow \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
@@ -1727,7 +1762,6 @@ release/mainwindow.o: ../BlackJack/mainwindow.cpp ../BlackJack/mainwindow.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
@@ -1869,141 +1903,9 @@ release/rules.o: ../BlackJack/rules.cpp ../BlackJack/rules.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\rules.o ..\BlackJack\rules.cpp
-
-release/seatclass.o: ../BlackJack/seatclass.cpp ../BlackJack/seatclass.h \
-		../BlackJack/card.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QWidget \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qwidget.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtguiglobal.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qglobal.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qconfig.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtcore-config.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsystemdetection.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qprocessordetection.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcompilerdetection.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtypeinfo.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsysinfo.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qlogging.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qflags.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qatomic.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbasicatomic.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qatomic_bootstrap.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qgenericatomic.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qatomic_cxx11.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qatomic_msvc.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qglobalstatic.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmutex.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qnumeric.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qversiontagging.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtgui-config.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qwindowdefs.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qobjectdefs.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qnamespace.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qobject.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qstring.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qchar.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbytearray.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qrefcount.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qarraydata.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qstringbuilder.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qlist.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qalgorithms.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qiterator.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qhashfunctions.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qpair.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qbytearraylist.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qstringlist.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qregexp.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qstringmatcher.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcoreevent.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qscopedpointer.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmetatype.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qvarlengtharray.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcontainerfwd.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qobject_impl.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmargins.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpaintdevice.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qrect.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsize.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qpoint.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpalette.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qcolor.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qrgb.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qrgba64.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qbrush.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qvector.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qmatrix.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpolygon.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qregion.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdatastream.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qiodevice.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qline.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtransform.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainterpath.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qimage.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpixelformat.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpixmap.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsharedpointer.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qshareddata.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qhash.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qfont.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qfontmetrics.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qfontinfo.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qsizepolicy.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qcursor.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qkeysequence.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qevent.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qvariant.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qmap.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qdebug.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qtextstream.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qlocale.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qset.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qcontiguouscache.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qurl.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qurlquery.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qfile.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qfiledevice.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qvector2d.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtouchdevice.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QPainter \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpainter.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
 		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/QPropertyAnimation \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qpropertyanimation.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qvariantanimation.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qeasingcurve.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qabstractanimation.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QLCDNumber \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlcdnumber.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qframe.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QLabel \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlabel.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QPushButton \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qpushbutton.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qicon.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QSpinBox \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qspinbox.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/qvalidator.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtCore/qregularexpression.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QSpacerItem \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/QGridLayout \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qgridlayout.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qlayout.h \
-		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtWidgets/qboxlayout.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\seatclass.o ..\BlackJack\seatclass.cpp
+		D:/prilozuhi/Qt/5.9.9/mingw53_32/include/QtGui/QKeyEvent
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\rules.o ..\BlackJack\rules.cpp
 
 release/qrc_resource.o: release/qrc_resource.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_resource.o release\qrc_resource.cpp

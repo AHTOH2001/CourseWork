@@ -14,7 +14,7 @@
 class SeatClass
 {
 public:
-    SeatClass();
+//    SeatClass();
     QSpinBox *perfectPair, *mainBet, *triple;
     QPushButton *multiSeat,*closeButton,*doubleButton,*hitButton,*standButton,*splitButton;
     bool isSeat = false,stillPlay = false,blockCardAnimation = false;

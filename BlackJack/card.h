@@ -10,6 +10,7 @@ class Card : public QWidget
     Q_OBJECT
 public:
     explicit Card(int key, QWidget *parent = nullptr);
+    ~Card();
     QPropertyAnimation *CardAnimation;
     int value();
     int suit();
