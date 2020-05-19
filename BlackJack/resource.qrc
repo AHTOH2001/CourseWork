@@ -103,5 +103,6 @@
         <file>images/background.png</file>
         <file>images/background_blured.png</file>
         <file>README.md</file>
+        <file>images/buttons/sit_here_blocked.png</file>
     </qresource>
 </RCC>

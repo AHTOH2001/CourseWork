@@ -175,13 +175,7 @@ MainWindow::MainWindow(QWidget *parent)
             s.append(QString(QString::number(i+2) + "_" + QString::number(j+1)));
             cardsList[i][j].load(s);
         }
-    /*DealButtonAnimation = new QPropertyAnimation(ui->DealNow, "geometry");
-    DealButtonAnimation->setDuration(800);
-    connect(DealButtonAnimation,SIGNAL(finished()),DealButtonAnimation,SLOT(start()));
-    DealButtonAnimation->start();*/
 
-
-    // animation->start();
     int counter = 0;
     for (auto & i : seat)
     {
@@ -238,6 +232,9 @@ MainWindow::MainWindow(QWidget *parent)
 
         i.extra.horizontalSpacer->changeSize(0,0);
         i.extra.sumCounter->hide();
+
+        i.multiSeat->setDisabled(true);
+        i.multiSeat->setStyleSheet("border-image: url(:/images/buttons/sit_here_blocked.png);");
     }
 
     dealerSumCounterAnimation = new QPropertyAnimation(ui->dealerSumCounter,"geometry");
@@ -258,14 +255,13 @@ MainWindow::MainWindow(QWidget *parent)
     downloader = new Downloader(this);
     connect(downloader,SIGNAL(onReady(bool)),this,SLOT(AfterDownloadingCurrency(bool)));
     downloader->getData();
+    ui->CentralLabel->setText("LOADING...");
 
 
 
 }
-
 MainWindow::~MainWindow()
 {
-    //for (int i =0;i<18;i++)
     delete ui;
 }
 
@@ -322,9 +318,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             qDebug() << RealValueSpinBox[seat[i].mainBet];
             qDebug() << RealValueSpinBox[seat[i].triple];
         }
-//    ui->horizontalSpacer_1->changeSize(15,20);
-//    ui->lcdNumberExtra_1->show();
-//    Hit(-1);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -378,7 +371,7 @@ void MainWindow::paintEvent(QPaintEvent *event)
             seat[i].multiSeat->setGeometry(seatX[i]*koefW,seatY[i]*koefH,92*koefW, 135*koefH);
         QImage image1(":/images/background_blured");
         painter.drawImage(0,0,image1.scaled(width(), height(),Qt::IgnoreAspectRatio));
-        if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY")
+        if (ui->CentralLabel->text()!="TAKE A SEAT" && ui->CentralLabel->text()!="YOUR BALANCE IS TOO LOW TO PLAY" && ui->CentralLabel->text()!="LOADING...")
         {
             ui->CentralLabel->setText("TAKE A SEAT");
             HighlightLabel(ui->CentralLabel);
@@ -467,14 +460,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
                 if (card->CardAnimation->state()==QAbstractAnimation::Stopped)
                 {
 
-                    card->setGeometry(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
-                    //      else
-                    //card->CardAnimation->setEndValue(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));
+                    card->setGeometry(QRect((579+(counter+1)*shiftUnit-92/2+5)*koefW,5*koefH,92*koefW,135*koefH));                   
                     counter++;
                 }
         }
-        //        if (strcmp(ui->AdditionalStatus->text().toLatin1(),"COURSES LOADED")==0)
-        //            ui->AdditionalStatus->hide();
 
 
     }
@@ -699,8 +688,6 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
 {        
     QString ind = downloader->course->ind[index];
     double koef = downloader->course->koef[ind]/downloader->course->koef[downloader->course->ind[prevCurrency]];
-//    ui->comboBoxCurrency->setItemText(prevCurrency,downloader->course->symbol[downloader->course->ind[prevCurrency]] + "     " + downloader->course->title[downloader->course->ind[prevCurrency]]);
-//    ui->comboBoxCurrency->setItemText(index,downloader->course->symbol[ind]);
     ui->CurrentCurrency->setText(downloader->course->symbol[downloader->course->ind[index]]);
     ui->MinimumBetNumber->display(qCeil(minimumBet*downloader->course->koef[ind]));
     if (ui->AdditionalStatus->text()[0]=='M')
@@ -715,20 +702,11 @@ void MainWindow::on_comboBoxCurrency_currentIndexChanged(int index)
             singleStep = i;
             break;
         }
-//    double delta = 0;
     for (int i = 0;i<6;i++)
     {
         RealValueSpinBox[seat[i].perfectPair] *= koef;
-//        delta += RealValueSpinBox[seat[i].perfectPair] - (int)RealValueSpinBox[seat[i].perfectPair];
-//        RealValueSpinBox[seat[i].perfectPair] = (int)RealValueSpinBox[seat[i].perfectPair];
-
         RealValueSpinBox[seat[i].mainBet] *= koef;
-//        delta += RealValueSpinBox[seat[i].mainBet] - (int)RealValueSpinBox[seat[i].mainBet];
-//        RealValueSpinBox[seat[i].mainBet] = (int)RealValueSpinBox[seat[i].mainBet];
-
         RealValueSpinBox[seat[i].triple] *= koef;
-//        delta += RealValueSpinBox[seat[i].triple] - (int)RealValueSpinBox[seat[i].triple];
-//        RealValueSpinBox[seat[i].triple] = (int)RealValueSpinBox[seat[i].triple];
 
         seat[i].perfectPair->setValue(RealValueSpinBox[seat[i].perfectPair]+0.5);
         seat[i].mainBet->setValue(RealValueSpinBox[seat[i].mainBet]+0.5);
@@ -866,7 +844,6 @@ void MainWindow::NextColorSlot()
                                "color: rgb("+QString::number((int)(80 + tick)) +", 30, 30);"
                                "background: rgb(30," + QString::number((int)(100 + tick)) + ",87);}");
 
-    //ui->DealNow->resize(ui->DealNow->size().width()-(150-tick),ui->DealNow->size().height());
     ui->DealNow->setGeometry((460+tick)*koefW,520*koefH,(565-2*tick)*koefW,81*koefH);
     ui->lcdTimer->display((150-tick)/10);
     if (tick==150)
@@ -1726,7 +1703,6 @@ void MainWindow::NextIterationGathering()
 
     prevCard->CardAnimation->setStartValue(prevCard->geometry());
     prevCard->CardAnimation->setEndValue(thisCard->geometry());
-//    prevCard->CardAnimation->setEasingCurve(QEasingCurve::Linear);
     if (isOtherDeck)
     {
         int dx = qAbs(thisCard->x() - prevCard->x())/koefW + 92;
@@ -1743,8 +1719,7 @@ void MainWindow::NextIterationGathering()
                 x += (lastX - (double)prevCard->x()/koefW) / n;
                 y = lastY - qSqrt(sqrB * (1 - (double)(x - prevCard->x()/koefW) * (x - prevCard->x()/koefW) / sqrA));
                 prevCard->CardAnimation->setKeyValueAt(time,QRect(QPoint(x*koefW,y*koefH),QSize(thisCard->size())));
-            }
-          //  prevCard->CardAnimation->setEasingCurve(QEasingCurve::OutQuad);
+            }          
         }
 
         prevCard->CardAnimation->setKeyValueAt((dx - 92. + dy)/(dx+dy),thisCard->geometry().adjusted(-92*koefW,0,-92*koefW,0));
@@ -1935,15 +1910,20 @@ void MainWindow::AfterDownloadingCurrency(bool error)
     {
         ui->AdditionalStatus->setText("COURSES LOADED");
         HighlightLabel(ui->AdditionalStatus,false,2500);
-        //        for (int i = 0;)
     }
     ui->MinimumBetNumber->display(qCeil(minimumBet*downloader->course->koef[downloader->course->ind[0]]));
     for (auto &ind:downloader->course->ind)
-        //        ui->comboBoxCurrency->addItem(downloader->course->symbol["RUB"]);
         ui->comboBoxCurrency->addItem(downloader->course->symbol[ind] + "     " + downloader->course->title[ind]);
     ui->CurrentCurrency->setText(downloader->course->symbol[downloader->course->ind[0]]);
-    //    ui->CurrentCurrency->setText("$");
 
+    for (int i = 0;i<6;i++)
+    {
+        seat[i].multiSeat->setStyleSheet("QPushButton {border-image: url(:/images/buttons/sit_here.png);}"
+                                         "QPushButton:hover{border-image: url(:/images/buttons/sit_here_hover.png);}"
+                                         "QPushButton:pressed{border-image: url(:/images/buttons/sit_here_pressed.png);}");
+        seat[i].multiSeat->setDisabled(false);
+    }
+    ui->CentralLabel->setText("TAKE A SEAT");
 }
 
 void MainWindow::on_SettingsButton_clicked()

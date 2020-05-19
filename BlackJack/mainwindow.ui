@@ -1701,15 +1701,9 @@ QPushButton:pressed{
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-             border-image: url(:/images/buttons/sit_here.png);
-         }
-QPushButton:hover{
-		border-image: url(:/images/buttons/sit_here_hover.png);
-}
-QPushButton:pressed{
-		border-image: url(:/images/buttons/sit_here_pressed.png);
-}</string>
+     <string notr="true">QPushButton {border-image: url(:/images/buttons/sit_here.png);}
+QPushButton:hover{border-image: url(:/images/buttons/sit_here_hover.png);}
+QPushButton:pressed{border-image: url(:/images/buttons/sit_here_pressed.png);}</string>
     </property>
     <property name="text">
      <string/>
